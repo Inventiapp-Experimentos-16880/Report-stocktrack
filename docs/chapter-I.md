@@ -8,12 +8,12 @@ StockTrack es una aplicación innovadora que busca optimizar la gestión de inve
 <table align="center" border="1" cellspacing="0" cellpadding="8" style="page-break-inside: avoid; width: 90%; border-collapse: collapse;">
   <tr>
     <td style="width: 150px; text-align: center;">
-      <img src="assets/Chapter-I/FotoChoy.jpeg" alt="Foto de Vanessa Choy" width="150" height="150" style="object-fit: cover;">
+      <img src="" width="150" height="150" style="object-fit: cover;">
     </td>
       <td>
-          <p align="center"><strong>Vanessa May Lang Choy Robles - U202317450</strong></p>
+          <p align="center"><strong> Nombre - codigo</strong></p>
           <p align="justify">
-            Soy una estudiante responsable con el trabajo. Respeto y escucho la opinión de los demás ayudando al trabajo en equipo. Me comprometo a contribuir al equipo siendo puntual en las reuniones y responsable en las entregas.
+           descripcion
           </p>
     </td>
   </tr>
@@ -22,12 +22,12 @@ StockTrack es una aplicación innovadora que busca optimizar la gestión de inve
 <table align="center" border="1" cellspacing="0" cellpadding="8" style="page-break-inside: avoid; width: 90%; border-collapse: collapse;">
   <tr>
     <td style="width: 150px; text-align: center;">
-      <img src="assets/Chapter-I/maria-hernandez.jpeg " alt="Foto de María Hernández" width="150" height="150" style="object-fit: cover;">
+      <img src="" width="150" height="150" style="object-fit: cover;">
     </td>
       <td>
-          <p align="center"><strong>María Patricia Hernández Uchuya - U202311258</strong></p>
+          <p align="center"><strong> Nombre - codigo</strong></p>
           <p align="justify">
-            Estudio la carrera de Ingeniería de Software, tengo 19 años y actualmente me encuentro cursando el sexto ciclo de dicha carrera. Tengo conocimientos en C++, C#, Python, Java, HTML, CSS, JavaScript y Vue. Me considero una persona con responsabilidad, optimismo y honestidad, cualidades que considero fundamentales para una colaboración efectiva en equipo y un buen desarrollo en este proyecto.
+            descripcion
           </p>
     </td>
   </tr>
@@ -36,12 +36,12 @@ StockTrack es una aplicación innovadora que busca optimizar la gestión de inve
 <table align="center" border="1" cellspacing="0" cellpadding="8" style="page-break-inside: avoid; width: 90%; border-collapse: collapse;">
   <tr>
     <td style="width: 150px; text-align: center;">
-      <img src="assets/Chapter-I/dayro.jpg" alt="Foto de Dayro Rios" width="150" height="150" style="object-fit: cover;">
+      <img src="/assets/img/chapter-I/dayroRios.jpg" width="150" height="150" style="object-fit: cover;">
     </td>
       <td>
           <p align="center"><strong>Dayro Richard Rios Piñan - U202315283</strong></p>
           <p align="justify">
-            Mi nombre es Dayro Ríos, tengo 19 años, estoy cursando el sexto ciclo de la carrera de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas. Tengo conocimientos en los lenguajes de programación c++, python, html y css, además gestores de base de datos como mssql. Cuando trabajo en equipo soy comunicativo, responsable y trato de realizar el trabajo lo mejor posible. 
+            Mi nombre es Dayro Rios, tengo 20 años y actualmente estoy en el séptimo ciclo de la carrera de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas. Disfruto de escuchar música, jugar videojuegos y practicar deportes. Me considero una persona empática y tengo facilidad para comunicarme en entornos de trabajo en equipo.
           </p>
     </td>
   </tr>
@@ -50,26 +50,12 @@ StockTrack es una aplicación innovadora que busca optimizar la gestión de inve
 <table align="center" border="1" cellspacing="0" cellpadding="8" style="page-break-inside: avoid; width: 90%; border-collapse: collapse;">
   <tr>
     <td style="width: 150px; text-align: center;">
-      <img src="assets/Chapter-I/fabiola.jpeg " alt="Foto de Fabiola Saldaña" width="150" height="150" style="object-fit: cover;">
+      <img src="" width="150" height="150" style="object-fit: cover;">
     </td>
       <td>
-          <p align="center"><strong>Fabiola Del Rocio Saldaña Ayala - U202313773</strong></p>
+          <p align="center"><strong> Nombre - codigo </strong></p>
           <p align="justify">
-            Mi nombre es Fabiola Saldaña, tengo 19 años y actualmente curso el 6to ciclo de la carrera de Ingeniería de Software. En lo personal busco aprender constantemente y me considero alguien responsable, proactiva y dedicada con mis trabajos. Es por ello que me comprometo apoyar al equipo con mis habilidades y conocimientos para alcanzar los mejores resultados.
-          </p>
-    </td>
-  </tr>
-</table>
-<br>
-<table align="center" border="1" cellspacing="0" cellpadding="8" style="page-break-inside: avoid; width: 90%; border-collapse: collapse;">
-  <tr>
-    <td style="width: 150px; text-align: center;">
-      <img src="assets/Chapter-I/profile-piero.png" alt="Foto de Piero Sulca" width="150" height="150" style="object-fit: cover;">
-    </td>
-      <td>
-          <p align="center"><strong>Piero Angel Sulca Sanchez - U202423711</strong></p>
-          <p align="justify">
-             Curso la carrera de Ingeniería de Software y tengo experiencia en desarrollo web, trabajando con equipos pequeños. Me gusta el Front End, en especial el diseño de interfaces 3D y productos creativos. Tengo conocimientos que pueden ayudar al equipo como levantamiento de requerimientos, diseño de interfaces, desarrollo web (React, Typescript), diseño de bases de datos y las habilidades de organización y colaboración en equipos pequeños.
+            descripcion
           </p>
     </td>
   </tr>
@@ -78,6 +64,9 @@ StockTrack es una aplicación innovadora que busca optimizar la gestión de inve
 
 
 ## 1.2. Solution Profile
+
+StockTrack es una aplicación de gestión de inventarios diseñada para optimizar el control de stock en bodegas y almacenes. Para fundar esta solución, se ha empleado la técnica 5W y 2H.
+
 ### 1.2.1. Antecedentes y problemática
 
 **What (Qué)**
@@ -140,9 +129,12 @@ La persona llegó a esta situación por la necesidad de controlar mejor su inven
 
 Según un estudio realizado por GS1 Uruguay (2024), el porcentaje de productos no encontrados en góndolas alcanzó el 7.08 %, lo que representa un aumento del 74 % respecto al año anterior; este dato indica que por cada 100 productos auditados, 7 no estaban disponibles, evidenciando el impacto directo que una gestión ineficiente de inventarios puede tener en la disponibilidad, las ventas y la experiencia del cliente.
 
-![Evolución del Índice](./assets/Chapter-I/Evolucion-del-Indice.png)
+![Evolución del Índice](/assets/img/chapter-I/Evolucion-del-Indice.png)
 
 ### 1.2.2. Lean UX Process
+
+El Lean UX Process es una metodología que se enfoca en la creación de productos digitales de manera ágil, iterativa y centrada en el usuario. Este proceso se basa en la colaboración entre equipos multidisciplinarios, la validación constante de hipótesis y la adaptación rápida a los cambios. Se empleó esta metodología para desarrollar StockTrack, asegurando que el producto se ajuste a las necesidades reales de los usuarios y del mercado.
+
 #### 1.2.2.1. Lean UX Problem Statements
 
 Nuestro servicio ofrece a las bodegas y almacenes una plataforma innovadora para gestionar inventarios en tiempo real, permitiendo registrar movimientos de stock, generar alertas inteligentes, centralizar información de productos y acceder a reportes analíticos que apoyan la toma de decisiones estratégicas.
@@ -214,7 +206,7 @@ Cuando el 50% de los usuarios accedan a la plataforma al menos una vez al día d
 
 #### 1.2.2.4. Lean UX Canvas
 
-![Lean UX Canvas](./assets/Chapter-I/Lean-UX-Canvas.jpg)
+![Lean UX Canvas](/assets/img/chapter-I/Lean-UX-Canvas.jpg)
 
 ## 1.3. Segmentos objetivo
 
