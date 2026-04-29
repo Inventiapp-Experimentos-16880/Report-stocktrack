@@ -10,6 +10,14 @@
 
 ### 2.1.1 Análisis Competitivo
 
+**¿Por qué llevar a cabo este análisis?**
+
+> El propósito de este análisis es determinar en qué segmentos del mercado existe una oportunidad real de competir, examinando cómo se posicionan los actores principales: qué públicos apuntan, qué ofrecen y cómo venden. Con esa información como base, se busca construir una propuesta de valor propia que sea diferenciada y relevante para el mercado al que nos dirigimos.
+
+<p align="center">
+  <img src="assets/img/chapter-II/analisisCompetitivo.jpg" alt="Análisis Competitivo" width="600">
+</p>
+
 ### 2.1.2 Estrategias y tácticas frente a competidores
 
 ## 2.2. Entrevistas
