@@ -95,6 +95,32 @@ Preguntas complementarias:
 
 ### 2.2.2. Registro de entrevistas
 
+Link de entrevistas:<a href="https://tinyurl.com/66etkfv8">https://tinyurl.com/66etkfv8</a> <br>
+
+
+**Segmento #1: Bodegas especializadas por rubro**
+
+| Nº | Datos del entrevistado | Resumen de la entrevista | Evidencia de entrevista |
+|----|------------------------|------------------------------------------| ----------------------- |
+| 1  | - **Nombre:** Lucarelly Sanchez Heredia <br> - **Edad:** 21 años | Lucarelly es dueño de una bodega y la gestiona junto a su abuelo. La administra usando excel pero no siempre está actualizado, además de usar una libreta. Uno de los mayores desafíos que enfrenta es la mezcla de lotes y fechas de vencimiento, lo que le genera pérdidas. No tiene un control en tiempo real del stock y no ha considerado usar una plataforma digital para gestionar su inventario, pero le gustaría tener un mejor control de sus productos. Actualmente no emplea alguna herramienta digital para la gestión de su bodega además de excel. Repone los productos de manera reactiva, es decir, cuando se le acaba o está por vencer un producto. Usa una laptop Windows y un celular Android, y como browser usa Chrome. Vende sus productos principalmente de forma presencial, pero también usa Whatsapp, Facebook e Instagram. | ![Entrevista 1 - Segmento Dueños de Bodegas](../assets/img/chapter-II/lucas-interview.png) <br> **Duración:** 2:53 min |
+| 2  | - **Nombre:** Rubi Vega <br> - **Edad:** 19 años | Actualmente, la bodega no cuenta con un sistema formal de gestión de inventario, pues al ser un negocio familiar las tareas se realizan de manera manual, aunque se considera contratar personal externo. El principal desafío es controlar las fechas de vencimiento, ya que con la llegada de nuevos productos se pierde seguimiento de los que están por caducar. No utilizan herramientas digitales, aunque reconocen la importancia de contar con un control en tiempo real para crecer y organizar pedidos. Detectan faltantes o vencimientos al limpiar estantes o por intuición. Usan celular y computadora, y gestionan pedidos principalmente por WhatsApp. | ![Entrevista 2 - Segmento Dueños de Bodegas](../assets/img/chapter-II/Interview-Rubi.png) <br> **Duración:** 4:02 min |
+
+**Segmento #2: Startups y emprendedores en expansión con necesidades logísticas**
+
+| Nº | Datos del entrevistado | Resumen de la entrevista | Evidencia de entrevista |
+|----|------------------------|------------------------------------------| ----------------------- |
+| 1  | - **Nombre:** Alexander Miranda Vivanco <br> - **Edad:** 27 años | Alexander Miranda tiene un emprendimiento dedicado a venta de productos para mascotas. Actualmente, gestiona su inventario revisando su almacén presencialmente y lo hace interdiario, dependiendo de las ventas. Se siente limitado por lo tardado que es revisar el stock disponible. Registra su inventario únicamente en Excel y se guía por las boletas que emite. Le gustaría mejorar las entradas y salidas de productos e inventariado para así llevar un mejor control y saber cuando es necesario reponer ciertos ítems. Aún no ha considerado implementar una página, pero lo considera una oportunidad para digitalizar el negcio y agilizar el proceso de venta e inventario. | ![Entrevista 1 - Startups y emprendedores en expansión con necesidades logísticas](../assets/img/chapter-II/Entrevista-Alexander-Miranda.png) <br> **Duración:** 3:30 min |
+
+| Nº | Datos del entrevistado | Resumen de la entrevista | Evidencia de entrevista |
+|----|------------------------|------------------------------------------| ----------------------- |
+| 2  | - **Nombre:** Alicia Navarro Chang <br> - **Edad:** 20 años | Alicia Navarro Chang tiene un negocio dedicado a la venta de queques. Actualmente gestiona su inventario utilizando principalmente Notion y Excel, donde registra compras y salidas de productos, aunque reconoce que el proceso es propenso a errores humanos, especialmente en los cálculos y conteos manuales. Le gustaría contar con un sistema más automático que reduzca esas fallas. Ha evaluado implementar plataformas digitales de inventario, pero aún no encuentra una que le ofrezca todas las herramientas que necesita ni planes de suscripción adecuados. Sus productos los almacena en un cuarto de su casa y revisa los insumos interdiario o casi a diario. Para ventas y promoción emplea TikTok e Instagram, y para contacto con clientes utiliza Instagram y WhatsApp. Desarrolla su trabajo principalmente desde su laptop y también con su celular. | ![Entrevista 2 - Startups y emprendedores en expansión con necesidades logísticas](../assets/img/chapter-II/entrevista-alicia-navarro.png) <br> **Duración:** 3:32 min |
+<br>
+
+| Nº | Datos del entrevistado | Resumen de la entrevista | Evidencia de entrevista |
+|----|------------------------|------------------------------------------| ----------------------- |
+| 3  | - **Nombre:** Macpier Condezo <br> - **Edad:** 29 años |Macpier Condezo tiene un negocio e-commerce. Actualmente gestiona su inventario utilizando principalmente Excel, donde registra compras y salidas de productos, aunque reconoce que el proceso es manual y puede presentar errores, especialmente en los cálculos y conteos manuales. Le gustaría contar con un sistema más automático que reduzca esas fallas. Ha evaluado implementar plataformas digitales de inventario, pero aún no encuentra una que le parezca adecuada. Sus productos los almacena en su casa y revisa el stock a diario. Para publicitarse y manejar las ventas en su negocio usa facebook. Desarrolla su trabajo principalmente desde su PC y ocacionalmente desde su celular. | ![Entrevista 3 - Startups y emprendedores en expansión con necesidades logísticas](../assets/img/chapter-II/entrevista-macpier-condezo.png) <br> **Duración:** 3:41 min |
+<br>
+
 ### 2.2.3 Análisis de entrevistas
 
 ## 2.3. Needfinding
