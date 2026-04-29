@@ -258,3 +258,25 @@ Nombres de los campos en formularios y cabeceras de columnas.
 El prototipo web de StockTrack ha sido concebido aplicando principios de arquitectura de información, diseño centrado en el usuario y las heurísticas de usabilidad, con el propósito de brindar una experiencia intuitiva, eficiente y accesible. La navegación se organiza de manera jerárquica y lógica, lo que facilita a los usuarios localizar rápidamente las funciones principales.
 
 [Ver Prototipo Interactivo de StockTrack en Figma](https://www.figma.com/proto/jKNuDhwMS5qe3o6zF4ugo8/OPEN-SOURCE?node-id=150-3805&p=f&t=C8AMNn5sgvqnuoFs-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=150%3A5901)
+
+## 4.6. Domain-Driven Software Architecture.
+### 4.6.1. Software Architecture Context Diagram.
+![Context Diagram](./../assets/Chapter-IV/structurizr-106230-SystemContext-001.png)
+
+### 4.6.2. Software Architecture Container Diagrams.
+![Container Diagram](./../assets/Chapter-IV/structurizr-106230-Container-001.png)
+
+### 4.6.3. Software Architecture Components Diagrams.
+![Component Diagram](./../assets/Chapter-IV/structurizr-106230-Component-001.png)
+
+- **Users and Permission Context**
+![Users and Permission Context Diagram](./../assets/Chapter-IV/structurizr-106321-Component-004.png)
+
+- **Inventory Context**
+![Inventory Context Diagram](./../assets/Chapter-IV/structurizr-106321-Component-001.png)
+
+- **Sales Context**
+![Sales Context Diagram](./../assets/Chapter-IV/structurizr-106321-Component-002.png)
+
+- **Alerts and Reports Context**
+![Alerts and Reports Context Diagram](./../assets/Chapter-IV/structurizr-106321-Component-003.png)
