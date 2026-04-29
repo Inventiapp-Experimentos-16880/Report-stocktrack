@@ -123,6 +123,51 @@ Link de entrevistas:<a href="https://tinyurl.com/66etkfv8">https://tinyurl.com/6
 
 ### 2.2.3 Análisis de entrevistas
 
+#### Segmento 1: Bodegas especializadas por rubro
+
+Se analizaron **2 entrevistas** a administradores y dueños de bodegas. La información obtenida permitió identificar características objetivas y subjetivas clave para construir el arquetipo de dueño de bodega.
+
+**Características**
+
+| Característica | Mención | % | Evidencia |
+| :--- | :--- | :--- | :--- |
+| Gestión de inventario manual o en Excel | 2/2 | 100% | Uso de Excel (a veces desactualizado), libretas y realización de tareas de manera completamente manual. |
+| Problemas críticos con fechas de vencimiento | 2/2 | 100% | Mencionan pérdidas por mezcla de lotes y falta de seguimiento al ingresar nuevos productos a los estantes. |
+| Control y reposición reactiva / visual | 2/2 | 100% | Detectan faltantes al limpiar estantes, por intuición, o esperan a que el producto esté por agotarse para reponer. |
+| Uso de WhatsApp como canal de gestión | 2/2 | 100% | Ambos señalan a WhatsApp como un canal principal para la gestión de pedidos o contacto con clientes. |
+| Interés en el control en tiempo real | 2/2 | 100% | Reconocen la necesidad e importancia de un control actualizado para evitar pérdidas, organizarse y poder crecer. |
+
+**Insights**
+
+1. **El control de caducidad es el principal punto de dolor:** La falta de un sistema formal provoca que los nuevos lotes se mezclen con los antiguos, perdiendo el rastro de las fechas de vencimiento. Esto se traduce directamente en mermas y pérdidas económicas.
+2. **Gestión logística reactiva y rudimentaria:** La dependencia de la memoria e inspección visual genera ineficiencia. El inventario solo se repone cuando el problema es evidente.
+3. **Brecha de digitalización interna vs. externa:** Están digitalizados para vender (WhatsApp, redes sociales), pero no para gestionar su operación interna. La barrera no es tecnológica, sino de falta de herramientas adecuadas.
+4. **Disposición latente hacia la digitalización:** Existe consciencia de que sus métodos actuales son insuficientes y hay apertura para adoptar sistemas en tiempo real que sean fáciles de usar.
+
+---
+
+#### Segmento 2: Startups y emprendedores en expansión con necesidades logísticas
+
+Se analizaron **3 entrevistas** a emprendedores de negocios en crecimiento (e-commerce, mascotas, repostería). A partir de sus respuestas se identificaron aspectos clave para construir el arquetipo del emprendedor en expansión.
+
+**Características**
+
+| Característica | Mención | % | Evidencia |
+| :--- | :--- | :--- | :--- |
+| Dependencia de Excel como herramienta principal | 3/3 | 100% | Todos utilizan Excel (o Notion) para registrar compras, salidas y boletas emitidas. |
+| Revisión física periódica de stock | 3/3 | 100% | Realizan inspecciones presenciales en sus almacenes o casas de forma diaria o interdiaria. |
+| Consciencia de errores por gestión manual | 3/3 | 100% | Reconocen expresamente que sus procesos manuales quitan mucho tiempo y son propenso a errores de cálculo. |
+| Deseo explícito de automatización | 3/3 | 100% | Buscan sistemas que agilicen el inventariado, mejoren el registro de entradas/salidas y alerten sobre reposiciones. |
+| Dependencia de Redes Sociales para ventas | 3/3 | 100% | Uso activo de Facebook, Instagram, TikTok o WhatsApp para promocionarse y gestionar ventas. |
+| Insatisfacción con la oferta de software actual | 2/3 | 66.7% | Han evaluado plataformas digitales, pero las descartan por complejidad o planes de precio inadecuados. |
+
+**Insights**
+
+1. **El trabajo manual es un cuello de botella para el crecimiento:** Invierten demasiado tiempo en conteos físicos. Saben que el Excel limita su capacidad operativa y buscan escalar.
+2. **Necesidad de automatización y alertas de reposición:** Demanda clara de sistemas que reduzcan la carga mental, realicen cálculos automáticos y notifiquen cuándo reponer insumos.
+3. **Insatisfacción con las soluciones del mercado actual:** Existe un vacío para este segmento; buscan software robusto pero con planes de suscripción accesibles y funcionalidades precisas.
+4. **Ecosistema de ventas omnicanal descentralizado:** Gestionan ventas por múltiples redes sociales, lo que requiere agilidad para descontar stock rápidamente desde diversos canales digitales.
+
 ## 2.3. Needfinding
 
 ### 2.3.1. User Personas
