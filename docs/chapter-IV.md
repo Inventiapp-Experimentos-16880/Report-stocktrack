@@ -189,3 +189,68 @@ Nombres de los campos en formularios y cabeceras de columnas.
 
 ### 4.3.2. Landing Page Mock-up.
 ![](./../assets/Chapter-IV/Mockup.png)
+
+## 4.4. Web Applications UX/UI Design.
+### 4.4.1. Web Applications Wireframes.
+![](./../assets/Chapter-IV/Register.jpg)
+![](./../assets/Chapter-IV/login.jpg)
+![](./../assets/Chapter-IV/Inicio.jpg)
+![](./../assets/Chapter-IV/Inventario.jpg)
+![](./../assets/Chapter-IV/Inventario%20-%20Información%20Producto-1.jpg)
+![](./../assets/Chapter-IV/Inventario%20-%20Nuevo%20Producto-1.jpg)
+![](./../assets/Chapter-IV/Inventario%20-%20Reposición-1.jpg)
+![](./../assets/Chapter-IV/Inventario%20-%20Nuevo%20kit-1.jpg)
+![](./../assets/Chapter-IV/Proveedores.jpg)
+![](./../assets/Chapter-IV/Proveedores-1.jpg)
+![](./../assets/Chapter-IV/Administración%20del%20personal%20-%20Creación%20personal-1.jpg)
+![](./../assets/Chapter-IV/Administración%20del%20personal%20-%20Creación%20rol.jpg)
+![](./../assets/Chapter-IV/Salida%20producto.jpg)
+
+### 4.4.2. Web Applications Wireflow Diagrams.
+**Flujo: Crear cuenta e ingresar a la aplicación**
+**User persona:** Empresa — Administrador
+- **Happy path:** 1. En Regístrate, completa Nombre, Email y Contraseña → Registrarse. 2. El sistema valida y crea la cuenta. 3. En Iniciar sesión, ingresa Email y Contraseña → Entrar. 4. Accede al Dashboard.
+- **Unhappy paths:** Email ya registrado o formato inválido. Contraseña débil/incorrecta. Cuenta inactiva. Falla de red.
+
+![](./../assets/Chapter-IV/flow1.png)
+
+**Flujo: Crear un nuevo rol para el personal**
+**User persona:** Empresa — Administrador
+- **Happy path:** 1. Desde el Dashboard, abre Administración del personal. 2. Pulsa Nuevo Rol. 3. Indica Nombre del rol y Permisos. 4. Guardar → el rol se crea.
+- **Unhappy paths:** Cancelar. Nombre de rol vacío/duplicado. Sin permisos seleccionados. Falla de red/sesión.
+
+![](./../assets/Chapter-IV/flow2.png)
+
+### 4.4.3. Web Applications Mock-ups.
+![](./../assets/Chapter-IV/login-2.jpg)
+![](./../assets/Chapter-IV/login-1.jpg)
+![](./../assets/Chapter-IV/Inventario-1.jpg)
+![](./../assets/Chapter-IV/Inventario%20-%20Información%20Producto.jpg)
+![](./../assets/Chapter-IV/Inventario%20-%20Nuevo%20Producto.jpg)
+![](./../assets/Chapter-IV/Inventario%20-%20Reposición.jpg)
+![](./../assets/Chapter-IV/Inventario%20-%20Reposición.jpg)
+![](./../assets/Chapter-IV/Inventario%20-%20Nuevo%20kit.jpg)
+![](./../assets/Chapter-IV/Proveedores-2.jpg)
+![](./../assets/Chapter-IV/Proveedores-3.jpg)
+![](./../assets/Chapter-IV/Administración%20del%20personal-1.jpg)
+![](./../assets/Chapter-IV/Administración%20del%20personal%20-%20Creación%20Personal.jpg)
+![](./../assets/Chapter-IV/Administración%20del%20personal%20-%20Creación%20roles.jpg)
+![](./../assets/Chapter-IV/Salida%20producto-1.jpg)
+
+### 4.4.4. Web Applications User Flow Diagrams.
+**Flujo: Registrar salida de productos (venta/consumo/merma)**
+**User persona:** Tienda/Almacén — Operador(a)
+- **Happy path:** 1. Abre Salida de productos. 2. Busca/filtra y selecciona productos o kits. 3. Ajusta Cantidad por ítem. 4. Guardar → valida stock, registra movimiento y descuenta inventario.
+- **Unhappy paths:** Cancelar. Cantidad > stock (bloqueo).
+
+![](./../assets/Chapter-IV/flowdiagram1.png)
+
+**Flujo: Gestionar inventario (Ingresar reposición y crear producto)**
+**User persona:** Tienda/Almacén — Operador(a)
+- **A) Ingresar reposición:** 1. Abre Inventario. 2. Pulsa Ingresar reposición. 3. Completa Lote, Fechas y Cantidad. 4. Guardar → registra reposición y aumenta stock. (Unhappy: Fechas inválidas, cantidades vacías).
+- **B) Crear nuevo producto:** 1. En Inventario, pulsa + Producto. 2. Completa Nombre, Categoría, Proveedor, Stock mínimo y Precio. 3. Guardar → crea producto. (Unhappy: Campos vacíos, valores inválidos).
+
+![](./../assets/Chapter-IV/flowdiagram2.png)
+![](./../assets/Chapter-IV/flowdiagram3.png)
+![](./../assets/Chapter-IV/flowdiagram4.png)
+
