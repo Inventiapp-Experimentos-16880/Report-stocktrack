@@ -11,12 +11,12 @@ StockTrack es una aplicación innovadora que busca optimizar la gestión de inve
 <table align="center" border="1" cellspacing="0" cellpadding="8" style="page-break-inside: avoid; width: 90%; border-collapse: collapse;">
   <tr>
     <td style="width: 150px; text-align: center;">
-      <img src="" width="150" height="150" style="object-fit: cover;">
+      <img src="/assets/img/chapter-I/giovany.jpeg" width="150" height="150" style="object-fit: cover;">
     </td>
       <td>
-          <p align="center"><strong> Nombre - codigo</strong></p>
+          <p align="center"><strong> Giovany Smith Torres Apolinario - U202311601codigo</strong></p>
           <p align="justify">
-           descripcion
+           Soy estudiante de la carrera de Ingeniería de Software y actualmente me encuentro cursando el 7mo ciclo, cuento con experiencia técnica en Java y Flutter bajo los estándares de Clean Architecture y DDD. Poseo una fuerte orientación al trabajo colaborativo, caracterizándome por mi capacidad para brindar soluciones ante obstáculos y mi disposición para ayudar a otros integrantes del equipo en el cumplimiento de los objetivos comunes.
           </p>
     </td>
   </tr>
@@ -28,7 +28,7 @@ StockTrack es una aplicación innovadora que busca optimizar la gestión de inve
       <img src="" width="150" height="150" style="object-fit: cover;">
     </td>
       <td>
-          <p align="center"><strong> Nombre - codigo</strong></p>
+          <p align="center"><strong>Antonio Jhair Navarro Chinga - u202314101 </strong></p>
           <p align="justify">
             descripcion
           </p>
@@ -56,7 +56,7 @@ StockTrack es una aplicación innovadora que busca optimizar la gestión de inve
       <img src="" width="150" height="150" style="object-fit: cover;">
     </td>
       <td>
-          <p align="center"><strong> Nombre - codigo </strong></p>
+          <p align="center"><strong> Yaku Mateo Guzmán Cabrejos - u20231b173 </strong></p>
           <p align="justify">
             descripcion
           </p>
