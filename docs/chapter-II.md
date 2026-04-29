@@ -246,7 +246,7 @@ En conclusión, el proceso de gestión de la bodega mayorista requiere de una he
 A continuación se presenta el User Journey Mapping de Andrés Basurto.
 
 <p align="center">
-    <img src="../assets/img/chapter-II/journeymap2.png" alt="User Journey Mapping - segmento 1" width="700"/>
+    <img src="../assets/img/chapter-II/journeymap2.png" alt="User Journey Mapping - segmento 2" width="700"/>
 </p>
 
 El problema central identificado en el recorrido de Andrés es la desconexión de información entre sus canales de venta y su stock real. Al depender de procesos manuales, registros en Excel y notas de WhatsApp, Andrés enfrenta una dificultad crítica para manejar la gran variedad de productos perecibles y accesorios que ofrece. Esta falta de visibilidad genera un riesgo constante de pérdida económica por productos vencidos en almacén y errores en las entregas a domicilio, lo cual impacta directamente en la confianza y satisfacción del cliente.
@@ -256,6 +256,32 @@ La experiencia emocional de Andrés refleja picos de ansiedad y pesadez durante 
 En conclusión, el análisis de este Journey Map evidencia que el crecimiento de una startup como PetLovers se ve frenado por el "cuello de botella" que representa la gestión manual. Se requiere una solución que proporcione un dashboard centralizado con niveles de stock en tiempo real, alertas de vencimiento próximas y análisis visual de márgenes.
 
 ### 2.3.4. Empathy Mapping
+
+En esta sección, el equipo resume el proceso de elaboración y presenta los Empathy Maps realizados para cada User Persona. El proceso implicó centrar a cada User Persona y plasmar las observaciones del equipo, respondiendo a preguntas clave sobre qué piensan, sienten, ven, oyen, dicen y hacen. Finalmente, se identificaron los “Pains” y “Gains” con el objetivo de comprender mejor sus preocupaciones, necesidades y las soluciones que podrían generar mayor valor para ellos.
+
+**Carla Rodríguez**
+
+Esta sección presenta el Empathy Map elaborado para Carla Rodríguez, nuestra User Persona que representa a la gerente de una bodega especializadas por rubro en busca de una mejor organización operativa y equilibrio personal. Este mapa permite visualizar de manera integral sus pensamientos, emociones y los desafíos logísticos que enfrenta en la gestión diaria de su negocio.
+
+<p align="center">
+    <img src="../assets/img/chapter-II/empathymap1.png" alt="Empathy Mapping - segmento 1" width="700"/>
+</p>
+
+A partir de este análisis, se evidencia que Carla experimenta un cansancio acumulado debido a la realización de todas sus tareas de forma manual, lo que la lleva a sentir que su trabajo no termina al cerrar la tienda, trasladando el estrés operativo a su hogar. A pesar de su disposición para aceptar cambios tecnológicos por el progreso de su bodega, se siente limitada por la complejidad percibida de las herramientas actuales, lo que refuerza su dependencia de estar físicamente presente en el almacén para que todo funcione correctamente.
+
+Mediante este enfoque empático, se identificaron sus principales frustraciones (Pains), como las tareas repetitivas que consumen tiempo valioso y la falta de información clara para tomar decisiones, así como sus oportunidades de valor (Gains), entre las que destacan la automatización de procesos sin perder el control, el uso de reportes visuales simples y el deseo de sentirse profesionalizada al nivel de empresas más grandes. Esto permite orientar la solución hacia una herramienta intuitiva que reduzca su agotamiento y le permita recuperar su tiempo libre.
+
+**Carla Rodríguez**
+
+Esta sección presenta el Empathy Map elaborado para Andrés Basurto, nuestra User Persona clave que representa a los jóvenes emprendedores y fundadores de startups como "PetLovers". Este mapa permite visualizar de manera integral sus pensamientos, metas y los desafíos logísticos que enfrenta al intentar escalar un negocio con presencia física y digital.
+
+<p align="center">
+    <img src="../assets/img/chapter-II/empathymap2.png" alt="Empathy Mapping - segmento 2" width="700"/>
+</p>
+
+A partir de este análisis, se evidencia que Andrés enfrenta dificultades críticas relacionadas con la variedad y rotación de sus productos, lo que le genera temor a perder el control del negocio durante su fase de crecimiento. Su frustración nace de dedicar demasiado tiempo a tareas operativas manuales en Excel, tiempo que preferiría dedicar al marketing y a la experiencia del cliente. Aunque es un usuario digitalmente hábil, la falta de una herramienta centralizada le impide tener la confianza necesaria para expandirse con orden.
+
+Mediante este enfoque empático, se identificaron sus principales frustraciones (Pains), como la pérdida de dinero por productos vencidos y la ansiedad de perder clientes cuando un producto clave se agota, así como sus oportunidades de valor (Gains), destacando la tranquilidad de contar con alertas de inventario, la confianza para tomar decisiones estratégicas basadas en datos y el logro de un crecimiento sostenible y ordenado. Esto permite orientar la solución hacia una plataforma de monitoreo en tiempo real que elimine los errores manuales y facilite la escalabilidad de su emprendimiento.
 
 ### 2.3.5. As-is Scenario Mapping
 
