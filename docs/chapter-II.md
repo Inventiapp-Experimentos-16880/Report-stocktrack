@@ -225,6 +225,36 @@ Los segmentos considerados para este análisis son:
 
 ### 2.3.3. User Journey Mapping
 
+En esta sección se presentan los User Journey Maps (As-Is) de los segmentos representados, correspondientes a sus respectivas User Personas. Se ilustra el recorrido actual de los usuarios sin la intervención de la solución tecnológica propuesta, con el fin de identificar sus necesidades, puntos de fricción y oportunidades de mejora en la gestión logística y de inventarios. Cada mapa refleja las etapas clave de interacción, acciones realizadas, puntos de contacto, experiencias emocionales, dificultades enfrentadas y posibles soluciones.
+
+**Carla Rodríguez**
+
+A continuación se presenta el User Journey Mapping de Carla Rodríguez.
+
+<p align="center">
+    <img src="../assets/img/chapter-II/journeymap1.png" alt="User Journey Mapping - segmento 1" width="700"/>
+</p>
+
+Uno de los problemas más críticos identificados en el recorrido de Carla es la falta de visibilidad y precisión en el control de inventario. Al depender de revisiones visuales poco precisas y conteos manuales por zonas, es común que se repitan errores, se anote información en cuadernos que luego se pierden o se olvide registrar la salida de productos clave. Esta desorganización genera una alta carga de ansiedad y fatiga, ya que el proceso consume demasiado tiempo y energía diaria.
+
+La experiencia del usuario muestra una caída emocional significativa, especialmente en las etapas de Atención al cliente y Control de inventario. Durante la atención, la incertidumbre sobre el stock real genera miedo a fallar al cliente, mientras que en el control de stock, la sensación de ansiedad predomina debido a que la información suele ser inexacta o estar desactualizada. La dependencia de registros manuales y la falta de una rutina establecida para identificar productos en riesgo (stock bajo o por vencer) obliga a Carla a realizar pedidos de forma reactiva y no planificada.
+
+En conclusión, el proceso de gestión de la bodega mayorista requiere de una herramienta digital que permita automatizar el registro de stock desde el móvil y centralizar la información. La implementación de alertas de stock bajo, reportes automáticos de rotación y un panel visual de avance permitiría a Carla reducir su estrés laboral, evitar pérdidas por productos vencidos y, finalmente, lograr la tranquilidad necesaria para delegar la operación y recuperar tiempo de calidad con su familia.
+
+**Andrés Basurto**
+
+A continuación se presenta el User Journey Mapping de Andrés Basurto.
+
+<p align="center">
+    <img src="../assets/img/chapter-II/journeymap2.png" alt="User Journey Mapping - segmento 1" width="700"/>
+</p>
+
+El problema central identificado en el recorrido de Andrés es la desconexión de información entre sus canales de venta y su stock real. Al depender de procesos manuales, registros en Excel y notas de WhatsApp, Andrés enfrenta una dificultad crítica para manejar la gran variedad de productos perecibles y accesorios que ofrece. Esta falta de visibilidad genera un riesgo constante de pérdida económica por productos vencidos en almacén y errores en las entregas a domicilio, lo cual impacta directamente en la confianza y satisfacción del cliente.
+
+La experiencia emocional de Andrés refleja picos de ansiedad y pesadez durante las fases de Compra a proveedores y Almacenamiento. La incertidumbre sobre qué productos tienen mayor rotación y la dificultad para distinguir lotes nuevos de antiguos provocan que las decisiones de reabastecimiento se basen más en la intuición que en datos reales. Durante la Venta al cliente, el cansancio se manifiesta al tener que verificar manualmente la disponibilidad de stock mientras atiende pedidos por redes sociales, perdiendo oportunidades de venta por falta de inmediatez en la información.
+
+En conclusión, el análisis de este Journey Map evidencia que el crecimiento de una startup como PetLovers se ve frenado por el "cuello de botella" que representa la gestión manual. Se requiere una solución que proporcione un dashboard centralizado con niveles de stock en tiempo real, alertas de vencimiento próximas y análisis visual de márgenes.
+
 ### 2.3.4. Empathy Mapping
 
 ### 2.3.5. As-is Scenario Mapping
