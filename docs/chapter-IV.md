@@ -293,3 +293,7 @@ El prototipo web de StockTrack ha sido concebido aplicando principios de arquite
 | **Product** | Representa un artículo físico en el inventario. | `id`, `name`, `sku`, `price`, `stock` | `updateStock()`, `getDetails()` |
 | **InventoryTransaction** | Registro de entrada o salida de stock. | `id`, `date`, `type`, `quantity` | `registerMovement()`, `validateStock()` |
 | *(Completar)* | *(Completar según tu diagrama)* | *(Completar)* | *(Completar)* |
+
+## 4.8. Database Design.
+### 4.8.1. Relational/Non-Relational Database Diagram.
+![Database Diagram](./../assets/Chapter-IV/Database-Diagram.png)
