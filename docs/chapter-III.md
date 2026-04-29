@@ -1216,3 +1216,12 @@
 | 55      | US-55         | Cambiar rol de un usuario                 | Como administrador, quiero poder cambiar el rol de un usuario para ajustar sus responsabilidades dentro de la bodega/startup.                                                | 3                        |
 | 56      | US-56         | Auditoría de accesos                      | Como administrador, quiero consultar un historial de accesos de los usuarios para detectar intentos fallidos o acciones sospechosas.                                         | 2                        |
 | 57      | US-57         | Roles predefinidos                        | Como administrador, quiero contar con roles predefinidos (Administrador, Supervisor, Asistente) para acelerar la configuración inicial.                                      | 5                        |
+
+## 3.4. Impact Mapping
+
+A continuación se visualiza el **Impact Map** del proyecto **Inventiapp**, donde se muestra la relación entre el *Business Goal* definido, los **User Personas** identificados, los **Impactos** esperados en su comportamiento, los **Deliverables** que como negocio digital podemos ofrecer y las **User Stories** asociadas que permitirán implementar las funcionalidades necesarias en la aplicación web y la landing page. Este mapa busca asegurar la alineación entre los objetivos estratégicos y el desarrollo de la solución digital.
+
+<p align="center">
+  <img src="/assets/img/chapter-III/impactMap.png" alt="Impact Map" width="700">
+</p>
+
