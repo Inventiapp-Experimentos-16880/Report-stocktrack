@@ -170,7 +170,27 @@ Se analizaron **3 entrevistas** a emprendedores de negocios en crecimiento (e-co
 
 ## 2.3. Needfinding
 
+En la siguiente sección, analizaremos a nuestros segmentos objetivos para identificar sus necesidades y en base a esto ofrecerles soluciones óptimas a sus problemas.
+
 ### 2.3.1. User Personas
+
+En esta sección se presentan dos User Personas que representan los segmentos clave del proyecto: los dueños de bodegas mayoristas y los emprendedores de negocios especializados con presencia digital. Estos perfiles permiten comprender en profundidad las necesidades, motivaciones, frustraciones y comportamientos de los usuarios potenciales del sistema, el cual busca optimizar la logística mediante el control de stock en tiempo real y la reducción de mermas por vencimiento.
+
+El User Persona Carla Rodríguez representa a las dueñas y gestoras de bodegas mayoristas con amplia trayectoria en la distribución de productos de consumo masivo. Carla posee formación técnica en administración, pero su operación diaria sigue dependiendo fuertemente de métodos manuales, Excel y WhatsApp, lo que le genera una carga operativa excesiva y estrés laboral. Su principal motivación es modernizar su negocio para poder delegar tareas con confianza y disponer de más tiempo libre para su familia. Busca una solución tecnológica que le ofrezca reportes visuales y alertas automáticas de reposición, permitiéndole pasar de una gestión reactiva a una toma de decisiones informada y estratégica, sin la complejidad de las herramientas técnicas actuales que le resultan difíciles de interpretar.
+
+<p align="center">
+    <img src="../assets/img/chapter-II/segmento1.png" alt="User persona - segmento 1" width="700"/>
+</p>
+
+La información mostrada del User Persona Carla Rodríguez permite identificar a una administradora que valora la tranquilidad operativa y la eficiencia. Su perfil evidencia que la falta de una herramienta confiable la obliga a estar presente físicamente en el almacén para evitar desórdenes, lo que limita el crecimiento de su negocio. En ese sentido, este perfil sintetiza la oportunidad de ofrecer una plataforma que simplifique el control de inventarios, automatice las alertas de stock y elimine la dependencia de procesos manuales agotadores.
+
+Por otro lado, el User Persona Andrés Basurto representa a los jóvenes emprendedores y fundadores de startups en expansión, como "PetLovers", que operan tanto de forma física como digital. Con formación en Marketing, Andrés prioriza la satisfacción del cliente y la fidelización, pero enfrenta dificultades críticas en el manejo de una gran variedad de productos perecibles y accesorios. Actualmente, su dependencia de registros manuales y Excel le genera errores en las entregas y pérdidas económicas por productos vencidos en almacén, lo que pone en riesgo la experiencia de compra de sus clientes.
+
+<p align="center">
+    <img src="../assets/img/chapter-II/segmento2.png" alt="User persona - segmento 2" width="700"/>
+</p>
+
+La información mostrada del User Persona Andrés Basurto permite identificar a un emprendedor que busca escalar su negocio con confianza abriendo nuevos puntos de venta. Su perfil refleja la necesidad de una solución tecnológica que garantice entregas confiables y optimice los pedidos a proveedores para evitar el sobrestock. Asimismo, se observa que valora herramientas que le ahorren tiempo en la gestión operativa para poder enfocarse en el marketing y la estrategia comercial. En ese sentido, este perfil destaca la necesidad de implementar un sistema de control logístico eficiente que soporte el crecimiento multicanal y asegure que el inventario nunca sea un obstáculo para la expansión del negocio.
 
 ### 2.3.2. User Task Matrix
 
