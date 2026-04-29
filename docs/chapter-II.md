@@ -53,7 +53,45 @@
 
 ## 2.2. Entrevistas
 
+En esta sección se lleva a cabo la investigación y recopilación de información mediante entrevistas a los usuarios de cada segmento objetivo, con el propósito de comprenderlos de manera más profunda.
+
 ### 2.2.1. Diseño de entrevistas
+
+En esta sección se plantean preguntas principales y complementarias destinadas a entrevistas con cada uno de nuestros segmentos objetivos, con el propósito de recopilar la mayor cantidad posible de información relevante. Tras un análisis detallado, se definieron las siguientes preguntas para aplicar en las entrevistas a dichos segmentos.
+
+**Segmento #1: Bodegas especializadas por rubro**
+
+Preguntas principales:
+1. ¿Podrías describirme cómo gestionas actualmente el inventario de tu bodega?
+2. ¿Cuáles consideras que son los principales desafíos al momento de organizar tus productos?
+3. ¿Has enfrentado pérdidas o inconvenientes por errores en el inventario? ¿Cómo los solucionaste?
+4. ¿Qué tan relevante es para ti contar con un control del stock en tiempo real?
+5. ¿Empleas algún sistema o herramienta digital para la gestión? Si es así, ¿cuál utilizas y cómo ha sido tu experiencia?
+6. ¿De qué manera detectas cuando un producto está por agotarse o próximo a vencer?
+
+Preguntas complementarias:
+- ¿Qué tipo de reportes o información te gustaría obtener acerca de tu inventario?
+- ¿Qué navegador y sistema operativo utilizas más? ¿Qué dispositivos utilizas con mayor frecuencia en tu trabajo (laptop, celular, tablet)?
+- ¿Cómo imaginas que una plataforma digital podría ayudarte a optimizar tu operación diaria?
+- ¿Qué redes sociales o canales digitales empleas para vender tus productos?
+
+**Segmento #2: Startups y emprendedores en expansión con necesidades logísticas**
+
+Preguntas principales:
+1. ¿Cómo gestionas actualmente el inventario de tu negocio?
+2. ¿En qué situaciones sientes que el control del stock te limita o te hace perder tiempo?
+3. ¿De qué forma registras las entradas y salidas de productos?
+4. ¿Qué aspectos te gustaría mejorar en tu proceso logístico actual?
+5. ¿Has evaluado implementar una plataforma para gestionar tu inventario? ¿Por qué tomarías o no esa decisión?
+
+Preguntas complementarias:
+
+- ¿Qué herramientas digitales utilizas actualmente en tu negocio?
+- ¿Dónde se encuentran almacenados tus productos?
+- ¿Con qué frecuencia necesitas revisar tu stock?
+- ¿Qué redes sociales o canales digitales empleas para vender tus productos?
+- ¿Qué navegador y sistema operativo utilizas más? ¿Qué dispositivos utilizas con mayor frecuencia en tu trabajo (laptop, celular, tablet)?
+
 
 ### 2.2.2. Registro de entrevistas
 
