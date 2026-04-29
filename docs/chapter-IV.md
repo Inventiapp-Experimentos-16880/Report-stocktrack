@@ -182,3 +182,10 @@ Nombres de los campos en formularios y cabeceras de columnas.
 * **Navegación Secundaria (Local):** Pestañas o submenús dentro de las secciones principales.
 * **Navegación Contextual:** Enlaces integrados (ej. nombre del producto hacia su ficha), alertas interactivas y Migas de Pan (Breadcrumbs).
 * **Navegación de Cortesía:** Menú de usuario superior derecho (`Mi Perfil`, `Cerrar Sesión`).
+
+## 4.3. Landing Page UI Design.
+### 4.3.1. Landing Page Wireframe.
+![](./../assets/Chapter-IV/Wireframe.png)
+
+### 4.3.2. Landing Page Mock-up.
+![](./../assets/Chapter-IV/Mockup.png)
