@@ -1,4 +1,7 @@
 ## 1.1. Startup Profile
+
+Esta sección ofrece una panorámica de la startup tras la propuesta tecnológica, abordando su visión estratégica y ventaja competitiva. Asimismo, se describe la composición del equipo de trabajo, puntualizando cómo la experiencia y los roles de sus miembros se alinean con los objetivos del proyecto.
+
 ### 1.1.1. Descripción de la Startup
 
 StockTrack es una aplicación innovadora que busca optimizar la gestión de inventarios en bodegas y almacenes, brindando a los negocios una herramienta sencilla, confiable y en tiempo real para controlar el ingreso y salida de productos. La plataforma permite registrar movimientos de stock de manera automatizada, generar alertas inteligentes en caso de niveles bajos o próximos vencimientos, visualizar la información centralizada de cada producto y acceder a reportes con analíticas que facilitan la toma de decisiones estratégicas. Con ello, StockTrack elimina la dependencia de procesos manuales, reduce errores humanos, evita pérdidas por sobrestock o desabastecimiento y mejora la eficiencia operativa, impulsando así la rentabilidad y el crecimiento de las empresas.
@@ -145,6 +148,8 @@ Hemos observado un factor crítico que afecta la eficiencia de los negocios y es
 
 #### 1.2.2.2. Lean UX Assumptions
 
+En esta sección se definen las creencias base del equipo y su impacto en la propuesta de Veyra. El uso del enfoque Lean UX nos permite reconocer las áreas de mayor riesgo estratégico, convirtiendo estos supuestos en hipótesis de trabajo que serán puestas a prueba mediante procesos de validación continua.
+
 **Business Assumptions**
 
 - Creo que mis clientes necesitan una forma confiable, rápida y automatizada de controlar su inventario en tiempo real para reducir errores y pérdidas económicas.
@@ -188,17 +193,26 @@ Debe ser intuitivo, minimalista y responsivo, fácil de aprender sin necesidad d
 
 #### 1.2.2.3. Lean UX Hypothesis Statements
 
-Creemos que implementar alertas personalizables sobre niveles bajos de stock y fechas próximas de vencimiento reducirá las pérdidas por quiebre o vencimiento de productos.<br>
+
+Hypothesis 1: Alertas y notificaciones
+
+Creemos que implementar alertas sobre niveles bajos de stock y fechas próximas de vencimiento reducirá las pérdidas por quiebre o vencimiento de productos.<br>
 Sabremos que hemos tenido éxito<br>
 Cuando observemos al menos un 30% de reducción en productos vencidos o faltantes en comparación con los registros previos al uso de alertas.
+
+Hypothesis 2: Reportes analíticos
 
 Creemos que los usuarios valorarán la disponibilidad de reportes gráficos que muestren los productos más rotados, niveles de stock y tendencias de consumo.<br>
 Sabremos que hemos tenido éxito<br>
 Cuando al menos un 70% de los usuarios activos usen el módulo de reportes semanalmente y reporten satisfacción positiva en encuestas cualitativas.
 
+Hypothesis 3: Interfaz intuitiva
+
 Creemos que una interfaz intuitiva y fácil de aprender aumentará la adopción por parte de usuarios que dependen de Excel o registros manuales.<br>
 Sabremos que hemos tenido éxito<br>
 Cuando al menos el 60% de los nuevos clientes registren sus primeros productos dentro de las 24 horas posteriores a la activación de su cuenta.
+
+Hypothesis 4: Acceso multiplataforma
 
 Creemos que habilitar el acceso a la aplicación tanto desde la web como desde dispositivos móviles aumentará la frecuencia de uso.<br>
 Sabremos que hemos tenido éxito<br>
