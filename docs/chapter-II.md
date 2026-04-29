@@ -194,6 +194,35 @@ La información mostrada del User Persona Andrés Basurto permite identificar a 
 
 ### 2.3.2. User Task Matrix
 
+Se presenta el User Task Matrix, que reúne las tareas que ambos User Persona, administradores de bodegas mayoristas y emprendedores de retail especializado, realizan para lograr sus objetivos operativos y estratégicos. Estas tareas son actividades que los usuarios llevan a cabo de manera habitual para mantener la continuidad de su negocio.
+
+Los segmentos considerados para este análisis son:
+- Dueños de bodegas
+- Startups y emprendedores en expansión con necesidades logísticas
+
+##### Task Matrix
+
+| Tarea                                                      | Carla Rodríguez |             | Andrés Basurto |             |
+| ---------------------------------------------------------- | -------------- | ----------- | ------------ | ----------- |
+|                                                            | Frecuencia     | Importancia | Frecuencia   | Importancia |
+| Supervisar stock físico en almacén            | often          | high        | often        | high        |
+| Controlar fechas de vencimiento de productos                   | often          | high      | sometimes    | high      |
+| Coordinar pedidos con proveedores vía WhatsApp/Excel             | often          | high        | often        | high        |
+| Realizar conteos manuales para inventariad        | often      | high      | sometimes        | medium        |
+| Gestionar ventas y pedidos omnicanal       | sometimes      | medium        | often    | high      |
+| Revisar reportes de ventas y rotación        | sometimes          | high        | sometimes        | high        |
+| Atención directa al cliente y dudas                        | often      | high      | often    | high      |
+| Planificar la reposición de productos críticos          | often      | high        | sometimes        | high        |
+| Capacitar al personal en procesos operativos | sometimes         | medium      | rarely       | medium      |
+
+#### Análisis
+
+- Ambos segmentos comparten tareas operativas de alta criticidad, como la supervisión de inventario y la coordinación de pedidos. Sin embargo, sus enfoques varían según su naturaleza: mientras las bodegas especializadas buscan eficiencia y control para reducir la carga física y el estrés operativo, las Startups y emprendedores en expansión se centran en que el inventario soporte su crecimiento omnicanal y la satisfacción del cliente.
+
+- Un punto crítico compartido es el control de fechas de vencimiento. Para las bodegas es vital para evitar mermas en productos de consumo masivo, mientras que para los emprendedores especializados es clave para asegurar la calidad de productos específicos y la fidelidad de su nicho. Ambas tareas se realizan actualmente de forma manual, lo que valida la oportunidad de automatización.
+
+- Por otro lado, tareas como la gestión de ventas omnicanal y la búsqueda de herramientas tecnológicas son mucho más relevantes para el segmento 2, dado que su modelo de negocio exige escalabilidad digital. En contraste, para el segmento 1, la prioridad absoluta es simplificar la gestión diaria mediante reportes visuales claros que permitan una toma de decisiones informada sin depender de procesos manuales agotadores.
+
 ### 2.3.3. User Journey Mapping
 
 ### 2.3.4. Empathy Mapping
