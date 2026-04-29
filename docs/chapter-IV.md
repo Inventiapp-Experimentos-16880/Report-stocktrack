@@ -254,3 +254,7 @@ Nombres de los campos en formularios y cabeceras de columnas.
 ![](./../assets/Chapter-IV/flowdiagram3.png)
 ![](./../assets/Chapter-IV/flowdiagram4.png)
 
+## 4.5. Web Applications Prototyping.
+El prototipo web de StockTrack ha sido concebido aplicando principios de arquitectura de información, diseño centrado en el usuario y las heurísticas de usabilidad, con el propósito de brindar una experiencia intuitiva, eficiente y accesible. La navegación se organiza de manera jerárquica y lógica, lo que facilita a los usuarios localizar rápidamente las funciones principales.
+
+[Ver Prototipo Interactivo de StockTrack en Figma](https://www.figma.com/proto/jKNuDhwMS5qe3o6zF4ugo8/OPEN-SOURCE?node-id=150-3805&p=f&t=C8AMNn5sgvqnuoFs-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=150%3A5901)
