@@ -280,3 +280,16 @@ El prototipo web de StockTrack ha sido concebido aplicando principios de arquite
 
 - **Alerts and Reports Context**
 ![Alerts and Reports Context Diagram](./../assets/Chapter-IV/structurizr-106321-Component-003.png)
+
+## 4.7. Software Object-Oriented Design.
+### 4.7.1. Class Diagrams.
+![Class Diagram](./../assets/Chapter-IV/diagramadeclases.svg)
+
+### 4.7.2. Class Dictionary.
+*Nota: A continuación se presenta el diccionario correspondiente al diagrama de clases estructurado.*
+
+| Clase | Descripción | Atributos Principales | Métodos Principales |
+| :--- | :--- | :--- | :--- |
+| **Product** | Representa un artículo físico en el inventario. | `id`, `name`, `sku`, `price`, `stock` | `updateStock()`, `getDetails()` |
+| **InventoryTransaction** | Registro de entrada o salida de stock. | `id`, `date`, `type`, `quantity` | `registerMovement()`, `validateStock()` |
+| *(Completar)* | *(Completar según tu diagrama)* | *(Completar)* | *(Completar)* |
