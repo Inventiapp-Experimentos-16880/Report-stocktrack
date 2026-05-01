@@ -1508,45 +1508,6 @@
     </tr>
 </table>
 
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US57</td>
-        <td align="center">Dueño de bodega</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-08</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Roles predefinidos</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> utilizar perfiles de acceso predefinidos <br>
-            <strong> Para </strong> acelerar la configuración inicial del sistema y asegurar que los permisos base sean los adecuados.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Carga de plantillas de rol</strong> <br><br>
-            <strong> Dado que </strong> se está configurando la plataforma <br>
-            <strong> Cuando </strong> el administrador selecciona una plantilla de rol (Supervisor/Asistente) <br>
-            <strong> Entonces </strong> el sistema precarga el conjunto de permisos estándar para esa función.
-        </td>
-    </tr>
-</table>
 
 ### Spike Stories
 
