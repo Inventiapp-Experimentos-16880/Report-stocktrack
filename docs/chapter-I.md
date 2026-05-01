@@ -25,12 +25,12 @@ StockTrack es una aplicación innovadora que busca optimizar la gestión de inve
 <table align="center" border="1" cellspacing="0" cellpadding="8" style="page-break-inside: avoid; width: 90%; border-collapse: collapse;">
   <tr>
     <td style="width: 150px; text-align: center;">
-      <img src="" width="150" height="150" style="object-fit: cover;">
+      <img src="/assets/img/chapter-I/antonio.jpeg" width="150" height="150" style="object-fit: cover;">
     </td>
       <td>
           <p align="center"><strong>Antonio Jhair Navarro Chinga - u202314101 </strong></p>
           <p align="justify">
-            descripcion
+            Soy estudiante de Ingeniería de Software en séptimo ciclo, con conocimientos en desarrollo full stack, aplicaciones móviles, APIs, bases de datos y Angular. Me interesa construir soluciones tecnológicas reales considerando tanto la lógica del sistema como la experiencia del usuario. Exploro la automatización mediante agentes inteligentes y me caracterizo por ser responsable, organizado y orientado a soluciones prácticas.
           </p>
     </td>
   </tr>
@@ -53,12 +53,12 @@ StockTrack es una aplicación innovadora que busca optimizar la gestión de inve
 <table align="center" border="1" cellspacing="0" cellpadding="8" style="page-break-inside: avoid; width: 90%; border-collapse: collapse;">
   <tr>
     <td style="width: 150px; text-align: center;">
-      <img src="" width="150" height="150" style="object-fit: cover;">
+      <img src="/assets/img/chapter-I/yaku.png" width="150" height="150" style="object-fit: cover;">
     </td>
       <td>
           <p align="center"><strong> Yaku Mateo Guzmán Cabrejos - u20231b173 </strong></p>
           <p align="justify">
-            descripcion
+            Mi nombre es Yaku Mateo Guzmán Cabrejos, actualmente curso el séptimo ciclo de la carrera de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas. Me considero una persona creativa, con habilidades para el trabajo en equipo y una gran pasión por la tecnología. Disfruto aprender nuevas herramientas y metodologías que me permitan desarrollar soluciones innovadoras.
           </p>
     </td>
   </tr>
