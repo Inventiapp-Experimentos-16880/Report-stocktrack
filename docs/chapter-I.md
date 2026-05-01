@@ -39,7 +39,7 @@ StockTrack es una aplicación innovadora que busca optimizar la gestión de inve
 <table align="center" border="1" cellspacing="0" cellpadding="8" style="page-break-inside: avoid; width: 90%; border-collapse: collapse;">
   <tr>
     <td style="width: 150px; text-align: center;">
-      <img src="/assets/img/chapter-I/dayroRios.jpg" width="150" height="150" style="object-fit: cover;">
+      <img src="/assets/img/chapter-I/dayro.jpeg" width="150" height="150" style="object-fit: cover;">
     </td>
       <td>
           <p align="center"><strong>Dayro Richard Rios Piñan - U202315283</strong></p>
