@@ -2,6 +2,17 @@
 
 ## 3.1. To-Be Scenario Mapping.
 
+**Segmento 1: Bodegas especializadas por rubro:** En el siguiente escenario To-Be fue desarrollado a partir del análisis del escenario As-Is y la identificación de oportunidades de mejora para el perfil de Carla Rodríguez. Se proyectaron las principales fases que conforman el flujo de su trabajo diario como bodegas especializadas por rubro, incorporando las funcionalidades de la solución propuesta para optimizar sus procesos de apertura, atención al cliente, control de inventario y reposición.
+
+<p align="center">
+    <img src="../assets/img/chapter-III/to-be-primer-segmento.png" alt="To-be Primer Segmento" width="700"/>
+</p>
+
+**Segmento 2: Startups y emprendedores en expansión con necesidades logísticas:** En el siguiente escenario To-Be fue desarrollado a partir del análisis del escenario As-Is y la identificación de oportunidades de mejora para el perfil de Andrés Basurto. Se proyectaron las principales fases que conforman el flujo de su trabajo diario como startups y emprendedores en expansión, incorporando las funcionalidades de la solución propuesta para optimizar sus procesos de compra, almacenamiento, venta omnicanal y análisis de cierre.
+
+<p align="center">
+    <img src="../assets/img/chapter-III/to-be-segundo-segmento.png" alt="To-be Segundo Segmento" width="700"/>
+</p>
 
 ## 3.2. User Stories
 
