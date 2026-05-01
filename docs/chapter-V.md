@@ -5,15 +5,19 @@
 ### 5.1.1 Software Development Environment Configuration
 
 **Project Management:**
+
 Para la gestión de nuestro proyecto, hemos utilizado como principal medio de comunicación WhatsApp, a través de un grupo en el cual planificamos reuniones y compartimos nuestras ideas sobre cada parte del trabajo. También utilizamos la aplicación de Discord, para realizar reuniones y conversar en modalidad virtual. Asimismo se utilizó Github el cual elaboramos un repositorio con todos los integrantes del grupo. En esta, hicimos la creación del documento para trabajar de manera colaborativa y también la documentación de las aplicaciones. 
 
 **Requirements Management:**
+
 Para el registro de las historias de usuario, utilizamos la herramienta de Jira, en la cual se registró cada una de ellas y se ordenaron por prioridad en el Product Backlog.
 
 **Product UX/UI Design:**
+
 Se realizaron los productos de UX con la herramienta de UXPressia, así como las User Persona, Impact Mapping, entre otras. Por ello se pudo modelar de manera efectiva el diseño de la experiencia de usuario. Por otro lado, se realizaron los prototipos de la aplicación web utilizando la herramienta Figma, lo cual nos permitió realizae los Wireframes y Mock-ups para tener una mejor perspectiva de la aplicación.
 
 **Software Development:**
+
 Para el desarrollo del proyecto, se ha definido un stack tecnológico especializado que permite una separación clara entre las capas de la aplicación:
 
 - Entornos de Desarrollo (IDEs): El flujo de trabajo se centraliza en herramientas de JetBrains para maximizar la productividad. Se utiliza WebStorm como entorno principal para el desarrollo del frontend e IntelliJ IDEA para la gestión y construcción del backend.
