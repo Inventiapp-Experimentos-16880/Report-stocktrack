@@ -271,7 +271,7 @@ A partir de este análisis, se evidencia que Carla experimenta un cansancio acum
 
 Mediante este enfoque empático, se identificaron sus principales frustraciones (Pains), como las tareas repetitivas que consumen tiempo valioso y la falta de información clara para tomar decisiones, así como sus oportunidades de valor (Gains), entre las que destacan la automatización de procesos sin perder el control, el uso de reportes visuales simples y el deseo de sentirse profesionalizada al nivel de empresas más grandes. Esto permite orientar la solución hacia una herramienta intuitiva que reduzca su agotamiento y le permita recuperar su tiempo libre.
 
-**Carla Rodríguez**
+**Andrés Basurto**
 
 Esta sección presenta el Empathy Map elaborado para Andrés Basurto, nuestra User Persona clave que representa a los jóvenes emprendedores y fundadores de startups como "PetLovers". Este mapa permite visualizar de manera integral sus pensamientos, metas y los desafíos logísticos que enfrenta al intentar escalar un negocio con presencia física y digital.
 
@@ -284,6 +284,20 @@ A partir de este análisis, se evidencia que Andrés enfrenta dificultades crít
 Mediante este enfoque empático, se identificaron sus principales frustraciones (Pains), como la pérdida de dinero por productos vencidos y la ansiedad de perder clientes cuando un producto clave se agota, así como sus oportunidades de valor (Gains), destacando la tranquilidad de contar con alertas de inventario, la confianza para tomar decisiones estratégicas basadas en datos y el logro de un crecimiento sostenible y ordenado. Esto permite orientar la solución hacia una plataforma de monitoreo en tiempo real que elimine los errores manuales y facilite la escalabilidad de su emprendimiento.
 
 ### 2.3.5. As-is Scenario Mapping
+
+**Segmento 1: Bodegas especializadas por rubro**
+En el siguiente escenario As-Is fue desarrollado a partir de entrevistas y el análisis de comportamiento del perfil de Carla Rodríguez. Se identificaron las principales fases que conforman el flujo de su trabajo diario como bodegas especializadas por rubro.
+
+<p align="center">
+    <img src="../assets/img/chapter-II/as-is-primer-segmento.png" alt="Empathy Mapping - segmento 2" width="700"/>
+</p>
+
+**Segmento 2: Startups y emprendedores en expansión con necesidades logísticas**
+En el siguiente escenario As-Is fue desarrollado a partir de entrevistas y el análisis de comportamiento del perfil de Andrés Basurto. Se identificaron las principales fases que conforman el flujo de su trabajo diario como startups y emprendedores.
+
+<p align="center">
+    <img src="../assets/img/chapter-II/as-is-segundo-segmento.png" alt="Empathy Mapping - segmento 2" width="700"/>
+</p>
 
 ## 2.4. Ubiquitous Language
 
