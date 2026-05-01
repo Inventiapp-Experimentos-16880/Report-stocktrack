@@ -261,25 +261,14 @@ El prototipo web de StockTrack ha sido concebido aplicando principios de arquite
 
 ## 4.6. Domain-Driven Software Architecture.
 ### 4.6.1. Software Architecture Context Diagram.
-![Context Diagram](./../assets/Chapter-IV/structurizr-106230-SystemContext-001.png)
+![Context Diagram](./../assets/Chapter-IV/C4SystemC.png)
 
 ### 4.6.2. Software Architecture Container Diagrams.
-![Container Diagram](./../assets/Chapter-IV/structurizr-106230-Container-001.png)
+![Container Diagram](./../assets/Chapter-IV/C4Container.png)
 
 ### 4.6.3. Software Architecture Components Diagrams.
-![Component Diagram](./../assets/Chapter-IV/structurizr-106230-Component-001.png)
+![Component Diagram](./../assets/Chapter-IV/C4Component.png)
 
-- **Users and Permission Context**
-![Users and Permission Context Diagram](./../assets/Chapter-IV/structurizr-106321-Component-004.png)
-
-- **Inventory Context**
-![Inventory Context Diagram](./../assets/Chapter-IV/structurizr-106321-Component-001.png)
-
-- **Sales Context**
-![Sales Context Diagram](./../assets/Chapter-IV/structurizr-106321-Component-002.png)
-
-- **Alerts and Reports Context**
-![Alerts and Reports Context Diagram](./../assets/Chapter-IV/structurizr-106321-Component-003.png)
 
 ## 4.7. Software Object-Oriented Design.
 ### 4.7.1. Class Diagrams.
