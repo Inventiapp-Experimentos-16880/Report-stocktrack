@@ -235,3 +235,15 @@ Esta sección expone los segmentos vinculados al contexto del problema, integran
 - Beneficios buscados:
     - Rápidez de cálculos logísticos.
     - Orden y administración sencilla de los productos.
+
+**2. Startups y emprendedores en expansión con necesidades logísticas:** Estos usuarios se encuentran en una etapa de crecimiento de su negocio y requieren herramientas que les permitan profesionalizar la gestión de sus operaciones. Buscan soluciones accesibles y escalables que faciliten el control del inventario sin necesidad de invertir en sistemas costosos o complejos.
+
+- Edad: 22 a 45 años
+- Ocupación: Fundadores de startups, emprendedores y  pequeños empresarios.
+- País: Perú (con potencial de expansión a otros países de Latinoamérica).
+- Dominio: Nivel intermedio en el uso de herramientas digitales y aplicaciones móviles.
+- Beneficios buscados:
+    - Escalabilidad en el control del inventario.
+    - Reducción de costos y optimización de recursos.
+    - Mayor visibilidad y control en tiempo real sobre el stock.
+    - Herramientas que acompañen el crecimiento del negocio sin requerir infraestructura adicional.
