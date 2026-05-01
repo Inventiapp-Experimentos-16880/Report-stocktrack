@@ -27,7 +27,7 @@
     </tr>
     <tr>
         <td align="center">US01</td>
-        <td align="center">Cajero</td>
+        <td align="center">dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-04</td>
     </tr>
@@ -40,7 +40,7 @@
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Como </strong> cajero <br>
+            <strong> Como </strong> dueño de bodega <br>
             <strong> Quiero </strong> iniciar un borrador de salida <br>
             <strong> Para </strong> agrupar ítems de una venta antes de confirmarla.
         </td>
@@ -67,7 +67,7 @@
     </tr>
     <tr>
         <td align="center">US02</td>
-        <td align="center">Cajero</td>
+        <td align="center">dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-04</td>
     </tr>
@@ -80,7 +80,7 @@
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Como </strong> cajero <br>
+            <strong> Como </strong> dueño de bodega <br>
             <strong> Quiero </strong> buscar productos y gestionar ítems <br>
             <strong> Para </strong> agregar, editar o retirar productos sin impactar el stock antes de la confirmación.
         </td>
@@ -117,7 +117,7 @@
     </tr>
     <tr>
         <td align="center">US03</td>
-        <td align="center">Cajero</td>
+        <td align="center">dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-04</td>
     </tr>
@@ -130,7 +130,7 @@
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Como </strong> cajero <br>
+            <strong> Como </strong> dueño de bodega <br>
             <strong> Quiero </strong> confirmar la salida <br>
             <strong> Para </strong> registrar los movimientos de inventario y actualizar el stock disponible en tiempo real.
         </td>
@@ -1508,45 +1508,6 @@
     </tr>
 </table>
 
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US57</td>
-        <td align="center">Dueño de bodega</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-08</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Roles predefinidos</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> utilizar perfiles de acceso predefinidos <br>
-            <strong> Para </strong> acelerar la configuración inicial del sistema y asegurar que los permisos base sean los adecuados.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Carga de plantillas de rol</strong> <br><br>
-            <strong> Dado que </strong> se está configurando la plataforma <br>
-            <strong> Cuando </strong> el administrador selecciona una plantilla de rol (Supervisor/Asistente) <br>
-            <strong> Entonces </strong> el sistema precarga el conjunto de permisos estándar para esa función.
-        </td>
-    </tr>
-</table>
 
 ### Spike Stories
 
@@ -1743,7 +1704,7 @@
     <tr>
       <td>EP-04</td>
       <td>Movimientos de Inventario</td>
-      <td>Como cajero, quiero registrar de forma precisa todas las entradas (compras, ajustes) y salidas de productos, para mantener la exactitud del stock en tiempo real y tener una trazabilidad completa de cada movimiento.</td>
+      <td>Como dueño de bodega, quiero registrar de forma precisa todas las entradas (compras, ajustes) y salidas de productos, para mantener la exactitud del stock en tiempo real y tener una trazabilidad completa de cada movimiento.</td>
       <td>US01, US02, US03, US24</td>
     </tr>
     <tr>
@@ -1767,7 +1728,7 @@
     <tr>
       <td>EP-08</td>
       <td>Usuarios, Roles y Permisos</td>
-      <td>Como dueño de bodega, quiero crear usuarios y asignar roles y permisos mínimos (dueño, encargado, cajero/supervisor), para controlar el acceso y resguardar operaciones clave.</td>
+      <td>Como dueño de bodega, quiero crear usuarios y asignar roles y permisos mínimos (dueño, encargado, dueño de bodega/supervisor), para controlar el acceso y resguardar operaciones clave.</td>
       <td>US29, US30, US31, US32, US33, US34</td>
     </tr>
     <tr>
@@ -2396,41 +2357,40 @@
 
 | # Orden | User Story Id | Título                                    | Descripción                                                                                                                                                                  | Story Points (1/2/3/5/8) |
 | :------ | :------------ | :---------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------- |
-| 01      | US-01         | Iniciar borrador de salida                | Como cajero, quiero iniciar un borrador de salida para agrupar ítems de una venta antes de confirmarla.                                                                      | 3                        |
-| 02      | US-02         | Gestionar ítems del borrador              | Como cajero, quiero buscar productos y agregar/editar/retirar ítems con cantidades válidas sin impactar el stock aún.                                                        | 3                        |
-| 03      | US-03         | Calcular total y utilidad de la salida    | Como dueño, quiero que el sistema calcule en tiempo real el total y la utilidad por ítem/kit y global, usando el costo vigente.                                              | 5                        |
-| 03      | US-03         | Confirmar salida y descontar inventario   | Como cajero, quiero confirmar la salida para registrar los movimientos de inventario (productos y componentes de kits) y actualizar el on-hand.                              | 2                        |
-| 04      | US-04         | Reporte de stock a fecha (valorizado)     | Como dueño de bodega, quiero emitir un reporte de stock a una fecha de corte, con cantidades on-hand, costo vigente y valorizado por producto/lote.                                  | 8                        |
-| 05      | US-05         | Reporte de rotación y ventas (utilidad)   | Como dueño de bodega, quiero un reporte por periodo con unidades vendidas, ingreso, costo y utilidad por producto/categoría, para identificar top/slow movers.                       | 5                        |
-| 06      | US-06         | Reporte de bajo stock y próximos a vencer | Como encargado de ventas, quiero un listado de productos bajo umbral y lotes próximos a vencer, con días de cobertura y acciones sugeridas.                                      | 5                        |
-| 07      | US-07         | Notificaciones en el dashboard            | Como usuario, quiero visualizar en el dashboard notificaciones destacadas de bajo stock y próximos vencimientos, para priorizar las acciones más urgentes.                   | 3                        |
-| 08      | US-08         | Crear producto en catálogo                | Como encargado de ventas quiero registrar un nuevo producto para asegurar una gestion productos consistente                                                                      | 3                        |
-| 09      | US-09         | Edición de producto                       | Como encargado de ventas quiero editar los datos de un producto existente para mantener actualizada la información en el catálogo                                                | 2                        |
-| 10      | US-10         | Eliminación e inhabilitacion de productos | Como encargado de ventas quiero poder desactivar o eliminar un producto para mantener un control y no saturar el sistema                                                         | 3                        |
-| 11      | US-11         | Clasificación de productos por categoría  | Como encargado de ventas quiero asignar categorías a los productos para organizar el catálogo y facilitar búsquedas                                                              | 2                        |
-| 12      | US-12         | Búsqueda y filtrado de productos          | Como encargado de ventas quiero buscar y filtrar productos por nombre, categoría o estado para acceder rápidamente a la información                                              | 3                        |
-| 13      | US-13         | Sección de funcionalidades                | Como visitante quiero visualizar las principales funcionalidades de stocktrack en la landing para conocer qué ofrece la plataforma                                           | 3                        |
-| 14      | US-14         | Diseño responsive                         | Como visitante quiero que la landing sea responsive para navegar de manera cómoda desde cualquier dispositivo                                                                | 2                        |
-| 15      | US-15         | Botones claros                            | Como visitante quiero ver botones claros y visibles para que sea intuitivo durante la navegación                                                                             | 3                        |
-| 16      | US-16         | Crear proveedor                           | Como encargado de ventas, quiero registrar nuevos proveedores con su información clave (nombre, contacto, RUC) para centralizar los datos de mis abastecedores.                  | 3                        |
-| 17      | US-17         | Consultar y editar proveedores            | Como encargado, quiero poder ver la lista de proveedores, buscar uno específico y editar su información para mantener los datos actualizados.                                | 3                        |
-| 18      | US-18         | Asociar productos a proveedor             | Como encargado de ventas, quiero asociar productos a un proveedor para saber a quién comprar cada artículo y facilitar los reportes.                                             | 5                        |
-| 19      | US-19         | Ver alertas críticas                      | Como encargado, quiero que el dashboard me muestre una lista de alertas urgentes (lotes próximos a vencer) para tomar acciones preventivas.                                  | 3                        |
-| 20      | US-20         | Definir composición de un kit             | Como encargado, quiero crear la "receta" de un kit, asociando productos existentes y sus cantidades, para estandarizar el contenido de los paquetes.                         | 3                        |
-| 21      | US-21         | Configurar umbrales de stock              | Como encargado de ventas, quiero definir umbrales mínimos de stock por producto para que el sistema pueda generar alertas automáticas.                                           | 5                        |
-| 22      | US-22         | Listar alertas pendientes                 | Como usuario, quiero ver un listado of todas las alertas activas (bajo stock, próximos a vencer, vencidos) para tomar decisiones.                                            | 3                        |
-| 23      | US-23         | Notificación externa de alertas           | Como usuario, quiero recibir notificaciones por correo o push cuando se generen alertas críticas.                                                                            | 8                        |
-| 24      | US-24         | Disparar alertas por ingreso              | Como sistema, quiero recalcular coberturas y eliminar alertas de bajo stock cuando se confirme un ingreso.                                                                   | 5                        |
-| 25      | US-25         | Verificar compra de lotes                 | Como dueño de bodega, quiero gestionar y verificar la cantidad de los lotes recibidos para tener un mejor control del inventario.                                            | 3                        |
-| 26      | US-26         | Ver fecha de vencimiento de los lotes     | Como dueño de bodega, quiero verificar la fecha de vencimiento de mis productos para estar pendiente de cuando reponerlos.                                              | 2                        |
-| 27      | US-27         | Alertar vencimiento próximo               | Como dueño de bodega, quiero recibir una alerta cuando un lote esté próximo a vencer para poder tomar decisiones a tiempo.                                                   | 2                        |
-| 28      | US-28         | Buscar lotes por proveedor                | Como dueño de bodega, quiero filtrar los lotes por proveedor para identificar rápidamente qué productos corresponden a cada socio comercial.                                 | 2                        |
-| 29      | US-29         | Crear usuarios nuevos                     | Como dueño of un startup, quiero crear cuentas de usuario para que cada miembro del equipo tenga acceso individual a la plataforma.                                          | 3                        |
-| 30      | US-30         | Asignar roles                             | Como dueño de bodega, quiero asignar un rol a cada usuario para definir qué puede y qué no puede hacer dentro de la aplicación.                                                | 3                        |
-| 31      | US-31         | Editar permisos personalizados            | Como dueño de bodega, quiero ajustar permisos específicos en un usuario para dar accesos excepcionales.                                                                        | 3                        |
-| 32      | US-32         | Bloquear usuarios                         | Como dueño de bodega, quiero poder desactivar usuarios para evitar accesos no autorizados.                                                                                     | 2                        |
-| 33      | US-33         | Ver lista de usuarios                     | Como dueño de bodega, quiero ver un listado con todos los usuarios, roles y estado de cuenta para gestionar mejor el equipo.                                                   | 2                        |
-| 34      | US-34         | Cambiar rol de un usuario                 | Como dueño de bodega, quiero poder cambiar el rol de un usuario para ajustar sus responsabilidades dentro de la bodega/startup.                                                | 3                        |
+| 01      | US01          | Iniciar borrador de salida de productos   | Como dueño de bodega, quiero iniciar un borrador de salida para agrupar ítems de una venta antes de confirmarla.                                                             | 3                        |
+| 02      | US02          | Gestionar ítems del borrador              | Como dueño de bodega, quiero buscar productos y gestionar ítems para agregar, editar o retirar productos sin impactar el stock antes de la confirmación.                      | 3                        |
+| 03      | US03          | Confirmar salida y descontar inventario   | Como dueño de bodega, quiero confirmar la salida para registrar los movimientos de inventario y actualizar el stock disponible en tiempo real.                              | 5                        |
+| 04      | US04          | Reporte de stock actual                   | Como dueño de bodega, quiero emitir un reporte de stock actual para facilitar la gestión y visualización del estado de los productos.                                        | 8                        |
+| 05      | US05          | Reporte de rotación y ventas (utilidad)   | Como dueño de bodega, quiero generar reportes de rotación y ventas para identificar los productos con mejor y peor desempeño comercial.                                      | 5                        |
+| 06      | US06          | Reporte de bajo stock y próximos a vencer | Como dueño de bodega, quiero visualizar productos críticos para priorizar las compras de reposición y la rotación de inventario próximo a caducar.                           | 5                        |
+| 07      | US07          | Notificaciones en el dashboard            | Como usuario, quiero ver notificaciones en el dashboard para atender rápidamente situaciones críticas de inventario.                                                        | 3                        |
+| 08      | US08          | Crear producto en catálogo                | Como encargado de ventas, quiero registrar nuevos productos para mantener un catálogo consistente y actualizado.                                                            | 3                        |
+| 09      | US09          | Edición de producto                       | Como encargado de ventas, quiero editar datos de productos existentes para corregir información o actualizar detalles técnicos.                                              | 2                        |
+| 10      | US10          | Eliminación e inhabilitacion de productos | Como encargado de ventas, quiero desactivar productos para mantener un control eficiente del inventario activo sin perder registros históricos.                               | 3                        |
+| 11      | US11          | Clasificación de productos por categoría  | Como encargado de ventas, quiero asignar categorías a los productos para organizar el catálogo y agilizar los procesos de búsqueda.                                          | 2                        |
+| 12      | US12          | Búsqueda y filtrado de productos          | Como encargado de ventas, quiero buscar y filtrar productos para acceder rápidamente a la información necesaria para la toma de decisiones.                                  | 3                        |
+| 13      | US13          | Sección de funcionalidades                | Como visitante, quiero visualizar las funcionalidades clave en la landing para comprender el valor que ofrece la plataforma antes de registrarme.                            | 3                        |
+| 14      | US14          | Diseño responsive                         | Como visitante, quiero que la landing sea responsive para navegar cómodamente desde cualquier dispositivo móvil o tablet.                                                    | 2                        |
+| 15      | US15          | Botones claros                            | Como visitante, quiero botones visibles e intuitivos para realizar acciones sin confusiones durante la navegación.                                                            | 3                        |
+| 16      | US16          | Crear proveedor                           | Como encargado de ventas, quiero registrar nuevos proveedores para centralizar los datos de contacto y facturación de los abastecedores.                                     | 3                        |
+| 17      | US17          | Consultar y editar proveedores            | Como dueño de bodega, quiero gestionar la lista de proveedores para mantener actualizada la información de los socios comerciales.                                           | 3                        |
+| 18      | US18          | Asociar productos a proveedor             | Como encargado de ventas, quiero vincular productos con sus proveedores para agilizar las reposiciones de stock y mejorar la trazabilidad de las compras.                     | 5                        |
+| 19      | US19          | Ver alertas críticas                      | Como encargado, quiero visualizar alertas críticas en tiempo real para tomar acciones preventivas inmediatas sobre lotes próximos a caducar.                                  | 3                        |
+| 20      | US20          | Definir composición de un kit             | Como encargado, quiero definir la estructura de kits de productos para estandarizar las ofertas comerciales y paquetes promocionales.                                        | 3                        |
+| 21      | US21          | Configurar umbrales de stock              | Como encargado de ventas, quiero configurar umbrales mínimos de stock para que el sistema dispare alertas automáticas de reposición.                                         | 5                        |
+| 22      | US22          | Listar alertas pendientes                 | Como encargado de ventas, quiero visualizar un listado histórico de alertas para priorizar las tareas de mantenimiento de inventario pendientes.                             | 3                        |
+| 23      | US23          | Notificación externa de alertas           | Como usuario, quiero recibir notificaciones externas para estar al tanto de alertas críticas sin necesidad de estar dentro del sistema.                                      | 8                        |
+| 24      | US24          | Disparar alertas por ingreso              | Como usuario, quiero que el sistema gestione el estado de las alertas tras un ingreso para evitar notificaciones obsoletas de bajo stock.                                    | 5                        |
+| 25      | US25          | Verificar compra de lotes                 | Como dueño de bodega, quiero verificar el ingreso de nuevos lotes para mantener un control riguroso sobre el inventario recibido.                                            | 3                        |
+| 26      | US26          | Ver fecha de vencimiento de los lotes     | Como dueño de bodega, quiero visualizar las fechas de caducidad para gestionar eficientemente la salida de productos según su frescura.                                      | 2                        |
+| 27      | US27          | Alertar vencimiento próximo               | Como dueño de bodega, quiero recibir avisos de vencimiento próximo para mitigar pérdidas por merma de productos caducados.                                                   | 2                        |
+| 28      | US28          | Buscar lotes por proveedor                | Como dueño de bodega, quiero filtrar lotes por su origen de proveedor para gestionar devoluciones o auditorías de calidad por abastecedor.                                   | 2                        |
+| 29      | US29          | Crear usuarios nuevos                     | Como dueño de startup, quiero crear cuentas de usuario personalizadas para organizar el equipo de trabajo y segregar responsabilidades.                                       | 3                        |
+| 30      | US30          | Asignar roles                             | Como dueño de startup, quiero definir roles para mis colaboradores para proteger la información sensible y limitar las acciones administrativas según el cargo.               | 3                        |
+| 31      | US31          | Editar permisos personalizados            | Como dueño de startup, quiero granularizar los permisos de acceso para otorgar o revocar facultades específicas sin necesidad de cambiar el rol base del usuario.             | 3                        |
+| 32      | US32          | Bloquear usuarios                         | Como dueño de startup, quiero deshabilitar cuentas de usuario para prevenir accesos no autorizados en caso de desvinculación o brecha de seguridad.                           | 2                        |
+| 33      | US33          | Ver lista de usuarios                     | Como dueño de startup, quiero visualizar la nómina de usuarios para auditar quiénes tienen acceso a la plataforma y bajo qué condiciones.                                     | 2                        |
+| 34      | US34          | Cambiar rol de un usuario                 | Como dueño de startup, quiero actualizar el rol de mis colaboradores para reflejar cambios en sus responsabilidades dentro de la operación de la bodega.                      | 3                        |
 
 ## 3.4. Impact Mapping
 
