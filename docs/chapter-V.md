@@ -27,6 +27,33 @@ Para el desarrollo del proyecto, se ha definido un stack tecnológico especializ
 
 ### 5.1.2 Source Code Management
 
+Para la gestión de versiones, el proyecto adoptará el modelo GitFlow, utilizando GitHub como repositorio y plataforma principal. En las siguientes secciones se detallará la aplicación de este flujo de trabajo, además de proporcionar los enlace correspondiente de cada repositorio.
+
+Repositorio de GitHub:
+- Enlace para acceder a la organización en GitHub: https://github.com/Inventiapp-Experimentos-16880
+
+- Enlace para acceder al repositorio de la landing Page: https://github.com/Inventiapp-Experimentos-16880/Landing-page-stocktrack
+
+- Enlace para acceder al repositorio del reporte: https://github.com/Inventiapp-Experimentos-16880/Report-stocktrack
+
+- Enlace para acceder al repositorio de la App Web: https://github.com/Inventiapp-Experimentos-16880/Front-Inventiapp
+
+- Enlace para acceder al repositorio del back end: https://github.com/Inventiapp-Experimentos-16880/Backend-stocktrack
+
+**Flujo de trabajo GitFlow**
+
+El ciclo de desarrollo se gestionará implementando el modelo de ramas diseñado por Vincent Driessen en 'A successful Git branching model'.
+
+[FALTA PONER IMAGEN DEL NETWORK DEL REPOSITORIO]
+
+Estructura de branches (Ramas):
+
+1. Main (Rama Principal): Constituye el eje central del repositorio, reservada exclusivamente para versiones estables y productivas del software. El código alojado aquí debe haber superado rigurosos procesos de validación y pruebas previas en las ramas de funcionalidad y desarrollo.
+
+2. Develop (Rama de Desarrollo): Actúa como el entorno de integración continua para el equipo. Su función principal es centralizar el progreso diario del proyecto, sirviendo de base para la consolidación de nuevas características antes de su despliegue final.
+
+3. Features (Ramas de Funcionalidad): Se empleará una rama independiente para cada módulo o tarea específica. Una vez concluida y verificada la funcionalidad, esta se integrará a la rama Develop. Para mantener el orden, se aplicará una nomenclatura estandarizada bajo el patrón "feature/chapter-#".
+
 ### 5.1.3 Source Code Style Guide & Conventions
 
 ### 5.1.4 Software Deployment Configuration
