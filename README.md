@@ -58,7 +58,7 @@
 
 
 
-## Contendio
+## Contenido
 
 1. [Capítulo I: Introducción](docs/chapter-I.md#capítulo-i-introducción)
     * [1.1. Startup Profile](docs/chapter-I.md#11-startup-profile)
