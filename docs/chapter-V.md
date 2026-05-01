@@ -60,18 +60,77 @@ Estructura de branches (Ramas):
 
 ## 5.2 Product Implementation & Deployment
 
+Durante este sprint decisivo, el equipo de desarrollo llevó a cabo la implementación, integración y despliegue de todas las capas del software. Se trabajó en paralelo en el desarrollo de la Landing Page, la Aplicación Web (Frontend en Angular) y la API RESTful (Backend en Spring Boot), culminando con el despliegue del sistema completo en la nube.
+
 ### 5.2.1 Sprint Backlogs
+
+Para este sprint de implementación integral, el backlog reunió todas las historias de usuario necesarias para garantizar el funcionamiento *End-to-End* de la aplicación (Landing Page, Frontend y Backend). A continuación, se detalla cada Historia de Usuario desarrollada, las tareas técnicas implicadas y sus responsables:
+
+| **ID** | **Historia de Usuario (Title)** | **Descripción del Trabajo Realizado (Backend & Frontend / Diseño)** | **Asignado a** | **Estado** |
+| :--- | :--- | :--- | :--- | :--- |
+| **US-18** | Sección de funcionalidades | Definición de estructura e implementación visual de la sección de beneficios en la Landing Page. | Antonio | Done |
+| **US-19** | Formulario de registro (Landing) | Implementación de contenido, llamados a la acción (CTAs) y validaciones visuales. | Giovany | Done |
+| **US-20** | Formulario de contacto | Diseño, maquetación y aplicación de estilos de las cards y sección de contacto. | Dayro | Done |
+| **US-21** | Diseño responsive | Adaptación del layout de todas las secciones de la Landing a distintos breakpoints móviles y tablet. | Giovany | Done |
+| **US-22** | Sección de testimonios | Maquetación HTML/CSS e integración de los testimonios de usuarios en la Landing Page. | Dayro | Done |
+| **US-23** | Botones claros | Diseño del Hero principal y botones con contraste adecuado para conversión. | Dayro | Done |
+| **US-28** | Login de usuarios | **Full-Stack:** Creación de endpoint `/auth/login`, generación de token JWT, vista Angular e implementación de AuthGuard. | Antonio | Done |
+| **US-29** | Registro de usuarios | **Full-Stack:** Endpoint `/auth/register` con encriptación, validación de duplicados y conexión al formulario de UI. | Antonio | Done |
+| **US-30** | Dashboard principal | **Full-Stack:** Servicio de métricas en API y conexión con widgets interactivos (gráficos y totales) en Angular. | Giovany | Done |
+| **US-24** | Módulo de proveedores | **Full-Stack:** Creación de endpoints REST (GET, POST, PUT, DELETE) y formularios UI para la gestión de proveedores. | Dayro | Done |
+| **US-25** | Listado de proveedores | **Full-Stack:** Filtros, búsqueda dinámica y tabla paginada en Angular conectada al backend. | Dayro | Done |
+| **US-26** | Salida de producto | **Full-Stack:** Endpoint `/inventory/out` para validar stock, y formulario frontend para registrar mercancía saliente. | Giovany | Done |
+| **US-27** | Integración de salida con inventario | **Full-Stack:** Servicio backend para descontar cantidades de la base de datos y refrescar la tabla del frontend en tiempo real. | Dayro | Done |
+| **US-31** | Administración de personal | **Full-Stack:** Configuración de rutas protegidas en API y vistas base en Angular para la gestión de usuarios del sistema. | Antonio | Done |
+| **US-32** | CRUD de personal | **Full-Stack:** Endpoints y formularios UI para crear, editar, listar y eliminar personal interno del sistema. | Yaku | Done |
+| **US-33** | Integración con dashboard | **Full-Stack:** Lógica de autorización y roles (backend) para controlar qué módulos se ocultan/muestran en el menú del frontend. | Antonio | Done |
+| **US-34** | Módulo de inventario | **Full-Stack:** Endpoints de productos, interfaz con tabla, buscador y filtros en Angular. | Yaku | Done |
+| **US-35** | Actualización de stock | **Full-Stack:** Endpoint `/inventory/in` y formularios UI para registrar entradas de mercancía y ajustes manuales. | Yaku | Done |
+| **US-36** | Visualización de movimientos | **Full-Stack:** Creación de endpoint e interfaz para listar el historial de transacciones (entradas, salidas, ajustes). | Yaku | Done |
+| **US-37** | Integración inventario–proveedores | **Full-Stack:** Consulta relacional en base de datos para devolver el proveedor asociado y visualizarlo en el detalle de producto en UI. | Yaku | Done |
 
 ### 5.2.2 Implemented Landing Page Evidence
 
+El equipo completó el diseño interactivo y el despliegue de la página de aterrizaje (Landing Page) promocional para StockTrack, utilizando tecnologías web modernas para asegurar su rapidez y diseño responsive.
+* **Plataforma de Despliegue:** Vercel
+* **Link de despliegue:** [link](link)
+* **Evidencia en Video:** [link](link)
+* **Características Implementadas:** Hero interactivo, sección de características y beneficios, planes de suscripción (PricingSection), testimonios de usuarios y formularios de contacto.
+
 ### 5.2.3 Implemented Frontend-Web Application Evidence
 
-### 5.2.4 Acuerdo de Servicio - SaaS
+Se construyó una Single Page Application (SPA) robusta utilizando el framework Angular. Esta aplicación es el núcleo visual del sistema, donde los usuarios interactúan con los módulos de negocio.
+* **Plataforma de Despliegue:** Vercel
+* **Link de Despliegue:** [https://front-inventiapp.vercel.app/auth/login](https://front-inventiapp.vercel.app/auth/login)
+* **Módulos implementados y conectados:**
+  * **Seguridad:** Login y Registro protegidos por AuthGuards e interceptores HTTP para enviar el token JWT.
+  * **Dashboard:** Panel de control con navegación lateral (Sidebar) y métricas de negocio.
+  * **Gestión Operativa:** Vistas dinámicas para Inventario (entradas, salidas, reposición) y Proveedores.
+  * **Administración:** Gestión de usuarios del sistema, asignación de roles y permisos.
 
-### 5.2.5 Implemented RESTful API and/or Serverless Backend Evidence
 
-### 5.2.6 RESTful API documentation
+### 5.2.4 Implemented RESTful API and/or Serverless Backend Evidence
 
-### 5.2.7 Team Collaboration Insights
+Se implementó el backend del sistema utilizando Java y Spring Boot bajo el enfoque de *Domain-Driven Design* (DDD). La API expone servicios REST seguros para interactuar con una base de datos relacional PostgreSQL/MySQL.
+* **Plataforma de Despliegue:** Railway (Backend + Database)
+* **Base API URL:** [https://backend-stocktrack-production.up.railway.app/api/v1](https://backend-stocktrack-production.up.railway.app//api/v1)
+* **Evidencia de Ejecución:** El funcionamiento completo de la API fue validado a través de colecciones en Postman, comprobando respuestas HTTP correctas (200 OK, 201 Created, 401 Unauthorized, 404 Not Found) para casos de éxito y manejo de excepciones en las operaciones de negocio.
+
+### 5.2.5 RESTful API documentation
+
+Se utilizó la especificación OpenAPI (Swagger) para garantizar una documentación clara, interactiva y estandarizada. Esta herramienta fue fundamental para que el equipo frontend pudiera consumir los endpoints correctamente durante el sprint.
+* **Swagger API URL:** [https://backend-stocktrack-production.up.railway.app/swagger-ui/index.html](https://backend-stocktrack-production.up.railway.app/swagger-ui/index.html)
+* **Módulos y Endpoints Documentados:**
+  * **Autenticación (`/api/v1/authentication`):** Endpoints `sign-in` y `sign-up` para generación de JWT.
+  * **Productos (`/api/v1/products`):** GET, POST, PUT, DELETE para la gestión del catálogo.
+  * **Lotes (`/api/v1/batches`):** Gestión de lotes, vencimientos e historial.
+  * **Ventas (`/api/v1/sales`):** Registro y consulta de transacciones de salida.
+  * **Proveedores (`/api/v1/providers`):** Administración de la cadena de suministro.
+  * **Seguridad (`/api/v1/users`, `/api/v1/roles`):** CRUD de perfiles y roles del sistema.
+
+### 5.2.6 Team Collaboration Insights
+
+Al ejecutar todas las fases del desarrollo en este sprint, la colaboración del equipo requirió alta sincronización mediante GitHub y Discord:
+
 
 ## 5.3 Video About-the-Product
