@@ -57,8 +57,6 @@
 
 
 
-# Informe Final - StockTrack
-
 
 ## Contendio
 
