@@ -759,58 +759,6 @@
 </table>
 
 
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US17</td>
-        <td align="center">Dueño de startup</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-08</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Gestionar cuentas de usuario</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de startup <br>
-            <strong> Quiero </strong> gestionar las cuentas de usuario (editar permisos y bloquear accesos) <br>
-            <strong> Para </strong> mantener un control estricto sobre quién opera el sistema y garantizar la seguridad de la plataforma ante desvinculaciones.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Edición de permisos específicos</strong> <br><br>
-            <strong> Dado que </strong> el administrador requiere dar facultades excepcionales a un colaborador <br>
-            <strong> Cuando </strong> accede a la configuración de la cuenta y modifica los permisos personalizados (activando o desactivando módulos) <br>
-            <strong> Entonces </strong> el sistema guarda la nueva configuración y el usuario adquiere o pierde dichos accesos en su próximo inicio de sesión.
-            <br><br>
-            <strong> Escenario 2: Bloqueo / Inhabilitación de cuenta</strong> <br><br>
-            <strong> Dado que </strong> un colaborador ya no forma parte del equipo o hay una brecha de seguridad <br>
-            <strong> Cuando </strong> el administrador cambia el estado de la cuenta a "Bloqueado" o "Inactivo" <br>
-            <strong> Entonces </strong> el sistema restringe inmediatamente el acceso de dicho usuario sin borrar su historial de operaciones pasadas (soft-delete).
-            <br><br>
-            <strong> Escenario 3: Intento de acceso de un usuario bloqueado</strong> <br><br>
-            <strong> Dado que </strong> una cuenta de usuario ha sido inhabilitada previamente por el administrador <br>
-            <strong> Cuando </strong> la persona intenta iniciar sesión con sus credenciales correctas <br>
-            <strong> Entonces </strong> el sistema bloquea la entrada y muestra un mensaje de error indicando que la cuenta ha sido suspendida.
-        </td>
-    </tr>
-</table>
-
-
-
 ### Spike Stories
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
@@ -1660,22 +1608,21 @@
 | # Orden | User Story Id | Título | Descripción | Story Points |
 | :------ | :------------ | :----- | :---------- | :----------- |
 | **01** | US16 | Crear usuarios nuevos | Como dueño de startup, quiero crear cuentas de usuario personalizadas para organizar el equipo de trabajo y segregar responsabilidades. | 2 |
-| **02** | US17 | Gestionar cuentas de usuario | Como dueño de startup, quiero gestionar las cuentas de usuario (editar permisos y bloquear accesos) para mantener un control estricto sobre quién opera el sistema y garantizar la seguridad de la plataforma ante desvinculaciones. | 3 |
-| **03** | US06 | Gestionar catálogo de productos | Como encargado de ventas, quiero gestionar el catálogo de productos (crear, editar e inhabilitar) para mantener un registro actualizado, corregir detalles técnicos y ocultar productos que ya no se venden sin perder su historial. | 3 |
-| **04** | US07 | Clasificación de productos por categoría | Como encargado de ventas, quiero asignar categorías a los productos para organizar el catálogo y agilizar los procesos de búsqueda. | 2 |
-| **05** | US08 | Búsqueda y filtrado de productos | Como encargado de ventas, quiero buscar y filtrar productos para acceder rápidamente a la información necesaria para la toma de decisiones. | 2 |
-| **06** | US10 | Gestionar cartera de proveedores | Como dueño de bodega, quiero registrar, consultar y editar la información de mis proveedores para centralizar los datos de contacto, facturación y agilizar la comunicación con los socios comerciales. | 3 |
-| **07** | US11 | Asociar productos a proveedor | Como encargado de ventas, quiero vincular productos con sus proveedores para agilizar las reposiciones de stock y mejorar la trazabilidad de las compras. | 5 |
-| **08** | US15 | Gestionar el ingreso de nuevos lotes | Como dueño de bodega, quiero registrar, visualizar y buscar los lotes ingresados para mantener un control del origen (proveedor), sumar el inventario y hacer trazabilidad de sus fechas de vencimiento. | 4 |
-| **09** | US01 | Iniciar borrador de salida de productos | Como dueño de bodega, quiero iniciar un borrador de salida para agrupar ítems de una venta antes de confirmarla. | 2 |
-| **10** | US02 | Gestionar ítems del borrador | Como dueño de bodega, quiero buscar productos y gestionar ítems para agregar, editar o retirar productos sin impactar el stock antes de la confirmación. | 2 |
-| **11** | US03 | Confirmar salida de producto y descontar inventario | Como dueño de bodega, quiero confirmar la salida de un producto para registrar los movimientos de inventario y actualizar el stock disponible en tiempo real. | 3 |
-| **12** | US13 | Configurar umbrales de stock | Como encargado de ventas, quiero configurar umbrales mínimos de stock para que el sistema dispare alertas automáticas de reposición. | 3 |
-| **13** | US05 | Notificaciones en el dashboard | Como usuario, quiero ver notificaciones en el dashboard para atender rápidamente situaciones críticas de inventario. | 3 |
-| **14** | US14 | Listar alertas pendientes | Como encargado de ventas, quiero visualizar un listado de alertas para priorizar las tareas de mantenimiento de inventario pendientes. | 2 |
-| **15** | US04 | Generar reportes de estado de inventario | Como dueño de bodega, quiero emitir reportes dinámicos de mi inventario (stock actual, bajo stock y próximos a vencer) para tener visibilidad total del estado de mis productos y priorizar mis compras estratégicamente. | 5 |
-| **16** | US12 | Definir composición de un kit | Como encargado, quiero definir la estructura de kits de productos para estandarizar las ofertas comerciales y paquetes promocionales. | 3 |
-| **17** | US09 | Diseño responsive | Como visitante, quiero que la landing sea responsive para navegar cómodamente desde cualquier dispositivo móvil o tablet. | 2 |
+| **02** | US06 | Gestionar catálogo de productos | Como encargado de ventas, quiero gestionar el catálogo de productos (crear, editar e inhabilitar) para mantener un registro actualizado, corregir detalles técnicos y ocultar productos que ya no se venden sin perder su historial. | 3 |
+| **03** | US07 | Clasificación de productos por categoría | Como encargado de ventas, quiero asignar categorías a los productos para organizar el catálogo y agilizar los procesos de búsqueda. | 2 |
+| **04** | US08 | Búsqueda y filtrado de productos | Como encargado de ventas, quiero buscar y filtrar productos para acceder rápidamente a la información necesaria para la toma de decisiones. | 2 |
+| **05** | US10 | Gestionar cartera de proveedores | Como dueño de bodega, quiero registrar, consultar y editar la información de mis proveedores para centralizar los datos de contacto, facturación y agilizar la comunicación con los socios comerciales. | 3 |
+| **06** | US11 | Asociar productos a proveedor | Como encargado de ventas, quiero vincular productos con sus proveedores para agilizar las reposiciones de stock y mejorar la trazabilidad de las compras. | 5 |
+| **07** | US15 | Gestionar el ingreso de nuevos lotes | Como dueño de bodega, quiero registrar, visualizar y buscar los lotes ingresados para mantener un control del origen (proveedor), sumar el inventario y hacer trazabilidad de sus fechas de vencimiento. | 4 |
+| **08** | US01 | Iniciar borrador de salida de productos | Como dueño de bodega, quiero iniciar un borrador de salida para agrupar ítems de una venta antes de confirmarla. | 2 |
+| **09** | US02 | Gestionar ítems del borrador | Como dueño de bodega, quiero buscar productos y gestionar ítems para agregar, editar o retirar productos sin impactar el stock antes de la confirmación. | 2 |
+| **10** | US03 | Confirmar salida de producto y descontar inventario | Como dueño de bodega, quiero confirmar la salida de un producto para registrar los movimientos de inventario y actualizar el stock disponible en tiempo real. | 3 |
+| **11** | US13 | Configurar umbrales de stock | Como encargado de ventas, quiero configurar umbrales mínimos de stock para que el sistema dispare alertas automáticas de reposición. | 3 |
+| **12** | US05 | Notificaciones en el dashboard | Como usuario, quiero ver notificaciones en el dashboard para atender rápidamente situaciones críticas de inventario. | 3 |
+| **13** | US14 | Listar alertas pendientes | Como encargado de ventas, quiero visualizar un listado de alertas para priorizar las tareas de mantenimiento de inventario pendientes. | 2 |
+| **14** | US04 | Generar reportes de estado de inventario | Como dueño de bodega, quiero emitir reportes dinámicos de mi inventario (stock actual, bajo stock y próximos a vencer) para tener visibilidad total del estado de mis productos y priorizar mis compras estratégicamente. | 5 |
+| **15** | US12 | Definir composición de un kit | Como encargado, quiero definir la estructura de kits de productos para estandarizar las ofertas comerciales y paquetes promocionales. | 3 |
+| **16** | US09 | Diseño responsive | Como visitante, quiero que la landing sea responsive para navegar cómodamente desde cualquier dispositivo móvil o tablet. | 2 |
 
 ## 3.4. Impact Mapping
 
