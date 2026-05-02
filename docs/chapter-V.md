@@ -128,17 +128,29 @@ Referencia: [https://google.github.io/styleguide/javaguide.html](https://google.
 
 La landing page para el proyecto se ha desplegado en Vercel, lo que permite alojar el sitio web de manera gratuita y sencilla: 
 
+<p align="center">
+  <img src="./../assets/img/chapter-V/deployment-landing-page.jpeg" alt="flow diagram" width="800">
+</p>
+
 Ruta de referencia del landing: https://landing-stocktrack-3uiqwnrdj-addicted2yous-projects.vercel.app 
 
 #### Web Application Deployment
 
 La aplicaciín web del proyecto se ha deplegado en Vercel, lo que permite alojar el sitio web de manera gratuita y sencilla directamente desde el repositorio de GitHub:
 
+<p align="center">
+  <img src="./../assets/img/chapter-V/deployment-app-web.jpeg" alt="flow diagram" width="800">
+</p>
+
 Ruta de referencia del web app: https://front-inventiapp.vercel.app/auth/login
 
-#### #### Backend Deployment
+#### Backend Deployment
 
 El backend del proyecto se ha desplegado utilizando Railway, lo que permite alojar el sitio web de manera gratuita y sencilla directamente desde el repositorio de GitHub:
+
+<p align="center">
+  <img src="./../assets/img/chapter-V/deployment-app-service.jpeg" alt="flow diagram" width="800">
+</p>
 
 Ruta de referencia del web app: https://backend-stocktrack-production.up.railway.app/swagger-ui/index.html
 
