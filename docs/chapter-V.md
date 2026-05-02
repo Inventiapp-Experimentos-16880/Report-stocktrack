@@ -128,38 +128,47 @@ Durante este sprint decisivo, el equipo de desarrollo llevó a cabo la implement
 
 ### 5.2.1 Sprint Backlogs
 
-Para este sprint de implementación integral, el backlog reunió todas las historias de usuario necesarias para garantizar el funcionamiento *End-to-End* de la aplicación (Landing Page, Frontend y Backend). A continuación, se detalla cada Historia de Usuario desarrollada, las tareas técnicas implicadas y sus responsables:
-
-| **ID** | **Historia de Usuario (Title)** | **Descripción del Trabajo Realizado (Backend & Frontend / Diseño)** | **Asignado a** | **Estado** |
-| :--- | :--- | :--- | :--- | :--- |
-| **US-18** | Sección de funcionalidades | Definición de estructura e implementación visual de la sección de beneficios en la Landing Page. | Antonio | Done |
-| **US-19** | Formulario de registro (Landing) | Implementación de contenido, llamados a la acción (CTAs) y validaciones visuales. | Giovany | Done |
-| **US-20** | Formulario de contacto | Diseño, maquetación y aplicación de estilos de las cards y sección de contacto. | Dayro | Done |
-| **US-21** | Diseño responsive | Adaptación del layout de todas las secciones de la Landing a distintos breakpoints móviles y tablet. | Giovany | Done |
-| **US-22** | Sección de testimonios | Maquetación HTML/CSS e integración de los testimonios de usuarios en la Landing Page. | Dayro | Done |
-| **US-23** | Botones claros | Diseño del Hero principal y botones con contraste adecuado para conversión. | Dayro | Done |
-| **US-28** | Login de usuarios | **Full-Stack:** Creación de endpoint `/auth/login`, generación de token JWT, vista Angular e implementación de AuthGuard. | Antonio | Done |
-| **US-29** | Registro de usuarios | **Full-Stack:** Endpoint `/auth/register` con encriptación, validación de duplicados y conexión al formulario de UI. | Antonio | Done |
-| **US-30** | Dashboard principal | **Full-Stack:** Servicio de métricas en API y conexión con widgets interactivos (gráficos y totales) en Angular. | Giovany | Done |
-| **US-24** | Módulo de proveedores | **Full-Stack:** Creación de endpoints REST (GET, POST, PUT, DELETE) y formularios UI para la gestión de proveedores. | Dayro | Done |
-| **US-25** | Listado de proveedores | **Full-Stack:** Filtros, búsqueda dinámica y tabla paginada en Angular conectada al backend. | Dayro | Done |
-| **US-26** | Salida de producto | **Full-Stack:** Endpoint `/inventory/out` para validar stock, y formulario frontend para registrar mercancía saliente. | Giovany | Done |
-| **US-27** | Integración de salida con inventario | **Full-Stack:** Servicio backend para descontar cantidades de la base de datos y refrescar la tabla del frontend en tiempo real. | Dayro | Done |
-| **US-31** | Administración de personal | **Full-Stack:** Configuración de rutas protegidas en API y vistas base en Angular para la gestión de usuarios del sistema. | Antonio | Done |
-| **US-32** | CRUD de personal | **Full-Stack:** Endpoints y formularios UI para crear, editar, listar y eliminar personal interno del sistema. | Yaku | Done |
-| **US-33** | Integración con dashboard | **Full-Stack:** Lógica de autorización y roles (backend) para controlar qué módulos se ocultan/muestran en el menú del frontend. | Antonio | Done |
-| **US-34** | Módulo de inventario | **Full-Stack:** Endpoints de productos, interfaz con tabla, buscador y filtros en Angular. | Yaku | Done |
-| **US-35** | Actualización de stock | **Full-Stack:** Endpoint `/inventory/in` y formularios UI para registrar entradas de mercancía y ajustes manuales. | Yaku | Done |
-| **US-36** | Visualización de movimientos | **Full-Stack:** Creación de endpoint e interfaz para listar el historial de transacciones (entradas, salidas, ajustes). | Yaku | Done |
-| **US-37** | Integración inventario–proveedores | **Full-Stack:** Consulta relacional en base de datos para devolver el proveedor asociado y visualizarlo en el detalle de producto en UI. | Yaku | Done |
+| User Story Id | User Story Title | Task Id | Task Title | Description | Estimation (Hours) | Assigned to | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| US16 | Crear usuarios nuevos | US16-1 | Diseño UI registro | Diseñar interfaz de formulario de creación de usuarios. | 3 | Dayro | Done |
+| | | US16-2 | API y lógica | Crear endpoint de creación con encriptación de claves. | 5 | Antonio | Done |
+| US06 | Gestionar catálogo de productos | US06-1 | UI CRUD catálogo | Formulario para alta, edición y listado de productos. | 4 | Dayro | Done |
+| | | US06-2 | API CRUD productos | Endpoints POST, PUT, DELETE para maestro de productos. | 6 | Yaku | Done |
+| US07 | Clasificación por categoría | US07-1 | UI selector | Agregar dropdown de categorías en vista de productos. | 2 | Giovany | Done |
+| | | US07-2 | BD categorías | Crear tabla paramétrica y relacionar con productos. | 4 | Antonio | Done |
+| US08 | Búsqueda y filtrado de productos | US08-1 | Barra de búsqueda | Interfaz reactiva para ingresar filtros y texto. | 3 | Giovany | Done |
+| | | US08-2 | Query params API | Lógica backend para devolver coincidencias parciales. | 3 | Yaku | Done |
+| US10 | Gestionar cartera de proveedores | US10-1 | UI proveedores | Vistas para listar y registrar datos de abastecedores. | 4 | Dayro | Done |
+| | | US10-2 | API proveedores | Endpoints REST (CRUD) para la gestión de proveedores. | 5 | Antonio | Done |
+| US11 | Asociar productos a proveedor | US11-1 | Interfaz vinculación | Modal UI para seleccionar productos por proveedor. | 3 | Giovany | Done |
+| | | US11-2 | Tablas intermedias | Lógica relacional (N:M) en base de datos. | 5 | Yaku | Done |
+| US15 | Gestionar ingreso de lotes | US15-1 | Formulario ingreso | UI para registrar entrada, proveedor y vencimiento. | 4 | Dayro | Done |
+| | | US15-2 | API inventario IN | Endpoint para sumar stock y registrar nuevo lote. | 6 | Antonio | Done |
+| US01 | Iniciar borrador de salida | US01-1 | UI nueva venta | Vista principal y grilla para el punto de salida/venta. | 4 | Giovany | Done |
+| | | US01-2 | Estado temporal | Manejo de sesión/carrito temporal para almacenar borrador. | 4 | Yaku | Done |
+| US02 | Gestionar ítems del borrador | US02-1 | Lógica frontend | Funciones JS para agregar, quitar y editar cantidad. | 4 | Giovany | Done |
+| | | US02-2 | Cálculos dinámicos | Actualización de subtotales y totales en tiempo real UI. | 3 | Dayro | Done |
+| US03 | Confirmar salida de producto | US03-1 | Validaciones UI | Manejo de errores y confirmación visual de salida. | 3 | Dayro | Done |
+| | | US03-2 | Transacción ACID | Endpoint para validar saldos y descontar stock real. | 6 | Yaku | Done |
+| US13 | Configurar umbrales de stock | US13-1 | Campo stock UI | Añadir input de stock mínimo en formulario de producto. | 2 | Giovany | Done |
+| | | US13-2 | Actualización BD | Migración y endpoint para guardar el valor umbral. | 3 | Antonio | Done |
+| US05 | Notificaciones dashboard | US05-1 | Diseño widgets | Maquetación de tarjetas de alerta en pantalla de inicio. | 3 | Dayro | Done |
+| | | US05-2 | Integración datos | Consumo de API para renderizar alertas activas. | 4 | Giovany | Done |
+| US14 | Listar alertas pendientes | US14-1 | Vista tabla alertas | UI para mostrar lotes por vencer y bajo stock. | 3 | Dayro | Done |
+| | | US14-2 | API alertas | Consultas SQL para detectar incidencias de inventario. | 4 | Yaku | Done |
+| US04 | Reportes de inventario | US04-1 | UI reportes | Filtros y tablas consolidadas para visualización. | 5 | Giovany | Done |
+| | | US04-2 | Backend exportar | Lógica para agregar data y generar exportables Excel/PDF. | 6 | Antonio | Done |
+| US12 | Composición de un kit | US12-1 | Interfaz armado | UI para agregar productos hijos a un paquete/kit. | 4 | Dayro | Done |
+| | | US12-2 | Estructura BD | Lógica padre-hijo para agrupamiento en base de datos. | 4 | Yaku | Done |
+| US09 | Diseño responsive | US09-1 | Layouts móvil | Ajuste de contenedores para pantallas pequeñas. | 4 | Giovany | Done |
+| | | US09-2 | Adaptación tablet | Refinamiento de grillas para pantallas medianas. | 3 | Dayro | Done |
 
 ### 5.2.2 Implemented Landing Page Evidence
 
 El equipo completó el diseño interactivo y el despliegue de la página de aterrizaje (Landing Page) promocional para StockTrack, utilizando tecnologías web modernas para asegurar su rapidez y diseño responsive.
 * **Plataforma de Despliegue:** Vercel
-* **Link de despliegue:** [link](link)
-* **Evidencia en Video:** [link](link)
-* **Características Implementadas:** Hero interactivo, sección de características y beneficios, planes de suscripción (PricingSection), testimonios de usuarios y formularios de contacto.
+* **Link de despliegue:** [https://landing-stocktrack.vercel.app](https://landing-stocktrack.vercel.app)
+* **Características Implementadas:** Hero interactivo, sección de características y beneficios, planes de suscripción (PricingSection), FAQ.
 
 ### 5.2.3 Implemented Frontend-Web Application Evidence
 
@@ -194,7 +203,32 @@ Se utilizó la especificación OpenAPI (Swagger) para garantizar una documentaci
 
 ### 5.2.6 Team Collaboration Insights
 
-Al ejecutar todas las fases del desarrollo en este sprint, la colaboración del equipo requirió alta sincronización mediante GitHub y Discord:
+Al ejecutar todas las fases del desarrollo en este sprint, la colaboración del equipo requirió alta sincronización mediante GitHub:
+
+Repositorio Backend:
+<p align="center">
+  <img src="./../assets/img/I1.PNG" alt="insight4" width="800">
+</p>
+<p align="center">
+  <img src="./../assets/img/I2.PNG" alt="contributors4" width="800">
+</p>
+
+Repositorio Frontend:
+
+<p align="center">
+  <img src="./../assets/img/IG2.PNG" alt="insight4" width="800">
+</p>
+<p align="center">
+  <img src="./../assets/img/IG2.PNG" alt="contributors4" width="800">
+</p>
+Repositorio Landing Page:
+
+<p align="center">
+  <img src="./../assets/img/IL2.PNG" alt="insight4" width="800">
+</p>
+<p align="center">
+  <img src="./../assets/img/IL2.PNG" alt="contributors4" width="800">
+</p>
 
 
 ## 5.3 Video About-the-Product
