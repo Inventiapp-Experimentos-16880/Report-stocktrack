@@ -168,12 +168,12 @@
     <tr>
         <td align="center">US04</td>
         <td align="center">Dueño de bodega</td>
-        <td align="center">Media</td>
+        <td align="center">Alta</td>
         <td align="center">EP-07</td>
     </tr>
     <tr>
         <th>Title</th>
-        <td colspan="3">Reporte de stock actual</td>
+        <td colspan="3">Generar reportes de estado de inventario</td>
     </tr>
     <tr>
         <th colspan="4">Description</th>
@@ -181,8 +181,8 @@
     <tr>
         <td colspan="4">
             <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> emitir un reporte de stock actual <br>
-            <strong> Para </strong> facilitar la gestión y visualización del estado de los productos.
+            <strong> Quiero </strong> emitir reportes dinámicos de mi inventario (stock actual, bajo stock y próximos a vencer) <br>
+            <strong> Para </strong> tener visibilidad total del estado de mis productos y priorizar mis compras estratégicamente.
         </td>
     </tr>
     <tr>
@@ -190,59 +190,25 @@
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Listar stock de productos</strong> <br><br>
-            <strong> Dado que </strong> el usuario quiere ver el stock actual de todos los productos <br>
-            <strong> Cuando </strong> accede al módulo de inventario <br>
-            <strong> Entonces </strong> el sistema lista los productos con cantidades, categorías y estado.
+            <strong> Escenario 1: Visualización del stock actual consolidado</strong> <br><br>
+            <strong> Dado que </strong> el usuario accede al módulo de reportes de inventario <br>
+            <strong> Cuando </strong> selecciona la vista general de "Stock Actual" <br>
+            <strong> Entonces </strong> el sistema muestra una lista paginada de todos los productos con su cantidad disponible, categoría y valorización total.
             <br><br>
-            <strong> Escenario 2: Generar reporte</strong> <br><br>
-            <strong> Dado que </strong> el usuario quiere un reporte descargable <br>
-            <strong> Cuando </strong> solicita la exportación de los datos <br>
-            <strong> Entonces </strong> obtiene un archivo Excel con el detalle del stock actual.
-        </td>
-    </tr>
-</table>
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US06</td>
-        <td align="center">Dueño de bodega</td>
-        <td align="center">Media</td>
-        <td align="center">EP-07</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Reporte de bajo stock y próximos a vencer</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> visualizar productos críticos <br>
-            <strong> Para </strong> priorizar las compras de reposición y la rotación de inventario próximo a caducar.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Bajo stock</strong> <br><br>
-            <strong> Dado que </strong> el usuario desea verificar productos por agotarse <br>
-            <strong> Cuando </strong> consulta el reporte de bajo stock <br>
-            <strong> Entonces </strong> el sistema muestra todos los productos por debajo de su umbral mínimo.
+            <strong> Escenario 2: Filtrado de productos con bajo stock</strong> <br><br>
+            <strong> Dado que </strong> el usuario necesita planificar sus compras de reposición <br>
+            <strong> Cuando </strong> aplica el filtro de "Bajo Stock" en el reporte <br>
+            <strong> Entonces </strong> el sistema actualiza la vista para mostrar únicamente los productos cuya cantidad actual sea menor o igual a su umbral mínimo configurado.
             <br><br>
-            <strong> Escenario 2: Próximos a vencer</strong> <br><br>
-            <strong> Dado que </strong> el usuario desea evitar pérdidas por caducidad <br>
-            <strong> Cuando </strong> consulta el reporte de vencimientos <br>
-            <strong> Entonces </strong> el sistema lista los lotes con fecha de vencimiento cercana.
+            <strong> Escenario 3: Identificación de lotes próximos a vencer</strong> <br><br>
+            <strong> Dado que </strong> el usuario desea evitar pérdidas por merma <br>
+            <strong> Cuando </strong> aplica el filtro de "Próximos a Vencer" <br>
+            <strong> Entonces </strong> el sistema lista los lotes ordenados por fecha de caducidad más próxima, resaltando visualmente aquellos que vencen en los próximos 30 días.
+            <br><br>
+            <strong> Escenario 4: Exportación de datos</strong> <br><br>
+            <strong> Dado que </strong> el usuario ha generado una vista específica del reporte (Stock General, Bajo Stock o Vencimientos) <br>
+            <strong> Cuando </strong> hace clic en el botón de "Exportar" <br>
+            <strong> Entonces </strong> el sistema genera y descarga un archivo (Excel o PDF) que contiene exactamente los datos mostrados en pantalla con sus respectivos filtros aplicados.
         </td>
     </tr>
 </table>
@@ -255,7 +221,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US07</td>
+        <td align="center">US05</td>
         <td align="center">Usuario</td>
         <td align="center">Media</td>
         <td align="center">EP-01</td>
@@ -300,59 +266,14 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US08</td>
-        <td align="center">Encargado de ventas</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-03</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Crear producto en catálogo</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> encargado de ventas <br>
-            <strong> Quiero </strong> registrar nuevos productos <br>
-            <strong> Para </strong> mantener un catálogo consistente y actualizado.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Registro exitoso</strong> <br><br>
-            <strong> Dado que </strong> el usuario ingresa un producto con campos obligatorios <br>
-            <strong> Cuando </strong> confirma el registro <br>
-            <strong> Entonces </strong> el sistema guarda el producto y lo habilita en el catálogo.
-            <br><br>
-            <strong> Escenario 2: Producto duplicado</strong> <br><br>
-            <strong> Dado que </strong> ya existe un producto con el mismo nombre y categoría <br>
-            <strong> Cuando </strong> se intenta registrar nuevamente <br>
-            <strong> Entonces </strong> el sistema bloquea la operación y muestra un error.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US09</td>
+        <td align="center">US06</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-01</td>
     </tr>
     <tr>
         <th>Title</th>
-        <td colspan="3">Edición de producto</td>
+        <td colspan="3">Gestionar catálogo de productos</td>
     </tr>
     <tr>
         <th colspan="4">Description</th>
@@ -360,8 +281,8 @@
     <tr>
         <td colspan="4">
             <strong> Como </strong> encargado de ventas <br>
-            <strong> Quiero </strong> editar datos de productos existentes <br>
-            <strong> Para </strong> corregir información o actualizar detalles técnicos.
+            <strong> Quiero </strong> gestionar el catálogo de productos (crear, editar e inhabilitar) <br>
+            <strong> Para </strong> mantener un registro actualizado, corregir detalles técnicos y ocultar productos que ya no se venden sin perder su historial.
         </td>
     </tr>
     <tr>
@@ -369,15 +290,20 @@
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Edición exitosa</strong> <br><br>
-            <strong> Dado que </strong> el usuario selecciona un producto del catálogo <br>
-            <strong> Cuando </strong> modifica sus datos y guarda <br>
-            <strong> Entonces </strong> el sistema actualiza la ficha del producto inmediatamente.
+            <strong> Escenario 1: Creación de un nuevo producto</strong> <br><br>
+            <strong> Dado que </strong> el usuario necesita registrar un nuevo artículo <br>
+            <strong> Cuando </strong> completa el formulario con datos válidos y guarda <br>
+            <strong> Entonces </strong> el sistema añade el producto al catálogo y lo habilita para las operaciones de inventario.
             <br><br>
-            <strong> Escenario 2: Campo bloqueado</strong> <br><br>
-            <strong> Dado que </strong> el usuario intenta modificar el identificador único <br>
-            <strong> Cuando </strong> guarda los cambios <br>
-            <strong> Entonces </strong> el sistema rechaza la acción para mantener la integridad referencial.
+            <strong> Escenario 2: Edición de un producto existente</strong> <br><br>
+            <strong> Dado que </strong> la información de un producto debe ser actualizada (ej. precio o descripción) <br>
+            <strong> Cuando </strong> el usuario modifica los campos permitidos y confirma los cambios <br>
+            <strong> Entonces </strong> el sistema actualiza la ficha del producto, bloqueando la edición de campos críticos (como el ID/SKU).
+            <br><br>
+            <strong> Escenario 3: Inhabilitación lógica (Soft-Delete)</strong> <br><br>
+            <strong> Dado que </strong> un producto ya no será comercializado <br>
+            <strong> Cuando </strong> el usuario selecciona la opción de desactivar o eliminar <br>
+            <strong> Entonces </strong> el sistema cambia su estado a "inactivo", ocultándolo de nuevas ventas pero conservando su data para reportes históricos.
         </td>
     </tr>
 </table>
@@ -390,52 +316,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US10</td>
-        <td align="center">Encargado de ventas</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-01</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Eliminación e inhabilitacion de productos</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> encargado de ventas <br>
-            <strong> Quiero </strong> desactivar productos <br>
-            <strong> Para </strong> mantener un control eficiente del inventario activo sin perder registros históricos.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Desactivación exitosa</strong> <br><br>
-            <strong> Dado que </strong> el usuario selecciona un producto activo <br>
-            <strong> Cuando </strong> cambia su estado a inactivo <br>
-            <strong> Entonces </strong> el sistema lo oculta de las búsquedas operativas pero conserva sus datos.
-            <br><br>
-            <strong> Escenario 2: Consulta histórica</strong> <br><br>
-            <strong> Dado que </strong> un producto está inactivo <br>
-            <strong> Cuando </strong> se consulta un reporte histórico <br>
-            <strong> Entonces </strong> los movimientos asociados al producto siguen siendo visibles.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US11</td>
+        <td align="center">US07</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-01</td>
@@ -480,7 +361,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US12</td>
+        <td align="center">US08</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-01</td>
@@ -525,52 +406,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US13</td>
-        <td align="center">Visitante</td>
-        <td align="center">Media</td>
-        <td align="center">EP-09</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Sección de funcionalidades</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> visitante <br>
-            <strong> Quiero </strong> visualizar las funcionalidades clave en la landing <br>
-            <strong> Para </strong> comprender el valor que ofrece la plataforma antes de registrarme.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Visualización clara</strong> <br><br>
-            <strong> Dado que </strong> el visitante navega por la página principal <br>
-            <strong> Cuando </strong> accede a la sección de funcionalidades <br>
-            <strong> Entonces </strong> visualiza los pilares del servicio con iconos y descripciones adecuadas.
-            <br><br>
-            <strong> Escenario 2: Enlace de más información</strong> <br><br>
-            <strong> Dado que </strong> el visitante requiere más detalle de una función <br>
-            <strong> Cuando </strong> selecciona la opción de ver más <br>
-            <strong> Entonces </strong> el sistema lo redirige a una vista con información ampliada.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US14</td>
+        <td align="center">US09</td>
         <td align="center">Visitante</td>
         <td align="center">Media</td>
         <td align="center">EP-09</td>
@@ -607,50 +443,6 @@
     </tr>
 </table>
 
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US15</td>
-        <td align="center">Visitante</td>
-        <td align="center">Media</td>
-        <td align="center">EP-09</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Botones claros</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> visitante <br>
-            <strong> Quiero </strong> botones visibles e intuitivos <br>
-            <strong> Para </strong> realizar acciones sin confusiones durante la navegación.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Botones visibles</strong> <br><br>
-            <strong> Dado que </strong> el visitante se encuentra en la landing page <br>
-            <strong> Cuando </strong> la página termina de cargar <br>
-            <strong> Entonces </strong> las llamadas a la acción (CTA) son fácilmente identificables.
-            <br><br>
-            <strong> Escenario 2: Redirección correcta</strong> <br><br>
-            <strong> Dado que </strong> el visitante interactúa con un botón <br>
-            <strong> Cuando </strong> hace clic sobre él <br>
-            <strong> Entonces </strong> el sistema lo lleva inmediatamente al destino o formulario esperado.
-        </td>
-    </tr>
-</table>
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
@@ -660,59 +452,14 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US16</td>
-        <td align="center">Encargado de ventas</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-10</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Crear proveedor</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> encargado de ventas <br>
-            <strong> Quiero </strong> registrar nuevos proveedores <br>
-            <strong> Para </strong> centralizar los datos de contacto y facturación de los abastecedores.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Creación exitosa</strong> <br><br>
-            <strong> Dado que </strong> el usuario ingresa datos válidos (nombre, RUC, contacto) <br>
-            <strong> Cuando </strong> guarda el registro <br>
-            <strong> Entonces </strong> el proveedor se añade satisfactoriamente al listado general.
-            <br><br>
-            <strong> Escenario 2: Validación de duplicados</strong> <br><br>
-            <strong> Dado que </strong> ya existe un proveedor registrado con el mismo RUC <br>
-            <strong> Cuando </strong> se intenta guardar uno nuevo con el mismo identificador <br>
-            <strong> Entonces </strong> el sistema bloquea el registro para evitar redundancia.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US17</td>
+        <td align="center">US10</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-10</td>
     </tr>
     <tr>
         <th>Title</th>
-        <td colspan="3">Consultar y editar proveedores</td>
+        <td colspan="3">Gestionar cartera de proveedores</td>
     </tr>
     <tr>
         <th colspan="4">Description</th>
@@ -720,8 +467,8 @@
     <tr>
         <td colspan="4">
             <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> gestionar la lista de proveedores <br>
-            <strong> Para </strong> mantener actualizada la información de los socios comerciales.
+            <strong> Quiero </strong> registrar, consultar y editar la información de mis proveedores <br>
+            <strong> Para </strong> centralizar los datos de contacto, facturación y agilizar la comunicación con los socios comerciales.
         </td>
     </tr>
     <tr>
@@ -729,15 +476,20 @@
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Edición exitosa</strong> <br><br>
-            <strong> Dado que </strong> el usuario modifica la ficha de un proveedor <br>
-            <strong> Cuando </strong> confirma los cambios <br>
-            <strong> Entonces </strong> el sistema actualiza la información en la base de datos de forma persistente.
+            <strong> Escenario 1: Registro con validación de duplicados</strong> <br><br>
+            <strong> Dado que </strong> se desea agregar a un nuevo abastecedor <br>
+            <strong> Cuando </strong> el usuario ingresa la información y el RUC ya existe en la base de datos <br>
+            <strong> Entonces </strong> el sistema bloquea la creación y muestra un mensaje de error por duplicidad.
             <br><br>
-            <strong> Escenario 2: Búsqueda dinámica</strong> <br><br>
-            <strong> Dado que </strong> el usuario desea localizar un proveedor <br>
-            <strong> Cuando </strong> ingresa el nombre en el filtro <br>
-            <strong> Entonces </strong> la lista se actualiza en tiempo real mostrando las coincidencias exactas o parciales.
+            <strong> Escenario 2: Búsqueda y consulta de proveedores</strong> <br><br>
+            <strong> Dado que </strong> el usuario necesita localizar el contacto de un proveedor <br>
+            <strong> Cuando </strong> utiliza la barra de búsqueda en el listado <br>
+            <strong> Entonces </strong> la tabla se filtra en tiempo real mostrando las coincidencias exactas o parciales.
+            <br><br>
+            <strong> Escenario 3: Actualización de datos</strong> <br><br>
+            <strong> Dado que </strong> el proveedor cambió su número de contacto <br>
+            <strong> Cuando </strong> el usuario edita la ficha y guarda los cambios <br>
+            <strong> Entonces </strong> la base de datos se actualiza de manera persistente con la nueva información.
         </td>
     </tr>
 </table>
@@ -750,7 +502,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US18</td>
+        <td align="center">US11</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-10</td>
@@ -795,53 +547,8 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US19</td>
-        <td align="center">Encargado</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-03</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Ver alertas críticas</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> encargado <br>
-            <strong> Quiero </strong> visualizar alertas críticas en tiempo real <br>
-            <strong> Para </strong> tomar acciones preventivas inmediatas sobre lotes próximos a caducar.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Mostrar lotes por vencer</strong> <br><br>
-            <strong> Dado que </strong> hay lotes que vencen en los próximos 7 días <br>
-            <strong> Cuando </strong> el encargado inicia sesión <br>
-            <strong> Entonces </strong> ve un resumen de alertas críticas con el listado detallado de esos lotes.
-            <br><br>
-            <strong> Escenario 2: Navegación desde alerta</strong> <br><br>
-            <strong> Dado que </strong> se visualiza una alerta específica <br>
-            <strong> Cuando </strong> se interactúa con ella <br>
-            <strong> Entonces </strong> el sistema redirige al usuario a la ficha de gestión del producto afectado.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US20</td>
-        <td align="center">Encargado</td>
+        <td align="center">US12</td>
+        <td align="center">Encargado de ventas</td>
         <td align="center">Media</td>
         <td align="center">EP-05</td>
     </tr>
@@ -880,7 +587,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US21</td>
+        <td align="center">US13</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-06</td>
@@ -925,7 +632,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US22</td>
+        <td align="center">US14</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-06</td>
@@ -969,14 +676,14 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US25</td>
+        <td align="center">US15</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-02</td>
     </tr>
     <tr>
         <th>Title</th>
-        <td colspan="3">Verificar compra de lotes</td>
+        <td colspan="3">Gestionar el ingreso de nuevos lotes</td>
     </tr>
     <tr>
         <th colspan="4">Description</th>
@@ -984,8 +691,8 @@
     <tr>
         <td colspan="4">
             <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> verificar el ingreso de nuevos lotes <br>
-            <strong> Para </strong> mantener un control riguroso sobre el inventario recibido.
+            <strong> Quiero </strong> registrar, visualizar y buscar los lotes ingresados <br>
+            <strong> Para </strong> mantener un control del origen (proveedor), sumar el inventario y hacer trazabilidad de sus fechas de vencimiento.
         </td>
     </tr>
     <tr>
@@ -993,15 +700,20 @@
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Registro de lote nuevo</strong> <br><br>
-            <strong> Dado que </strong> se recibe mercadería de un producto no registrado <br>
-            <strong> Cuando </strong> se completa el formulario de ingreso <br>
-            <strong> Entonces </strong> el sistema crea el lote y lo vincula correctamente a la base de datos.
+            <strong> Escenario 1: Registro de lote con vencimiento</strong> <br><br>
+            <strong> Dado que </strong> el usuario recibe mercadería nueva <br>
+            <strong> Cuando </strong> registra el ingreso asignando una cantidad, un proveedor y una fecha de caducidad <br>
+            <strong> Entonces </strong> el sistema crea el lote, incrementa el stock del producto y guarda la fecha para futuras alertas.
             <br><br>
-            <strong> Escenario 2: Registro de lote existente</strong> <br><br>
-            <strong> Dado que </strong> se recibe mercadería de un producto ya catalogado <br>
-            <strong> Cuando </strong> se procesa el ingreso <br>
-            <strong> Entonces </strong> el sistema añade las existencias al registro correspondiente manteniendo la trazabilidad.
+            <strong> Escenario 2: Visualización de caducidad</strong> <br><br>
+            <strong> Dado que </strong> se consulta el detalle del inventario <br>
+            <strong> Cuando </strong> el usuario revisa los lotes vigentes <br>
+            <strong> Entonces </strong> el sistema muestra claramente la fecha límite de consumo de cada unidad ingresada.
+            <br><br>
+            <strong> Escenario 3: Filtro de auditoría por proveedor</strong> <br><br>
+            <strong> Dado que </strong> se necesita revisar la mercadería suministrada por una empresa específica <br>
+            <strong> Cuando </strong> se aplica el filtro por proveedor en la vista de lotes <br>
+            <strong> Entonces </strong> el sistema lista únicamente los ingresos vinculados a ese socio comercial.
         </td>
     </tr>
 </table>
@@ -1014,127 +726,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US26</td>
-        <td align="center">Dueño de bodega</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-02</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Ver fecha de vencimiento de los lotes</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> visualizar las fechas de caducidad <br>
-            <strong> Para </strong> gestionar eficientemente la salida de productos según su frescura.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Consulta de vencimientos</strong> <br><br>
-            <strong> Dado que </strong> existen lotes registrados <br>
-            <strong> Cuando </strong> se consulta el detalle de stock <br>
-            <strong> Entonces </strong> el sistema muestra claramente la fecha de vencimiento asociada a cada unidad.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US27</td>
-        <td align="center">Dueño de bodega</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-02</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Alertar vencimiento próximo</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> recibir avisos de vencimiento próximo <br>
-            <strong> Para </strong> mitigar pérdidas por merma de productos caducados.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Alerta visual de vencimiento</strong> <br><br>
-            <strong> Dado que </strong> un lote caduca en menos de 21 días <br>
-            <strong> Cuando </strong> el usuario consulta el panel de control <br>
-            <strong> Entonces </strong> visualiza una alerta indicando producto, lote y fecha límite.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US28</td>
-        <td align="center">Dueño de bodega</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-02</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Buscar lotes por proveedor</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> filtrar lotes por su origen de proveedor <br>
-            <strong> Para </strong> gestionar devoluciones o auditorías de calidad por abastecedor.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Filtro por abastecedor</strong> <br><br>
-            <strong> Dado que </strong> el usuario desea revisar la mercadería de un proveedor específico <br>
-            <strong> Cuando </strong> aplica el filtro de búsqueda por proveedor <br>
-            <strong> Entonces </strong> el sistema lista cronológicamente todos los lotes suministrados por dicha entidad.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US29</td>
+        <td align="center">US16</td>
         <td align="center">Dueño de startup</td>
         <td align="center">Alta</td>
         <td align="center">EP-08</td>
@@ -1162,206 +754,6 @@
             <strong> Dado que </strong> el administrador ingresa los datos de perfil <br>
             <strong> Cuando </strong> confirma la creación <br>
             <strong> Entonces </strong> el sistema genera la cuenta y despacha las credenciales al correo del colaborador.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US30</td>
-        <td align="center">Dueño de startup</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-08</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Asignar roles</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de startup <br>
-            <strong> Quiero </strong> definir roles para mis colaboradores <br>
-            <strong> Para </strong> proteger la información sensible y limitar las acciones administrativas según el cargo.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Asignación de rol</strong> <br><br>
-            <strong> Dado que </strong> se está gestionando un usuario <br>
-            <strong> Cuando </strong> el administrador selecciona un perfil de acceso predefinido <br>
-            <strong> Entonces </strong> el sistema ajusta instantáneamente las capacidades operativas de la cuenta.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US31</td>
-        <td align="center">Dueño de startup</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-08</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Editar permisos personalizados</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de startup <br>
-            <strong> Quiero </strong> granularizar los permisos de acceso <br>
-            <strong> Para </strong> otorgar o revocar facultades específicas sin necesidad de cambiar el rol base del usuario.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Modificación de privilegios</strong> <br><br>
-            <strong> Dado que </strong> un usuario requiere un permiso excepcional <br>
-            <strong> Cuando </strong> el administrador habilita la opción específica en su perfil <br>
-            <strong> Entonces </strong> el usuario adquiere la nueva capacidad tras el siguiente inicio de sesión.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US32</td>
-        <td align="center">Dueño de startup</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-08</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Eliminar usuarios</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de startup <br>
-            <strong> Quiero </strong> deshabilitar cuentas de usuario <br>
-            <strong> Para </strong> prevenir accesos no autorizados en caso de desvinculación o brecha de seguridad.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Bloqueo de cuenta</strong> <br><br>
-            <strong> Dado que </strong> una cuenta debe ser restringida <br>
-            <strong> Cuando </strong> el administrador cambia su estado a bloqueado <br>
-            <strong> Entonces </strong> el sistema cierra cualquier sesión activa y prohíbe nuevos ingresos.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US33</td>
-        <td align="center">Dueño de startup</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-08</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Ver lista de usuarios</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de startup <br>
-            <strong> Quiero </strong> visualizar la nómina de usuarios <br>
-            <strong> Para </strong> auditar quiénes tienen acceso a la plataforma y bajo qué condiciones.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Consulta de nómina de usuarios</strong> <br><br>
-            <strong> Dado que </strong> el administrador desea supervisar las cuentas <br>
-            <strong> Cuando </strong> accede al módulo de administración de personal <br>
-            <strong> Entonces </strong> visualiza el listado detallado con nombres, correos y roles asignados.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US34</td>
-        <td align="center">Dueño de startup</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-08</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Cambiar rol de un usuario</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de startup <br>
-            <strong> Quiero </strong> actualizar el rol de mis colaboradores <br>
-            <strong> Para </strong> reflejar cambios en sus responsabilidades dentro de la operación de la bodega.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Actualización de rol</strong> <br><br>
-            <strong> Dado que </strong> un colaborador ha cambiado de puesto <br>
-            <strong> Cuando </strong> el administrador edita su rol en el sistema <br>
-            <strong> Entonces </strong> sus capacidades operativas se ajustan automáticamente a su nueva posición.
         </td>
     </tr>
 </table>
@@ -2213,39 +1605,24 @@
 
 ## 3.3. Product Backlog
 
-| # Orden | User Story Id | Título                                    | Descripción                                                                                                                                                                  | Story Points (1/2/3/5/8) |
-| :------ | :------------ | :---------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------- |
-| 01      | US01          | Iniciar borrador de salida de productos   | Como dueño de bodega, quiero iniciar un borrador de salida para agrupar ítems de una venta antes de confirmarla.                                                             | 3                        |
-| 02      | US02          | Gestionar ítems del borrador              | Como dueño de bodega, quiero buscar productos y gestionar ítems para agregar, editar o retirar productos sin impactar el stock antes de la confirmación.                      | 3                        |
-| 03      | US03          | Confirmar salida de producto y descontar inventario | Como dueño de bodega, quiero confirmar la salida de un producto para registrar los movimientos de inventario y actualizar el stock disponible en tiempo real.                | 5                        |
-| 04      | US04          | Reporte de stock actual                   | Como dueño de bodega, quiero emitir un reporte de stock actual para facilitar la gestión y visualización del estado de los productos.                                        | 8                        |
-| 05      | US06          | Reporte de bajo stock y próximos a vencer | Como dueño de bodega, quiero visualizar productos críticos para priorizar las compras de reposición y la rotación de inventario próximo a caducar.                           | 5                        |
-| 06      | US07          | Notificaciones en el dashboard            | Como usuario, quiero ver notificaciones en el dashboard para atender rápidamente situaciones críticas de inventario.                                                        | 3                        |
-| 07      | US08          | Crear producto en catálogo                | Como encargado de ventas, quiero registrar nuevos productos para mantener un catálogo consistente y actualizado.                                                            | 3                        |
-| 08      | US09          | Edición de producto                       | Como encargado de ventas, quiero editar datos de productos existentes para corregir información o actualizar detalles técnicos.                                              | 2                        |
-| 09      | US10          | Eliminación e inhabilitacion de productos | Como encargado de ventas, quiero desactivar productos para mantener un control eficiente del inventario activo sin perder registros históricos.                               | 3                        |
-| 10      | US11          | Clasificación de productos por categoría  | Como encargado de ventas, quiero asignar categorías a los productos para organizar el catálogo y agilizar los procesos de búsqueda.                                          | 2                        |
-| 11      | US12          | Búsqueda y filtrado de productos          | Como encargado de ventas, quiero buscar y filtrar productos para acceder rápidamente a la información necesaria para la toma de decisiones.                                  | 3                        |
-| 12      | US13          | Sección de funcionalidades                | Como visitante, quiero visualizar las funcionalidades clave en la landing para comprender el valor que ofrece la plataforma antes de registrarme.                            | 3                        |
-| 13      | US14          | Diseño responsive                         | Como visitante, quiero que la landing sea responsive para navegar cómodamente desde cualquier dispositivo móvil o tablet.                                                    | 2                        |
-| 14      | US15          | Botones claros                            | Como visitante, quiero botones visibles e intuitivos para realizar acciones sin confusiones durante la navegación.                                                            | 3                        |
-| 15      | US16          | Crear proveedor                           | Como encargado de ventas, quiero registrar nuevos proveedores para centralizar los datos de contacto y facturación de los abastecedores.                                     | 3                        |
-| 16      | US17          | Consultar y editar proveedores            | Como dueño de bodega, quiero gestionar la lista de proveedores para mantener actualizada la información de los socios comerciales.                                           | 3                        |
-| 17      | US18          | Asociar productos a proveedor             | Como encargado de ventas, quiero vincular productos con sus proveedores para agilizar las reposiciones de stock y mejorar la trazabilidad de las compras.                     | 5                        |
-| 18      | US19          | Ver alertas críticas                      | Como encargado, quiero visualizar alertas críticas en tiempo real para tomar acciones preventivas inmediatas sobre lotes próximos a caducar.                                  | 3                        |
-| 19      | US20          | Definir composición de un kit             | Como encargado, quiero definir la estructura de kits de productos para estandarizar las ofertas comerciales y paquetes promocionales.                                        | 3                        |
-| 20      | US21          | Configurar umbrales de stock              | Como encargado de ventas, quiero configurar umbrales mínimos de stock para que el sistema dispare alertas automáticas de reposición.                                         | 5                        |
-| 21      | US22          | Listar alertas pendientes                 | Como encargado de ventas, quiero visualizar un listado de alertas para priorizar las tareas de mantenimiento de inventario pendientes.                                       | 3                        |
-| 22      | US25          | Verificar compra de lotes                 | Como dueño de bodega, quiero verificar el ingreso de nuevos lotes para mantener un control riguroso sobre el inventario recibido.                                            | 3                        |
-| 23      | US26          | Ver fecha de vencimiento de los lotes     | Como dueño de bodega, quiero visualizar las fechas de caducidad para gestionar eficientemente la salida de productos según su frescura.                                      | 2                        |
-| 24      | US27          | Alertar vencimiento próximo               | Como dueño de bodega, quiero recibir avisos de vencimiento próximo para mitigar pérdidas por merma de productos caducados.                                                   | 2                        |
-| 25      | US28          | Buscar lotes por proveedor                | Como dueño de bodega, quiero filtrar lotes por su origen de proveedor para gestionar devoluciones o auditorías de calidad por abastecedor.                                   | 2                        |
-| 26      | US29          | Crear usuarios nuevos                     | Como dueño de startup, quiero crear cuentas de usuario personalizadas para organizar el equipo de trabajo y segregar responsabilidades.                                       | 3                        |
-| 27      | US30          | Asignar roles                             | Como dueño de startup, quiero definir roles para mis colaboradores para proteger la información sensible y limitar las acciones administrativas según el cargo.               | 3                        |
-| 28      | US31          | Editar permisos personalizados            | Como dueño de startup, quiero granularizar los permisos de acceso para otorgar o revocar facultades específicas sin necesidad de cambiar el rol base del usuario.             | 3                        |
-| 29      | US32          | Eliminar usuarios                         | Como dueño de startup, quiero deshabilitar cuentas de usuario para prevenir accesos no autorizados en caso de desvinculación o brecha de seguridad.                           | 2                        |
-| 30      | US33          | Ver lista de usuarios                     | Como dueño de startup, quiero visualizar la nómina de usuarios para auditar quiénes tienen acceso a la plataforma y bajo qué condiciones.                                     | 2                        |
-| 31      | US34          | Cambiar rol de un usuario                 | Como dueño de startup, quiero actualizar el rol de mis colaboradores para reflejar cambios en sus responsabilidades dentro de la operación de la bodega.                      | 3                        |
+| # Orden | User Story Id | Título | Descripción | Story Points |
+| :------ | :------------ | :----- | :---------- | :----------- |
+| **01** | US16 | Crear usuarios nuevos | Como dueño de startup, quiero crear cuentas de usuario personalizadas para organizar el equipo de trabajo y segregar responsabilidades. | 2 |
+| **02** | US06 | Gestionar catálogo de productos | Como encargado de ventas, quiero gestionar el catálogo de productos (crear, editar e inhabilitar) para mantener un registro actualizado, corregir detalles técnicos y ocultar productos que ya no se venden sin perder su historial. | 3 |
+| **03** | US07 | Clasificación de productos por categoría | Como encargado de ventas, quiero asignar categorías a los productos para organizar el catálogo y agilizar los procesos de búsqueda. | 2 |
+| **04** | US08 | Búsqueda y filtrado de productos | Como encargado de ventas, quiero buscar y filtrar productos para acceder rápidamente a la información necesaria para la toma de decisiones. | 2 |
+| **05** | US10 | Gestionar cartera de proveedores | Como dueño de bodega, quiero registrar, consultar y editar la información de mis proveedores para centralizar los datos de contacto, facturación y agilizar la comunicación con los socios comerciales. | 3 |
+| **06** | US11 | Asociar productos a proveedor | Como encargado de ventas, quiero vincular productos con sus proveedores para agilizar las reposiciones de stock y mejorar la trazabilidad de las compras. | 5 |
+| **07** | US15 | Gestionar el ingreso de nuevos lotes | Como dueño de bodega, quiero registrar, visualizar y buscar los lotes ingresados para mantener un control del origen (proveedor), sumar el inventario y hacer trazabilidad de sus fechas de vencimiento. | 4 |
+| **08** | US01 | Iniciar borrador de salida de productos | Como dueño de bodega, quiero iniciar un borrador de salida para agrupar ítems de una venta antes de confirmarla. | 2 |
+| **09** | US02 | Gestionar ítems del borrador | Como dueño de bodega, quiero buscar productos y gestionar ítems para agregar, editar o retirar productos sin impactar el stock antes de la confirmación. | 2 |
+| **10** | US03 | Confirmar salida de producto y descontar inventario | Como dueño de bodega, quiero confirmar la salida de un producto para registrar los movimientos de inventario y actualizar el stock disponible en tiempo real. | 3 |
+| **11** | US13 | Configurar umbrales de stock | Como encargado de ventas, quiero configurar umbrales mínimos de stock para que el sistema dispare alertas automáticas de reposición. | 3 |
+| **12** | US05 | Notificaciones en el dashboard | Como usuario, quiero ver notificaciones en el dashboard para atender rápidamente situaciones críticas de inventario. | 3 |
+| **13** | US14 | Listar alertas pendientes | Como encargado de ventas, quiero visualizar un listado de alertas para priorizar las tareas de mantenimiento de inventario pendientes. | 2 |
+| **14** | US04 | Generar reportes de estado de inventario | Como dueño de bodega, quiero emitir reportes dinámicos de mi inventario (stock actual, bajo stock y próximos a vencer) para tener visibilidad total del estado de mis productos y priorizar mis compras estratégicamente. | 5 |
+| **15** | US12 | Definir composición de un kit | Como encargado, quiero definir la estructura de kits de productos para estandarizar las ofertas comerciales y paquetes promocionales. | 3 |
+| **16** | US09 | Diseño responsive | Como visitante, quiero que la landing sea responsive para navegar cómodamente desde cualquier dispositivo móvil o tablet. | 2 |
 
 ## 3.4. Impact Mapping
 
