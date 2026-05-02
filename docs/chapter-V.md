@@ -56,6 +56,70 @@ Estructura de branches (Ramas):
 
 ### 5.1.3 Source Code Style Guide & Conventions
 
+En el desarrollo de este trabajo, se utilizará una gran variedad de lenguajes y frameworks para trabajar en la Landing Page, el Frontend Web Application y los Web Services. Para ello, se utilizará la siguiente guía de estilos y convenciones.
+
+#### HTML
+Es el lenguaje utilizado para estructurar el contenido de las interfaces, brindando los elementos necesarios para la interacción del usuario. 
+Referencia: [https://www.w3schools.com/html/html5_syntax.asp](https://www.w3schools.com/html/html5_syntax.asp)
+
+*   Declarar siempre el tipo de documento en la primera línea con `<!DOCTYPE html>`.
+*   Respetar la estructura básica del HTML: `<html>`, `<head>`, `<body>`.
+*   Declarar el título de la página para dar a conocer al usuario en qué página se encuentra usando el elemento `<title>`.
+*   Siempre cerrar los elementos que lo requieran, ya sea una división, párrafo o título.
+*   Declarar el atributo `alt` para todas las imágenes para asegurar la accesibilidad.
+*   Se usará una indentación coherente para lograr una lectura sencilla del código y sus niveles de anidamiento.
+
+#### CSS
+Es el lenguaje utilizado para definir el diseño visual, incluyendo los estilos, fuentes, colores y contenedores.
+Referencia: [https://google.github.io/styleguide/htmlcssguide.html](https://google.github.io/styleguide/htmlcssguide.html)
+
+*   Usar indentación de forma correcta para mantener el orden.
+*   Los nombres para los elementos y clases deben ser cortos y en minúsculas.
+*   Declarar los colores en código hexadecimal (Ejemplo: #024A86).
+*   Dejar comentarios para conocer el propósito del estilo y su uso dentro de la hoja de estilos.
+*   El diseño debe ser responsive para que los usuarios lo visualicen cómodamente desde cualquier dispositivo.
+
+#### TypeScript (Angular)
+Es el superconjunto de JavaScript que añade tipado estático y funciones avanzadas para el desarrollo del Frontend.
+Referencia: [https://www.typescriptlang.org/docs/handbook/intro.html](https://www.typescriptlang.org/docs/handbook/intro.html)
+
+*   Declarar nombres significativos y consistentes para las variables y funciones.
+*   Declarar interfaces y tipos utilizando `PascalCase`.
+*   Declarar variables y funciones utilizando `camelCase`.
+*   Evitar el uso del tipo `any` para aprovechar las ventajas del tipado fuerte.
+*   Usar interfaces para la reutilización de código y contratos de datos claros.
+*   Dejar comentarios para explicar la lógica de los servicios y componentes complejos.
+
+#### Angular
+Framework utilizado para la creación de la aplicación web principal de forma modular y escalable.
+Referencia: [https://angular.io/docs](https://angular.io/docs)
+
+*   Mantener una estructura de carpetas organizada separando components, services, models y modules.
+*   Crear componentes reutilizables para evitar la duplicación de código en la interfaz.
+*   Separar la lógica de negocio de la vista, delegando el consumo de APIs a los servicios.
+*   Utilizar la inyección de dependencias de forma correcta para mantener el código desacoplado.
+*   Documentar el propósito de los componentes mediante comentarios internos.
+
+#### Astro
+Framework utilizado para el desarrollo de la Landing Page, optimizando el rendimiento y la velocidad de carga.
+Referencia: [https://docs.astro.build/](https://docs.astro.build/)
+
+*   Utilizar la arquitectura de "islas" para minimizar el envío de JavaScript innecesario al cliente.
+*   Organizar los componentes globales de la landing en la carpeta `src/components`.
+*   Aprovechar el sistema de rutas basado en archivos dentro de la carpeta `src/pages`.
+*   Optimizar el uso de recursos multimedia mediante los componentes nativos de Astro.
+
+#### Java (Spring Boot)
+Lenguaje y framework utilizado para el desarrollo de los Web Services y la lógica del lado del servidor.
+Referencia: [https://google.github.io/styleguide/javaguide.html](https://google.github.io/styleguide/javaguide.html)
+
+*   Nombrar las variables, funciones y clases con `camelCase` o `PascalCase` según corresponda, siendo significativos y cortos.
+*   Seguir los principios de **Clean Architecture**, separando la lógica de dominio de la infraestructura.
+*   Usar indentación correctamente para un código coherente y ordenado.
+*   Usar comillas dobles (") para las cadenas de texto.
+*   Utilizar las anotaciones de Lombok para reducir el código repetitivo y mejorar la legibilidad.
+*   Dejar comentarios en cada bloque de código relevante para explicar su funcionalidad.
+
 ### 5.1.4 Software Deployment Configuration
 
 ## 5.2 Product Implementation & Deployment
