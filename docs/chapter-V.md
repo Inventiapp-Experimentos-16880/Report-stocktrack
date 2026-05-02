@@ -44,7 +44,9 @@ Repositorio de GitHub:
 
 El ciclo de desarrollo se gestionará implementando el modelo de ramas diseñado por Vincent Driessen en 'A successful Git branching model'.
 
-[FALTA PONER IMAGEN DEL NETWORK DEL REPOSITORIO]
+<p align="center">
+  <img src="./../assets/img/chapter-V/insight.png" alt="flow diagram" width="800">
+</p>
 
 Estructura de branches (Ramas):
 
