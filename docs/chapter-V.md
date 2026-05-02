@@ -75,7 +75,7 @@ Referencia: [https://google.github.io/styleguide/htmlcssguide.html](https://goog
 
 *   Usar indentación de forma correcta para mantener el orden.
 *   Los nombres para los elementos y clases deben ser cortos y en minúsculas.
-*   Declarar los colores en código hexadecimal (Ejemplo: #024A86).
+*   Declarar los colores en código hexadecimal
 *   Dejar comentarios para conocer el propósito del estilo y su uso dentro de la hoja de estilos.
 *   El diseño debe ser responsive para que los usuarios lo visualicen cómodamente desde cualquier dispositivo.
 
