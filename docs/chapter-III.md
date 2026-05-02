@@ -210,7 +210,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US06</td>
+        <td align="center">US05</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Media</td>
         <td align="center">EP-07</td>
@@ -255,7 +255,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US07</td>
+        <td align="center">US06</td>
         <td align="center">Usuario</td>
         <td align="center">Media</td>
         <td align="center">EP-01</td>
@@ -300,7 +300,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US08</td>
+        <td align="center">US07</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-03</td>
@@ -345,7 +345,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US09</td>
+        <td align="center">US08</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-01</td>
@@ -390,7 +390,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US10</td>
+        <td align="center">US09</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-01</td>
@@ -435,7 +435,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US11</td>
+        <td align="center">US10</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-01</td>
@@ -480,7 +480,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US12</td>
+        <td align="center">US11</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-01</td>
@@ -525,52 +525,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US13</td>
-        <td align="center">Visitante</td>
-        <td align="center">Media</td>
-        <td align="center">EP-09</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Sección de funcionalidades</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> visitante <br>
-            <strong> Quiero </strong> visualizar las funcionalidades clave en la landing <br>
-            <strong> Para </strong> comprender el valor que ofrece la plataforma antes de registrarme.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Visualización clara</strong> <br><br>
-            <strong> Dado que </strong> el visitante navega por la página principal <br>
-            <strong> Cuando </strong> accede a la sección de funcionalidades <br>
-            <strong> Entonces </strong> visualiza los pilares del servicio con iconos y descripciones adecuadas.
-            <br><br>
-            <strong> Escenario 2: Enlace de más información</strong> <br><br>
-            <strong> Dado que </strong> el visitante requiere más detalle de una función <br>
-            <strong> Cuando </strong> selecciona la opción de ver más <br>
-            <strong> Entonces </strong> el sistema lo redirige a una vista con información ampliada.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US14</td>
+        <td align="center">US12</td>
         <td align="center">Visitante</td>
         <td align="center">Media</td>
         <td align="center">EP-09</td>
@@ -607,50 +562,6 @@
     </tr>
 </table>
 
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US15</td>
-        <td align="center">Visitante</td>
-        <td align="center">Media</td>
-        <td align="center">EP-09</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Botones claros</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> visitante <br>
-            <strong> Quiero </strong> botones visibles e intuitivos <br>
-            <strong> Para </strong> realizar acciones sin confusiones durante la navegación.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Botones visibles</strong> <br><br>
-            <strong> Dado que </strong> el visitante se encuentra en la landing page <br>
-            <strong> Cuando </strong> la página termina de cargar <br>
-            <strong> Entonces </strong> las llamadas a la acción (CTA) son fácilmente identificables.
-            <br><br>
-            <strong> Escenario 2: Redirección correcta</strong> <br><br>
-            <strong> Dado que </strong> el visitante interactúa con un botón <br>
-            <strong> Cuando </strong> hace clic sobre él <br>
-            <strong> Entonces </strong> el sistema lo lleva inmediatamente al destino o formulario esperado.
-        </td>
-    </tr>
-</table>
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
@@ -660,7 +571,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US16</td>
+        <td align="center">US13</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-10</td>
@@ -705,7 +616,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US17</td>
+        <td align="center">US14</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-10</td>
@@ -750,7 +661,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US18</td>
+        <td align="center">US15</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-10</td>
@@ -795,53 +706,8 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US19</td>
-        <td align="center">Encargado</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-03</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Ver alertas críticas</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> encargado <br>
-            <strong> Quiero </strong> visualizar alertas críticas en tiempo real <br>
-            <strong> Para </strong> tomar acciones preventivas inmediatas sobre lotes próximos a caducar.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Mostrar lotes por vencer</strong> <br><br>
-            <strong> Dado que </strong> hay lotes que vencen en los próximos 7 días <br>
-            <strong> Cuando </strong> el encargado inicia sesión <br>
-            <strong> Entonces </strong> ve un resumen de alertas críticas con el listado detallado de esos lotes.
-            <br><br>
-            <strong> Escenario 2: Navegación desde alerta</strong> <br><br>
-            <strong> Dado que </strong> se visualiza una alerta específica <br>
-            <strong> Cuando </strong> se interactúa con ella <br>
-            <strong> Entonces </strong> el sistema redirige al usuario a la ficha de gestión del producto afectado.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US20</td>
-        <td align="center">Encargado</td>
+        <td align="center">US16</td>
+        <td align="center">Encargado de ventas</td>
         <td align="center">Media</td>
         <td align="center">EP-05</td>
     </tr>
@@ -880,7 +746,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US21</td>
+        <td align="center">US17</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-06</td>
@@ -925,7 +791,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US22</td>
+        <td align="center">US18</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-06</td>
@@ -969,7 +835,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US25</td>
+        <td align="center">US19</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-02</td>
@@ -1014,7 +880,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US26</td>
+        <td align="center">US20</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-02</td>
@@ -1054,7 +920,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US27</td>
+        <td align="center">US21</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-02</td>
@@ -1094,7 +960,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US28</td>
+        <td align="center">US22</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-02</td>
@@ -1134,7 +1000,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US29</td>
+        <td align="center">US23</td>
         <td align="center">Dueño de startup</td>
         <td align="center">Alta</td>
         <td align="center">EP-08</td>
@@ -1174,7 +1040,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US30</td>
+        <td align="center">US24</td>
         <td align="center">Dueño de startup</td>
         <td align="center">Alta</td>
         <td align="center">EP-08</td>
@@ -1214,7 +1080,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US31</td>
+        <td align="center">US25</td>
         <td align="center">Dueño de startup</td>
         <td align="center">Alta</td>
         <td align="center">EP-08</td>
@@ -1254,7 +1120,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US32</td>
+        <td align="center">US26</td>
         <td align="center">Dueño de startup</td>
         <td align="center">Alta</td>
         <td align="center">EP-08</td>
@@ -1294,7 +1160,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US33</td>
+        <td align="center">US27</td>
         <td align="center">Dueño de startup</td>
         <td align="center">Alta</td>
         <td align="center">EP-08</td>
@@ -1325,47 +1191,6 @@
         </td>
     </tr>
 </table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US34</td>
-        <td align="center">Dueño de startup</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-08</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Cambiar rol de un usuario</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de startup <br>
-            <strong> Quiero </strong> actualizar el rol de mis colaboradores <br>
-            <strong> Para </strong> reflejar cambios en sus responsabilidades dentro de la operación de la bodega.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Actualización de rol</strong> <br><br>
-            <strong> Dado que </strong> un colaborador ha cambiado de puesto <br>
-            <strong> Cuando </strong> el administrador edita su rol en el sistema <br>
-            <strong> Entonces </strong> sus capacidades operativas se ajustan automáticamente a su nueva posición.
-        </td>
-    </tr>
-</table>
-
 
 ### Spike Stories
 
