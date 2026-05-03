@@ -182,14 +182,20 @@ Se construyó una Single Page Application (SPA) robusta utilizando el framework 
   * **Administración:** Gestión de usuarios del sistema, asignación de roles y permisos.
 
 
-### 5.2.4 Implemented RESTful API and/or Serverless Backend Evidence
+### 5.2.4. Implemented Native-Mobile Application Evidence
+
+Para el desarrollo de la solución StockTrack, el alcance del proyecto se definió y limitó a la construcción de una **Aplicación Web (Web Application)**. Se priorizó un enfoque de diseño 100% responsivo (Mobile-First), garantizando así su accesibilidad, usabilidad y correcto funcionamiento tanto en dispositivos de escritorio como en navegadores móviles sin necesidad de instalación.
+
+Por lo tanto, la implementación de una Aplicación Móvil Nativa (Native-Mobile Application) para iOS o Android **no aplica** para los objetivos comerciales y técnicos definidos en el alcance de este proyecto, razón por la cual no se presentan evidencias en esta sección.
+
+### 5.2.5 Implemented RESTful API and/or Serverless Backend Evidence
 
 Se implementó el backend del sistema utilizando Java y Spring Boot bajo el enfoque de *Domain-Driven Design* (DDD). La API expone servicios REST seguros para interactuar con una base de datos relacional PostgreSQL/MySQL.
 * **Plataforma de Despliegue:** Railway (Backend + Database)
 * **Base API URL:** [https://backend-stocktrack-production.up.railway.app/api/v1](https://backend-stocktrack-production.up.railway.app//api/v1)
 * **Evidencia de Ejecución:** El funcionamiento completo de la API fue validado a través de colecciones en Postman, comprobando respuestas HTTP correctas (200 OK, 201 Created, 401 Unauthorized, 404 Not Found) para casos de éxito y manejo de excepciones en las operaciones de negocio.
 
-### 5.2.5 RESTful API documentation
+### 5.2.6 RESTful API documentation
 
 Se utilizó la especificación OpenAPI (Swagger) para garantizar una documentación clara, interactiva y estandarizada. Esta herramienta fue fundamental para que el equipo frontend pudiera consumir los endpoints correctamente durante el sprint.
 * **Swagger API URL:** [https://backend-stocktrack-production.up.railway.app/swagger-ui/index.html](https://backend-stocktrack-production.up.railway.app/swagger-ui/index.html)
@@ -201,7 +207,7 @@ Se utilizó la especificación OpenAPI (Swagger) para garantizar una documentaci
   * **Proveedores (`/api/v1/providers`):** Administración de la cadena de suministro.
   * **Seguridad (`/api/v1/users`, `/api/v1/roles`):** CRUD de perfiles y roles del sistema.
 
-### 5.2.6 Team Collaboration Insights
+### 5.2.7 Team Collaboration Insights
 
 Al ejecutar todas las fases del desarrollo en este sprint, la colaboración del equipo requirió alta sincronización mediante GitHub:
 
