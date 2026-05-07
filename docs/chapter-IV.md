@@ -13,20 +13,12 @@ El conjunto visual comunica simplicidad, confiabilidad y modernidad, reforzando 
 
 La paleta de colores combina tonos cálidos (naranja/amarillo) que evocan dinamismo, accesibilidad y cercanía con el usuario, junto con un verde que transmite seguridad, éxito y confianza.
 
-<<<<<<< HEAD
-![Logo StockTrack](../assets/Chapter-IV/logoStockTrack.png)
-=======
 ![Logo StockTrack](../assets/img/Chapter-IV/logoStockTrack.png)
->>>>>>> feature/chapter-IV
 
 **Tipografía**
 
 - **Fuente principal:**
-<<<<<<< HEAD
-Nuestra fuente principal es Open Sauce, la cual aporta un estilo sólido y moderno que transmite fuerza, confiabilidad y profesionalismo. Perfecta para logotipos y títulos de alta relevancia, esta tipografía está diseñada para proyectar claridad y autoridad visual. Uso exclusivamente para el logo y títulos principales. Estilo: Mayúsculas, Bold, tamaño 64px.
-=======
 Nuestra fuente principal es Open Sauce, la cual aporta un estilo sólido y moderno que transmite fuerza, confiabilidad y profesionalismo. Perfecta para logotipos y títulos de alta relevancia, esta tipografía está diseñada para proyectar claridad y autoridad visual. Uso exclusivamente para el logo y títulos principales. Estilo: Mayúsculas, bold, tamaño 64px.
->>>>>>> feature/chapter-IV
 
 - **Fuente secundaria:**
 La fuente secundaria utilizada es Roboto, la cual aporta legibilidad y neutralidad en interfaces digitales. Su estilo limpio y curvo facilita la lectura continua en pantallas, ideal para textos extensos, descripciones y datos de inventario. Uso en párrafos, subtítulos, descripciones y etiquetas dentro de la aplicación.
@@ -34,11 +26,7 @@ La fuente secundaria utilizada es Roboto, la cual aporta legibilidad y neutralid
 - **Jerarquía tipográfica:**
 Tamaño variable según jerarquía de texto (H1: títulos principales (32px, bold), H2: subtítulos (24px, semibold), Párrafos: 16px, regular, Notas/etiquetas: 12px). Asegura una visualización cómoda y ordenada.
 
-<<<<<<< HEAD
-![Tipografía StockTrack](../assets/Chapter-IV/typografiaStockTrack.png)
-=======
 ![Tipografía StockTrack](../assets/img/Chapter-IV/typografiaStockTrack.png)
->>>>>>> feature/chapter-IV
 
 **Colores**
 
@@ -48,11 +36,7 @@ La paleta de colores de StockTrack fue diseñada para transmitir energía, confi
 
 - **Colores secundarios:** Gris oscuro (#333333): Usado en tipografía y detalles, transmite seriedad y profesionalismo. Blanco (#FFFFFF): Representa simplicidad y claridad visual. Conforman la base de la tipografía y fondos, asegurando contraste y legibilidad en cualquier dispositivo.
 
-<<<<<<< HEAD
-![Colores StockTrack](../assets/Chapter-IV/coloresStockTrack.png)
-=======
 ![Colores StockTrack](../assets/img/Chapter-IV/coloresStockTrack.png)
->>>>>>> feature/chapter-IV
 
 **Spacing**
 
@@ -85,28 +69,17 @@ El espaciado juega un rol fundamental en la experiencia de usuario, asegurando l
 - Links: En azul (#0000FF), subrayado. Subrayado, con color de cambio a azul oscuro (#00008E).
 - Navegación: Menú superior: Con enlaces a las principales secciones.
 
-<<<<<<< HEAD
-![Web Style StockTrack](../assets/Chapter-IV/webStyleStockTrack.png)
-=======
 ![Web Style StockTrack](../assets/img/Chapter-IV/webStyleStockTrack.png)
->>>>>>> feature/chapter-IV
 
 ## 4.2. Information Architecture.
 En esta sección se detallará parte importante de la estructura y etiquetado de la aplicación web.
 
 ### 4.2.1. Organization Systems.
 **Jerarquía del sistema de organización de la aplicación web**
-<<<<<<< HEAD
-![Jerarquía del sistema de organización de la aplicación web](../assets/Chapter-IV/organization-system-herarchy-web-app.jpg)
-
-**Jerarquía del sistema de organización de la landing page**
-![Jerarquía del sistema de organización de la landing page](../assets/Chapter-IV/organization-system-herarchy-landing-page.jpg)
-=======
 ![Jerarquía del sistema de organización de la aplicación web](../assets/img/Chapter-IV/organization-system-herarchy-web-app.jpg)
 
 **Jerarquía del sistema de organización de la landing page**
 ![Jerarquía del sistema de organización de la landing page](../assets/img/Chapter-IV/organization-system-herarchy-landing-page.jpg)
->>>>>>> feature/chapter-IV
 
 ### 4.2.2. Labeling Systems.
 En esta sección se especifica el conjunto de etiquetas que se utilizarán para representar la información y las acciones dentro de la plataforma StockTrack. El objetivo de este sistema de etiquetado es garantizar la simplicidad, evitar la confusión y presentar los datos de manera consistente para nuestros usuarios.
@@ -212,28 +185,6 @@ Nombres de los campos en formularios y cabeceras de columnas.
 
 ## 4.3. Landing Page UI Design.
 ### 4.3.1. Landing Page Wireframe.
-<<<<<<< HEAD
-![](./../assets/Chapter-IV/Wireframe.png)
-
-### 4.3.2. Landing Page Mock-up.
-![](./../assets/Chapter-IV/Mockup.png)
-
-## 4.4. Web Applications UX/UI Design.
-### 4.4.1. Web Applications Wireframes.
-![](./../assets/Chapter-IV/Register.jpg)
-![](./../assets/Chapter-IV/login.jpg)
-![](./../assets/Chapter-IV/Inicio.jpg)
-![](./../assets/Chapter-IV/Inventario.jpg)
-![](./../assets/Chapter-IV/Inventario%20-%20Información%20Producto-1.jpg)
-![](./../assets/Chapter-IV/Inventario%20-%20Nuevo%20Producto-1.jpg)
-![](./../assets/Chapter-IV/Inventario%20-%20Reposición-1.jpg)
-![](./../assets/Chapter-IV/Inventario%20-%20Nuevo%20kit-1.jpg)
-![](./../assets/Chapter-IV/Proveedores.jpg)
-![](./../assets/Chapter-IV/Proveedores-1.jpg)
-![](./../assets/Chapter-IV/Administración%20del%20personal%20-%20Creación%20personal-1.jpg)
-![](./../assets/Chapter-IV/Administración%20del%20personal%20-%20Creación%20rol.jpg)
-![](./../assets/Chapter-IV/Salida%20producto.jpg)
-=======
 ![](./../assets/img/Chapter-IV/Wireframe.png)
 
 ### 4.3.2. Landing Page Mock-up.
@@ -254,7 +205,6 @@ Nombres de los campos en formularios y cabeceras de columnas.
 ![](./../assets/img/Chapter-IV/Administración%20del%20personal%20-%20Creación%20personal-1.jpg)
 ![](./../assets/img/Chapter-IV/Administración%20del%20personal%20-%20Creación%20rol.jpg)
 ![](./../assets/img/Chapter-IV/Salida%20producto.jpg)
->>>>>>> feature/chapter-IV
 
 ### 4.4.2. Web Applications Wireflow Diagrams.
 **Flujo: Crear cuenta e ingresar a la aplicación**
@@ -262,36 +212,13 @@ Nombres de los campos en formularios y cabeceras de columnas.
 - **Happy path:** 1. En Regístrate, completa Nombre, Email y Contraseña → Registrarse. 2. El sistema valida y crea la cuenta. 3. En Iniciar sesión, ingresa Email y Contraseña → Entrar. 4. Accede al Dashboard.
 - **Unhappy paths:** Email ya registrado o formato inválido. Contraseña débil/incorrecta. Cuenta inactiva. Falla de red.
 
-<<<<<<< HEAD
-![](./../assets/Chapter-IV/flow1.png)
-=======
 ![](./../assets/img/Chapter-IV/flow1.png)
->>>>>>> feature/chapter-IV
 
 **Flujo: Crear un nuevo rol para el personal**
 **User persona:** Empresa — Administrador
 - **Happy path:** 1. Desde el Dashboard, abre Administración del personal. 2. Pulsa Nuevo Rol. 3. Indica Nombre del rol y Permisos. 4. Guardar → el rol se crea.
 - **Unhappy paths:** Cancelar. Nombre de rol vacío/duplicado. Sin permisos seleccionados. Falla de red/sesión.
 
-<<<<<<< HEAD
-![](./../assets/Chapter-IV/flow2.png)
-
-### 4.4.3. Web Applications Mock-ups.
-![](./../assets/Chapter-IV/login-2.jpg)
-![](./../assets/Chapter-IV/login-1.jpg)
-![](./../assets/Chapter-IV/Inventario-1.jpg)
-![](./../assets/Chapter-IV/Inventario%20-%20Información%20Producto.jpg)
-![](./../assets/Chapter-IV/Inventario%20-%20Nuevo%20Producto.jpg)
-![](./../assets/Chapter-IV/Inventario%20-%20Reposición.jpg)
-![](./../assets/Chapter-IV/Inventario%20-%20Reposición.jpg)
-![](./../assets/Chapter-IV/Inventario%20-%20Nuevo%20kit.jpg)
-![](./../assets/Chapter-IV/Proveedores-2.jpg)
-![](./../assets/Chapter-IV/Proveedores-3.jpg)
-![](./../assets/Chapter-IV/Administración%20del%20personal-1.jpg)
-![](./../assets/Chapter-IV/Administración%20del%20personal%20-%20Creación%20Personal.jpg)
-![](./../assets/Chapter-IV/Administración%20del%20personal%20-%20Creación%20roles.jpg)
-![](./../assets/Chapter-IV/Salida%20producto-1.jpg)
-=======
 ![](./../assets/img/Chapter-IV/flow2.png)
 
 ### 4.4.3. Web Applications Mock-ups.
@@ -309,7 +236,6 @@ Nombres de los campos en formularios y cabeceras de columnas.
 ![](./../assets/img/Chapter-IV/Administración%20del%20personal%20-%20Creación%20Personal.jpg)
 ![](./../assets/img/Chapter-IV/Administración%20del%20personal%20-%20Creación%20roles.jpg)
 ![](./../assets/img/Chapter-IV/Salida%20producto-1.jpg)
->>>>>>> feature/chapter-IV
 
 ### 4.4.4. Web Applications User Flow Diagrams.
 **Flujo: Registrar salida de productos (venta/consumo/merma)**
@@ -317,26 +243,16 @@ Nombres de los campos en formularios y cabeceras de columnas.
 - **Happy path:** 1. Abre Salida de productos. 2. Busca/filtra y selecciona productos o kits. 3. Ajusta Cantidad por ítem. 4. Guardar → valida stock, registra movimiento y descuenta inventario.
 - **Unhappy paths:** Cancelar. Cantidad > stock (bloqueo).
 
-<<<<<<< HEAD
-![](./../assets/Chapter-IV/flowdiagram1.png)
-=======
 ![](./../assets/img/Chapter-IV/flowdiagram1.png)
->>>>>>> feature/chapter-IV
 
 **Flujo: Gestionar inventario (Ingresar reposición y crear producto)**
 **User persona:** Tienda/Almacén — Operador(a)
 - **A) Ingresar reposición:** 1. Abre Inventario. 2. Pulsa Ingresar reposición. 3. Completa Lote, Fechas y Cantidad. 4. Guardar → registra reposición y aumenta stock. (Unhappy: Fechas inválidas, cantidades vacías).
 - **B) Crear nuevo producto:** 1. En Inventario, pulsa + Producto. 2. Completa Nombre, Categoría, Proveedor, Stock mínimo y Precio. 3. Guardar → crea producto. (Unhappy: Campos vacíos, valores inválidos).
 
-<<<<<<< HEAD
-![](./../assets/Chapter-IV/flowdiagram2.png)
-![](./../assets/Chapter-IV/flowdiagram3.png)
-![](./../assets/Chapter-IV/flowdiagram4.png)
-=======
 ![](./../assets/img/Chapter-IV/flowdiagram2.png)
 ![](./../assets/img/Chapter-IV/flowdiagram3.png)
 ![](./../assets/img/Chapter-IV/flowdiagram4.png)
->>>>>>> feature/chapter-IV
 
 ## 4.5. Web Applications Prototyping.
 El prototipo web de StockTrack ha sido concebido aplicando principios de arquitectura de información, diseño centrado en el usuario y las heurísticas de usabilidad, con el propósito de brindar una experiencia intuitiva, eficiente y accesible. La navegación se organiza de manera jerárquica y lógica, lo que facilita a los usuarios localizar rápidamente las funciones principales.
@@ -344,16 +260,6 @@ El prototipo web de StockTrack ha sido concebido aplicando principios de arquite
 [Ver Prototipo Interactivo de StockTrack en Figma](https://www.figma.com/proto/jKNuDhwMS5qe3o6zF4ugo8/OPEN-SOURCE?node-id=150-3805&p=f&t=C8AMNn5sgvqnuoFs-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=150%3A5901)
 
 ## 4.6. Domain-Driven Software Architecture.
-<<<<<<< HEAD
-### 4.6.1. Software Architecture Context Diagram.
-![Context Diagram](./../assets/Chapter-IV/C4SystemC.png)
-
-### 4.6.2. Software Architecture Container Diagrams.
-![Container Diagram](./../assets/Chapter-IV/C4Container.png)
-
-### 4.6.3. Software Architecture Components Diagrams.
-![Component Diagram](./../assets/Chapter-IV/C4Component.png)
-=======
 ### 4.6.1. Software Architecture Context Diagram
 ![Context Diagram](./../assets/img/Chapter-IV/C4SystemC.png)
 
@@ -362,16 +268,11 @@ El prototipo web de StockTrack ha sido concebido aplicando principios de arquite
 
 ### 4.6.3. Software Architecture Components Diagrams
 ![Component Diagram](./../assets/img/Chapter-IV/C4Component.png)
->>>>>>> feature/chapter-IV
 
 
 ## 4.7. Software Object-Oriented Design.
 ### 4.7.1. Class Diagrams.
-<<<<<<< HEAD
-![Class Diagram](./../assets/Chapter-IV/diagramadeclases.svg)
-=======
 ![Class Diagram](./../assets/img/Chapter-IV/diagramadeclases.svg)
->>>>>>> feature/chapter-IV
 
 ### 4.7.2. Class Dictionary.
 *Nota: A continuación se presenta el diccionario correspondiente al diagrama de clases estructurado.*
@@ -388,4 +289,3 @@ El prototipo web de StockTrack ha sido concebido aplicando principios de arquite
 ![Database Diagram](./../assets/Chapter-IV/Database-Diagram.png)
 =======
 ![Database Diagram](./../assets/img/Chapter-IV/Database-Diagram.png)
->>>>>>> feature/chapter-IV
