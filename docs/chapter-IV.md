@@ -260,13 +260,13 @@ El prototipo web de StockTrack ha sido concebido aplicando principios de arquite
 [Ver Prototipo Interactivo de StockTrack en Figma](https://www.figma.com/proto/jKNuDhwMS5qe3o6zF4ugo8/OPEN-SOURCE?node-id=150-3805&p=f&t=C8AMNn5sgvqnuoFs-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=150%3A5901)
 
 ## 4.6. Domain-Driven Software Architecture.
-### 4.6.1. Software Architecture Context Diagram.
+### 4.6.1. Software Architecture Context Diagram
 ![Context Diagram](./../assets/img/Chapter-IV/C4SystemC.png)
 
-### 4.6.2. Software Architecture Container Diagrams.
+### 4.6.2. Software Architecture Container Diagrams
 ![Container Diagram](./../assets/img/Chapter-IV/C4Container.png)
 
-### 4.6.3. Software Architecture Components Diagrams.
+### 4.6.3. Software Architecture Components Diagrams
 ![Component Diagram](./../assets/img/Chapter-IV/C4Component.png)
 
 
