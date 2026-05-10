@@ -17,38 +17,43 @@ Las pruebas de integración validan la interacción entre los módulos de la cap
 
 ### 6.1.4. Core System Tests.
 
-Para la validación final del sistema, se utilizó **Selenium IDE**, enfocándose en el cumplimiento de la **US09 (Diseño Responsive)** de la Landing Page (desarrollada en Astro). Se ejecutó una **Suite de Pruebas de Responsividad** simulando interacciones reales para asegurar que la experiencia de usuario y los flujos de conversión (como el cambio de idioma y el acceso al registro) sean óptimos en cualquier resolución de pantalla.
-
-#### Tabla de Pruebas de Sistema (Landing Page)
-
-| Caso de Prueba | Resolución | Objetivo de la Prueba | Resultado Esperado | Estado |
-| :--- | :--- | :--- | :--- | :--- |
-| **ST-01: Mobile** | 375 x 667 | Validar interacción del menú hamburguesa y anclaje. | Menú desplegable funcional, secciones apiladas y legibilidad mantenida. | **PASSED** |
-| **ST-02: Tablet** | 768 x 1024 | Validar adaptabilidad en resoluciones intermedias. | Elementos redimensionados y grillas ajustadas sin desbordamiento (overflow). | **PASSED** |
-| **ST-03: Desktop**| 1920 x 1080 | Validar navegación completa y botones de *Call to Action*. | Barra de navegación superior visible y elementos distribuidos en ancho completo. | **PASSED** |
+Para la validación final del sistema, se utilizó **Selenium IDE**, enfocándose en el cumplimiento de la **US09 (Diseño Responsive)** de la Landing Page (desarrollada en Astro). Se ejecutó una **Suite de Pruebas de Responsividad** simulando interacciones reales para asegurar que la experiencia de usuario y los flujos de conversión (como el cambio de idioma) sean óptimos en cualquier resolución de pantalla.
 
 
-#### **Pruebas:**
 
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>US 09</th>
+        <th>Diseño responsive</td></th>
+        <th>
+        <strong> Como </strong> visitante <br>
+        <strong> Quiero </strong> que la landing sea responsive <br>
+        <strong> Para </strong> navegar cómodamente desde cualquier dispositivo móvil, tablet o escritorio.
+        </td>
+        </th> 
+    
+</table>
+
+<br>
+
+
+#### **Test 1: Prueba en Dispositivo Movil**
 
 <p align="center">
   <img src="../assets/img/chapter-VI/Pmovil.PNG" alt="Prueba Movil" width="700">
 </p>
-> Reporte de ejecución exitosa en Selenium IDE validando la responsividad y flujos de navegación en versión Móvil (375x667).
-<br>
-<br>
-<br>
+
+
+#### **Test 2: Prueba en Dispositivo Tableta**
 
 <p align="center">
   <img src="../assets/img/chapter-VI/Ptableta.PNG" alt="Pruebas Tableta" width="700">
 </p>
-> Reporte de ejecución exitosa en Selenium IDE validando la responsividad y flujos de navegación en versión Tableta (768x1024).
-<br>
-<br>
-<br>
+
+
+#### **Test 3: Prueba en Dispositivo Escritorio**
 
 <p align="center">
   <img src="../assets/img/chapter-VI/Pescr.PNG" alt="Pruebas Escritorio" width="700">
 </p>
-> Reporte de ejecución exitosa en Selenium IDE validando la responsividad y flujos de navegación en versión Escritorio (1920x1080).
 
