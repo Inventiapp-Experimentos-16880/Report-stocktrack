@@ -7,9 +7,51 @@ Para garantizar la calidad, estabilidad y escalabilidad de la plataforma StockTr
 
 En esta fase, se realizaron pruebas unitarias sobre la lógica de negocio central en el Backend. Dado que el proyecto utiliza una arquitectura basada en Domain-Driven Design (DDD) implementada con Java y Spring Boot, las pruebas se enfocaron en el aislamiento y validación de las entidades dentro de cada Bounded Context.
 
+Product service test: 
+
+![Product Service Test](../assets/img/chapter-VI/productService.png)
+
+Provider service test:
+
+![Provider Service Test](../assets/img/chapter-VI/providerService.png)
+
+Sale service test:
+
+![Sale Service Test](../assets/img/chapter-VI/saleService.png)
+
+
 ### 6.1.2. Core Integration Tests.
 
 Las pruebas de integración validan la interacción entre los módulos de la capa de presentación (Frontend en Angular) y los servicios del API REST. El objetivo es confirmar que la comunicación bidireccional y el procesamiento de respuestas JSON sean consistentes.
+
+Pruebas de integración para Batch controller:
+
+![Batch Controller Test](../assets/img/chapter-VI/batchControllerTest.png)
+
+Pruebas de integración para Product controller:
+
+![Product Controller Test](../assets/img/chapter-VI/productControllerTest.png)
+
+Pruebas de integración para Provider controller:
+
+![Provider Controller Test](../assets/img/chapter-VI/providerControllerTest.png)
+
+Pruebas de integración para Sale controller:
+
+![Sale Controller Test](../assets/img/chapter-VI/salesControllerTest.png)
+
+Pruebas de integración para category controller:
+
+![Category Controller Test](../assets/img/chapter-VI/categoryControllerTest.png)
+
+Pruebas de integración para kit controller:
+
+![Kit Controller Test](../assets/img/chapter-VI/kitControllerTest.png)
+
+Pruebas de integración para product batch controller:
+
+![Product Batch Controller Test](../assets/img/chapter-VI/productBatchesControllerTest.png)
+
 
 ### 6.1.3. Core Behavior-Driven Development
 
