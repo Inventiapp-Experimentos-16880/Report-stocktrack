@@ -52,6 +52,59 @@ Pruebas de integración para product batch controller:
 
 ![Product Batch Controller Test](../assets/img/chapter-VI/productBatchesControllerTest.png)
 
+#### **Pruebas de Integracion Frontend**
+Se validó la integración del Frontend en Angular con la API del Backend utilizando la herramienta nativa Jasmine/Karma y HttpClientTestingModule. Estas pruebas garantizan que el flujo de datos entre la capa de infraestructura y el servidor simulado sea fluido, validando los verbos HTTP y la estructura de las peticiones sin depender del entorno de producción.
+
+A continuación, se detalla la validación de los servicios de integración clave:
+
+
+  Pruebas de Integración - US10: Persistencia de proveedores
+
+  **Módulo:** ProvidersApi
+
+  **Objetivo:** Verificar la correcta ejecución del método HTTP POST y el envío de datos mediante el Assembler.
+
+  **Validación:** Se interceptó la petición hacia /api/v1/providers, confirmando el verbo POST y que la respuesta simulada se procese correctamente en el frontend.
+
+
+![Test Persistencia de Proveedores](../assets/img/chapter-VI/Test1Fr.png)
+
+Resultado Karma: <br>
+
+![Confirmacion de Test Persistencia de Proveedores](../assets/img/chapter-VI/Test1Fro.PNG)
+
+
+  Pruebas de Integración - US03: Actualización de stock en tiempo real
+
+  **Módulo:** ProductsApi
+
+  **Objetivo:** Validar la capacidad de solicitar asíncronamente el stock actualizado de un producto.
+
+  **Validación:** Se interceptó la petición GET hacia /api/v1/products/{id}, simulando la respuesta del servidor y confirmando que el frontend recibe los datos para el Store.
+
+
+![Test de Actualización de stock en tiempo real](../assets/img/chapter-VI/Test2Fr.PNG)
+
+
+Resultado Karma: <br>
+
+![Confirmacion de Test de Actualización de stock en tiempo real](../assets/img/chapter-VI/Test2Fro.PNG)
+
+
+  Pruebas de Integración - US04: Visualización dinámica de reportes
+
+  **Módulo:** ReportsApi
+
+  **Objetivo:** Verificar la disponibilidad de la infraestructura base para la agregación de reportes.
+
+  **Validación:** Debido al diseño DDD (los reportes se combinan en el Store), se validó la correcta instanciación e inyección del servicio API base sin errores.
+
+![Test de Visualización dinámica de reportes](../assets/img/chapter-VI/Test3Fr.PNG)
+
+
+Resultado Karma: <br>
+
+![Confirmacion de Test de Visualización dinámica de reportes](../assets/img/chapter-VI/Test3Fro.PNG)
 
 ### 6.1.3. Core Behavior-Driven Development
 
