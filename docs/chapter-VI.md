@@ -55,7 +55,36 @@ Pruebas de integración para product batch controller:
 
 ### 6.1.3. Core Behavior-Driven Development
 
+Las pruebas de BDD se diseñaron para validar los flujos de usuario y las funcionalidades clave desde la perspectiva del usuario final. Utilizando Cucumber, se definieron escenarios basados en las User Stories, asegurando que cada funcionalidad cumpla con los criterios de aceptación establecidos.
 
+![BDD Test](../assets/img/chapter-VI/testBDD.png)
+
+Inventory Outflow Feature:
+
+![Inventory Outflow Feature](../assets/img/chapter-VI/inventoryOutflowFeature.png)
+
+Inventory Reports Feature:
+![Inventory Reports Feature](../assets/img/chapter-VI/inventoryReportsFeature.png)
+
+Product Catalog Feature:
+
+![Product Catalog Feature](../assets/img/chapter-VI/productCatalogFeature.png)
+
+Product Kits Feature:
+
+![Product Kits Feature](../assets/img/chapter-VI/productKitsFeature.png)
+
+Stock Tresholds Feature:
+
+![Stock Tresholds Feature](../assets/img/chapter-VI/stockTresholdsFeature.png)
+
+Supplier and Batches Feature:
+
+![Supplier and Batches Feature](../assets/img/chapter-VI/supplierAndBatchesFeature.png)
+
+User Management Feature:
+
+![User Management Feature](../assets/img/chapter-VI/userManagementFeature.png)
 
 ### 6.1.4. Core System Tests.
 
