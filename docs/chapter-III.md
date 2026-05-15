@@ -444,55 +444,7 @@
 </table>
 
 
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US10</td>
-        <td align="center">Dueño de bodega</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-10</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Gestionar cartera de proveedores</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> registrar, consultar y editar la información de mis proveedores <br>
-            <strong> Para </strong> centralizar los datos de contacto, facturación y agilizar la comunicación con los socios comerciales.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Registro con validación de duplicados</strong> <br><br>
-            <strong> Dado que </strong> se desea agregar a un nuevo abastecedor <br>
-            <strong> Cuando </strong> el usuario ingresa la información y el RUC ya existe en la base de datos <br>
-            <strong> Entonces </strong> el sistema bloquea la creación y muestra un mensaje de error por duplicidad.
-            <br><br>
-            <strong> Escenario 2: Búsqueda y consulta de proveedores</strong> <br><br>
-            <strong> Dado que </strong> el usuario necesita localizar el contacto de un proveedor <br>
-            <strong> Cuando </strong> utiliza la barra de búsqueda en el listado <br>
-            <strong> Entonces </strong> la tabla se filtra en tiempo real mostrando las coincidencias exactas o parciales.
-            <br><br>
-            <strong> Escenario 3: Actualización de datos</strong> <br><br>
-            <strong> Dado que </strong> el proveedor cambió su número de contacto <br>
-            <strong> Cuando </strong> el usuario edita la ficha y guarda los cambios <br>
-            <strong> Entonces </strong> la base de datos se actualiza de manera persistente con la nueva información.
-        </td>
-    </tr>
-</table>
+
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
@@ -502,7 +454,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US11</td>
+        <td align="center">US10</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-10</td>
@@ -547,7 +499,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US12</td>
+        <td align="center">US11</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Media</td>
         <td align="center">EP-05</td>
@@ -587,7 +539,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US13</td>
+        <td align="center">US12</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-06</td>
@@ -632,7 +584,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US14</td>
+        <td align="center">US13</td>
         <td align="center">Encargado de ventas</td>
         <td align="center">Alta</td>
         <td align="center">EP-06</td>
@@ -676,7 +628,7 @@
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US15</td>
+        <td align="center">US14</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-02</td>
@@ -714,46 +666,6 @@
             <strong> Dado que </strong> se necesita revisar la mercadería suministrada por una empresa específica <br>
             <strong> Cuando </strong> se aplica el filtro por proveedor en la vista de lotes <br>
             <strong> Entonces </strong> el sistema lista únicamente los ingresos vinculados a ese socio comercial.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US16</td>
-        <td align="center">Dueño de startup</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-08</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Crear usuarios nuevos</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de startup <br>
-            <strong> Quiero </strong> crear cuentas de usuario personalizadas <br>
-            <strong> Para </strong> organizar el equipo de trabajo y segregar responsabilidades.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Alta exitosa de usuario</strong> <br><br>
-            <strong> Dado que </strong> el administrador ingresa los datos de perfil <br>
-            <strong> Cuando </strong> confirma la creación <br>
-            <strong> Entonces </strong> el sistema genera la cuenta y despacha las credenciales al correo del colaborador.
         </td>
     </tr>
 </table>
@@ -1607,22 +1519,20 @@
 
 | # Orden | User Story Id | Título | Descripción | Story Points |
 | :------ | :------------ | :----- | :---------- | :----------- |
-| **01** | US16 | Crear usuarios nuevos | Como dueño de startup, quiero crear cuentas de usuario personalizadas para organizar el equipo de trabajo y segregar responsabilidades. | 2 |
-| **02** | US06 | Gestionar catálogo de productos | Como encargado de ventas, quiero gestionar el catálogo de productos (crear, editar e inhabilitar) para mantener un registro actualizado, corregir detalles técnicos y ocultar productos que ya no se venden sin perder su historial. | 3 |
-| **03** | US07 | Clasificación de productos por categoría | Como encargado de ventas, quiero asignar categorías a los productos para organizar el catálogo y agilizar los procesos de búsqueda. | 2 |
-| **04** | US08 | Búsqueda y filtrado de productos | Como encargado de ventas, quiero buscar y filtrar productos para acceder rápidamente a la información necesaria para la toma de decisiones. | 2 |
-| **05** | US10 | Gestionar cartera de proveedores | Como dueño de bodega, quiero registrar, consultar y editar la información de mis proveedores para centralizar los datos de contacto, facturación y agilizar la comunicación con los socios comerciales. | 3 |
-| **06** | US11 | Asociar productos a proveedor | Como encargado de ventas, quiero vincular productos con sus proveedores para agilizar las reposiciones de stock y mejorar la trazabilidad de las compras. | 5 |
-| **07** | US15 | Gestionar el ingreso de nuevos lotes | Como dueño de bodega, quiero registrar, visualizar y buscar los lotes ingresados para mantener un control del origen (proveedor), sumar el inventario y hacer trazabilidad de sus fechas de vencimiento. | 4 |
-| **08** | US01 | Iniciar borrador de salida de productos | Como dueño de bodega, quiero iniciar un borrador de salida para agrupar ítems de una venta antes de confirmarla. | 2 |
-| **09** | US02 | Gestionar ítems del borrador | Como dueño de bodega, quiero buscar productos y gestionar ítems para agregar, editar o retirar productos sin impactar el stock antes de la confirmación. | 2 |
-| **10** | US03 | Confirmar salida de producto y descontar inventario | Como dueño de bodega, quiero confirmar la salida de un producto para registrar los movimientos de inventario y actualizar el stock disponible en tiempo real. | 3 |
-| **11** | US13 | Configurar umbrales de stock | Como encargado de ventas, quiero configurar umbrales mínimos de stock para que el sistema dispare alertas automáticas de reposición. | 3 |
-| **12** | US05 | Notificaciones en el dashboard | Como usuario, quiero ver notificaciones en el dashboard para atender rápidamente situaciones críticas de inventario. | 3 |
-| **13** | US14 | Listar alertas pendientes | Como encargado de ventas, quiero visualizar un listado de alertas para priorizar las tareas de mantenimiento de inventario pendientes. | 2 |
-| **14** | US04 | Generar reportes de estado de inventario | Como dueño de bodega, quiero emitir reportes dinámicos de mi inventario (stock actual, bajo stock y próximos a vencer) para tener visibilidad total del estado de mis productos y priorizar mis compras estratégicamente. | 5 |
-| **15** | US12 | Definir composición de un kit | Como encargado, quiero definir la estructura de kits de productos para estandarizar las ofertas comerciales y paquetes promocionales. | 3 |
-| **16** | US09 | Diseño responsive | Como visitante, quiero que la landing sea responsive para navegar cómodamente desde cualquier dispositivo móvil o tablet. | 2 |
+| **01** | US06 | Gestionar catálogo de productos | Como encargado de ventas, quiero gestionar el catálogo de productos (crear, editar e inhabilitar) para mantener un registro actualizado, corregir detalles técnicos y ocultar productos que ya no se venden sin perder su historial. | 3 |
+| **02** | US07 | Clasificación de productos por categoría | Como encargado de ventas, quiero asignar categorías a los productos para organizar el catálogo y agilizar los procesos de búsqueda. | 2 |
+| **03** | US08 | Búsqueda y filtrado de productos | Como encargado de ventas, quiero buscar y filtrar productos para acceder rápidamente a la información necesaria para la toma de decisiones. | 2 |
+| **04** | US10 | Asociar productos a proveedor | Como encargado de ventas, quiero vincular productos con sus proveedores para agilizar las reposiciones de stock y mejorar la trazabilidad de las compras. | 5 |
+| **05** | US14 | Gestionar el ingreso de nuevos lotes | Como dueño de bodega, quiero registrar, visualizar y buscar los lotes ingresados para mantener un control del origen (proveedor), sumar el inventario y hacer trazabilidad de sus fechas de vencimiento. | 4 |
+| **06** | US01 | Iniciar borrador de salida de productos | Como dueño de bodega, quiero iniciar un borrador de salida para agrupar ítems de una venta antes de confirmarla. | 2 |
+| **07** | US02 | Gestionar ítems del borrador | Como dueño de bodega, quiero buscar productos y gestionar ítems para agregar, editar o retirar productos sin impactar el stock antes de la confirmación. | 2 |
+| **08** | US03 | Confirmar salida de producto y descontar inventario | Como dueño de bodega, quiero confirmar la salida de un producto para registrar los movimientos de inventario y actualizar el stock disponible en tiempo real. | 3 |
+| **09** | US12 | Configurar umbrales de stock | Como encargado de ventas, quiero configurar umbrales mínimos de stock para que el sistema dispare alertas automáticas de reposición. | 3 |
+| **10** | US05 | Notificaciones en el dashboard | Como usuario, quiero ver notificaciones en el dashboard para atender rápidamente situaciones críticas de inventario. | 3 |
+| **11** | US13 | Listar alertas pendientes | Como encargado de ventas, quiero visualizar un listado de alertas para priorizar las tareas de mantenimiento de inventario pendientes. | 2 |
+| **12** | US04 | Generar reportes de estado de inventario | Como dueño de bodega, quiero emitir reportes dinámicos de mi inventario (stock actual, bajo stock y próximos a vencer) para tener visibilidad total del estado de mis productos y priorizar mis compras estratégicamente. | 5 |
+| **13** | US11 | Definir composición de un kit | Como encargado, quiero definir la estructura de kits de productos para estandarizar las ofertas comerciales y paquetes promocionales. | 3 |
+| **14** | US09 | Diseño responsive | Como visitante, quiero que la landing sea responsive para navegar cómodamente desde cualquier dispositivo móvil o tablet. | 2 |
 
 ## 3.4. Impact Mapping
 
