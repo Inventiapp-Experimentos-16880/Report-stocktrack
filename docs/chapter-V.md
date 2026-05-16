@@ -275,3 +275,6 @@ Repositorio Landing Page:
 
 
 ## 5.3 Video About-the-Product
+
+Link de Video About the Product: https://youtu.be/F0ZaRulgdyE?si=VpK2QIKX7g5WYUUe
+
