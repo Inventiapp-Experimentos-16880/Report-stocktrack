@@ -16,6 +16,6 @@ Link Backend Desplegado: <a href="https://backend-stocktrack-production.up.railw
 
 Link de entrevistas:<a href="https://tinyurl.com/66etkfv8">https://tinyurl.com/66etkfv8</a> <br>
 
-Link de Video About the Team:<a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u202311601_upc_edu_pe/IQAX1vO2R2TzSKvLeFthdjFJAWi81zATsRkAgk9MmPQO27Y?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=iRRSNM">upc-pre-202520-1asi0732-16880- Inventiapp-expo-tb1</a><br>
+Link de Video About the Team:<a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u202311601_upc_edu_pe/IQBPGbzeGqx5QYm8nFjSBT-8ASmwmflklsbPBMKk9ei4xeo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=MALO6G">upc-pre-202520-1asi0732-16880- Inventiapp-expo-tp1</a><br>
 
 Link de Video About the Product:<a href="https://youtu.be/F0ZaRulgdyE?si=VpK2QIKX7g5WYUUe">https://youtu.be/F0ZaRulgdyE?si=VpK2QIKX7g5WYUUe</a><br>
