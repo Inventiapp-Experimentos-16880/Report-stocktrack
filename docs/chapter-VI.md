@@ -286,9 +286,171 @@ Si se encuentran errores o mejoras, el revisor deja observaciones para que el de
 
 ### 6.3.1 Diseño de Entrevistas
 
+Las siguientes preguntas están diseñadas para aplicarse a ambos segmentos, ya que buscan validar si la propuesta de StockTrack responde a sus necesidades reales de gestión de inventario, control de stock, alertas, reportes y organización logística.
+
+1. Después de conocer la propuesta de **StockTrack**, ¿consideras que esta solución podría ayudarte a mejorar la gestión de tu inventario? ¿Por qué?
+
+2. ¿Qué tan útil te parece contar con una plataforma que registre las entradas y salidas de productos de forma ordenada?
+
+3. ¿La función de alertas por bajo stock o productos próximos a vencer resolvería algún problema actual en tu negocio?
+
+4. ¿Qué tan importante sería para ti visualizar el stock disponible en tiempo real?
+
+5. ¿Consideras que los reportes de inventario, ventas o movimientos de productos te ayudarían a tomar mejores decisiones?
+
+6. ¿Qué funcionalidad te parece más importante dentro de **StockTrack**: control de stock, alertas, reportes, gestión de proveedores o historial de movimientos? ¿Por qué?
+
+7. ¿Qué dificultad crees que podrías tener al empezar a usar una herramienta digital para gestionar tu inventario?
+
+8. ¿Preferirías utilizar esta solución desde una computadora, celular o ambos? ¿Por qué?
+
+9. ¿Estarías dispuesto a probar una versión inicial de **StockTrack** en tu negocio? ¿Qué tendría que cumplir para que sigas usándola?
+
+10. En una escala del 1 al 5, donde 1 es “nada útil” y 5 es “muy útil”, ¿qué tan útil consideras **StockTrack** para tu negocio? ¿Por qué?
+
+
+
 ### 6.3.2 Registro de Entrevistas
 
+Link de entrevistas:<a href="https://tinyurl.com/66etkfv8">https://tinyurl.com/66etkfv8</a> <br>
+
+**Segmento #1: Bodegas especializadas por rubro**
+
+#### Datos del entrevistado:
+ **Nombre:** Lucarelly Sanchez Heredia <br> 
+  **Edad:** 21 años 
+  ![Entrevista 1 - Segmento Dueños de Bodegas](../assets/img/chapter-II/lucas-interview.png) <br> 
+**Duración:** 2:53 min 
+
+#### Resumen de entrevista:
+
+Lucarelly administra una bodega junto a su abuelo. Actualmente registra parte de su inventario en Excel, aunque menciona que no siempre se encuentra actualizado. También utiliza una libreta para anotar algunos productos que ingresan o salen durante el día. Uno de sus principales problemas es la falta de control sobre los lotes y fechas de vencimiento, ya que en algunas ocasiones se mezclan productos antiguos con productos nuevos. Esto le ha generado pérdidas por productos vencidos o por no saber exactamente qué productos están por agotarse.
+
+Luego de explicarle la propuesta de StockTrack, consideró que la plataforma podría ayudarle a ordenar mejor su inventario, principalmente si cuenta con alertas de bajo stock y productos próximos a vencer. También indicó que le sería útil poder revisar el stock desde su celular, porque no siempre está usando la laptop. Aunque no ha usado antes una plataforma especializada de inventario, señaló que estaría dispuesto a probar una versión sencilla si no es complicada de usar.
+
+#### Principales hallazgos del segmento:
+
+- El entrevistado sí presenta problemas reales relacionados con control de inventario.
+- Existe una necesidad clara de alertas por vencimiento y bajo stock.
+- El usuario valora que la plataforma sea simple y fácil de usar.
+- El uso desde celular es importante para negocios pequeños como bodegas.
+- La propuesta de StockTrack resulta útil, pero debe evitar ser complicada.
+
+
+**Segmento #2: Startups y emprendedores en expansión con necesidades logísticas**
+
+#### Datos del entrevistado:
+**Nombre:** Alexander Miranda Vivanco <br>
+**Edad:** 27 años 
+
+ ![Entrevista 1 - Startups y emprendedores en expansión con necesidades logísticas](../assets/img/chapter-II/Entrevista-Alexander-Miranda.png) <br> **Duración:** 3:30 min 
+
+#### Resumen de entrevista:
+
+Alexander tiene un emprendimiento dedicado a la venta de productos para mascotas. Actualmente revisa su inventario de manera presencial en su almacén y lo registra en Excel, apoyándose también en boletas y comprobantes de venta. Indicó que esta forma de trabajo le toma tiempo, especialmente cuando necesita saber qué productos se están vendiendo más o qué productos debe reponer.
+
+Después de presentarle StockTrack, consideró que la plataforma podría ayudarle a mejorar la organización del inventario y reducir el tiempo que dedica a revisar productos manualmente. Le llamó la atención la posibilidad de registrar entradas y salidas, generar reportes y consultar el stock actualizado. También mencionó que una herramienta digital podría ser útil si su negocio sigue creciendo, ya que actualmente el control manual todavía funciona, pero empieza a volverse limitado.
+
+#### Principales hallazgos del segmento:
+
+- El entrevistado tiene una necesidad clara de reducir el tiempo de revisión manual del inventario.
+- Los reportes son una funcionalidad importante para negocios en crecimiento.
+- El historial de movimientos ayuda a controlar mejor las entradas y salidas.
+- El usuario considera útil una plataforma digital si es rápida y fácil de implementar.
+- Existe disposición para probar una versión inicial de StockTrack. 
+
+
 ### 6.3.3 Evaluaciones Según Heuristicas 
+
+**Aplicación para evaluar:** StockTrack
+
+### Tareas que evaluar:
+
+- Registrar un nuevo producto en el inventario.
+- Visualizar el stock disponible de los productos.
+- Registrar entradas y salidas de productos.
+- Revisar alertas por bajo stock o productos próximos a vencer.
+- Consultar reportes de inventario y ventas.
+
+### Tabla de resumen:
+
+| Escala de Severidad | Descripción |
+|---|---|
+| 1 | No tan grave |
+| 2 | Leve |
+| 3 | Moderado |
+| 4 | Grave |
+| 5 | Muy grave |
+
+| #Orden | Problema | Escala de Severidad | Heurística / Principio violado |
+|---|---|---:|---|
+| #1 | El usuario puede confundirse al registrar un nuevo producto si el formulario solicita muchos datos al mismo tiempo. | 3 | Eficiencia de uso |
+| #2 | No se muestra un mensaje suficientemente visible cuando un producto se registra correctamente. | 4 | Visibilidad del estado del sistema |
+| #3 | La sección de alertas de bajo stock no se identifica rápidamente desde el panel principal. | 4 | Reconocimiento antes que recuerdo |
+| #4 | El usuario no cuenta con una opción rápida para filtrar productos por categoría, proveedor o estado de stock. | 3 | Flexibilidad y eficiencia de uso |
+| #5 | Los reportes pueden ser difíciles de interpretar si no se muestran gráficos o indicadores claros. | 3 | Estética y diseño minimalista |
+
+---
+
+## Heurísticas y Recomendaciones
+
+### Problema #1: Formulario de registro de producto con demasiados campos visibles
+
+**Heurística violada:** Eficiencia de uso
+
+**Descripción del problema:**  
+Al registrar un nuevo producto, el usuario puede sentirse confundido si el formulario presenta muchos campos al mismo tiempo, como nombre, categoría, proveedor, precio, lote, fecha de vencimiento, stock mínimo y stock inicial. Esto puede ser más complicado para usuarios que vienen de usar Excel o una libreta.
+
+**Recomendación:**  
+Organizar el formulario por secciones, separando información básica, datos de inventario y datos adicionales. También se recomienda marcar claramente los campos obligatorios y mostrar textos de ayuda cortos para orientar al usuario.
+
+---
+
+### Problema #2: Falta de confirmación visible al registrar un producto
+
+**Heurística violada:** Visibilidad del estado del sistema
+
+**Descripción del problema:**  
+Cuando el usuario registra un producto, si el sistema no muestra una confirmación clara, puede generar dudas sobre si el producto fue guardado correctamente. Esto podría causar que el usuario repita el registro o revise manualmente la lista para confirmar.
+
+**Recomendación:**  
+Agregar un mensaje visible de confirmación, como “Producto registrado correctamente”. También se puede usar una notificación tipo alerta o toast en la parte superior o inferior de la pantalla.
+
+---
+
+### Problema #3: Alertas de bajo stock poco visibles
+
+**Heurística violada:** Reconocimiento antes que recuerdo
+
+**Descripción del problema:**  
+Las alertas por bajo stock o productos próximos a vencer son una funcionalidad importante para ambos segmentos. Si estas alertas no se muestran claramente desde el dashboard, el usuario podría olvidarse de revisarlas y seguir teniendo problemas de reposición o vencimiento.
+
+**Recomendación:**  
+Incluir una sección visible en el dashboard con alertas principales, usando colores o íconos para diferenciar bajo stock, productos por vencer y productos agotados. Esto facilitaría que el usuario detecte problemas apenas ingrese al sistema.
+
+---
+
+### Problema #4: Falta de filtros rápidos en la lista de productos
+
+**Heurística violada:** Flexibilidad y eficiencia de uso
+
+**Descripción del problema:**  
+Cuando el inventario crece, buscar productos manualmente puede volverse lento. Esto afecta especialmente a emprendedores en expansión, ya que manejan más productos, proveedores y movimientos de stock.
+
+**Recomendación:**  
+Agregar filtros rápidos por categoría, proveedor, estado de stock y fecha de vencimiento. También se recomienda incluir una barra de búsqueda visible para encontrar productos por nombre o código.
+
+---
+
+### Problema #5: Reportes poco claros para la toma de decisiones
+
+**Heurística violada:** Estética y diseño minimalista
+
+**Descripción del problema:**  
+Los reportes de inventario y ventas pueden no ser tan útiles si se muestran solo como tablas extensas. Los usuarios necesitan identificar rápidamente qué productos se venden más, cuáles tienen baja rotación y qué productos deben reponerse.
+
+**Recomendación:**  
+Incluir gráficos simples, indicadores clave y resúmenes visuales. Por ejemplo, productos más vendidos, productos con bajo stock, productos próximos a vencer y movimientos recientes. Esto ayudaría a que los usuarios tomen decisiones más rápidas.
 
 ## 6.4. Auditoría de Experiencias de Usuario
 
