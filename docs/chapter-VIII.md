@@ -1,0 +1,225 @@
+# Capítulo VIII: Experiment-Driven Development
+
+## 8.1. Experiment Planning
+
+### 8.1.1. As-Is Summary.
+
+El estado actual de la gestión de inventarios para los segmentos objetivos se caracteriza por una dependencia crítica en procesos manuales y registros fragmentados. La información reside en cuadernos físicos, archivos de Excel desactualizados y chats de WhatsApp, lo que genera una visibilidad nula del stock en tiempo real. Esta desorganización provoca errores constantes en el control de fechas de vencimiento y una alta carga de ansiedad operativa. Aunque ya se ha definido un stack tecnológico (Spring Boot/Angular) y una arquitectura de software , el estado actual del negocio sigue siendo reactivo e intuitivo, lo que plantea la necesidad de cuestionar si la digitalización propuesta es lo suficientemente simple y óptima para ser adoptada por usuarios con fatiga laboral y baja alfabetización digital.
+
+Problemas identificados:
+
+- Rendimiento: La aplicación presenta demoras en el filtrado de productos por nombre.
+- Experiencia de usuario: Formato con bajo contraste para la generación de reportes.
+- Funcionalidad: Ausencia de módulo para ver el historial de lotes.
+- Usabilidad: Falta de traducción para usuarios de diferentes lenguas.
+
+Objetivos de mejora:
+
+Para abordar estos problemas, se han establecido los siguientes objetivos de mejora:
+
+- Reducir el tiempo de búsqueda de productos a menos de 2 segundos.
+- Mejorar la legibilidad de los reportes con un nuevo diseño de alto contraste.
+- Implementar un módulo de historial de lotes para seguimiento detallado.
+- Añadir soporte multilingüe para ampliar la accesibilidad.
+
+### 8.1.2. Raw Material: Assumptions, Knowledge Gaps, Ideas, Claims.
+
+Esta sección consolida las fuentes de inspiración derivadas de la investigación de usuarios, el diseño de interfaces y la arquitectura del sistema:
+
+- **Assumptions (Suposiciones):** Son creencias o expectativas que se tienen sobre el comportamiento de los usuarios, el mercado o la tecnología, que aún no han sido validadas:
+  - Mejora de eficiencia de busqueda: Se asume que los usuarios valoran más la rapidez en la búsqueda de productos por nombre común cuando manejan una gran cantidad de SKUs.
+  - Reportes de alto contraste: Se asume que el rediseño de los reportes con un formato de alto contraste mejorará la legibilidad y reducirá los errores de interpretación.
+  - Módulo de historial de lotes: Se asume que la implementación de un módulo de historial de lotes permitirá a los usuarios realizar un seguimiento detallado de los movimientos de inventario, reduciendo las pérdidas por vencimiento en un 20%.
+  - Soporte multilingüe: Se asume que la adición de soporte multilingüe aumentará la accesibilidad de la aplicación, permitiendo a usuarios de diferentes lenguas utilizarla sin dificultades, lo que se traducirá en un aumento del 15% en la adopción por parte de usuarios no hispanohablantes.
+
+- **Knowledge Gaps (Brechas de Conocimiento):** Son áreas donde se carece de información o comprensión suficiente, lo que requiere investigación adicional para validar o refutar las suposiciones:
+  - No sabemos cuál es el tiempo máximo que un bodeguero está dispuesto a dedicar diariamente al ingreso de datos en la aplicación.
+  - No sabemos qué tan dispuestos están los usuarios a ingresar el SKU de cada producto frente a búsquedas por nombre común.
+  - No sabemos en qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos no detectados.
+  - No sabemos qué tan importante es para los usuarios tener acceso a reportes visuales de alto contraste en comparación con reportes tradicionales.
+  - No sabemos qué tan relevante es para los usuarios contar con un módulo de historial de lotes para su gestión diaria de inventarios.
+  - No sabemos qué tan importante es para los usuarios tener soporte multilingüe en la aplicación, considerando la diversidad lingüística en el mercado objetivo.
+
+- **Ideas:** Son propuestas de funcionalidades o mejoras basadas en la investigación y el diseño, que aún no han sido validadas:
+  - Implementación de flujos de registro de entrada/salida optimizados para dispositivos móviles (Mobile-first) para permitir el conteo a pie de estantería.
+  - Centralización de la gestión de proveedores vinculada directamente a la reposición de lotes para automatizar la cadena de suministro.
+
+- **Claims (Afirmaciones):** Son declaraciones hechas sobre el producto ya sea por stakeholders o usuarios.
+  - La aplicación es fácil de usar y mejora significativamente la gestión de inventarios en comparación con los métodos manuales anteriores.
+  - La función de búsqueda por nombre común es esencial para manejar grandes catálogos de productos, ya que los usuarios no recuerdan los SKUs.
+  - Los reportes de alto contraste son cruciales para mejorar la legibilidad y reducir errores en la interpretación de datos.
+  - El módulo de historial de lotes es una herramienta indispensable para el seguimiento detallado de los movimientos de inventario y la reducción de pérdidas por vencimiento.
+  - El soporte multilingüe es fundamental para ampliar la accesibilidad de la aplicación a usuarios de diferentes lenguas, aumentando su adopción.
+
+### 8.1.3. Experiment-Ready Questions.
+
+En esta etapa, transformamos las suposiciones y brechas de conocimiento en preguntas concretas que guiarán nuestros experimentos. Estas se dividen en dos categorías principales para asegurar tanto la validación de nuestras premisas como el descubrimiento de nuevas oportunidades.
+
+#### Preguntas Impulsadas por Creencias (Belief-led)
+Estas preguntas buscan validar o refutar una premisa específica que el equipo considera verdadera pero que carece de evidencia empírica.
+* **BC1:** ¿El uso de un diseño de alto contraste en los reportes reduce realmente los errores de interpretación de datos en un 30% durante jornadas nocturnas?
+* **BC2:** ¿La implementación del historial de lotes es el factor determinante para que un usuario decida pagar por la suscripción mensual en lugar de seguir usando Excel?
+* **BC3:** ¿Es la búsqueda por nombre común más rápida que el escaneo de SKU para usuarios que manejan menos de 50 productos distintos?
+
+#### Preguntas Exploratorias
+Diseñadas para generar conocimiento en áreas donde no tenemos creencias previas o el comportamiento del usuario es incierto.
+* **EX1:** ¿Qué criterios específicos utiliza un dueño de bodega para decidir qué productos merecen un seguimiento por lotes y cuáles no?
+* **EX2:** ¿Cómo varía la tolerancia a la latencia de búsqueda cuando el usuario está atendiendo a un cliente en paralelo frente a cuando realiza inventario a puerta cerrada?
+* **EX3:** ¿Qué otros idiomas o modismos regionales son críticos para que la aplicación se sienta "local" en mercados fuera de la capital?
+
+#### Técnica de las "Cinco Ws (y una H)" para el Descubrimiento de Premisas
+Utilizamos esta técnica para profundizar en el problema central de la **gestión manual de vencimientos** y descubrir necesidades ocultas de usuarios como Carla Rodríguez.
+
+| Dimensión | Pregunta | Hallazgo / Premisa Oculta |
+|:---|:---|:---|
+| **Who (Quién)** | ¿Quién es el responsable de verificar los vencimientos? | Generalmente es el dueño; si lo delega, pierde confianza por falta de un sistema de control. |
+| **What (Qué)** | ¿Qué sucede exactamente cuando un producto vence? | Se genera una pérdida neta o se intenta devolver al proveedor, lo cual genera fricción y pérdida de tiempo. |
+| **Where (Dónde)**| ¿Dónde ocurre la verificación? | En el almacén físico, a menudo con poca iluminación y espacio reducido (necesidad de movilidad y contraste). |
+| **When (Cuándo)** | ¿Cuándo se dan cuenta del vencimiento? | Generalmente cuando el cliente ya tiene el producto en la mano o durante un conteo físico aleatorio. |
+| **Why (Por qué)** | ¿Por qué no usan herramientas digitales hoy? | Porque el Excel requiere una computadora y tiempo de oficina que no tienen durante la operación. |
+| **How (Cómo)** | ¿Cómo calculan hoy cuándo reponer? | Basándose en la memoria visual de los estantes ("ojímetro"), lo cual es propenso a errores humanos. |
+
+A partir de este análisis, surge la pregunta lista para experimento: *¿Podemos automatizar la "confianza" del dueño mediante alertas preventivas que lleguen directamente a su WhatsApp?*
+
+### 8.1.4. Question Backlog.
+
+Esta sección presenta el backlog como una lista priorizada de preguntas de investigación. El sistema de puntuación evalúa cada pregunta del 1 al 5 en cuatro criterios: **Confianza (C)** (qué tan seguros estamos del conocimiento actual), **Riesgo (R)** (qué tan crítico es equivocarnos en este punto), **Impacto (I)** (cuánto valor aporta resolverlo) e **Interés (In)** (relevancia para los stakeholders). En caso de empate en la puntuación total, se prioriza la pregunta con mayor puntaje en **Riesgo**.
+
+#### Broad Backlog (Preguntas de Negocio y Adopción)
+
+Estas preguntas abordan la propuesta de valor y el modelo de negocio de manera general.
+
+| ID | Pregunta de Investigación | El "Por qué" (Motivación) | C | R | I | In | Total |
+|:---|:---|:---|:---:|:---:|:---:|:---:|:---:|
+| QB1 | ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos no detectados? | Si el costo supera la percepción de ahorro por mermas, el modelo de negocio no será sostenible para pymes. | 2 | 5 | 5 | 5 | **17** |
+| QB2 | ¿Qué tan relevante es el soporte multilingüe para la adopción en mercados con diversidad lingüística? | Validar si el esfuerzo técnico de internacionalización justifica el crecimiento esperado en nuevos segmentos. | 3 | 2 | 2 | 3 | **10** |
+
+#### Deep Backlog (Preguntas de Ejecución y UX)
+
+Estas preguntas profundizan en funcionalidades específicas y la interacción técnica del usuario.
+
+| ID | Pregunta de Investigación | El "Por qué" (Motivación) | C | R | I | In | Total |
+|:---|:---|:---|:---:|:---:|:---:|:---:|:---:|
+| QD1 | ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento en un 20% como se supone? | Es el núcleo de la propuesta de valor para bodegas de consumo masivo; fallar aquí invalida la utilidad del módulo. | 4 | 5 | 5 | 3 | **17** |
+| QD2 | ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse? | La latencia en la búsqueda impacta directamente en la productividad diaria del bodeguero. | 3 | 4 | 4 | 4 | **15** |
+| QD3 | ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes en entornos de baja iluminación? | Muchos bodegueros operan en almacenes con luz limitada o fatiga visual tras jornadas largas. | 4 | 2 | 3 | 3 | **12** |
+
+**Análisis de Priorización:**
+1. **QB1 y QD1 (Empate - 17 pts):** Ambas representan el mayor riesgo estratégico (5). Se abordarán en paralelo ya que QB1 valida la viabilidad comercial y QD1 la viabilidad técnica de la solución.
+2. **QD2 (15 pts):** Crucial para la retención del usuario a largo plazo.
+3. **QD3 (12 pts):** Mejora incremental de accesibilidad.
+4. **QB2 (10 pts):** Considerada de baja prioridad hasta consolidar el mercado local.
+
+### 8.1.5. Experiment Cards.
+
+En esta sección se detallan las Tarjetas de Experimento para las preguntas de mayor prioridad. Estas tarjetas actúan como el contrato del experimento antes de su ejecución.
+
+#### Tarjeta de Experimento 01: Viabilidad de Suscripción (QB1)
+
+**Lado Frontal: El Qué y el Por Qué**
+*   **Pregunta:** ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos?
+*   **Why?:** Si el costo de StockTrack supera la percepción de ahorro por reducción de mermas, los usuarios como Carla no adoptarán la solución a largo plazo.
+*   **Hypothesis:** Creemos que los dueños de bodegas aceptarán un costo mensual de $15 USD si el sistema demuestra mediante un reporte inicial que sus pérdidas por vencimiento superan los $50 USD mensuales.
+*   **What:** Un prototipo de alta fidelidad en Figma que simula un "Calculador de Retorno de Inversión (ROI)" donde el usuario ingresa sus mermas estimadas y ve el costo de la App contrastado.
+
+**Lado Posterior: Configuración**
+*   **Medidas:** Porcentaje de usuarios que hacen clic en el botón "Adquirir Plan" tras interactuar con la calculadora de ahorro.
+*   **Condiciones:** Entrevistas guiadas con 10 dueños de bodegas (Segmento 1) utilizando el prototipo.
+*   **Escala:** El experimento se considera exitoso si al menos 7 de cada 10 usuarios consideran que el precio es "Justo" o "Barato" en relación al valor percibido de ahorro.
+
+---
+
+#### Tarjeta de Experimento 02: Eficacia del Historial de Lotes (QD1)
+
+**Lado Frontal: El Qué y el Por Qué**
+*   **Pregunta:** ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento?
+*   **Why?:** Validar que la funcionalidad técnica realmente soluciona el problema de negocio de Andrés (pérdida de dinero por stock "olvidado").
+*   **Hypothesis:** Creemos que proporcionar una vista de "Lotes Próximos a Vencer" con alertas de 7 días de anticipación permitirá a los usuarios realizar ventas de liquidación, reduciendo las pérdidas físicas en un 20%.
+*   **What:** Un MVP funcional (módulo de lotes) conectado a una base de datos real con 20 productos de prueba para un usuario seleccionado.
+*   **Type:** Experiment-Ready (Ready to build).
+
+**Lado Posterior: Configuración**
+*   **Medidas:** Cantidad de productos que llegaron a su fecha de vencimiento sin ser vendidos/devueltos comparado con el registro manual del mes anterior.
+*   **Condiciones:** Uso de la funcionalidad por parte de 5 usuarios "Early Adopters" durante un ciclo de inventario (15 días).
+*   **Escala:** Éxito si se registra una reducción de al menos el 15% en mermas reales durante el periodo de prueba.
+
+---
+
+#### Tarjeta de Experimento 03: Tolerancia a Latencia de Búsqueda (QD2)
+
+**Lado Frontal: El Qué y el Por Qué**
+*   **Pregunta:** ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse?
+*   **Why?:** La fluidez en la atención al cliente depende de la rapidez de la App; una búsqueda lenta obliga al usuario a volver al cuaderno físico.
+*   **Hypothesis:** Creemos que una respuesta de búsqueda superior a los 2 segundos provocará que el usuario abandone el uso de la App en momentos de alta afluencia de clientes.
+*   **What:** Un prototipo funcional que permite ajustar artificialmente el tiempo de respuesta del buscador (0.5s, 1.5s, 3s) para observar reacciones.
+
+**Lado Posterior: Configuración**
+*   **Medidas:** Tasa de abandono de la tarea de búsqueda y nivel de frustración reportado (Escala Likert).
+*   **Condiciones:** Pruebas de usabilidad con 8 usuarios simulando una situación de "atención bajo presión".
+*   **Escala:** El experimento identifica el "punto de quiebre". Se define éxito técnico si logramos mantener la latencia por debajo del umbral identificado (objetivo < 1.5s).
+
+---
+
+#### Tarjeta de Experimento 04: Impacto del Alto Contraste (QD3)
+
+**Lado Frontal: El Qué y el Por Qué**
+*   **Pregunta:** ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes?
+*   **Why?:** Los almacenes de las bodegas suelen tener iluminación deficiente y los usuarios (como Carla) presentan fatiga visual tras jornadas largas.
+*   **Hypothesis:** Creemos que un diseño de alto contraste reducirá el tiempo de identificación de productos críticos en un 25% bajo condiciones de poca luz.
+*   **What:** Test A/B con dos versiones del dashboard de reportes: una estándar y otra con paleta de colores de alto contraste.
+
+**Lado Posterior: Configuración**
+*   **Medidas:** Tiempo (segundos) requerido para encontrar la fecha de vencimiento de un producto específico en el reporte.
+*   **Condiciones:** Pruebas controladas con 6 usuarios en una habitación con iluminación reducida (< 100 lux).
+*   **Escala:** Éxito si la versión de alto contraste muestra una mejora del 20% en la velocidad de lectura frente a la versión estándar.
+
+---
+
+#### Tarjeta de Experimento 05: Soporte Multilingüe / Localización (QB2)
+
+**Lado Frontal: El Qué y el Por Qué**
+*   **Pregunta:** ¿Qué tan relevante es el soporte multilingüe para la adopción en mercados con diversidad lingüística?
+*   **Why?:** Queremos validar si el esfuerzo técnico de internacionalización justifica el crecimiento esperado en nuevos segmentos o si el español es suficiente para la fase de tracción.
+*   **Hypothesis:** Creemos que ofrecer la interfaz con terminología localizada (o idiomas originarios según la región) incrementará la confianza del usuario en un 15%, ya que reduce la barrera de "tecnología ajena".
+*   **What:** Una "Landing Page" de registro y una pantalla de inventario traducidas a un segundo idioma (ej. Quechua o inglés técnico para exportadores) para medir el interés mediante registros.
+
+**Lado Posterior: Configuración**
+*   **Medidas:** Tasa de conversión (sign-up) en la versión localizada frente a la versión estándar.
+*   **Condiciones:** Campaña de anuncios segmentada o visitas presenciales a 10 negocios en zonas con bilingüismo predominante.
+*   **Escala:** Éxito si al menos el 20% de los nuevos interesados optan por la versión localizada al momento del registro.
+
+## 8.2. Experiment Design
+
+### 8.2.1. Hypotheses.
+
+Basándonos en las Experiment Cards, formalizamos las hipótesis de trabajo para el desarrollo del producto:
+
+1.  **H1 (Negocio):** Si presentamos a los bodegueros una comparativa visual entre el costo de suscripción y sus pérdidas proyectadas por merma, entonces la tasa de conversión a planes premium aumentará, porque el usuario percibirá el software como una inversión y no como un gasto.
+2.  **H2 (Técnica/UX):** Si implementamos un sistema de gestión de lotes con ordenamiento cronológico inverso (el más próximo a vencer primero), entonces el tiempo de toma de decisiones para rebajas de stock se reducirá, porque el usuario no tendrá que buscar manualmente en anaqueles.
+3.  **H3 (Adopción):** Si adaptamos la terminología de la aplicación a modismos locales o idiomas regionales, entonces la curva de aprendizaje se reducirá, porque el usuario sentirá que la herramienta fue diseñada específicamente para su contexto cultural y operativo.
+
+### 8.2.2. Domain Business Metrics
+
+Para medir el éxito de los experimentos desde una perspectiva de dominio, utilizaremos:
+
+*   **Merchandise Shrinkage Rate (Tasa de Merma):** Porcentaje de inventario perdido por vencimiento sobre el inventario total.
+*   **Customer Acquisition Cost (CAC) vs. LTV:** Relación entre el costo de atraer a un bodeguero y el valor que aporta al suscribirse.
+*   **Task Completion Time (Búsqueda):** Tiempo que tarda el usuario en encontrar un lote específico dentro del sistema.
+
+### 8.2.3. Measures.
+
+### 8.2.4. Conditions.
+
+### 8.2.5. Scale Calculations and Decisions.
+
+### 8.2.6. Methods Selection.
+
+### 8.2.7. Data Analytics: Goals, KPIs and Metrics Selection.
+
+### 8.2.8. Web and Mobile Tracking Plan.
+
+## 8.3. Experimentation
+
+### 8.3.1. To-Be User Stories.
+
+### 8.3.2. To-Be Product Backlog
