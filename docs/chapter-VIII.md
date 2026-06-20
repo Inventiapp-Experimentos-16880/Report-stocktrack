@@ -412,6 +412,91 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 
 ### 8.2.5. Scale Calculations and Decisions.
 
+Para cada hipótesis, definimos una escala de decisión basada en las métricas clave identificadas en la sección 8.2.3. Esta escala determina si los resultados son **ideales** (validan completamente la hipótesis), **aceptables** (validan parcialmente, requieren refinamiento), o **desfavorables** (invalidan la hipótesis, requieren rediseño o descarte de la funcionalidad).
+ 
+---
+ 
+#### Hipótesis 1: Viabilidad del Modelo de Suscripción
+ 
+| Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
+| --- | --- | --- | --- |
+| **Índice de Justicia de Precio** | < 60% califica "Justo/Barato" | 60-79% | **≥ 80%** |
+| **Tasa de Conversión Percibida** | < 50% (menos de 5 de 10) hace clic en "Adquirir Plan" | 50-69% (5-6 de 10) | **≥ 70% (7 de 10)** |
+ 
+**Decisión:**
+ 
+- **Ideal:** El precio se valida tal como está planteado; se aprueba avanzar directamente al desarrollo del flujo de pago.
+- **Aceptable:** El precio es viable pero requiere reforzar la narrativa de ahorro (ej. mejorar la calculadora de ROI, agregar testimonios) antes de lanzar el cobro real.
+- **Desfavorable:** Se rechaza el precio actual; se requiere replantear el modelo (ej. plan freemium, precio escalonado por tamaño de bodega) antes de continuar.
+---
+ 
+#### Hipótesis 2: Eficacia del Historial de Lotes
+ 
+| Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
+| --- | --- | --- | --- |
+| **Reducción de Mermas Reales** | < 15% | 15-19% | **≥ 20%** |
+| **Tasa de Acción sobre Alertas** | < 40% | 40-59% | **≥ 60%** |
+ 
+**Decisión:**
+ 
+- **Ideal:** El módulo de lotes se valida como núcleo de la propuesta de valor; se aprueba para producción sin cambios mayores.
+- **Aceptable:** El módulo ayuda, pero no es suficiente por sí solo; se recomienda añadir un canal de alerta más agresivo (ej. notificación a WhatsApp) antes de producción.
+- **Desfavorable:** Se rechaza la hipótesis; el problema de raíz no es la visibilidad de fechas sino la falta de tiempo/incentivo para actuar. Requiere rediseño del flujo de alertas o investigación adicional.
+---
+ 
+#### Hipótesis 3: Adopción por Localización
+ 
+| Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
+| --- | --- | --- | --- |
+| **Tasa de Registro Localizado** | < 20% | 20-29% | **≥ 30%** |
+| **Incremento en Confianza Percibida** | < 10% | 10-14% | **≥ 15%** |
+ 
+**Decisión:**
+ 
+- **Ideal:** La localización es un driver de adopción claro; se prioriza la internacionalización completa en el roadmap.
+- **Aceptable:** Existe interés moderado; se pospone la inversión completa, pero se mantiene la opción de idioma como mejora incremental.
+- **Desfavorable:** El idioma no es una barrera crítica; se descarta la internacionalización como prioridad y se reasignan recursos a otras funcionalidades (ej. H1, H2).
+---
+ 
+#### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
+ 
+| Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
+| --- | --- | --- | --- |
+| **Tiempo de Respuesta de Búsqueda** | > 1.5 segundos | 1 - 1.5 segundos | **< 1 segundo** |
+| **Nivel de Frustración (escalón 1.5s)** | > 3/5 | 2 - 3/5 | **≤ 2/5** |
+ 
+**Decisión:**
+ 
+- **Ideal:** El rendimiento actual del buscador es suficiente; no se requiere optimización adicional antes del lanzamiento.
+- **Aceptable:** El rendimiento es tolerable, pero se recomienda optimizar índices de búsqueda en backend antes de escalar a más usuarios.
+- **Desfavorable:** Bloqueante; se requiere rediseño técnico del motor de búsqueda (ej. índices, caché) antes de cualquier lanzamiento, dado que la latencia empuja al usuario de vuelta al cuaderno físico.
+---
+ 
+#### Hipótesis 5: Impacto del Alto Contraste
+ 
+| Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
+| --- | --- | --- | --- |
+| **Mejora en Tiempo de Identificación** | < 20% | 20-24% | **≥ 25%** |
+| **Tasa de Error de Lectura (alto contraste)** | > 10% | 5-10% | **≤ 5%** |
+ 
+**Decisión:**
+ 
+- **Ideal:** El rediseño de alto contraste se valida completamente; se aprueba como diseño por defecto de los reportes.
+- **Aceptable:** Hay mejora real pero modesta; se mantiene como opción de accesibilidad (toggle) en lugar de reemplazar el diseño estándar.
+- **Desfavorable:** El esfuerzo de rediseño no se justifica frente a otras mejoras de usabilidad; se descarta o se prioriza más abajo en el backlog.
+---
+ 
+#### Resumen de Criterios de Decisión Global
+ 
+Para determinar si el **conjunto completo de experimentos** justifica avanzar de prototipo/MVP a producto comercial, aplicamos la siguiente regla:
+ 
+- **Avance a Desarrollo Completo Aprobado:** Si **al menos 4 de 5 hipótesis** obtienen resultados "Ideales" o "Aceptables" (con refinamiento menor), el conjunto de experimentos se considera exitoso.
+- **Avance Condicional (Requiere Refinamiento):** Si **3 de 5 hipótesis** obtienen "Ideal/Aceptable", pero 2 obtienen "Desfavorable", las funcionalidades que fracasaron deben ser rediseñadas o eliminadas del alcance del MVP inicial.
+- **Rechazo / Pivote del Producto:** Si **3 o más hipótesis** obtienen resultados "Desfavorables", el conjunto de experimentos fracasa. Se requiere investigación adicional (entrevistas, análisis de causas raíz) antes de continuar invirtiendo en desarrollo.
+**Justificación:**
+ 
+Esta escala de decisión permite un enfoque pragmático: no todas las funcionalidades deben ser perfectas para validar el valor del producto, pero sí debe haber una mayoría clara de validaciones exitosas. Esto es especialmente relevante para H1 (viabilidad del modelo de negocio) y H2 (eficacia del módulo de lotes), que son las hipótesis de mayor riesgo según el scoring de 8.1.4 (Total Score 17 cada una).
+
 ### 8.2.6. Methods Selection.
 
 ### 8.2.7. Data Analytics: Goals, KPIs and Metrics Selection.
