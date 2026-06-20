@@ -581,6 +581,52 @@ Adicionalmente, se evaluaron las siguientes herramientas para ejecutar los méto
 
 ### 8.2.7. Data Analytics: Goals, KPIs and Metrics Selection.
 
+Previo al despliegue con usuarios, validamos la estabilidad y eficiencia técnica de nuestra aplicación experimental. Mediante Google Lighthouse, examinamos el rendimiento, la accesibilidad y el cumplimiento de estándares en las secciones más críticas.
+
+**Pantalla: Dashboard**
+
+![Resumen Lighthouse del Dashboard](../assets/img/chapter-VIII/lighthouse-dashboard-overview.png)
+ 
+![Detalle de Performance del Dashboard](../assets/img/chapter-VIII/lighthouse-dashboard-performance.png)
+ 
+**Performance (62):** Puntaje "naranja" (mejorable). El First Contentful Paint y el Largest Contentful Paint se ubican en 3.4s y el Speed Index en 7.6s, valores por encima del umbral de tolerancia de 1.5-2s definido como Condición Experimental para H4 (8.2.4). Esto confirma cuantitativamente el problema de rendimiento señalado en el As-Is (8.1.1).
+ 
+![Detalle de Accessibility del Dashboard](../assets/img/chapter-VIII/lighthouse-dashboard-accessibility.png)
+ 
+**Accessibility (94):** Puntaje alto, pero Lighthouse detecta automáticamente que el contraste entre el fondo y el primer plano no es suficiente, además de la ausencia de un landmark principal en el documento. Este hallazgo es **evidencia técnica directa del problema de bajo contraste** descrito en el As-Is (8.1.1) y valida objetivamente la necesidad del experimento de Hipótesis 5, antes incluso de ejecutar el Test A/B con usuarios.
+ 
+![Detalle de Best Practices del Dashboard](../assets/img/chapter-VIII/lighthouse-dashboard-best-practices.png)
+ 
+**Best Practices (100):** Puntaje perfecto. La aplicación mitiga ataques XSS, aplica aislamiento de origen (COOP) y protección contra clickjacking, sin vulnerabilidades de seguridad evidentes.
+ 
+![Detalle de SEO del Dashboard](../assets/img/chapter-VIII/lighthouse-dashboard-seo.png)
+ 
+**SEO (75):** Aceptable pero poco relevante: el dashboard es una pantalla interna que requiere autenticación, por lo que no necesita ser indexada por motores de búsqueda (de ahí las alertas de `robots.txt` inválido y enlaces no rastreables).
+
+---
+
+**Pantalla: Inventario**
+ 
+![Resumen Lighthouse de Inventario](../assets/img/chapter-VIII/lighthouse-inventario-overview.png)
+ 
+![Detalle de Performance de Inventario](../assets/img/chapter-VIII/lighthouse-inventario-performance.png)
+ 
+**Performance (54):** Es el puntaje más bajo de las dos pantallas auditadas. El FCP y el LCP suben a 6.7s y el Speed Index a 9.6s, casi el doble que en el Dashboard. Dado que esta es precisamente la pantalla donde ocurre la **búsqueda de productos por nombre** (el problema de rendimiento ya identificado en 8.1.1 y el foco de Hipótesis 4), este resultado funciona como **línea base real previa al experimento**: confirma que, incluso sin throttling artificial, la latencia base del sistema ya se acerca al umbral de frustración (>1.5s) definido en la Escala de Decisión de H4 (8.2.5).
+ 
+![Detalle de Accessibility de Inventario](../assets/img/chapter-VIII/lighthouse-inventario-accessibility.png)
+ 
+**Accessibility (95):** Igual que en el Dashboard, se repite la alerta de contraste insuficiente entre fondo y primer plano. Que el mismo issue aparezca en ambas pantallas refuerza que el bajo contraste **no es un caso aislado sino un patrón de diseño transversal** en la aplicación, consistente con la Tarjeta de Experimento 04 e Hipótesis 5.
+ 
+![Detalle de Best Practices de Inventario](../assets/img/chapter-VIII/lighthouse-inventario-best-practices.png)
+ 
+**Best Practices (100):** Puntaje perfecto, con detección correcta de las librerías de JavaScript utilizadas; se señala como mejora menor la ausencia de source maps para JavaScript de primera parte (no crítico para el experimento).
+ 
+![Detalle de SEO de Inventario](../assets/img/chapter-VIII/lighthouse-inventario-seo.png)
+ 
+**SEO (75):** Mismos hallazgos que en el Dashboard (meta descripción ausente, `robots.txt` inválido); poco relevante dado que es una pantalla protegida por login.
+ 
+---
+
 ### 8.2.8. Web and Mobile Tracking Plan.
 
 ## 8.3. Experimentation
