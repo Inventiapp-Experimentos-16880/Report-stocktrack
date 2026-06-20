@@ -312,6 +312,69 @@ Estas métricas de dominio se alinean con los objetivos estratégicos de StockTr
 
 ### 8.2.3. Measures.
 
+Esta sección define las métricas específicas que se utilizarán para medir el éxito de cada una de las 5 hipótesis formuladas en la sección 8.2.1. Cada métrica es medible, cuantificable, y directamente relacionada con los criterios de éxito establecidos en las Tarjetas de Experimento.
+ 
+---
+ 
+#### Hipótesis 1: Viabilidad del Modelo de Suscripción
+ 
+**Question:** ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos?
+ 
+**Métricas:**
+ 
+- **Tasa de Conversión Percibida (Perceived Conversion Rate):** Porcentaje de usuarios que hacen clic en "Adquirir Plan" tras interactuar con la calculadora de ROI. **Criterio de éxito: ≥70%** (7 de 10 usuarios).
+- **Índice de Justicia de Precio (Price Fairness Score):** Porcentaje de usuarios que califican el precio como "Justo" o "Barato" frente al ahorro proyectado. **Criterio de éxito: ≥70%.**
+---
+ 
+#### Hipótesis 2: Eficacia del Historial de Lotes
+ 
+**Question:** ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento?
+ 
+**Métricas:**
+ 
+- **Reducción de Mermas Reales (Shrinkage Reduction Rate):** Comparación de productos vencidos sin vender/devolver durante el ciclo de prueba (15 días) frente al registro manual del mes anterior. **Criterio de éxito: reducción ≥15%.**
+- **Tasa de Acción sobre Alertas (Alert Action Rate):** Porcentaje de alertas de "7 días para vencer" que derivan en una acción del usuario dentro de las 48 horas siguientes. **Criterio de éxito: ≥60%.**
+---
+ 
+#### Hipótesis 3: Adopción por Localización
+ 
+**Question:** ¿Qué tan relevante es el soporte multilingüe para la adopción en mercados con diversidad lingüística?
+ 
+**Métricas:**
+ 
+- **Tasa de Registro Localizado (Localized Sign-up Rate):** Porcentaje de nuevos interesados que optan por la versión localizada al momento del registro. **Criterio de éxito: ≥20%.**
+- **Puntuación de Confianza Percibida (Trust Perception Score):** Escala Likert 1-5 sobre "siento que esta aplicación fue hecha para mi negocio". **Criterio de éxito: incremento ≥15% frente a la versión estándar.**
+---
+ 
+#### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
+ 
+**Question:** ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse?
+ 
+**Métricas:**
+ 
+- **Tiempo de Respuesta de Búsqueda (Search Response Time):** Tiempo en segundos desde que el usuario ingresa el término hasta que ve resultados. **Criterio de éxito: <1.5 segundos.**
+- **Tasa de Abandono de Tarea (Task Abandonment Rate):** Porcentaje de búsquedas interrumpidas bajo el escenario "atención bajo presión". **Criterio de éxito: abandono significativamente menor en el escalón de 1.5s frente a 3s.**
+- **Nivel de Frustración (Frustration Score):** Escala Likert 1-5 reportada tras cada escalón de latencia probado. **Criterio de éxito: ≤2/5 en el escalón de 1.5s.**
+---
+ 
+#### Hipótesis 5: Impacto del Alto Contraste
+ 
+**Question:** ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes?
+ 
+**Métricas:**
+ 
+- **Tiempo de Identificación (Identification Time):** Segundos requeridos para localizar la fecha de vencimiento de un producto en el reporte. **Criterio de éxito: mejora ≥20% frente a la versión estándar.**
+- **Tasa de Error de Lectura (Reading Error Rate):** Porcentaje de respuestas incorrectas al identificar un dato bajo iluminación reducida (<100 lux). **Criterio de éxito: ≤5% en la versión de alto contraste.**
+---
+ 
+**Resumen de Métricas por Tipo:**
+ 
+- **Métricas de Eficiencia:** Search Response Time, Identification Time
+- **Métricas de Calidad:** Reading Error Rate, Task Abandonment Rate
+- **Métricas de Adopción:** Perceived Conversion Rate, Localized Sign-up Rate, Alert Action Rate
+- **Métricas de Satisfacción:** Price Fairness Score, Trust Perception Score, Frustration Score
+- **Métricas de Impacto Operativo:** Shrinkage Reduction Rate
+
 ### 8.2.4. Conditions.
 
 ### 8.2.5. Scale Calculations and Decisions.
