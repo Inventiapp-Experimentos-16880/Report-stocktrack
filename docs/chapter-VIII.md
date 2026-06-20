@@ -581,7 +581,235 @@ Adicionalmente, se evaluaron las siguientes herramientas para ejecutar los méto
 
 ### 8.2.7. Data Analytics: Goals, KPIs and Metrics Selection.
 
+Previo al despliegue con usuarios, validamos la estabilidad y eficiencia técnica de nuestra aplicación experimental. Mediante Google Lighthouse, examinamos el rendimiento, la accesibilidad y el cumplimiento de estándares en las secciones más críticas.
+
+**Pantalla: Dashboard**
+
+![Resumen Lighthouse del Dashboard](../assets/img/chapter-VIII/lighthouse-dashboard-overview.png)
+ 
+![Detalle de Performance del Dashboard](../assets/img/chapter-VIII/lighthouse-dashboard-performance.png)
+ 
+**Performance (62):** Puntaje "naranja" (mejorable). El First Contentful Paint y el Largest Contentful Paint se ubican en 3.4s y el Speed Index en 7.6s, valores por encima del umbral de tolerancia de 1.5-2s definido como Condición Experimental para H4 (8.2.4). Esto confirma cuantitativamente el problema de rendimiento señalado en el As-Is (8.1.1).
+ 
+![Detalle de Accessibility del Dashboard](../assets/img/chapter-VIII/lighthouse-dashboard-accessibility.png)
+ 
+**Accessibility (94):** Puntaje alto, pero Lighthouse detecta automáticamente que el contraste entre el fondo y el primer plano no es suficiente, además de la ausencia de un landmark principal en el documento. Este hallazgo es **evidencia técnica directa del problema de bajo contraste** descrito en el As-Is (8.1.1) y valida objetivamente la necesidad del experimento de Hipótesis 5, antes incluso de ejecutar el Test A/B con usuarios.
+ 
+![Detalle de Best Practices del Dashboard](../assets/img/chapter-VIII/lighthouse-dashboard-best-practices.png)
+ 
+**Best Practices (100):** Puntaje perfecto. La aplicación mitiga ataques XSS, aplica aislamiento de origen (COOP) y protección contra clickjacking, sin vulnerabilidades de seguridad evidentes.
+ 
+![Detalle de SEO del Dashboard](../assets/img/chapter-VIII/lighthouse-dashboard-seo.png)
+ 
+**SEO (75):** Aceptable pero poco relevante: el dashboard es una pantalla interna que requiere autenticación, por lo que no necesita ser indexada por motores de búsqueda (de ahí las alertas de `robots.txt` inválido y enlaces no rastreables).
+
+---
+
+**Pantalla: Inventario**
+ 
+![Resumen Lighthouse de Inventario](../assets/img/chapter-VIII/lighthouse-inventario-overview.png)
+ 
+![Detalle de Performance de Inventario](../assets/img/chapter-VIII/lighthouse-inventario-performance.png)
+ 
+**Performance (54):** Es el puntaje más bajo de las dos pantallas auditadas. El FCP y el LCP suben a 6.7s y el Speed Index a 9.6s, casi el doble que en el Dashboard. Dado que esta es precisamente la pantalla donde ocurre la **búsqueda de productos por nombre** (el problema de rendimiento ya identificado en 8.1.1 y el foco de Hipótesis 4), este resultado funciona como **línea base real previa al experimento**: confirma que, incluso sin throttling artificial, la latencia base del sistema ya se acerca al umbral de frustración (>1.5s) definido en la Escala de Decisión de H4 (8.2.5).
+ 
+![Detalle de Accessibility de Inventario](../assets/img/chapter-VIII/lighthouse-inventario-accessibility.png)
+ 
+**Accessibility (95):** Igual que en el Dashboard, se repite la alerta de contraste insuficiente entre fondo y primer plano. Que el mismo issue aparezca en ambas pantallas refuerza que el bajo contraste **no es un caso aislado sino un patrón de diseño transversal** en la aplicación, consistente con la Tarjeta de Experimento 04 e Hipótesis 5.
+ 
+![Detalle de Best Practices de Inventario](../assets/img/chapter-VIII/lighthouse-inventario-best-practices.png)
+ 
+**Best Practices (100):** Puntaje perfecto, con detección correcta de las librerías de JavaScript utilizadas; se señala como mejora menor la ausencia de source maps para JavaScript de primera parte (no crítico para el experimento).
+ 
+![Detalle de SEO de Inventario](../assets/img/chapter-VIII/lighthouse-inventario-seo.png)
+ 
+**SEO (75):** Mismos hallazgos que en el Dashboard (meta descripción ausente, `robots.txt` inválido); poco relevante dado que es una pantalla protegida por login.
+ 
+---
+
 ### 8.2.8. Web and Mobile Tracking Plan.
+
+Para recolectar de forma automática los datos cuantitativos definidos en las Métricas (8.2.3) y complementar la auditoría técnica de 8.2.7, se implementará un plan de Event Tracking sobre la aplicación web desplegada, registrando los eventos en una tabla `experiment_events` en el entorno de staging del backend (Spring Boot + Railway).
+
+**No todas las hipótesis generan eventos automatizados.** Siguiendo la misma lógica de los Métodos de 8.2.6, solo se instrumentan las hipótesis que corren sobre **software real y desplegado**:
+
+| Hipótesis | Método (8.2.6) | ¿Corre sobre app real? | ¿Genera eventos en `experiment_events`? |
+| :--- | :--- | :---: | :---: |
+| H1 — Suscripción | Entrevista guiada sobre **prototipo Figma** | No | No (registro manual) |
+| H2 — Historial de Lotes | Piloto de campo sobre **MVP funcional en producción** | Sí | Sí |
+| H3 — Localización | **Fake Door** (landing + formulario reales) | Sí | Sí |
+| H4 — Latencia de Búsqueda | DevTools Throttling sobre **app real** | Sí | Sí |
+| H5 — Alto Contraste | Test A/B en **laboratorio** (cronómetro + luxómetro) | No | No (registro manual) |
+
+---
+
+#### Eventos a Rastrear (Tracking Events)
+
+Se creará una tabla `experiment_events` en la base de datos de staging para registrar las siguientes acciones:
+
+**1. Hipótesis 2: Eficacia del Historial de Lotes**
+
+**Evento: `batch_alert_triggered`**
+
+- **Disparador:** el sistema genera una alerta de "7 días para vencer" durante la verificación diaria.
+- **Datos a capturar:**
+  - `event_name`: "batch_alert_triggered"
+  - `alert_id`: [ID de la alerta generada]
+  - `batch_id`: [ID del lote]
+  - `user_id`: [ID del dueño de bodega]
+  - `timestamp`: Fecha y hora del evento
+
+**Evento: `batch_alert_action`**
+
+- **Disparador:** el usuario registra la acción de mitigación (liquidación o devolución) sobre una alerta. El cruce entre este evento y `batch_alert_triggered` (dentro de la ventana de 48h) calcula la **Alert Action Rate** (8.2.3).
+- **Datos a capturar:**
+  - `event_name`: "batch_alert_action"
+  - `alert_id`: [ID de la alerta atendida]
+  - `batch_id`: [ID del lote]
+  - `user_id`: [ID del dueño de bodega]
+  - `action_type`: ["liquidacion" o "devolucion"]
+  - `timestamp`: Fecha y hora del evento
+
+**Evento: `batch_history_viewed`**
+
+- **Disparador:** el usuario consulta el historial de entradas/salidas de un lote.
+- **Datos a capturar:**
+  - `event_name`: "batch_history_viewed"
+  - `batch_id`: [ID del lote consultado]
+  - `user_id`: [ID del dueño de bodega]
+  - `timestamp`: Fecha y hora del evento
+
+---
+
+**2. Hipótesis 3: Adopción por Localización (Fake Door)**
+
+**Evento: `localized_signup_completed`**
+
+- **Disparador:** un visitante completa el registro en la landing page o pantalla de inventario traducida (Fake Door, 8.2.6).
+- **Datos a capturar:**
+  - `event_name`: "localized_signup_completed"
+  - `session_id`: [identificador de sesión del visitante]
+  - `variant`: ["localizada" o "estandar"]
+  - `timestamp`: Fecha y hora del evento
+
+---
+
+**3. Hipótesis 4: Tolerancia a la Latencia de Búsqueda**
+
+**Evento: `product_search_performed`**
+
+- **Disparador:** cada búsqueda de producto por nombre común ejecutada en la pantalla de Inventario, ya sea en condiciones normales o durante las sesiones con Network Throttling.
+- **Datos a capturar:**
+  - `event_name`: "product_search_performed"
+  - `user_id`: [ID del dueño de bodega]
+  - `response_time_ms`: [tiempo medido entre el ingreso del término y la respuesta]
+  - `result_count`: [cantidad de coincidencias devueltas]
+  - `timestamp`: Fecha y hora del evento
+
+**Evento: `search_task_abandoned`**
+
+- **Disparador:** el usuario abandona la búsqueda antes de recibir resultados.
+- **Datos a capturar:**
+  - `event_name`: "search_task_abandoned"
+  - `user_id`: [ID del dueño de bodega]
+  - `elapsed_time_ms`: [tiempo transcurrido antes del abandono]
+  - `timestamp`: Fecha y hora del evento
+
+---
+
+#### Captura de Datos para Hipótesis 1 y 5 (sin eventos automatizados)
+
+Como se explicó, H1 y H5 se validan sobre un prototipo Figma y un test de laboratorio, por lo que sus datos **no** pasan por `experiment_events`: se registran manualmente en una planilla (Google Sheets).
+
+| Hipótesis | Dónde se registra | Campos capturados |
+| :--- | :--- | :--- |
+| H1 | Planilla de entrevista guiada | `usuario_id`, `clic_adquirir_plan` (sí/no), `calificacion_precio`, `perdida_estimada_usd` |
+| H5 | Planilla de laboratorio | `usuario_id`, `version` (estándar/alto contraste), `tiempo_identificacion_seg`, `respuesta_correcta` (sí/no) |
+
+---
+
+#### Estructura de la Tabla `experiment_events`
+
+```sql
+CREATE TABLE experiment_events (
+    event_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    event_name VARCHAR(50) NOT NULL,
+    user_id BIGINT,
+    session_id VARCHAR(100),
+    payload JSON,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_event_name (event_name),
+    INDEX idx_user_id (user_id),
+    INDEX idx_created_at (created_at)
+);
+```
+
+#### Herramienta de Análisis
+
+Los datos se almacenarán en `experiment_events` y se consultarán mediante SQL para alimentar los reportes de las hipótesis que sí corren sobre software real.
+
+**Ejemplo de Queries SQL:**
+
+- **Alert Action Rate (H2) — % de alertas atendidas dentro de 48h:**
+
+```sql
+SELECT
+    COUNT(DISTINCT t.payload->>'$.alert_id') AS alertas_generadas,
+    COUNT(DISTINCT a.payload->>'$.alert_id') AS alertas_atendidas_48h,
+    ROUND(
+        COUNT(DISTINCT a.payload->>'$.alert_id') * 100.0
+        / COUNT(DISTINCT t.payload->>'$.alert_id'), 1
+    ) AS alert_action_rate_pct
+FROM experiment_events t
+LEFT JOIN experiment_events a
+    ON a.event_name = 'batch_alert_action'
+    AND a.payload->>'$.alert_id' = t.payload->>'$.alert_id'
+    AND a.created_at <= t.created_at + INTERVAL 48 HOUR
+WHERE t.event_name = 'batch_alert_triggered';
+```
+
+#### Herramienta de Análisis
+
+Los datos se almacenarán en `experiment_events` y se consultarán mediante SQL para alimentar los reportes de las hipótesis que sí corren sobre software real.
+
+**Ejemplo de Queries SQL:**
+
+- **Search Response Time promedio (H4):**
+
+```sql
+SELECT AVG(CAST(payload->>'$.response_time_ms' AS UNSIGNED)) AS avg_response_time_ms
+FROM experiment_events
+WHERE event_name = 'product_search_performed'
+  AND created_at BETWEEN '2026-01-01' AND '2026-01-31';
+```
+
+#### Herramienta de Análisis
+
+Los datos se almacenarán en `experiment_events` y se consultarán mediante SQL para alimentar los reportes de las hipótesis que sí corren sobre software real.
+
+**Ejemplo de Queries SQL:**
+
+- **Search Response Time promedio (H4):**
+
+```sql
+SELECT AVG(CAST(payload->>'$.response_time_ms' AS UNSIGNED)) AS avg_response_time_ms
+FROM experiment_events
+WHERE event_name = 'product_search_performed'
+  AND created_at BETWEEN '2026-01-01' AND '2026-01-31';
+```
+
+- **Search Response Time promedio (H4):**
+
+```sql
+SELECT
+    payload->>'$.variant' AS variante,
+    COUNT(*) AS registros_completados
+FROM experiment_events
+WHERE event_name = 'localized_signup_completed'
+GROUP BY payload->>'$.variant';
+```
+
+Estos datos cuantitativos se complementarán con los datos cualitativos obtenidos de las entrevistas y encuestas para generar el análisis completo de resultados.
 
 ## 8.3. Experimentation
 La fase de experimentación traduce los aprendizajes en validación (definidos como hipótesis en 8.2) en requerimientos concretos para el siguiente ciclo. A diferencia de las User Stories del estado **As-Is** (sección 3.2), las **To-Be User Stories** representan únicamente los *incrementos* que el equipo decidió construir como resultado del proceso de Experiment-Driven Development. Por ello no reescriben funcionalidad ya existente (ej. el registro de lotes de US14, la búsqueda de US08 o las notificaciones de US05), sino que la extienden con las mejoras que cada experimento busca validar. Cada historia es trazable a una de las cinco hipótesis de 8.2.1 y a su Tarjeta de Experimento (8.1.5).
