@@ -499,6 +499,91 @@ Esta escala de decisión permite un enfoque pragmático: no todas las funcionali
 
 ### 8.2.6. Methods Selection.
 
+Para recolectar los datos de las métricas definidas en la sección 8.2.3 y evaluar los resultados según la escala de decisión de 8.2.5, se seleccionaron los siguientes métodos de experimentación y recolección de datos.
+
+---
+
+#### Hipótesis 1: Viabilidad del Modelo de Suscripción
+
+**Método: Entrevista Guiada con Prototipo (Concierge)**
+
+- **Propósito:** medir la disposición a pagar y la percepción de valor del precio.
+- **Ejecución:** se entrevista a cada uno de los 10 dueños de bodega mientras interactúan con el prototipo Figma de la calculadora de ROI, registrando si hacen clic en "Adquirir Plan" y su calificación verbal del precio.
+- **Herramientas:** Figma, guion de entrevista semiestructurado, planilla de registro de respuestas.
+
+---
+
+#### Hipótesis 2: Eficacia del Historial de Lotes
+
+**Método: Piloto de Campo sobre Producción Real (Field Trial)**
+
+- **Propósito:** medir el impacto real del módulo de lotes sobre las mermas, usando la aplicación ya desplegada en producción en lugar de un entorno aislado.
+- **Ejecución:** los 5 "Early Adopters" usan el módulo de lotes directamente en el frontend desplegado ([front-inventiapp.vercel.app](https://front-inventiapp.vercel.app/auth/login)), conectado al backend real en Railway, con cuentas de prueba dedicadas (ver nota de 8.2.4); durante un ciclo completo de inventario (15 días) se compara el conteo de productos vencidos no vendidos contra su registro manual del mes anterior.
+- **Herramientas:** módulo de lotes en producción (Spring Boot/Angular sobre Railway + Vercel), planilla de comparación pre/post.
+
+---
+
+#### Hipótesis 3: Adopción por Localización
+
+**Método: Prueba de Puerta Falsa (Fake Door / Smoke Test)**
+
+- **Propósito:** medir el interés real (no solo declarado) en la versión localizada.
+- **Ejecución:** se publica una landing page y una pantalla de inventario traducidas; se mide cuántos de los visitantes de 10 negocios en zonas bilingües completan el registro en la versión localizada vs. la estándar.
+- **Herramientas:** landing page bilingüe, formulario de registro, herramienta de analítica web (ej. Google Analytics).
+
+---
+
+#### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
+
+**Método: Medición de Latencia Real + Network Throttling (Chrome DevTools)**
+
+- **Propósito:** identificar el umbral de tiempo de respuesta a partir del cual el usuario se frustra o abandona la tarea, partiendo de la latencia real del sistema desplegado.
+- **Ejecución:** primero se mide la latencia base real del endpoint de búsqueda sobre la app desplegada usando la pestaña **Network** de Chrome DevTools (sin throttling). Luego, 8 usuarios realizan búsquedas sobre la misma app real bajo tres escalones de latencia simulados con **Network Throttling** de DevTools (0.5s/1.5s/3s) en un escenario de "atención bajo presión"; se registra tiempo, abandono y frustración reportada.
+- **Herramientas:** Chrome DevTools (pestaña Network + Throttling), app real (Vercel + Railway), encuesta Likert post-tarea.
+
+---
+
+#### Hipótesis 5: Impacto del Alto Contraste
+
+**Método: Test A/B Controlado en Laboratorio**
+
+- **Propósito:** cuantificar la mejora real en velocidad de lectura bajo condiciones de baja iluminación.
+- **Ejecución:** 6 usuarios resuelven la misma tarea de lectura (encontrar fecha de vencimiento) en ambas versiones del dashboard, en una sala con <100 lux.
+- **Herramientas:** dos versiones del dashboard, cronómetro, luxómetro.
+
+---
+
+#### Resumen de Métodos Seleccionados
+
+| Método | Hipótesis que Valida | Tipo de Datos | Herramientas Principales |
+| --- | --- | --- | --- |
+| Entrevista guiada (Concierge) | H1 | Cualitativo/Cuantitativo | Figma, guion de entrevista |
+| Piloto de campo sobre producción real | H2 | Cuantitativo | App real (Railway + Vercel), planilla pre/post |
+| Fake Door / Smoke Test | H3 | Cuantitativo | Landing page, analítica web |
+| Medición de latencia real + Throttling (DevTools) | H4 | Cuantitativo | Chrome DevTools, app real, encuesta Likert |
+| Test A/B de laboratorio | H5 | Cuantitativo | Dos versiones del dashboard, luxómetro |
+
+**Justificación de la Selección:**
+
+- **Entrevista guiada y Fake Door** (H1, H3) usan prototipos/landing pages aisladas porque buscan validar interés antes de comprometer el flujo real de cobro o de registro.
+- **Piloto de campo y Medición de Latencia Real** (H2, H4) se ejecutan directamente sobre la aplicación en producción ([backend-stocktrack-production.up.railway.app](https://backend-stocktrack-production.up.railway.app/swagger-ui/index.html) + [front-inventiapp.vercel.app](https://front-inventiapp.vercel.app/auth/login)), ya que ambas dependen de medir comportamiento y rendimiento real del sistema que efectivamente se va a lanzar, no de un sustituto.
+- **Test A/B** (H5) se mantiene en prototipo porque la versión de alto contraste todavía no existe como feature desplegada en producción.
+- Todos los métodos incluyen una componente de encuesta o entrevista que captura percepción de valor y satisfacción, complementando las métricas cuantitativas de comportamiento.
+
+---
+
+#### Comparativa de Herramientas de Medición
+
+Adicionalmente, se evaluaron las siguientes herramientas para ejecutar los métodos anteriores, comparando precio, capacidad de análisis, sencillez y ventajas:
+
+| Herramienta | Chrome DevTools | Google Forms | Google Analytics | Lighthouse |
+| --- | --- | --- | --- | --- |
+| **Precio** | Gratuito, integrado en el navegador | Gratuito | Gratuito / créditos gratis | Gratuito, ejecución local o en CI |
+| **Capacidad de Análisis** | Medición precisa de latencia de red real y simulación de throttling | Captura de respuestas cualitativas (Likert, abiertas) | Tráfico, conversión y comportamiento de usuarios en landing pages | Performance, Accessibility, Best Practices y SEO de una pantalla específica |
+| **Sencillez** | Requiere conocimiento técnico básico (pestaña Network) | Muy sencillo, sin curva de aprendizaje | Aprendizaje sencillo de las métricas principales | Información resumida en puntajes (0-100) por categoría |
+| **Ventajas** | Mide la app real sin necesidad de infraestructura adicional; clave para H4 | Recolección rápida de percepción de usuario para H1, H3 y H5 | Mide conversión real (registro) sin instrumentación manual; clave para H3 | Detecta si un mal rendimiento técnico podría contaminar los resultados de H4 y H5 |
+
+
 ### 8.2.7. Data Analytics: Goals, KPIs and Metrics Selection.
 
 ### 8.2.8. Web and Mobile Tracking Plan.
