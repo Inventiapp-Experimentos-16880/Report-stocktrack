@@ -377,6 +377,39 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 
 ### 8.2.4. Conditions.
 
+| Question | ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos? |
+| :--- | :--- |
+| **Condición Experimental** | El usuario interactúa con una calculadora de ROI que proyecta el ahorro mensual frente al costo del servicio. |
+| **Condición de Control** | El usuario visualiza únicamente el precio de la suscripción sin información comparativa sobre ahorro de mermas. |
+
+---
+
+| Question | ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento? |
+| :--- | :--- |
+| **Condición Experimental** | Los usuarios tienen acceso al módulo de "Lotes Próximos a Vencer" con alertas proactivas configuradas. |
+| **Condición de Control** | Los usuarios gestionan sus inventarios sin alertas, confiando en registros manuales o memoria visual. |
+
+---
+
+| Question | ¿Qué tan relevante es el soporte multilingüe para la adopción en mercados con diversidad lingüística? |
+| :--- | :--- |
+| **Condición Experimental** | Los usuarios acceden a una versión de la interfaz con terminología localizada (ej. idiomas originarios o inglés técnico). |
+| **Condición de Control** | Los usuarios acceden a la versión estándar de la aplicación exclusivamente en español. |
+
+---
+
+| Question | ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse? |
+| :--- | :--- |
+| **Condición Experimental** | Los usuarios realizan búsquedas con una latencia optimizada de 1.5 segundos. |
+| **Condición de Control** | Los usuarios realizan búsquedas con una latencia artificial elevada de 3 segundos para medir la fricción. |
+
+---
+
+| Question | ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes? |
+| :--- | :--- |
+| **Condición Experimental** | Los usuarios interactúan con el dashboard mediante una paleta de colores de alto contraste bajo iluminación reducida. |
+| **Condición de Control** | Los usuarios interactúan con el diseño estándar del dashboard bajo las mismas condiciones de baja iluminación. |
+
 ### 8.2.5. Scale Calculations and Decisions.
 
 ### 8.2.6. Methods Selection.
