@@ -1270,3 +1270,16 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
 </table>
 
 ### 8.3.2. To-Be Product Backlog
+El backlog prioriza según el scoring del Question Backlog (8.1.4): primero los incrementos de las hipótesis de mayor riesgo (QD1 y QB1, 17 pts), luego rendimiento (QD2, 15), accesibilidad (QD3, 12) y localización (QB2, 10).
+
+| # Orden | User Story Id | Título | Descripción | Story Points |
+| :------ | :------------ | :----- | :---------- | :----------- |
+| **01** | US17 | Registrar acción de mitigación sobre alertas de vencimiento próximo | Como dueño de bodega, quiero recibir una alerta anticipada de 7 días cuando un lote está próximo a vencer y registrar la acción que tomo, para actuar a tiempo y medir la efectividad de las alertas. | 5 |
+| **02** | US18 | Consultar el historial de movimientos por lote | Como dueño de bodega, quiero consultar el historial de entradas y salidas de cada lote, para hacer trazabilidad detallada y entender por qué un producto llegó a vencerse. | 3 |
+| **03** | US20 | Estimar el ahorro por mermas frente al costo de la suscripción | Como dueño de bodega, quiero comparar mis pérdidas estimadas por mermas con el costo del plan, para decidir de forma informada si la suscripción representa un ahorro. | 3 |
+| **04** | US21 | Contratar y gestionar el plan de suscripción | Como dueño de bodega, quiero contratar y administrar mi plan de suscripción, para acceder a las funcionalidades premium de la plataforma. | 8 |
+| **05** | US15 | Optimizar la búsqueda de productos por nombre común | Como dueño de bodega, quiero que la búsqueda por nombre común responda en menos de 1.5 segundos, para atender al cliente sin interrumpir la venta ni volver al registro manual. | 5 |
+| **06** | US22 | Visualizar el ahorro real por mermas evitadas | Como dueño de bodega, quiero ver el ahorro generado por las alertas de vencimiento que atendí, para confirmar el valor que aporta la plataforma frente a su costo. | 3 |
+| **07** | US16 | Visualizar reportes en modo de alto contraste | Como dueño de bodega, quiero activar un modo de alto contraste en los reportes, para leer los datos críticos sin errores en almacenes con poca iluminación o con fatiga visual. | 3 |
+| **08** | US19 | Recibir alertas de vencimiento por WhatsApp | Como dueño de bodega, quiero recibir las alertas de vencimiento próximo en WhatsApp, para enterarme durante la jornada sin depender de revisar la aplicación. | 8 |
+| **09** | US23 | Seleccionar el idioma de la interfaz | Como dueño de bodega de una zona con diversidad lingüística, quiero usar la plataforma con terminología localizada o en un idioma originario, para adoptar la herramienta con confianza. | 5 |
