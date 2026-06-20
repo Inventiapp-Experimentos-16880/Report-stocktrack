@@ -584,7 +584,689 @@ Adicionalmente, se evaluaron las siguientes herramientas para ejecutar los méto
 ### 8.2.8. Web and Mobile Tracking Plan.
 
 ## 8.3. Experimentation
+La fase de experimentación traduce los aprendizajes en validación (definidos como hipótesis en 8.2) en requerimientos concretos para el siguiente ciclo. A diferencia de las User Stories del estado **As-Is** (sección 3.2), las **To-Be User Stories** representan únicamente los *incrementos* que el equipo decidió construir como resultado del proceso de Experiment-Driven Development. Por ello no reescriben funcionalidad ya existente (ej. el registro de lotes de US14, la búsqueda de US08 o las notificaciones de US05), sino que la extienden con las mejoras que cada experimento busca validar. Cada historia es trazable a una de las cinco hipótesis de 8.2.1 y a su Tarjeta de Experimento (8.1.5).
+
+#### Épicas incorporadas (extensión de la sección 3.2)
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+  <thead>
+    <tr>
+      <th style="width:10%;">Epic ID</th>
+      <th style="width:20%;">Título</th>
+      <th style="width:55%;">Descripción</th>
+      <th style="width:15%;">HUs asociadas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>EP-11</td>
+      <td>Monetización y Suscripción</td>
+      <td>Como dueño de bodega, quiero evaluar el ahorro por mermas frente al costo del plan y contratar una suscripción, para acceder a las funcionalidades premium con una decisión de valor informada.</td>
+      <td>US20, US21, TS15</td>
+    </tr>
+    <tr>
+      <td>EP-12</td>
+      <td>Internacionalización y Localización</td>
+      <td>Como usuario de una zona con diversidad lingüística, quiero usar la plataforma con terminología localizada o en un idioma originario, para reducir la barrera de "tecnología ajena" y adoptarla con confianza. Se alinea con el requisito de i18n del enunciado.</td>
+      <td>US23, TS18</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 8.3.1. To-Be User Stories.
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">US15</td>
+        <td align="center">Dueño de bodega</td>
+        <td align="center">Alta</td>
+        <td align="center">EP-01</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Optimizar la búsqueda de productos por nombre común</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> dueño de bodega <br>
+            <strong> Quiero </strong> que la búsqueda de productos por nombre común responda casi de inmediato <br>
+            <strong> Para </strong> atender al cliente sin interrumpir la venta ni volver al registro manual.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Respuesta dentro del umbral de tolerancia</strong> <br><br>
+            <strong> Dado que </strong> existen productos registrados en el inventario <br>
+            <strong> Cuando </strong> el usuario busca un producto por su nombre común <br>
+            <strong> Entonces </strong> el sistema devuelve los resultados coincidentes en menos de 1.5 segundos.
+            <br><br>
+            <strong> Escenario 2: Coincidencia parcial o aproximada</strong> <br><br>
+            <strong> Dado que </strong> el usuario ingresa un nombre incompleto o con un error de tipeo menor <br>
+            <strong> Cuando </strong> se procesa la búsqueda <br>
+            <strong> Entonces </strong> el sistema muestra los productos cuyo nombre coincide de forma parcial o aproximada.
+            <br><br>
+            <strong> Escenario 3: Búsqueda sin resultados</strong> <br><br>
+            <strong> Dado que </strong> el término buscado no corresponde a ningún producto <br>
+            <strong> Cuando </strong> se procesa la búsqueda <br>
+            <strong> Entonces </strong> el sistema informa la ausencia de coincidencias dentro del mismo umbral de tiempo.
+        </td>
+    </tr>
+</table>
+
+<p><em>Trazabilidad: Hipótesis 4 (Tolerancia a la Latencia de Búsqueda) — QD2.</em></p>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">US16</td>
+        <td align="center">Dueño de bodega</td>
+        <td align="center">Media</td>
+        <td align="center">EP-07</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Visualizar reportes en modo de alto contraste</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> dueño de bodega <br>
+            <strong> Quiero </strong> activar un modo de alto contraste en los reportes <br>
+            <strong> Para </strong> leer los datos críticos sin errores en almacenes con poca iluminación o con fatiga visual.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Activación del modo de alto contraste</strong> <br><br>
+            <strong> Dado que </strong> el usuario visualiza un reporte de inventario <br>
+            <strong> Cuando </strong> activa el modo de alto contraste <br>
+            <strong> Entonces </strong> el sistema presenta el reporte con la paleta de alto contraste.
+            <br><br>
+            <strong> Escenario 2: Persistencia de la preferencia</strong> <br><br>
+            <strong> Dado que </strong> el usuario activó previamente el modo de alto contraste <br>
+            <strong> Cuando </strong> vuelve a ingresar al sistema <br>
+            <strong> Entonces </strong> el sistema conserva el modo de alto contraste como preferencia del usuario.
+        </td>
+    </tr>
+</table>
+
+<p><em>Trazabilidad: Hipótesis 5 (Impacto del Alto Contraste) — QD3. Según la decisión "Aceptable" de 8.2.5, se implementa como opción de accesibilidad y no como reemplazo del diseño estándar.</em></p>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">US17</td>
+        <td align="center">Dueño de bodega</td>
+        <td align="center">Alta</td>
+        <td align="center">EP-06</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Registrar acción de mitigación sobre alertas de vencimiento próximo</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> dueño de bodega <br>
+            <strong> Quiero </strong> recibir una alerta anticipada cuando un lote está próximo a vencer y registrar la acción que tomo <br>
+            <strong> Para </strong> actuar a tiempo y dar seguimiento a la efectividad de las alertas.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Generación de alerta anticipada (7 días)</strong> <br><br>
+            <strong> Dado que </strong> existe un lote cuya fecha de vencimiento ocurre dentro de 7 días <br>
+            <strong> Cuando </strong> el sistema ejecuta la verificación diaria de vencimientos <br>
+            <strong> Entonces </strong> el sistema genera una alerta de vencimiento próximo para ese lote.
+            <br><br>
+            <strong> Escenario 2: Registro de la acción de mitigación</strong> <br><br>
+            <strong> Dado que </strong> el usuario atiende una alerta de vencimiento próximo <br>
+            <strong> Cuando </strong> registra la acción tomada (liquidación o devolución al proveedor) <br>
+            <strong> Entonces </strong> el sistema asocia la acción y su fecha a la alerta y la marca como atendida.
+            <br><br>
+            <strong> Escenario 3: Alerta sin atención</strong> <br><br>
+            <strong> Dado que </strong> una alerta de vencimiento próximo no recibe ninguna acción dentro de 48 horas <br>
+            <strong> Cuando </strong> transcurre dicho plazo <br>
+            <strong> Entonces </strong> el sistema mantiene la alerta como pendiente para su seguimiento.
+        </td>
+    </tr>
+</table>
+
+<p><em>Trazabilidad: Hipótesis 2 (Eficacia del Historial de Lotes) — QD1. Sustenta la métrica Alert Action Rate (8.2.3) y los eventos batch_alert_triggered / batch_alert_action (8.2.6).</em></p>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">US18</td>
+        <td align="center">Dueño de bodega</td>
+        <td align="center">Alta</td>
+        <td align="center">EP-02</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Consultar el historial de movimientos por lote</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> dueño de bodega <br>
+            <strong> Quiero </strong> consultar el historial de entradas y salidas de cada lote <br>
+            <strong> Para </strong> hacer trazabilidad detallada y entender por qué un producto llegó a vencerse.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Consulta del historial de un lote</strong> <br><br>
+            <strong> Dado que </strong> un lote registra movimientos de entrada y salida <br>
+            <strong> Cuando </strong> el usuario consulta el detalle de ese lote <br>
+            <strong> Entonces </strong> el sistema muestra los movimientos en orden cronológico con su fecha y cantidad.
+            <br><br>
+            <strong> Escenario 2: Lote sin movimientos de salida</strong> <br><br>
+            <strong> Dado que </strong> un lote solo registra su ingreso inicial <br>
+            <strong> Cuando </strong> el usuario consulta su historial <br>
+            <strong> Entonces </strong> el sistema muestra únicamente el movimiento de entrada.
+        </td>
+    </tr>
+</table>
+
+<p><em>Trazabilidad: Hipótesis 2 (Eficacia del Historial de Lotes) — QD1.</em></p>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">US19</td>
+        <td align="center">Dueño de bodega</td>
+        <td align="center">Media</td>
+        <td align="center">EP-06</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Recibir alertas de vencimiento por WhatsApp</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> dueño de bodega <br>
+            <strong> Quiero </strong> recibir las alertas de vencimiento próximo en WhatsApp <br>
+            <strong> Para </strong> enterarme durante la jornada sin depender de revisar la aplicación.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Habilitación del canal de WhatsApp</strong> <br><br>
+            <strong> Dado que </strong> el usuario registra y verifica un número de WhatsApp <br>
+            <strong> Cuando </strong> guarda su preferencia de notificación <br>
+            <strong> Entonces </strong> el sistema habilita el envío de alertas por ese canal.
+            <br><br>
+            <strong> Escenario 2: Envío de alerta por WhatsApp</strong> <br><br>
+            <strong> Dado que </strong> el usuario tiene el canal de WhatsApp habilitado <br>
+            <strong> Cuando </strong> se genera una alerta de vencimiento próximo <br>
+            <strong> Entonces </strong> el sistema envía un mensaje con el producto afectado y los días restantes.
+        </td>
+    </tr>
+</table>
+
+<p><em>Trazabilidad: Hipótesis 2 (Eficacia del Historial de Lotes) — QD1. Canal de refuerzo previsto en el escenario "Aceptable" de la decisión de 8.2.5; coherente con EP-06, que ya contempla canales externos de notificación.</em></p>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">US20</td>
+        <td align="center">Dueño de bodega</td>
+        <td align="center">Alta</td>
+        <td align="center">EP-11</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Estimar el ahorro por mermas frente al costo de la suscripción</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> dueño de bodega <br>
+            <strong> Quiero </strong> comparar mis pérdidas estimadas por mermas con el costo del plan <br>
+            <strong> Para </strong> decidir de forma informada si la suscripción representa un ahorro.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Cálculo del ahorro proyectado</strong> <br><br>
+            <strong> Dado que </strong> el usuario ingresa una estimación de sus mermas mensuales <br>
+            <strong> Cuando </strong> el sistema procesa el dato <br>
+            <strong> Entonces </strong> el sistema muestra la pérdida estimada contrastada con el costo mensual del plan.
+            <br><br>
+            <strong> Escenario 2: Resultado favorable a la suscripción</strong> <br><br>
+            <strong> Dado que </strong> la merma estimada supera el costo del plan <br>
+            <strong> Cuando </strong> el sistema presenta la comparativa <br>
+            <strong> Entonces </strong> el sistema destaca el ahorro neto proyectado y habilita la contratación del plan.
+        </td>
+    </tr>
+</table>
+
+<p><em>Trazabilidad: Hipótesis 1 (Viabilidad del Modelo de Suscripción) — QB1. Sustenta la métrica Perceived Conversion Rate (8.2.3).</em></p>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">US21</td>
+        <td align="center">Dueño de bodega</td>
+        <td align="center">Alta</td>
+        <td align="center">EP-11</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Contratar y gestionar el plan de suscripción</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> dueño de bodega <br>
+            <strong> Quiero </strong> contratar y administrar mi plan de suscripción <br>
+            <strong> Para </strong> acceder a las funcionalidades premium de la plataforma.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Contratación del plan</strong> <br><br>
+            <strong> Dado que </strong> el usuario decide suscribirse <br>
+            <strong> Cuando </strong> completa el proceso de pago con datos válidos <br>
+            <strong> Entonces </strong> el sistema activa la suscripción y habilita las funcionalidades premium.
+            <br><br>
+            <strong> Escenario 2: Consulta del estado de la suscripción</strong> <br><br>
+            <strong> Dado que </strong> el usuario tiene una suscripción activa <br>
+            <strong> Cuando </strong> consulta su plan <br>
+            <strong> Entonces </strong> el sistema muestra el plan vigente y la fecha de próxima renovación.
+            <br><br>
+            <strong> Escenario 3: Cancelación de la renovación</strong> <br><br>
+            <strong> Dado que </strong> el usuario tiene una suscripción activa <br>
+            <strong> Cuando </strong> solicita cancelar la renovación <br>
+            <strong> Entonces </strong> el sistema conserva el acceso hasta el término del ciclo ya pagado.
+        </td>
+    </tr>
+</table>
+
+<p><em>Trazabilidad: Hipótesis 1 (Viabilidad del Modelo de Suscripción) — QB1.</em></p>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">US22</td>
+        <td align="center">Dueño de bodega</td>
+        <td align="center">Media</td>
+        <td align="center">EP-07</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Visualizar el ahorro real por mermas evitadas</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> dueño de bodega <br>
+            <strong> Quiero </strong> ver el ahorro generado por las alertas de vencimiento que atendí <br>
+            <strong> Para </strong> confirmar el valor que aporta la plataforma frente a su costo.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Ahorro acumulado del periodo</strong> <br><br>
+            <strong> Dado que </strong> el usuario atendió alertas de vencimiento durante un ciclo de inventario <br>
+            <strong> Cuando </strong> consulta el reporte de ahorro por mermas <br>
+            <strong> Entonces </strong> el sistema muestra el valor de los productos liquidados o devueltos a tiempo gracias a las alertas.
+            <br><br>
+            <strong> Escenario 2: Comparativa con periodo anterior</strong> <br><br>
+            <strong> Dado que </strong> existe un registro de mermas de un periodo previo <br>
+            <strong> Cuando </strong> el usuario consulta el reporte <br>
+            <strong> Entonces </strong> el sistema muestra la variación porcentual de mermas respecto a dicho periodo.
+        </td>
+    </tr>
+</table>
+
+<p><em>Trazabilidad: Hipótesis 1 (QB1) e Hipótesis 2 (QD1). Conecta la reducción de mermas con la percepción de valor del precio; se apoya en los read models de reportes (TS04).</em></p>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">US23</td>
+        <td align="center">Dueño de bodega</td>
+        <td align="center">Baja</td>
+        <td align="center">EP-12</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Seleccionar el idioma de la interfaz</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> dueño de bodega de una zona con diversidad lingüística <br>
+            <strong> Quiero </strong> usar la plataforma con terminología localizada o en un idioma originario <br>
+            <strong> Para </strong> adoptar la herramienta con confianza y reducir la barrera de "tecnología ajena".
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Selección de idioma</strong> <br><br>
+            <strong> Dado que </strong> el sistema ofrece más de un idioma disponible <br>
+            <strong> Cuando </strong> el usuario selecciona un idioma <br>
+            <strong> Entonces </strong> el sistema presenta la interfaz con la terminología del idioma elegido.
+            <br><br>
+            <strong> Escenario 2: Persistencia del idioma</strong> <br><br>
+            <strong> Dado que </strong> el usuario seleccionó un idioma distinto al predeterminado <br>
+            <strong> Cuando </strong> vuelve a ingresar a la plataforma <br>
+            <strong> Entonces </strong> el sistema conserva el idioma seleccionado.
+        </td>
+    </tr>
+</table>
+
+<p><em>Trazabilidad: Hipótesis 3 (Adopción por Localización) — QB2. Sustenta las métricas Localized Sign-up Rate y Trust Perception Score (8.2.3) y el requisito de i18n del enunciado.</em></p>
+
+### To-Be Technical Stories
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">TS15</td>
+        <td align="center">Desarrollador</td>
+        <td align="center">Alta</td>
+        <td align="center">EP-11</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Endpoints de gestión de suscripción y pago</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> desarrollador <br>
+            <strong> Quiero </strong> implementar servicios de suscripción y pago <br>
+            <strong> Para </strong> habilitar la contratación de planes y el control del estado de la suscripción.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Activación de suscripción</strong> <br><br>
+            <strong> Dado que </strong> se confirma un pago válido <br>
+            <strong> Cuando </strong> se procesa la transacción de suscripción <br>
+            <strong> Entonces </strong> el sistema registra el plan activo del usuario y su fecha de renovación.
+            <br><br>
+            <strong> Escenario 2: Consulta de estado</strong> <br><br>
+            <strong> Dado que </strong> un usuario tiene una suscripción registrada <br>
+            <strong> Cuando </strong> se solicita su estado <br>
+            <strong> Entonces </strong> el sistema devuelve el plan vigente y su vigencia.
+        </td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">TS16</td>
+        <td align="center">Desarrollador</td>
+        <td align="center">Media</td>
+        <td align="center">EP-06</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Servicio de notificaciones por WhatsApp</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> desarrollador <br>
+            <strong> Quiero </strong> integrar un servicio de envío de mensajes por WhatsApp <br>
+            <strong> Para </strong> entregar las alertas de vencimiento por un canal externo.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Envío de alerta</strong> <br><br>
+            <strong> Dado que </strong> se genera una alerta de vencimiento próximo y el usuario tiene el canal habilitado <br>
+            <strong> Cuando </strong> el sistema procesa la notificación <br>
+            <strong> Entonces </strong> el servicio envía el mensaje al número verificado y registra el resultado del envío.
+        </td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">TS17</td>
+        <td align="center">Desarrollador</td>
+        <td align="center">Alta</td>
+        <td align="center">EP-01</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Optimización del índice de búsqueda de productos</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> desarrollador <br>
+            <strong> Quiero </strong> optimizar el índice de búsqueda por nombre <br>
+            <strong> Para </strong> que las consultas respondan por debajo del umbral de latencia definido.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Consulta bajo umbral</strong> <br><br>
+            <strong> Dado que </strong> existe un volumen de productos representativo <br>
+            <strong> Cuando </strong> se ejecuta una búsqueda por nombre <br>
+            <strong> Entonces </strong> el servicio devuelve los resultados en menos de 1.5 segundos.
+            <br><br>
+            <strong> Escenario 2: Coincidencia parcial</strong> <br><br>
+            <strong> Dado que </strong> el término ingresado es parcial o aproximado <br>
+            <strong> Cuando </strong> se procesa la consulta <br>
+            <strong> Entonces </strong> el servicio aplica coincidencia parcial sin degradar el tiempo de respuesta.
+        </td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">TS18</td>
+        <td align="center">Desarrollador</td>
+        <td align="center">Baja</td>
+        <td align="center">EP-12</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Servicio de internacionalización (i18n)</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> desarrollador <br>
+            <strong> Quiero </strong> implementar el soporte de internacionalización (i18n) <br>
+            <strong> Para </strong> servir los textos de la interfaz según el idioma seleccionado.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Entrega de recursos por idioma</strong> <br><br>
+            <strong> Dado que </strong> el usuario selecciona un idioma soportado <br>
+            <strong> Cuando </strong> solicita una vista de la aplicación <br>
+            <strong> Entonces </strong> el sistema entrega los textos en el idioma correspondiente.
+        </td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
+    <tr>
+        <th>Story ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Epic</th>
+    </tr>
+    <tr>
+        <td align="center">TS19</td>
+        <td align="center">Desarrollador</td>
+        <td align="center">Alta</td>
+        <td align="center">EP-06</td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td colspan="3">Endpoints de acción y telemetría de alertas de lote</td>
+    </tr>
+    <tr>
+        <th colspan="4">Description</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Como </strong> desarrollador <br>
+            <strong> Quiero </strong> exponer servicios para registrar la acción sobre las alertas de vencimiento y emitir sus eventos de telemetría <br>
+            <strong> Para </strong> habilitar el cálculo del Alert Action Rate y el plan de tracking del experimento.
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4">Acceptance Criteria</th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <strong> Escenario 1: Registro de acción</strong> <br><br>
+            <strong> Dado que </strong> existe una alerta de vencimiento próximo <br>
+            <strong> Cuando </strong> el usuario registra una acción de mitigación <br>
+            <strong> Entonces </strong> el sistema asocia la acción y emite el evento batch_alert_action.
+            <br><br>
+            <strong> Escenario 2: Emisión del disparo de alerta</strong> <br><br>
+            <strong> Dado que </strong> el sistema genera una alerta a 7 días del vencimiento <br>
+            <strong> Cuando </strong> se crea la alerta <br>
+            <strong> Entonces </strong> el sistema emite el evento batch_alert_triggered con su marca de tiempo.
+        </td>
+    </tr>
+</table>
 
 ### 8.3.2. To-Be Product Backlog
