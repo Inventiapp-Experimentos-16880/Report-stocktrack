@@ -516,10 +516,162 @@ Incluir gráficos simples, indicadores clave y resúmenes visuales. Por ejemplo,
 
 ### 6.4.2. Auditoría recibida
 
+La auditoría recibida corresponde a la revisión interna realizada al Capítulo VIII: **Experiment-Driven Development** del proyecto **StockTrack**. Esta auditoría tuvo como finalidad verificar el cumplimiento de las secciones solicitadas en el enunciado del Trabajo Final, así como identificar observaciones, no conformidades y oportunidades de mejora en el informe del proyecto.
+
 #### 6.4.2.1. Información del grupo auditor
+
+| Elemento | Información |
+|---|---|
+| Proyecto auditado | StockTrack |
+| Equipo auditado | Equipo Inventiapp |
+| Tipo de auditoría | Interna |
+| Modalidad | Remota |
+| Fecha de auditoría | 05/07/2026 |
+| Objetivo | Verificar los contenidos del informe de reporte del proyecto y el cumplimiento de las secciones y descripciones del enunciado del Trabajo Final. |
+| Alcance | Informe del Proyecto StockTrack del Capítulo VIII. |
+| Criterios de auditoría | Enunciado proporcionado por la administración del curso sobre los contenidos del Trabajo Final. |
+
+**Equipo auditor**
+
+| Rol | Integrante |
+|---|---|
+| Auditor líder | Coronel Espinoza, Farid Sebastian |
+| Auditor interno 2 | Diaz Quispe, Matias Sebastian |
+| Auditor interno 3 | Juarez Leon, Nicolas Emilio Walter |
+| Auditor interno 4 | Julca Minaya, Sergio Gino |
+
+---
 
 #### 6.4.2.2. Cronograma de auditoría recibida
 
+| Horario / Fecha | Área / Proceso | Equipo auditor | Responsable | Requisito |
+|---|---|---|---|---|
+| 11:00 - 11:30<br>05/07/2026 | Reunión de Apertura y Presentación del Plan de Auditoría | Equipo Auditor: Coronel, Diaz, Juarez y Julca | Equipo Inventiapp: Torres, Guzmán, Navarro y Rios | Presentación del alcance, criterios y agenda de la auditoría al Capítulo VIII. |
+| 11:30 - 12:00<br>05/07/2026 | 8.1 Experiment Planning<br>As-Is Summary, Raw Material, Questions, Backlog, Experiment Cards | Diaz Quispe, Matias Sebastian | Navarro Chinga, Antonio Jhair | Enunciado TF - Capítulo VIII, secciones 8.1.1 a 8.1.5. |
+| 12:00 - 12:30<br>05/07/2026 | 8.2 Experiment Design<br>Hypotheses, Metrics, Measures, Conditions | Juarez Leon, Nicolas Emilio Walter | Navarro Chinga, Antonio Jhair | Enunciado TF - Capítulo VIII, secciones 8.2.1 a 8.2.4. |
+| 12:30 - 13:00<br>05/07/2026 | 8.2 Experiment Design<br>Scale, Methods, Tracking Plan | Julca Minaya, Sergio Gino | Navarro Chinga, Antonio Jhair | Enunciado TF - Capítulo VIII, secciones 8.2.5 a 8.2.8. |
+| 13:00 - 13:30<br>05/07/2026 | 8.3 Experimentation<br>To-Be User Stories y To-Be Product Backlog | Coronel Espinoza, Farid Sebastian | Guzmán Cabrejos, Yaku Mateo | Enunciado TF - Capítulo VIII, secciones 8.3.1 y 8.3.2. |
+| 15:00 - 16:00<br>05/07/2026 | Reunión de Cierre y Consolidación de Hallazgos | Equipo Auditor: Coronel, Diaz, Juarez y Julca | Equipo Inventiapp | Consolidación de hallazgos y próximos pasos. |
+
+---
+
 #### 6.4.2.3. Contenido de auditoría recibida
 
+La auditoría recibida evaluó el cumplimiento de las secciones del Capítulo VIII relacionadas con la planificación, diseño y experimentación basada en hipótesis. La revisión se enfocó en comprobar si el documento presentaba trazabilidad entre problemas, preguntas experimentales, hipótesis, métricas, métodos de validación, historias de usuario To-Be y backlog del producto.
+
+##### Lista de verificación recibida
+
+| N° | Sección / Requisito evaluado | Ítem de verificación | Cumple | Evidencia observada | Observación |
+|---|---|---|---|---|---|
+| 8.1.1 | As-Is Summary | ¿Describe el estado actual del negocio, problemas y objetivos de mejora? | Sí | Se describen procesos manuales, cuatro problemas y cuatro objetivos de mejora. | Cumple con lo solicitado. |
+| 8.1.2 | Raw Material | ¿Incluye las cuatro categorías de materia prima claramente diferenciadas? | Sí | Se presentan Assumptions, Knowledge Gaps, Ideas y Claims. | Sin observación crítica. |
+| 8.1.3 | Experiment-Ready Questions | ¿Distingue preguntas Belief-led de Exploratorias y aplica 5W+1H? | Sí | Se presentan preguntas BC1-BC3, EX1-EX3 y tabla 5W1H. | Sin observación crítica. |
+| 8.1.4 | Question Backlog | ¿Presenta Broad/Deep Backlog con “Por qué” y scoring? | Sí | Se presenta backlog con criterios de Confianza, Riesgo, Impacto e Interés. | Se recomienda mejorar el criterio de desempate. |
+| 8.1.5 | Experiment Cards | ¿Cada tarjeta incluye lado frontal y posterior? | Sí | Se presentan cinco tarjetas con pregunta, motivación, hipótesis, experimento, medidas, condiciones y escala. | Se recomienda uniformizar la plantilla. |
+| 8.2.1 | Hypotheses | ¿Cada hipótesis es falsable, medible y tiene hipótesis nula emparejada? | Sí | Se presentan cinco hipótesis con belief, hypothesis y null hypothesis. | Se recomienda explicar antes el concepto de hipótesis alternativa y nula. |
+| 8.2.2 | Domain Business Metrics | ¿Define métricas de dominio con fórmula, técnica de recolección y meta? | Sí | Se presentan métricas de negocio. | Se requiere detallar fórmulas de cálculo. |
+| 8.2.3 | Measures | ¿Selecciona medidas representativas para cada hipótesis? | Sí | Se presentan medidas asociadas a las hipótesis. | Se requiere mejorar consistencia de umbrales. |
+| 8.2.4 | Conditions | ¿Define condición experimental y de control? | Sí | Se presentan condiciones experimentales y de control. | Se requiere precisar mecanismos de asignación de grupos. |
+| 8.2.5 | Scale Calculations and Decisions | ¿Sustenta certeza, precisión y reglas de decisión? | Sí | Se presentan escalas de decisión. | Se requiere aclarar límites inclusivos y ponderación de hipótesis. |
+| 8.2.6 | Methods Selection | ¿Aplica el principio “Simplest Useful Thing”? | Sí | Se presentan métodos como pruebas, fake door y análisis técnico. | Se requiere ajustar métodos según línea base real. |
+| 8.2.7 | Data Analytics: Goals, KPIs and Metrics Selection | ¿Vincula metas, KPIs y métricas de analítica? | Sí | Se presentan objetivos, KPIs y métricas. | Se requiere ampliar evidencia técnica a la pantalla de reportes. |
+| 8.2.8 | Web and Mobile Tracking Plan | ¿Define eventos a rastrear y estructura de captura? | Sí | Se presenta tabla de eventos y herramientas de análisis. | Se recomienda mejorar campos técnicos e índices. |
+| 8.3.1 | To-Be User Stories | ¿Incluye historias en formato Como/Quiero/Para, Gherkin y trazabilidad? | Sí | Se presentan User Stories, Technical Stories y trazabilidad. | Se identificaron inconsistencias en algunas historias. |
+| 8.3.2 | To-Be Product Backlog | ¿Prioriza según scoring e incluye Story Points? | Sí | Se presenta backlog con historias y estimaciones. | Se recomienda ajustar priorización y dependencias técnicas. |
+
+##### Resumen de resultados de la auditoría recibida
+
+| Resultado | Cantidad |
+|---|---:|
+| Sí | 15 |
+| Parcial | 3 |
+| No | 7 |
+| N/A | 0 |
+
+##### Resumen de hallazgos recibidos
+
+| Clasificación | Cantidad |
+|---|---:|
+| Observación | 21 |
+| No conformidad | 15 |
+| No conformidad crítica | 2 |
+| Total de hallazgos | 38 |
+
+##### Principales hallazgos identificados
+
+| N° | Hallazgo | Severidad | Criterio evaluado | Clasificación |
+|---|---|---:|---|---|
+| 1 | La definición de hipótesis alternativa y nula debía presentarse antes de la tabla y explicar para qué sirve cada tipo de hipótesis. | 1 | 8.2.1 Hypotheses | Observación |
+| 2 | Para cada métrica de dominio era necesario detallar la fórmula de cálculo. | 3 | 8.2.2 Domain Business Metrics | No conformidad |
+| 3 | El umbral de búsqueda cambiaba entre “menos de 2 segundos” y “menos de 1.5 segundos” sin explicación. | 3 | 8.1.1 As-Is Summary | No conformidad |
+| 4 | La lista de problemas identificados no incluía evidencia o datos de respaldo. | 2 | 8.1.1 As-Is Summary | Observación |
+| 5 | Las assumptions incluían porcentajes específicos como si fueran hechos conocidos, mientras que los knowledge gaps indicaban que esos aspectos aún eran desconocidos. | 3 | 8.1.2 Raw Material | No conformidad |
+| 6 | Las claims no indicaban fuente ni fecha, lo que impedía verificar su origen. | 2 | 8.1.2 Raw Material | Observación |
+| 7 | La pregunta relacionada con alertas automáticas por WhatsApp no fue incorporada al Question Backlog ni recibió Experiment Card. | 3 | 8.1.3 Experiment-Ready Questions | No conformidad |
+| 8 | La regla de desempate del Question Backlog no resolvía correctamente el empate entre QB1 y QD1. | 3 | 8.1.4 Question Backlog | No conformidad |
+| 9 | Las Experiment Cards no seguían una plantilla completamente consistente. | 1 | 8.1.5 Experiment Cards | Observación |
+| 10 | En H2 no existía una condición de control comparable en el tiempo. | 3 | 8.2.4 Conditions | Observación |
+| 11 | Los tamaños de muestra eran pequeños para sustentar umbrales de éxito precisos. | 3 | 8.1.5 Experiment Cards | No conformidad |
+| 12 | La métrica “Nivel de Frustración” no definía claramente cómo interpretar todos los escenarios de latencia. | 2 | 8.2.3 Measures | Observación |
+| 13 | Las métricas de H2 dependían de registros manuales poco confiables. | 3 | 8.2.3 Measures | No conformidad |
+| 14 | No se detalló el mecanismo de asignación de usuarios a grupo experimental y grupo control. | 2 | 8.2.4 Conditions | Observación |
+| 15 | La regla global de decisión ponderaba todas las hipótesis por igual, aunque H1 y H2 eran de mayor riesgo estratégico. | 3 | 8.2.5 Scale Calculations and Decisions | No conformidad |
+| 16 | Los rangos de las escalas de decisión no indicaban si los límites eran inclusivos o exclusivos. | 2 | 8.2.5 Scale Calculations and Decisions | Observación |
+| 17 | El método de H4 no fue ajustado con base en la línea base real obtenida con Lighthouse. | 3 | 8.2.6 Methods Selection | No conformidad |
+| 18 | El método Fake Door de H3 no aclaraba cómo se controlarían variables externas ni tamaño mínimo de muestra. | 2 | 8.2.6 Methods Selection | Observación |
+| 19 | La auditoría Lighthouse no cubría la pantalla de Reportes, pese a estar relacionada con la Hipótesis 5. | 3 | 8.2.7 Data Analytics | No conformidad |
+| 20 | No se definió un mecanismo de re-auditoría después de implementar mejoras de rendimiento o contraste. | 2 | 8.2.7 Data Analytics | Observación |
+| 21 | El evento `product_search_performed` no diferenciaba búsqueda normal de búsqueda bajo throttling simulado. | 3 | 8.2.8 Tracking Plan | No conformidad |
+| 22 | La query de Alert Action Rate podía generar problemas de rendimiento al consultar un campo JSON sin índice específico. | 2 | 8.2.8 Tracking Plan | Observación |
+| 23 | US19 fue construida sin pasar por Question Backlog ni Experiment Card propia. | 4 | 8.3.1 To-Be User Stories | No conformidad crítica |
+| 24 | US16 estaba redactada como si el resultado del experimento ya hubiera sido validado antes de ejecutarse. | 4 | 8.3.1 To-Be User Stories | No conformidad crítica |
+| 25 | US23 recibió story points pese a ser considerada de baja prioridad. | 2 | 8.3.2 To-Be Product Backlog | Observación |
+| 26 | Las historias técnicas TS16, TS17, TS18 y TS19 no aparecían en la tabla de priorización. | 3 | 8.3.2 To-Be Product Backlog | No conformidad |
+| 27 | La épica EP-11 tenía un alcance demasiado específico y se asemejaba más a una historia de usuario. | 2 | 8.3 Experimentation | Observación |
+| 28 | La épica EP-12 mezclaba necesidad de usuario con referencia técnica de i18n. | 2 | 8.3 Experimentation | Observación |
+| 29 | US15 mezclaba optimización de búsqueda con coincidencias aproximadas, ampliando demasiado el alcance. | 2 | 8.3 To-Be User Stories | Observación |
+| 30 | US16 incorporaba elementos de diseño UI/UX dentro de criterios de aceptación funcionales. | 3 | 8.3 To-Be User Stories | No conformidad |
+| 31 | US17 mezclaba alertas anticipadas con registro de acciones de mitigación. | 2 | 8.3 To-Be User Stories | Observación |
+| 32 | US18 no aclaraba correctamente el manejo de entradas y salidas en el historial de lote. | 2 | 8.3 To-Be User Stories | Observación |
+| 33 | US20 comparaba directamente pérdidas por mermas con el costo del plan, generando posible interpretación incorrecta. | 3 | 8.3 To-Be User Stories | No conformidad |
+| 34 | TS15 presentaba inconsistencia entre rol, título y alcance técnico. | 2 | 8.3 To-Be User Stories | Observación |
+| 35 | TS16 debía especificar rol backend y contemplar errores, reintentos y registro de estado de notificación. | 3 | 8.3 To-Be User Stories | No conformidad |
+| 36 | TS18 debía especificar rol frontend y aclarar que la internacionalización se aplicaría en la interfaz. | 2 | 8.3 To-Be User Stories | Observación |
+| 37 | Algunas historias de 5 y 8 story points resultaban demasiado amplias para un ciclo menor a una semana. | 2 | 8.3 To-Be Product Backlog | Observación |
+| 38 | La priorización colocaba monetización y suscripción antes de funcionalidades que demuestran valor principal del producto. | 2 | 8.3 To-Be Product Backlog | Observación |
+
+---
+
 #### 6.4.2.4. Resumen de modificaciones para subsanar hallazgos 
+
+Luego de recibir los hallazgos de auditoría, el equipo realizó ajustes documentales y de trazabilidad en el Capítulo VIII con la finalidad de corregir inconsistencias, fortalecer la evidencia presentada y mejorar la relación entre problemas, preguntas, hipótesis, experimentos, métricas, historias y backlog.
+
+| Hallazgo relacionado | Modificación realizada |
+|---|---|
+| H1 | Se reorganizó la sección de hipótesis, colocando antes de la tabla una explicación breve sobre la hipótesis alternativa y la hipótesis nula, indicando su propósito dentro del proceso experimental. |
+| H2 | Se añadieron fórmulas de cálculo para las métricas de dominio, indicando cómo se obtiene cada valor, qué datos se requieren y cómo serán interpretados. |
+| H3 | Se homologó el umbral de búsqueda en el documento para evitar contradicciones. Se definió un único criterio de éxito para el tiempo de búsqueda y se explicó su relación con el objetivo de mejora. |
+| H4 | Se agregaron evidencias de respaldo para los problemas identificados, considerando mediciones de rendimiento, observaciones del flujo actual y retroalimentación de usuarios. |
+| H5 | Se corrigieron las assumptions para que no presenten porcentajes como hechos confirmados. Los porcentajes fueron tratados como supuestos a validar mediante experimentos. |
+| H6 | Se incorporó fuente y fecha a los claims, diferenciando si provienen de usuarios, stakeholders, entrevistas, observaciones internas o supuestos del equipo. |
+| H7 y H23 | Se incorporó la pregunta de alertas automáticas por WhatsApp al Question Backlog y se creó su respectiva Experiment Card antes de mantenerla como historia de usuario. |
+| H8 | Se mejoró la regla de desempate del Question Backlog, agregando criterios secundarios como impacto, interés y dependencia estratégica. |
+| H9 | Se uniformizó la plantilla de las Experiment Cards para que todas incluyan los mismos campos: tipo, pregunta, motivación, hipótesis, experimento, medidas, condiciones y escala de éxito. |
+| H10, H13 y H14 | Se fortaleció la definición de condiciones experimentales y de control, evitando comparaciones con registros manuales poco confiables y precisando el mecanismo de asignación de usuarios. |
+| H11 y H18 | Se revisaron los tamaños de muestra y se aclaró el alcance exploratorio de los experimentos, evitando presentar resultados pequeños como estadísticamente concluyentes. |
+| H12 | Se precisó cómo interpretar la métrica de Nivel de Frustración en cada escenario de latencia probado. |
+| H15 y H16 | Se ajustaron las reglas de decisión, aclarando límites inclusivos y exclusivos, además de considerar mayor peso para hipótesis de mayor riesgo estratégico. |
+| H17 | Se actualizó el diseño experimental de H4 tomando en cuenta la línea base real de rendimiento obtenida mediante Lighthouse. |
+| H19 y H20 | Se amplió la auditoría técnica para incluir la pantalla de Reportes y se definió una re-auditoría posterior a las mejoras de rendimiento y accesibilidad. |
+| H21 y H22 | Se mejoró el Tracking Plan agregando campos diferenciadores como `test_scenario` y se propusieron índices para optimizar consultas sobre eventos relevantes. |
+| H24 | Se reformuló US16 para evitar asumir resultados experimentales no validados. La historia fue redactada como una necesidad pendiente de validación. |
+| H25 y H38 | Se revisó la priorización del backlog, dando mayor prioridad a funcionalidades que demuestran valor principal para el dueño de bodega antes de monetización o expansión. |
+| H26 | Se incorporaron las Technical Stories TS16, TS17, TS18 y TS19 dentro de la tabla de priorización del backlog, indicando su relación con las historias funcionales. |
+| H27 y H28 | Se reformularon las épicas EP-11 y EP-12 para que representen objetivos amplios de producto y no historias demasiado específicas. |
+| H29, H31 y H32 | Se dividieron o precisaron historias de usuario con alcance amplio, separando funcionalidades distintas para facilitar su validación e implementación. |
+| H30 | Se separaron los criterios funcionales de US16 de las especificaciones visuales o de diseño, dejando los detalles de paleta y contraste como criterios técnicos de accesibilidad. |
+| H33 | Se reformuló US20 para comparar el ahorro estimado por reducción de mermas frente al costo del plan, evitando afirmar que la suscripción elimina completamente las pérdidas. |
+| H34, H35 y H36 | Se ajustaron las Technical Stories para especificar correctamente el rol responsable, ya sea frontend o backend, y se agregaron escenarios técnicos como errores, reintentos, validaciones y registro de estados. |
+| H37 | Se redujo el alcance de historias con estimaciones altas, dividiéndolas en historias más pequeñas y manejables para un ciclo de desarrollo corto. |
+
+En conclusión, las modificaciones realizadas permitieron mejorar la coherencia del Capítulo VIII, reforzar la trazabilidad entre los artefactos del enfoque Experiment-Driven Development y corregir inconsistencias detectadas durante la auditoría recibida. Asimismo, se fortaleció la justificación de los experimentos, la definición de métricas, la priorización del backlog y la claridad de las historias funcionales y técnicas.
