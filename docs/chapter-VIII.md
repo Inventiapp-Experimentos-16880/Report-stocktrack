@@ -17,7 +17,7 @@ Objetivos de mejora:
 
 Para abordar estos problemas, se han establecido los siguientes objetivos de mejora:
 
-- Reducir el tiempo de búsqueda de productos a menos de 2 segundos.
+- Reducir el tiempo de búsqueda de productos a menos de 1.5 segundos, considerando este valor como el umbral máximo aceptable para evitar frustración durante la atención al cliente.
 - Mejorar la legibilidad de los reportes con un nuevo diseño de alto contraste.
 - Implementar un módulo de historial de lotes para seguimiento detallado.
 - Añadir soporte multilingüe para ampliar la accesibilidad.
@@ -150,7 +150,7 @@ En esta sección se detallan las Tarjetas de Experimento para las preguntas de m
 **Lado Frontal: El Qué y el Por Qué**
 *   **Pregunta:** ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse?
 *   **Why?:** La fluidez en la atención al cliente depende de la rapidez de la App; una búsqueda lenta obliga al usuario a volver al cuaderno físico.
-*   **Hypothesis:** Creemos que una respuesta de búsqueda superior a los 2 segundos provocará que el usuario abandone el uso de la App en momentos de alta afluencia de clientes.
+*   **Hypothesis:** Creemos que una respuesta de búsqueda superior a 1.5 segundos incrementará la frustración del usuario y aumentará la probabilidad de abandono de la App durante momentos de alta afluencia de clientes.
 *   **What:** Un prototipo funcional que permite ajustar artificialmente el tiempo de respuesta del buscador (0.5s, 1.5s, 3s) para observar reacciones.
 
 **Lado Posterior: Configuración**
@@ -209,7 +209,7 @@ De esta manera, las hipótesis permiten cerrar el ciclo del Experiment-Driven De
 | ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos? | Creemos que los dueños de bodega no perciben el verdadero costo de sus mermas actuales, por lo que el precio de suscripción se siente como un gasto adicional y no como una inversión. Si logramos visibilizar la pérdida real frente al costo del software, el usuario reevaluará su disposición a pagar. | Los dueños de bodegas aceptarán un costo mensual de $15 USD si el sistema demuestra, mediante un reporte inicial, que sus pérdidas por vencimiento superan los $50 USD mensuales. Al menos el 70% de los usuarios (7 de 10) calificarán el precio como "Justo" o "Barato" tras interactuar con la calculadora de ROI, y harán clic en "Adquirir Plan". Mediremos esto con 10 dueños de bodega en una entrevista guiada con prototipo. | El costo de suscripción seguirá percibido como una barrera independientemente de la comparativa de ahorro presentada. Menos del 70% de los usuarios calificará el precio como "Justo" o "Barato", o no harán clic en "Adquirir Plan" pese a ver el ahorro proyectado, indicando que el precio (o el modelo de negocio) no es viable en su forma actual. |
 | ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento? | Creemos que los bodegueros pierden dinero por productos vencidos porque no tienen un sistema de alerta temprana; dependen de la memoria visual ("ojímetro") para detectar productos próximos a vencer, lo cual falla sistemáticamente. Dar visibilidad proactiva de los lotes permitirá actuar a tiempo (liquidación o devolución) antes de que el producto se pierda. | Proporcionar una vista de "Lotes Próximos a Vencer" con alertas de 7 días de anticipación permitirá a los usuarios realizar ventas de liquidación, reduciendo las pérdidas físicas en al menos 15-20% respecto al registro manual del mes anterior. Mediremos esto con 5 usuarios "Early Adopters" durante un ciclo de inventario completo (15 días), usando un MVP funcional conectado a una base de datos real con 20 productos de prueba. | El historial de lotes no reducirá significativamente las mermas reales. La reducción observada será menor al 15%, indicando que las alertas no son suficientes para cambiar el comportamiento del usuario, o que el problema de raíz no es la falta de visibilidad sino la falta de tiempo/incentivo para actuar sobre la alerta. |
 | ¿Qué tan relevante es el soporte multilingüe para la adopción en mercados con diversidad lingüística? | Creemos que parte de la resistencia a adoptar herramientas digitales en mercados con diversidad lingüística viene de que la tecnología se siente "ajena" cuando no refleja la terminología local. Ofrecer una versión localizada reducirá esa barrera de confianza y aumentará el interés real en registrarse. | Ofrecer la interfaz con terminología localizada (o idiomas originarios según la región) incrementará la tasa de registro en al menos un 20% frente a la versión estándar, y aumentará la confianza percibida del usuario en un 15%. Mediremos esto publicando una landing page y una pantalla de inventario traducidas, midiendo conversión en 10 negocios de zonas con bilingüismo predominante. | La localización no producirá una diferencia significativa en la tasa de registro (menos del 20% elige la versión localizada) ni en la confianza percibida, indicando que el idioma no es una barrera crítica de adopción frente a otros factores como precio o funcionalidad. |
-| ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse? | Creemos que la fluidez en la atención al cliente depende directamente de la rapidez de la app; si la búsqueda es lenta, el usuario abandona la herramienta y vuelve al cuaderno físico, especialmente bajo presión de atención al cliente. | Una respuesta de búsqueda superior a 2 segundos provocará abandono de tarea, y manteniendo la latencia por debajo de 1.5 segundos se minimizará la frustración reportada (≤2/5 en escala Likert) y la tasa de abandono. Mediremos esto con 8 usuarios bajo tres escalones de latencia simulada (0.5s/1.5s/3s) en un escenario de "atención bajo presión". | La latencia de búsqueda no tiene un efecto medible sobre el abandono de tarea ni la frustración reportada dentro del rango probado (0.5s-3s); los usuarios toleran tiempos de respuesta más altos de lo esperado, o abandonan independientemente de la velocidad por otras razones (ej. interfaz confusa). |
+| ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse? | Creemos que la fluidez en la atención al cliente depende directamente de la rapidez de la app; si la búsqueda es lenta, el usuario abandona la herramienta y vuelve al cuaderno físico, especialmente bajo presión de atención al cliente. | Una respuesta de búsqueda superior a 1.5 segundos incrementará la frustración y la probabilidad de abandono de tarea durante la atención al cliente. Si la búsqueda se mantiene por debajo de 1.5 segundos, se espera minimizar la frustración reportada (≤2/5 en escala Likert) y reducir la tasa de abandono. Esto se medirá con 8 usuarios bajo tres escalones de latencia simulada (0.5s, 1.5s y 3s) en un escenario de atención bajo presión. | La latencia de búsqueda no tiene un efecto medible sobre el abandono de tarea ni la frustración reportada dentro del rango probado (0.5s-3s); los usuarios toleran tiempos de respuesta más altos de lo esperado, o abandonan independientemente de la velocidad por otras razones (ej. interfaz confusa). |
 | ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes? | Creemos que los almacenes de las bodegas suelen tener iluminación deficiente y los usuarios presentan fatiga visual tras jornadas largas, lo cual genera errores de interpretación en reportes con bajo contraste. Un rediseño visual de alto contraste debería reducir significativamente el tiempo y los errores de lectura bajo estas condiciones. | Un diseño de alto contraste reducirá el tiempo de identificación de productos críticos en al menos un 20-25% bajo condiciones de poca luz (<100 lux), y reducirá la tasa de error de lectura a ≤5%. Mediremos esto con un Test A/B con 6 usuarios comparando la versión estándar vs. la versión de alto contraste del dashboard de reportes. | El diseño de alto contraste no produce una mejora medible en el tiempo de identificación (mejora <20%) ni en la tasa de error de lectura frente a la versión estándar, bajo las mismas condiciones de iluminación reducida. |
 
 
@@ -285,14 +285,14 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 ---
  
 #### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
- 
+
 **Question:** ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse?
- 
-**Métricas:**
- 
-- **Tiempo de Respuesta de Búsqueda (Search Response Time):** Tiempo en segundos desde que el usuario ingresa el término hasta que ve resultados. **Criterio de éxito: <1.5 segundos.**
-- **Tasa de Abandono de Tarea (Task Abandonment Rate):** Porcentaje de búsquedas interrumpidas bajo el escenario "atención bajo presión". **Criterio de éxito: abandono significativamente menor en el escalón de 1.5s frente a 3s.**
-- **Nivel de Frustración (Frustration Score):** Escala Likert 1-5 reportada tras cada escalón de latencia probado. **Criterio de éxito: ≤2/5 en el escalón de 1.5s.**
+
+**Medidas seleccionadas:**
+
+- **Tiempo de Respuesta de Búsqueda (Search Response Time):** tiempo en segundos desde que el usuario ingresa el término de búsqueda hasta que visualiza los resultados. **Criterio de éxito: < 1.5 segundos.**
+- **Tasa de Abandono de Tarea (Task Abandonment Rate):** porcentaje de búsquedas interrumpidas antes de visualizar resultados. **Criterio de éxito: abandono menor en el escalón de 1.5s frente al escalón de 3s.**
+- **Nivel de Frustración (Frustration Score):** escala Likert de 1 a 5 reportada por el usuario luego de cada escenario de latencia. **Criterio de éxito: ≤ 2/5 en el escenario de 1.5s.**
 ---
  
 #### Hipótesis 5: Impacto del Alto Contraste
@@ -405,9 +405,9 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
  
 **Decisión:**
  
-- **Ideal:** El rendimiento actual del buscador es suficiente; no se requiere optimización adicional antes del lanzamiento.
-- **Aceptable:** El rendimiento es tolerable, pero se recomienda optimizar índices de búsqueda en backend antes de escalar a más usuarios.
-- **Desfavorable:** Bloqueante; se requiere rediseño técnico del motor de búsqueda (ej. índices, caché) antes de cualquier lanzamiento, dado que la latencia empuja al usuario de vuelta al cuaderno físico.
+- **Ideal:** la búsqueda responde por debajo de 1 segundo, con baja frustración y baja tasa de abandono.
+- **Aceptable:** la búsqueda responde entre 1.0 y 1.5 segundos. El rendimiento es tolerable, pero se recomienda optimizar índices de búsqueda en backend antes de escalar a más usuarios.
+- **Desfavorable:** la búsqueda supera 1.5 segundos o genera frustración mayor a 3/5. Se requiere rediseño técnico del motor de búsqueda, optimización de índices o uso de caché antes del lanzamiento.
 ---
  
 #### Hipótesis 5: Impacto del Alto Contraste
