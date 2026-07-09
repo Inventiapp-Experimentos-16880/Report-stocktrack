@@ -409,7 +409,7 @@ Esta sección define las métricas específicas que se utilizarán para medir el
  
 ---
  
-#### Hipótesis 1: Viabilidad del Modelo de Suscripción
+### Hipótesis 1: Viabilidad del Modelo de Suscripción
  
 **Question:** ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos?
  
@@ -419,7 +419,7 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 - **Índice de Justicia de Precio (Price Fairness Score):** Porcentaje de usuarios que califican el precio como "Justo" o "Barato" frente al ahorro proyectado. **Criterio de éxito: ≥70%.**
 ---
  
-#### Hipótesis 2: Eficacia del Historial de Lotes
+### Hipótesis 2: Eficacia del Historial de Lotes
  
 **Question:** ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento?
  
@@ -429,7 +429,7 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 - **Tasa de Acción sobre Alertas (Alert Action Rate):** Porcentaje de alertas de "7 días para vencer" que derivan en una acción del usuario dentro de las 48 horas siguientes. **Criterio de éxito: ≥60%.**
 ---
  
-#### Hipótesis 3: Adopción por Localización
+### Hipótesis 3: Adopción por Localización
  
 **Question:** ¿Qué tan relevante es el soporte multilingüe para la adopción en mercados con diversidad lingüística?
  
@@ -439,18 +439,42 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 - **Puntuación de Confianza Percibida (Trust Perception Score):** Escala Likert 1-5 sobre "siento que esta aplicación fue hecha para mi negocio". **Criterio de éxito: incremento ≥15% frente a la versión estándar.**
 ---
  
-#### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
+### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
 
 **Question:** ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse?
 
 **Medidas seleccionadas:**
 
 - **Tiempo de Respuesta de Búsqueda (Search Response Time):** tiempo en segundos desde que el usuario ingresa el término de búsqueda hasta que visualiza los resultados. **Criterio de éxito: < 1.5 segundos.**
-- **Tasa de Abandono de Tarea (Task Abandonment Rate):** porcentaje de búsquedas interrumpidas antes de visualizar resultados. **Criterio de éxito: abandono menor en el escalón de 1.5s frente al escalón de 3s.**
-- **Nivel de Frustración (Frustration Score):** escala Likert de 1 a 5 reportada por el usuario luego de cada escenario de latencia. **Criterio de éxito: ≤ 2/5 en el escenario de 1.5s.**
----
+
+- **Tasa de Abandono de Tarea (Task Abandonment Rate):** porcentaje de búsquedas interrumpidas antes de visualizar resultados. **Criterio de éxito: abandono menor en el escenario de 1.5s frente al escenario de 3s.**
+
+- **Nivel de Frustración (Frustration Score):** escala Likert de 1 a 5 reportada por el usuario después de cada escenario de latencia.
+
+| Puntaje | Interpretación |
+|---:|---|
+| 1 | Sin frustración. El usuario percibe la búsqueda como rápida y natural. |
+| 2 | Frustración baja. El usuario nota una espera mínima, pero no afecta su intención de uso. |
+| 3 | Frustración moderada. El usuario percibe demora y podría perder fluidez durante la atención. |
+| 4 | Frustración alta. El usuario considera que la demora afecta su trabajo y podría abandonar la tarea. |
+| 5 | Frustración crítica. El usuario rechaza la experiencia y probablemente volvería a un método manual. |
+
+**Interpretación por escenario de latencia:**
+
+| Escenario de latencia | Resultado esperado | Interpretación del resultado |
+|---|---|---|
+| **0.5 segundos** | Frustración esperada entre **1 y 2** | Se considera el escenario ideal. Si el usuario reporta frustración alta incluso con 0.5s, el problema no estaría en la latencia, sino en la interfaz, claridad de resultados o flujo de búsqueda. |
+| **1.5 segundos** | Frustración esperada máxima de **2/5** | Se considera el umbral máximo aceptable. Si la frustración supera 2/5, el tiempo de respuesta debe optimizarse antes del lanzamiento. |
+| **3 segundos** | Frustración esperada mayor a **3/5** | Se considera un escenario desfavorable. Si el usuario reporta frustración alta o abandona la tarea, se confirma que tiempos superiores a 1.5s afectan la experiencia. |
+
+**Criterio de éxito de la medida:**
+
+El experimento será considerado favorable si, en el escenario de **1.5 segundos**, el nivel de frustración promedio se mantiene en **≤ 2/5** y la tasa de abandono es menor que en el escenario de **3 segundos**.
+
+Si el escenario de **1.5 segundos** genera frustración promedio mayor a **2/5**, el equipo deberá ajustar el umbral técnico objetivo por debajo de 1.5 segundos o rediseñar el flujo de búsqueda para reducir la percepción de espera.
+
  
-#### Hipótesis 5: Impacto del Alto Contraste
+### Hipótesis 5: Impacto del Alto Contraste
  
 **Question:** ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes?
  
@@ -522,7 +546,7 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
  
 ---
  
-#### Hipótesis 1: Viabilidad del Modelo de Suscripción
+### Hipótesis 1: Viabilidad del Modelo de Suscripción
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
@@ -536,7 +560,7 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
 - **Desfavorable:** Se rechaza el precio actual; se requiere replantear el modelo (ej. plan freemium, precio escalonado por tamaño de bodega) antes de continuar.
 ---
  
-#### Hipótesis 2: Eficacia del Historial de Lotes
+### Hipótesis 2: Eficacia del Historial de Lotes
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
@@ -550,7 +574,7 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
 - **Desfavorable:** Se rechaza la hipótesis; el problema de raíz no es la visibilidad de fechas sino la falta de tiempo/incentivo para actuar. Requiere rediseño del flujo de alertas o investigación adicional.
 ---
  
-#### Hipótesis 3: Adopción por Localización
+### Hipótesis 3: Adopción por Localización
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
@@ -564,21 +588,31 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
 - **Desfavorable:** El idioma no es una barrera crítica; se descarta la internacionalización como prioridad y se reasignan recursos a otras funcionalidades (ej. H1, H2).
 ---
  
-#### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
+### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
-| **Tiempo de Respuesta de Búsqueda** | > 1.5 segundos | 1 - 1.5 segundos | **< 1 segundo** |
-| **Nivel de Frustración (escalón 1.5s)** | > 3/5 | 2 - 3/5 | **≤ 2/5** |
+| **Tiempo de Respuesta de Búsqueda** | > 1.5 segundos | 1.0 - 1.5 segundos | < 1.0 segundo |
+| **Nivel de Frustración en escenario de 0.5s** | > 2/5 | 2/5 | 1/5 |
+| **Nivel de Frustración en escenario de 1.5s** | > 2/5 | 2/5 | 1/5 |
+| **Nivel de Frustración en escenario de 3s** | ≤ 2/5 sin diferencia frente a 1.5s | 3/5 | > 3/5, confirmando que 3s genera rechazo o incomodidad |
+| **Tasa de Abandono de Tarea** | Alta o similar al escenario de 3s | Menor que en el escenario de 3s | Claramente menor que en el escenario de 3s |
+
  
 **Decisión:**
  
-- **Ideal:** la búsqueda responde por debajo de 1 segundo, con baja frustración y baja tasa de abandono.
-- **Aceptable:** la búsqueda responde entre 1.0 y 1.5 segundos. El rendimiento es tolerable, pero se recomienda optimizar índices de búsqueda en backend antes de escalar a más usuarios.
-- **Desfavorable:** la búsqueda supera 1.5 segundos o genera frustración mayor a 3/5. Se requiere rediseño técnico del motor de búsqueda, optimización de índices o uso de caché antes del lanzamiento.
+- **Ideal:** la búsqueda responde por debajo de 1 segundo o se mantiene en el umbral de 1.5 segundos con frustración baja. El usuario puede completar la tarea sin abandonar el flujo.
+- **Aceptable:** la búsqueda responde entre 1.0 y 1.5 segundos, con frustración controlada. Se puede mantener el umbral, pero se recomienda optimizar índices, consultas o caché antes de escalar.
+- **Desfavorable:** la búsqueda supera 1.5 segundos o genera frustración mayor a 2/5 en el escenario de 1.5s. Se requiere optimización técnica antes de pasar a producción.
+
+**Regla específica de interpretación:**
+
+El escenario de **3 segundos** funciona como punto de comparación negativo. Si los usuarios reportan frustración alta en 3s y frustración baja en 1.5s, se confirma que el umbral de 1.5 segundos es razonable.  
+Si no existe diferencia clara entre 1.5s y 3s, el equipo deberá revisar si el problema está en la interfaz de búsqueda, en la claridad de los resultados o en la forma en que se ejecutó la prueba.
+
 ---
  
-#### Hipótesis 5: Impacto del Alto Contraste
+### Hipótesis 5: Impacto del Alto Contraste
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
