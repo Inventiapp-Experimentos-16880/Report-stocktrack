@@ -93,7 +93,7 @@ Utilizamos esta técnica para profundizar en el problema central de la **gestió
 | **Why (Por qué)** | ¿Por qué no usan herramientas digitales hoy? | Porque el Excel requiere una computadora y tiempo de oficina que no tienen durante la operación. |
 | **How (Cómo)** | ¿Cómo calculan hoy cuándo reponer? | Basándose en la memoria visual de los estantes ("ojímetro"), lo cual es propenso a errores humanos. |
 
-A partir de este análisis, surge la pregunta lista para experimento: *¿Podemos automatizar la "confianza" del dueño mediante alertas preventivas que lleguen directamente a su WhatsApp?*
+A partir de este análisis, el equipo decidió mantener las alertas preventivas dentro del alcance interno de la aplicación, evitando incorporar canales externos de mensajería en esta etapa. Esta decisión permite reducir complejidad técnica, evitar dependencias externas y concentrar la validación en el comportamiento principal del usuario frente a las alertas generadas por el sistema.
 
 ### 8.1.4. Question Backlog.
 
@@ -392,7 +392,7 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
 **Decisión:**
  
 - **Ideal:** El módulo de lotes se valida como núcleo de la propuesta de valor; se aprueba para producción sin cambios mayores.
-- **Aceptable:** El módulo ayuda, pero no es suficiente por sí solo; se recomienda añadir un canal de alerta más agresivo (ej. notificación a WhatsApp) antes de producción.
+- **Aceptable:** El módulo ayuda, pero no es suficiente por sí solo; se recomienda mejorar la visibilidad de las alertas dentro de la aplicación mediante recordatorios internos, priorización visual y seguimiento de alertas pendientes antes de producción.
 - **Desfavorable:** Se rechaza la hipótesis; el problema de raíz no es la visibilidad de fechas sino la falta de tiempo/incentivo para actuar. Requiere rediseño del flujo de alertas o investigación adicional.
 ---
  
@@ -992,6 +992,8 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
 
 <p><em>Trazabilidad: Hipótesis 2 (Eficacia del Historial de Lotes) — QD1.</em></p>
 
+
+
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
         <th>Story ID</th>
@@ -1001,53 +1003,6 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td align="center">US19</td>
-        <td align="center">Dueño de bodega</td>
-        <td align="center">Media</td>
-        <td align="center">EP-06</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Recibir alertas de vencimiento por WhatsApp</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> recibir las alertas de vencimiento próximo en WhatsApp <br>
-            <strong> Para </strong> enterarme durante la jornada sin depender de revisar la aplicación.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Habilitación del canal de WhatsApp</strong> <br><br>
-            <strong> Dado que </strong> el usuario registra y verifica un número de WhatsApp <br>
-            <strong> Cuando </strong> guarda su preferencia de notificación <br>
-            <strong> Entonces </strong> el sistema habilita el envío de alertas por ese canal.
-            <br><br>
-            <strong> Escenario 2: Envío de alerta por WhatsApp</strong> <br><br>
-            <strong> Dado que </strong> el usuario tiene el canal de WhatsApp habilitado <br>
-            <strong> Cuando </strong> se genera una alerta de vencimiento próximo <br>
-            <strong> Entonces </strong> el sistema envía un mensaje con el producto afectado y los días restantes.
-        </td>
-    </tr>
-</table>
-
-<p><em>Trazabilidad: Hipótesis 2 (Eficacia del Historial de Lotes) — QD1. Canal de refuerzo previsto en el escenario "Aceptable" de la decisión de 8.2.5; coherente con EP-06, que ya contempla canales externos de notificación.</em></p>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US20</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-11</td>
@@ -1094,7 +1049,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US21</td>
+        <td align="center">US20</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-11</td>
@@ -1146,7 +1101,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US22</td>
+        <td align="center">US21</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Media</td>
         <td align="center">EP-07</td>
@@ -1193,7 +1148,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US23</td>
+        <td align="center">US22</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Baja</td>
         <td align="center">EP-12</td>
@@ -1231,6 +1186,8 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
 </table>
 
 <p><em>Trazabilidad: Hipótesis 3 (Adopción por Localización) — QB2. Sustenta las métricas Localized Sign-up Rate y Trust Perception Score (8.2.3) y el requisito de i18n del enunciado.</em></p>
+
+> **Nota de alcance:** La funcionalidad de alertas por WhatsApp fue retirada del alcance To-Be del proyecto, debido a que no será implementada en el MVP actual. Por ello, no se mantiene como User Story, Technical Story, Experiment Card ni elemento del Product Backlog. Las alertas preventivas se validarán únicamente dentro de la aplicación, mediante eventos internos, seguimiento de alertas pendientes y registro de acciones de mitigación.
 
 ### To-Be Technical Stories
 
@@ -1279,45 +1236,6 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
 </table>
 
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">TS16</td>
-        <td align="center">Desarrollador</td>
-        <td align="center">Media</td>
-        <td align="center">EP-06</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Servicio de notificaciones por WhatsApp</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> desarrollador <br>
-            <strong> Quiero </strong> integrar un servicio de envío de mensajes por WhatsApp <br>
-            <strong> Para </strong> entregar las alertas de vencimiento por un canal externo.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Envío de alerta</strong> <br><br>
-            <strong> Dado que </strong> se genera una alerta de vencimiento próximo y el usuario tiene el canal habilitado <br>
-            <strong> Cuando </strong> el sistema procesa la notificación <br>
-            <strong> Entonces </strong> el servicio envía el mensaje al número verificado y registra el resultado del envío.
-        </td>
-    </tr>
-</table>
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
@@ -1327,7 +1245,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">TS17</td>
+        <td align="center">TS16</td>
         <td align="center">Desarrollador</td>
         <td align="center">Alta</td>
         <td align="center">EP-01</td>
@@ -1372,7 +1290,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">TS18</td>
+        <td align="center">TS17</td>
         <td align="center">Desarrollador</td>
         <td align="center">Baja</td>
         <td align="center">EP-12</td>
@@ -1412,7 +1330,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">TS19</td>
+        <td align="center">TS18</td>
         <td align="center">Desarrollador</td>
         <td align="center">Alta</td>
         <td align="center">EP-06</td>
@@ -1461,5 +1379,4 @@ El backlog prioriza según el scoring del Question Backlog (8.1.4): primero los 
 | **05** | US15 | Optimizar la búsqueda de productos por nombre común | Como dueño de bodega, quiero que la búsqueda por nombre común responda en menos de 1.5 segundos, para atender al cliente sin interrumpir la venta ni volver al registro manual. | 5 |
 | **06** | US22 | Visualizar el ahorro real por mermas evitadas | Como dueño de bodega, quiero ver el ahorro generado por las alertas de vencimiento que atendí, para confirmar el valor que aporta la plataforma frente a su costo. | 3 |
 | **07** | US16 | Visualizar reportes en modo de alto contraste | Como dueño de bodega, quiero activar un modo de alto contraste en los reportes, para leer los datos críticos sin errores en almacenes con poca iluminación o con fatiga visual. | 3 |
-| **08** | US19 | Recibir alertas de vencimiento por WhatsApp | Como dueño de bodega, quiero recibir las alertas de vencimiento próximo en WhatsApp, para enterarme durante la jornada sin depender de revisar la aplicación. | 8 |
-| **09** | US23 | Seleccionar el idioma de la interfaz | Como dueño de bodega de una zona con diversidad lingüística, quiero usar la plataforma con terminología localizada o en un idioma originario, para adoptar la herramienta con confianza. | 5 |
+| **08** | US23 | Seleccionar el idioma de la interfaz | Como dueño de bodega de una zona con diversidad lingüística, quiero usar la plataforma con terminología localizada o en un idioma originario, para adoptar la herramienta con confianza. | 5 |
