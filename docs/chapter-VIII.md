@@ -6,12 +6,14 @@
 
 El estado actual de la gestión de inventarios para los segmentos objetivos se caracteriza por una dependencia crítica en procesos manuales y registros fragmentados. La información reside en cuadernos físicos, archivos de Excel desactualizados y chats de WhatsApp, lo que genera una visibilidad nula del stock en tiempo real. Esta desorganización provoca errores constantes en el control de fechas de vencimiento y una alta carga de ansiedad operativa. Aunque ya se ha definido un stack tecnológico (Spring Boot/Angular) y una arquitectura de software , el estado actual del negocio sigue siendo reactivo e intuitivo, lo que plantea la necesidad de cuestionar si la digitalización propuesta es lo suficientemente simple y óptima para ser adoptada por usuarios con fatiga laboral y baja alfabetización digital.
 
-Problemas identificados:
+Problemas identificados y evidencia de respaldo:
 
-- Rendimiento: La aplicación presenta demoras en el filtrado de productos por nombre.
-- Experiencia de usuario: Formato con bajo contraste para la generación de reportes.
-- Funcionalidad: Ausencia de módulo para ver el historial de lotes.
-- Usabilidad: Falta de traducción para usuarios de diferentes lenguas.
+| Categoría | Problema identificado | Evidencia de respaldo | Impacto en el usuario / negocio |
+|---|---|---|---|
+| **Rendimiento** | La aplicación presenta demoras o riesgo de demora en el filtrado de productos por nombre común cuando el catálogo crece. | En las entrevistas del Capítulo II se identificó que los usuarios trabajan con registros en Excel, libretas o revisión manual de stock. Además, el Capítulo III ya contempla la búsqueda y filtrado de productos como una funcionalidad clave para acceder rápidamente a la información. Esto evidencia que la velocidad de búsqueda es crítica para reemplazar métodos manuales durante la atención al cliente. | Si la búsqueda demora más de lo esperado, el usuario puede abandonar la aplicación y volver al cuaderno, Excel o revisión visual, reduciendo la adopción del producto. |
+| **Experiencia de usuario** | Los reportes pueden presentar problemas de legibilidad cuando se usan en almacenes con poca iluminación o durante jornadas largas. | En la técnica 5W+1H se identificó que la verificación de productos ocurre en almacenes físicos, con espacio reducido y poca iluminación. Además, el propio diseño experimental considera pruebas A/B de reportes en condiciones de iluminación reducida, lo que respalda la necesidad de validar el contraste visual. | Una mala legibilidad puede generar errores al interpretar reportes de stock, vencimientos o productos críticos, afectando la toma de decisiones del dueño de bodega. |
+| **Funcionalidad** | Existe necesidad de un módulo de historial de lotes para controlar entradas, salidas, fechas de vencimiento y trazabilidad del inventario. | Las entrevistas del Capítulo II muestran que los dueños de bodega presentan problemas críticos con fechas de vencimiento, mezcla de lotes y falta de seguimiento al ingresar nuevos productos. También se identificó que el control actual depende de Excel, libretas o memoria visual. | Sin historial de lotes, el usuario no puede anticipar vencimientos, aplicar seguimiento por lote ni reducir pérdidas por productos caducados. |
+| **Usabilidad / accesibilidad** | Falta evidencia sobre la necesidad real de soporte multilingüe o localización para usuarios de diferentes regiones. | En Raw Material se declaró como knowledge gap que el equipo no sabe qué tan importante es el soporte multilingüe considerando la diversidad lingüística del mercado objetivo. Por ello, este punto se mantiene como problema potencial que debe ser validado mediante experimentos antes de implementarse como funcionalidad definitiva. | Si el idioma o la terminología local son una barrera, la adopción podría reducirse en mercados fuera de la capital o en zonas con usuarios bilingües. Si no es una barrera real, implementar localización podría generar esfuerzo técnico innecesario. |
 
 Objetivos de mejora:
 
@@ -26,19 +28,24 @@ Para abordar estos problemas, se han establecido los siguientes objetivos de mej
 
 Esta sección consolida las fuentes de inspiración derivadas de la investigación de usuarios, el diseño de interfaces y la arquitectura del sistema:
 
-- **Assumptions (Suposiciones):** Son creencias o expectativas que se tienen sobre el comportamiento de los usuarios, el mercado o la tecnología, que aún no han sido validadas:
-  - Mejora de eficiencia de busqueda: Se asume que los usuarios valoran más la rapidez en la búsqueda de productos por nombre común cuando manejan una gran cantidad de SKUs.
-  - Reportes de alto contraste: Se asume que el rediseño de los reportes con un formato de alto contraste mejorará la legibilidad y reducirá los errores de interpretación.
-  - Módulo de historial de lotes: Se asume que la implementación de un módulo de historial de lotes permitirá a los usuarios realizar un seguimiento detallado de los movimientos de inventario, reduciendo las pérdidas por vencimiento en un 20%.
-  - Soporte multilingüe: Se asume que la adición de soporte multilingüe aumentará la accesibilidad de la aplicación, permitiendo a usuarios de diferentes lenguas utilizarla sin dificultades, lo que se traducirá en un aumento del 15% en la adopción por parte de usuarios no hispanohablantes.
+- **Assumptions (Suposiciones):** Son creencias o expectativas preliminares sobre el comportamiento de los usuarios, el mercado o la tecnología. Estas suposiciones aún no han sido validadas, por lo que no deben interpretarse como resultados comprobados. Su función es servir como punto de partida para formular preguntas experimentales, hipótesis y criterios de validación.
 
-- **Knowledge Gaps (Brechas de Conocimiento):** Son áreas donde se carece de información o comprensión suficiente, lo que requiere investigación adicional para validar o refutar las suposiciones:
-  - No sabemos cuál es el tiempo máximo que un bodeguero está dispuesto a dedicar diariamente al ingreso de datos en la aplicación.
+  - **Mejora de eficiencia de búsqueda:** Se asume que los usuarios valoran más la rapidez en la búsqueda de productos por nombre común cuando manejan una gran cantidad de productos o SKUs. Esta suposición deberá validarse midiendo el tiempo de respuesta, el nivel de frustración y la tasa de abandono durante tareas de búsqueda.
+
+  - **Reportes de alto contraste:** Se asume que el rediseño de los reportes con un formato de alto contraste podría mejorar la legibilidad y reducir errores de interpretación en ambientes con poca iluminación. Esta suposición deberá validarse mediante pruebas comparativas entre una versión estándar y una versión de alto contraste.
+
+  - **Módulo de historial de lotes:** Se asume que la implementación de un módulo de historial de lotes podría ayudar a los usuarios a realizar un seguimiento más ordenado de entradas, salidas, fechas de vencimiento y movimientos de inventario. Sin embargo, el porcentaje real de reducción de pérdidas por vencimiento aún no se conoce y deberá validarse mediante un experimento con usuarios.
+
+  - **Soporte multilingüe o localización:** Se asume que adaptar la interfaz a terminología local o a otros idiomas podría mejorar la confianza y accesibilidad de la aplicación en mercados con diversidad lingüística. No obstante, el impacto real sobre la adopción todavía es desconocido y deberá validarse antes de priorizar su implementación completa.
+
+- **Knowledge Gaps (Brechas de Conocimiento):** Son áreas donde se carece de información suficiente, por lo que requieren investigación adicional para validar, ajustar o rechazar las suposiciones planteadas.
+
+  - No sabemos cuál es el tiempo máximo que un bodeguero está dispuesto a tolerar durante una búsqueda de productos antes de frustrarse o abandonar la tarea.
   - No sabemos qué tan dispuestos están los usuarios a ingresar el SKU de cada producto frente a búsquedas por nombre común.
   - No sabemos en qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos no detectados.
-  - No sabemos qué tan importante es para los usuarios tener acceso a reportes visuales de alto contraste en comparación con reportes tradicionales.
-  - No sabemos qué tan relevante es para los usuarios contar con un módulo de historial de lotes para su gestión diaria de inventarios.
-  - No sabemos qué tan importante es para los usuarios tener soporte multilingüe en la aplicación, considerando la diversidad lingüística en el mercado objetivo.
+  - No sabemos si el diseño de alto contraste mejora significativamente la lectura de reportes frente a un diseño estándar.
+  - No sabemos si el módulo de historial de lotes reduce realmente las pérdidas por vencimiento ni cuál sería el porcentaje de reducción alcanzable.
+  - No sabemos si el soporte multilingüe o la localización incrementan realmente la adopción, la confianza o la percepción de cercanía del producto en usuarios de diferentes regiones.
 
 - **Ideas:** Son propuestas de funcionalidades o mejoras basadas en la investigación y el diseño, que aún no han sido validadas:
   - Implementación de flujos de registro de entrada/salida optimizados para dispositivos móviles (Mobile-first) para permitir el conteo a pie de estantería.
