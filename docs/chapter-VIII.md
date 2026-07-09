@@ -326,6 +326,23 @@ Todas las tarjetas siguen la misma estructura para mantener consistencia documen
 ---
 
 > **Nota de estandarización:** Todas las Experiment Cards fueron homologadas con la misma estructura: ID de pregunta relacionada, pregunta, motivación, hipótesis, experimento, tipo, medidas, condiciones y escala. Esto permite mantener trazabilidad entre el Question Backlog, las hipótesis, las métricas y las decisiones posteriores del proceso Experiment-Driven Development.
+
+#### Nota metodológica sobre tamaño de muestra y alcance de los experimentos
+
+Los experimentos definidos en esta sección corresponden a una primera etapa de validación exploratoria del producto. Por ello, los tamaños de muestra planteados no buscan generar conclusiones estadísticamente definitivas, sino obtener evidencia inicial suficiente para tomar decisiones de diseño, priorización y aprendizaje dentro del ciclo de Experiment-Driven Development.
+
+Los umbrales definidos en cada Experiment Card, como reducción de merma, aceptación del precio, frustración, tiempo de búsqueda o preferencia por una versión localizada, deben interpretarse como criterios preliminares de decisión y no como resultados concluyentes del mercado total.
+
+| Experimento | Tamaño de muestra inicial | Propósito del experimento | Limitación reconocida | Decisión correctiva |
+|---|---:|---|---|---|
+| Historial de lotes | 5 usuarios piloto | Validar si el módulo ayuda a detectar productos próximos a vencer y generar acciones preventivas. | La muestra permite observar comportamiento inicial, pero no confirma una reducción definitiva de mermas en todo el mercado. | Tratar el resultado como evidencia piloto y repetir el experimento con más usuarios o más ciclos de inventario antes del lanzamiento completo. |
+| Viabilidad de suscripción | 10 usuarios | Evaluar percepción inicial del precio frente al ahorro proyectado. | La intención de pago declarada puede diferir del pago real. | Complementar con prueba de intención de compra, fake door o preventa antes de definir el modelo final. |
+| Latencia de búsqueda | 8 usuarios | Identificar tolerancia inicial frente a diferentes tiempos de respuesta. | La frustración reportada puede variar según experiencia tecnológica, presión de atención y tamaño del catálogo. | Usar el umbral de 1.5 segundos como referencia técnica inicial y validarlo con métricas reales de uso. |
+| Alto contraste en reportes | 6 usuarios | Comparar lectura de reportes en condiciones de baja iluminación. | La muestra permite detectar problemas de legibilidad, pero no generaliza a todos los escenarios de uso. | Realizar una segunda prueba con más usuarios y diferentes condiciones de iluminación. |
+| Localización o soporte multilingüe | 10 usuarios | Medir interés inicial por una versión localizada. | La preferencia puede variar según región, idioma y familiaridad con herramientas digitales. | Mantener la localización como hipótesis exploratoria y no como funcionalidad prioritaria del MVP. |
+
+En consecuencia, los resultados de estos experimentos se utilizarán para decidir si una hipótesis debe continuar, ajustarse, rediseñarse o descartarse. Para considerar una funcionalidad como validada para producción, el equipo deberá ejecutar un segundo ciclo de validación con mayor cantidad de usuarios, mayor duración o datos reales de uso del sistema.
+
 ## 8.2. Experiment Design
 
 ### 8.2.1. Hypotheses.
@@ -488,6 +505,18 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 | **Condición de Control** | Los usuarios interactúan con el diseño estándar del dashboard bajo las mismas condiciones de baja iluminación. |
 
 ### 8.2.5. Scale Calculations and Decisions.
+
+#### Criterio de interpretación de escalas
+
+Las escalas de decisión presentadas en esta sección se utilizan como criterios preliminares para interpretar los resultados de los experimentos piloto. Debido a que los tamaños de muestra son reducidos, los rangos definidos como favorable, aceptable o desfavorable no deben entenderse como evidencia estadística concluyente, sino como una guía para tomar decisiones iniciales de producto.
+
+Por ello, cada escala será interpretada considerando tres elementos:
+
+1. **Resultado cuantitativo:** cumplimiento o no del umbral definido.
+2. **Evidencia cualitativa:** comentarios, observaciones y dificultades reportadas por los usuarios.
+3. **Consistencia del comportamiento observado:** repetición del patrón en más de un usuario o escenario.
+
+Si un experimento obtiene resultado favorable con una muestra pequeña, la funcionalidad no se considerará automáticamente validada para producción. Primero deberá pasar por un segundo ciclo de validación con mayor muestra, mayor duración o datos reales de uso.
 
 Para cada hipótesis, definimos una escala de decisión basada en las métricas clave identificadas en la sección 8.2.3. Esta escala determina si los resultados son **ideales** (validan completamente la hipótesis), **aceptables** (validan parcialmente, requieren refinamiento), o **desfavorables** (invalidan la hipótesis, requieren rediseño o descarte de la funcionalidad).
  
