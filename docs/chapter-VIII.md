@@ -1344,7 +1344,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <td align="center">US18</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
-        <td align="center">EP-02</td>
+        <td align="center">EP-11</td>
     </tr>
     <tr>
         <th>Title</th>
@@ -1356,8 +1356,8 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     <tr>
         <td colspan="4">
             <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> consultar el historial de entradas y salidas de cada lote <br>
-            <strong> Para </strong> hacer trazabilidad detallada y entender por qué un producto llegó a vencerse.
+            <strong> Quiero </strong> consultar el historial de entradas, salidas y acciones registradas sobre cada lote <br>
+            <strong> Para </strong> conocer la trazabilidad del producto y entender qué ocurrió antes de que un lote sea vendido, devuelto, liquidado, gestionado o vencido.
         </td>
     </tr>
     <tr>
@@ -1365,20 +1365,40 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Consulta del historial de un lote</strong> <br><br>
-            <strong> Dado que </strong> un lote registra movimientos de entrada y salida <br>
-            <strong> Cuando </strong> el usuario consulta el detalle de ese lote <br>
-            <strong> Entonces </strong> el sistema muestra los movimientos en orden cronológico con su fecha y cantidad.
+            <strong>Escenario 1: Visualización del historial de un lote</strong><br><br>
+            <strong>Dado</strong> que existe un lote registrado en el inventario,<br>
+            <strong>Cuando</strong> el usuario consulta el historial del lote,<br>
+            <strong>Entonces</strong> el sistema debe mostrar los movimientos asociados al lote en orden cronológico.
             <br><br>
-            <strong> Escenario 2: Lote sin movimientos de salida</strong> <br><br>
-            <strong> Dado que </strong> un lote solo registra su ingreso inicial <br>
-            <strong> Cuando </strong> el usuario consulta su historial <br>
-            <strong> Entonces </strong> el sistema muestra únicamente el movimiento de entrada.
+            <strong>Escenario 2: Registro de entrada de lote</strong><br><br>
+            <strong>Dado</strong> que se registra un nuevo lote en el sistema,<br>
+            <strong>Cuando</strong> el lote queda creado con producto, cantidad, fecha de ingreso y fecha de vencimiento,<br>
+            <strong>Entonces</strong> el sistema debe mostrar una entrada inicial en el historial del lote.
+            <br><br>
+            <strong>Escenario 3: Registro de salida de lote</strong><br><br>
+            <strong>Dado</strong> que existe un lote con stock disponible,<br>
+            <strong>Cuando</strong> el usuario registra una salida por venta, devolución, liquidación o ajuste de inventario,<br>
+            <strong>Entonces</strong> el sistema debe mostrar el movimiento de salida indicando tipo de movimiento, cantidad, fecha y usuario responsable.
+            <br><br>
+            <strong>Escenario 4: Registro de acción sobre alerta</strong><br><br>
+            <strong>Dado</strong> que existe una alerta interna asociada a un lote próximo a vencer,<br>
+            <strong>Cuando</strong> el usuario registra una acción de mitigación sobre esa alerta,<br>
+            <strong>Entonces</strong> el sistema debe mostrar dicha acción dentro del historial del lote.
+            <br><br>
+            <strong>Escenario 5: Lote vencido sin acción previa</strong><br><br>
+            <strong>Dado</strong> que un lote llega a su fecha de vencimiento sin haber sido vendido, devuelto, liquidado o marcado como gestionado,<br>
+            <strong>Cuando</strong> el sistema actualiza el estado del lote,<br>
+            <strong>Entonces</strong> el historial debe mostrar el movimiento de vencimiento correspondiente.
+            <br><br>
+            <strong>Escenario 6: Registro del evento de consulta</strong><br><br>
+            <strong>Dado</strong> que el usuario consulta el historial de un lote,<br>
+            <strong>Cuando</strong> el sistema muestra la trazabilidad del lote,<br>
+            <strong>Entonces</strong> se debe registrar el evento <code>batch_history_viewed</code> para analizar el uso del historial durante el experimento.
         </td>
     </tr>
 </table>
 
-<p><em>Trazabilidad: Hipótesis 2 (Eficacia del Historial de Lotes) — QD1.</em></p>
+<p><em>Trazabilidad: Hipótesis 2 — Eficacia del Historial de Lotes; QD1 — Reducción de pérdidas por vencimiento mediante trazabilidad de lotes y acciones internas.</em></p>
 
 
 
@@ -1761,7 +1781,7 @@ El backlog prioriza según el scoring del Question Backlog (8.1.4): primero los 
 | # Orden | User Story Id | Título | Descripción | Story Points |
 | :------ | :------------ | :----- | :---------- | :----------- |
 | **01** | US17 | Registrar acción de mitigación sobre alertas de vencimiento próximo | Como dueño de bodega, quiero recibir una alerta anticipada de 7 días cuando un lote está próximo a vencer y registrar la acción que tomo, para actuar a tiempo y medir la efectividad de las alertas. | 5 |
-| **02** | US18 | Consultar el historial de movimientos por lote | Como dueño de bodega, quiero consultar el historial de entradas y salidas de cada lote, para hacer trazabilidad detallada y entender por qué un producto llegó a vencerse. | 3 |
+| **02** | US18 | Consultar el historial de movimientos por lote | Como dueño de bodega, quiero consultar el historial de entradas, salidas y acciones registradas sobre cada lote, para conocer la trazabilidad del producto y entender qué ocurrió antes de que un lote sea vendido, devuelto, liquidado, gestionado o vencido. | 3 |
 | **03** | US19 | Estimar el ahorro por mermas frente al costo de la suscripción | Como dueño de bodega, quiero comparar mis pérdidas estimadas por mermas con el costo del plan, para decidir de forma informada si la suscripción representa un ahorro. | 3 |
 | **04** | US20 | Contratar y gestionar el plan de suscripción | Como dueño de bodega, quiero contratar y administrar mi plan de suscripción, para acceder a las funcionalidades premium de la plataforma. | 8 |
 | **05** | US15 | Optimizar la búsqueda de productos por nombre común | Como dueño de bodega, quiero buscar productos por nombre común con un tiempo de respuesta menor a 1.5 segundos, para atender al cliente sin interrumpir la venta ni volver al registro manual. | 5 |
