@@ -1725,22 +1725,22 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td align="center">TS17</td>
-        <td align="center">Desarrollador</td>
+        <td align="center">Desarrollador frontend</td>
         <td align="center">Baja</td>
         <td align="center">EP-12</td>
     </tr>
     <tr>
         <th>Title</th>
-        <td colspan="3">Servicio de internacionalización (i18n)</td>
+        <td colspan="3">Implementar soporte de localización en la interfaz</td>
     </tr>
     <tr>
         <th colspan="4">Description</th>
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Como </strong> desarrollador <br>
-            <strong> Quiero </strong> implementar el soporte de internacionalización (i18n) <br>
-            <strong> Para </strong> servir los textos de la interfaz según el idioma seleccionado.
+            <strong> Como </strong> desarrollador frontend <br>
+            <strong> Quiero </strong> implementar soporte de localización para los textos visibles de la interfaz <br>
+            <strong> Para </strong> permitir que el usuario pueda seleccionar una terminología o idioma disponible y evaluar si esto mejora la confianza y adopción de StockTrack.
         </td>
     </tr>
     <tr>
@@ -1748,13 +1748,32 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Entrega de recursos por idioma</strong> <br><br>
-            <strong> Dado que </strong> el usuario selecciona un idioma soportado <br>
-            <strong> Cuando </strong> solicita una vista de la aplicación <br>
-            <strong> Entonces </strong> el sistema entrega los textos en el idioma correspondiente.
+            <strong> Escenario 1: Carga de textos localizados en la interfaz</strong> <br><br>
+            <strong> Dado que </strong> existen textos localizados disponibles en el frontend <br>
+            <strong> Cuando </strong> el usuario selecciona una opción de idioma o terminología localizada <br>
+            <strong> Entonces </strong> la interfaz debe mostrar los textos principales según la opción seleccionada.
+            <br><br>
+            <strong> Escenario 2: Persistencia de la preferencia seleccionada</strong> <br><br>
+            <strong> Dado que </strong> el usuario seleccionó un idioma o terminología localizada <br>
+            <strong> Cuando </strong> cierra sesión y vuelve a ingresar a la aplicación <br>
+            <strong> Entonces </strong> el frontend debe mantener la preferencia seleccionada previamente.
+            <br><br>
+            <strong> Escenario 3: Alcance limitado a textos visibles</strong> <br><br>
+            <strong> Dado que </strong> la localización corresponde a una mejora de interfaz <br>
+            <strong> Cuando </strong> se aplique el cambio de idioma o terminología <br>
+            <strong> Entonces </strong> solo deben modificarse textos visibles de la interfaz, sin alterar reglas de negocio, cálculos, datos de inventario ni lógica backend.
+            <br><br>
+            <strong> Escenario 4: Registro de variante seleccionada</strong> <br><br>
+            <strong> Dado que </strong> el usuario cambia la opción de idioma o terminología localizada <br>
+            <strong> Cuando </strong> la preferencia queda aplicada en la interfaz <br>
+            <strong> Entonces </strong> el sistema debe permitir registrar la variante seleccionada para evaluar la hipótesis de adopción por localización.
         </td>
     </tr>
 </table>
+
+<p><em>Trazabilidad: US23 — Seleccionar el idioma de la interfaz; Hipótesis 3 — Adopción por Localización; QB2 — Relevancia del soporte multilingüe o localización para mercados con diversidad lingüística.</em></p>
+
+<p><em>Nota de alcance: TS18 se limita a la implementación frontend de textos localizados en la interfaz. No modifica reglas de negocio, cálculos, datos de inventario ni lógica backend. Su propósito es habilitar la validación de la hipótesis de localización dentro del MVP con un alcance controlado.</em></p> 
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
@@ -1820,19 +1839,17 @@ El backlog prioriza según el scoring del Question Backlog (8.1.4): primero los 
 
 #### Technical Stories Priorizadas
 
-Además de las User Stories funcionales, el backlog incluye historias técnicas necesarias para habilitar las funcionalidades To-Be. Estas historias no representan valor directo visible para el usuario, pero permiten implementar, optimizar o sostener técnicamente las historias funcionales priorizadas.
+Además de las User Stories funcionales, el backlog incluye historias técnicas necesarias para habilitar las funcionalidades To-Be del MVP. Estas historias no representan valor directo visible para el usuario, pero permiten implementar servicios, optimizar rendimiento, registrar eventos y sostener técnicamente las funcionalidades priorizadas.
 
-La historia técnica relacionada con WhatsApp fue retirada del alcance, debido a que el equipo eliminó los canales externos de mensajería del MVP. Por ello, solo se mantienen las Technical Stories asociadas a funcionalidades que sí serán implementadas.
-
-| Orden técnico | Technical Story Id | Historia relacionada | Título | Justificación técnica | Story Points |
-| :---: | :--- | :--- | :--- | :--- | :---: |
-| **01** | TS15 | US15 | Optimizar consultas de búsqueda de productos | Permite cumplir el umbral de búsqueda menor a 1.5 segundos mediante optimización de consultas, índices o paginación. | 5 |
-| **02** | TS16 | US17 / US18 | Registrar eventos de lotes, alertas y acciones | Permite medir la eficacia del historial de lotes mediante eventos como `batch_alert_triggered`, `batch_alert_action` y `batch_history_viewed`. | 5 |
-| **03** | TS17 | US16 | Implementar soporte visual para modo de alto contraste | Permite habilitar la variante de reportes necesaria para la prueba A/B de alto contraste sin alterar los datos funcionales del reporte. | 3 |
-| **04** | TS18 | US22 | Implementar configuración básica de idioma o terminología localizada | Permite guardar y aplicar la preferencia de idioma o terminología localizada como implementación mínima para validar H3 dentro del MVP. | 3 |
-
-**Nota de alcance técnico:**  
-La Technical Story relacionada con WhatsApp fue eliminada porque el equipo decidió no implementar canales externos de mensajería en el MVP. Las alertas preventivas se mantendrán dentro de la aplicación mediante eventos internos, historial de lotes y registro de acciones de mitigación.
+| Orden técnico | Technical Story Id | Historia relacionada | Epic | Título | Justificación técnica | Story Points |
+| :---: | :--- | :--- | :--- | :--- | :--- | :---: |
+| **01** | TS18 | US17  | EP-06 / EP-11 | Endpoints de acción y telemetría de alertas de lote | Permite registrar acciones sobre alertas internas de vencimiento y emitir eventos como `batch_alert_triggered` y `batch_alert_action`, necesarios para calcular el Alert Action Rate de H2. | 5 |
+| **02** | TS16 | US15 | EP-01 | Optimizar consultas de búsqueda de productos | Permite cumplir el umbral de búsqueda menor a 1.5 segundos mediante optimización de consultas, paginación, índices o mejoras en la respuesta del backend. | 5 |
+| **03** | TS15 | US19 / US20 | EP-11 | Endpoints de gestión de suscripción y pago | Habilita la contratación de planes, activación de suscripciones, consulta de estado del plan y control de vigencia, alineado con la validación comercial de H1. | 5 |
+| **04** | TS17 | US22 | EP-12 | Implementar soporte de localización en la interfaz | Permite aplicar textos localizados en la interfaz y registrar la variante seleccionada para validar H3, sin modificar reglas de negocio, cálculos, datos de inventario ni lógica backend. | 3 |
 
 **Criterio de priorización técnica:**  
-Las Technical Stories se ordenan según su dependencia con las User Stories funcionales de mayor prioridad. Primero se atienden las tareas técnicas vinculadas con historial de lotes, alertas internas y búsqueda, porque están asociadas a las hipótesis críticas H2 y H4. Luego se priorizan mejoras complementarias como alto contraste e idioma localizado.
+Las Technical Stories se ordenan según su relación con las hipótesis de mayor riesgo y con las funcionalidades principales del MVP. Primero se priorizan las tareas técnicas relacionadas con alertas internas e historial de lotes, porque apoyan la propuesta de valor central de StockTrack. Luego se prioriza la optimización de búsqueda, ya que impacta directamente en la experiencia diaria del usuario. Después se ubican los servicios de suscripción y pago, necesarios para validar la viabilidad comercial. Finalmente, se incluye localización como implementación de prioridad baja y alcance controlado.
+
+**Nota de alcance:**  
+No se incluye ninguna Technical Story relacionada con WhatsApp ni mensajería externa, porque esa funcionalidad fue retirada del alcance del MVP. Las alertas preventivas se gestionarán únicamente dentro de StockTrack mediante alertas internas, eventos del sistema y registro de acciones sobre lotes próximos a vencer.
