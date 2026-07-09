@@ -51,12 +51,19 @@ Esta sección consolida las fuentes de inspiración derivadas de la investigaci�
   - Implementación de flujos de registro de entrada/salida optimizados para dispositivos móviles (Mobile-first) para permitir el conteo a pie de estantería.
   - Centralización de la gestión de proveedores vinculada directamente a la reposición de lotes para automatizar la cadena de suministro.
 
-- **Claims (Afirmaciones):** Son declaraciones hechas sobre el producto ya sea por stakeholders o usuarios.
-  - La aplicación es fácil de usar y mejora significativamente la gestión de inventarios en comparación con los métodos manuales anteriores.
-  - La función de búsqueda por nombre común es esencial para manejar grandes catálogos de productos, ya que los usuarios no recuerdan los SKUs.
-  - Los reportes de alto contraste son cruciales para mejorar la legibilidad y reducir errores en la interpretación de datos.
-  - El módulo de historial de lotes es una herramienta indispensable para el seguimiento detallado de los movimientos de inventario y la reducción de pérdidas por vencimiento.
-  - El soporte multilingüe es fundamental para ampliar la accesibilidad de la aplicación a usuarios de diferentes lenguas, aumentando su adopción.
+- **Claims (Afirmaciones):** Son declaraciones realizadas por usuarios, stakeholders o por el propio equipo a partir de entrevistas, observaciones, análisis del contexto del negocio o artefactos previos del proyecto. A diferencia de las assumptions, las claims deben indicar una fuente o evidencia de origen para poder ser verificadas posteriormente. En esta etapa, las claims no se consideran verdades definitivas, sino afirmaciones trazables que deben contrastarse con los experimentos definidos.
+
+| ID | Claim / Afirmación | Fuente o evidencia de origen | Fecha o periodo de referencia | Estado de validación | Relación con experimento |
+|---|---|---|---|---|---|
+| CL01 | La aplicación puede mejorar la gestión de inventarios frente a métodos manuales como cuadernos, Excel o revisión visual del stock. | Entrevistas iniciales a usuarios del segmento objetivo y análisis del problema presentado en capítulos previos del proyecto. | Periodo de pilotaje | Pendiente de validación experimental. | Se relaciona con las hipótesis sobre reducción de mermas, historial de lotes y percepción de valor del producto. |
+| CL02 | La búsqueda por nombre común es importante porque los usuarios no siempre recuerdan o utilizan el SKU de los productos durante la atención al cliente. | Hallazgos de investigación de usuarios y observación del flujo actual de búsqueda manual de productos. | Periodo de pilotaje | Pendiente de validación mediante prueba de latencia y tareas de búsqueda. | Se relaciona con QD2 y con la hipótesis de tolerancia a la latencia de búsqueda. |
+| CL03 | Los reportes con mejor contraste podrían facilitar la lectura de información en almacenes o espacios con poca iluminación. | Análisis 5W+1H de la gestión de vencimientos, donde se identifica que la verificación ocurre en espacios físicos reducidos y con iluminación variable. | Periodo de pilotaje | Pendiente de validación mediante prueba A/B de reportes. | Se relaciona con QD3 y con la hipótesis sobre diseño de alto contraste. |
+| CL04 | El historial de lotes puede ayudar a controlar entradas, salidas, fechas de vencimiento y trazabilidad de productos. | Problemas identificados en el As-Is Summary y entrevistas sobre gestión manual de vencimientos. | Periodo de pilotaje | Pendiente de validación mediante piloto funcional del módulo de lotes. | Se relaciona con QD1 y con la hipótesis sobre reducción de pérdidas por vencimiento. |
+| CL05 | La localización o soporte multilingüe podría mejorar la confianza y accesibilidad del producto en usuarios de distintas regiones. | Knowledge gap identificado por el equipo respecto a diversidad lingüística y adopción en mercados fuera de la capital. | Periodo de pilotaje | Pendiente de validación; no debe asumirse como necesidad confirmada. | Se relaciona con QB2 y con la hipótesis sobre adopción por localización. |
+
+
+---------
+> **Nota de trazabilidad:** Las claims anteriores se documentan con fuente, periodo y estado de validación para evitar que sean interpretadas como hechos comprobados. Su propósito es alimentar el diseño experimental y permitir que cada afirmación pueda ser aceptada, rechazada o reformulada según los resultados obtenidos.
 
 ### 8.1.3. Experiment-Ready Questions.
 
