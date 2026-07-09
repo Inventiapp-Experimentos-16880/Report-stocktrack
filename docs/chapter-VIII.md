@@ -1248,40 +1248,38 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <td colspan="4">
             <strong> Como </strong> dueño de bodega <br>
             <strong> Quiero </strong> activar un modo de alto contraste en los reportes <br>
-            <strong> Para </strong> evaluar si la información crítica del inventario puede leerse con mayor claridad en condiciones de baja iluminación o fatiga visual.
+            <strong> Para </strong>evaluar si la información crítica del inventario puede leerse con mayor claridad en condiciones de baja iluminación o fatiga visual.
         </td>
     </tr>
     <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong>Escenario 1: Activación del modo de alto contraste</strong><br><br>
-            <strong>Dado</strong> que el dueño de bodega se encuentra en la pantalla de reportes,<br>
-            <strong>Cuando</strong> activa la opción de modo de alto contraste,<br>
-            <strong>Entonces</strong> el sistema debe mostrar la pantalla de reportes en una variante visual diferenciada para evaluación.
-            <br><br>
-            <strong>Escenario 2: Conservación de la información del reporte</strong><br><br>
-            <strong>Dado</strong> que el modo de alto contraste está activado,<br>
-            <strong>Cuando</strong> el usuario visualiza indicadores, fechas de vencimiento, cantidades o alertas del reporte,<br>
-            <strong>Entonces</strong> el sistema debe mostrar la misma información funcional que la versión estándar, sin modificar datos ni cálculos.
-            <br><br>
-            <strong>Escenario 3: Desactivación del modo de alto contraste</strong><br><br>
-            <strong>Dado</strong> que el modo de alto contraste está activado,<br>
-            <strong>Cuando</strong> el usuario desactiva esta opción,<br>
-            <strong>Entonces</strong> el sistema debe regresar a la versión estándar de la pantalla de reportes.
-            <br><br>
-            <strong>Escenario 4: Registro para evaluación experimental</strong><br><br>
-            <strong>Dado</strong> que existen una versión estándar y una versión de alto contraste del reporte,<br>
-            <strong>Cuando</strong> el usuario realiza una tarea de lectura durante la prueba A/B,<br>
-            <strong>Entonces</strong> el equipo debe poder registrar el tiempo de lectura, los errores de interpretación y la claridad percibida para evaluar la hipótesis de alto contraste.
-        </td>
-    </tr>
+    <th colspan="4">Acceptance Criteria</th>
+</tr>
+<tr>
+    <td colspan="4">
+        <strong> Escenario 1: Activación del modo de alto contraste</strong> <br><br>
+        <strong> Dado que </strong> el dueño de bodega se encuentra en la pantalla de reportes <br>
+        <strong> Cuando </strong> activa la opción de modo de alto contraste <br>
+        <strong> Entonces </strong> el sistema debe mostrar la pantalla de reportes en una variante visual diferenciada para evaluación.
+        <br><br>
+        <strong> Escenario 2: Conservación de la información del reporte</strong> <br><br>
+        <strong> Dado que </strong> el modo de alto contraste está activado <br>
+        <strong> Cuando </strong> el usuario visualiza indicadores, fechas de vencimiento, cantidades o alertas del reporte <br>
+        <strong> Entonces </strong> el sistema debe mostrar la misma información funcional que la versión estándar, sin alterar datos ni cálculos.
+        <br><br>
+        <strong> Escenario 3: Desactivación del modo de alto contraste</strong> <br><br>
+        <strong> Dado que </strong> el modo de alto contraste está activado <br>
+        <strong> Cuando </strong> el usuario desactiva esta opción <br>
+        <strong> Entonces </strong> el sistema debe regresar a la versión estándar de la pantalla de reportes.
+        <br><br>
+        <strong> Escenario 4: Registro para evaluación experimental</strong> <br><br>
+        <strong> Dado que </strong> existen una versión estándar y una versión de alto contraste del reporte <br>
+        <strong> Cuando </strong> el usuario realiza una tarea de lectura durante la prueba A/B <br>
+        <strong> Entonces </strong> el equipo debe poder registrar el tiempo de lectura, errores de interpretación y claridad percibida para evaluar la hipótesis.
+    </td>
+</tr>
 </table>
 
-<p><em>Trazabilidad: Hipótesis 5 — Impacto del Alto Contraste; QD3 — Mejora de interpretación de reportes en entornos de baja iluminación.</em></p>
-
-<p><em>Nota de alcance: US16 define la funcionalidad visible para el usuario: activar, desactivar y evaluar una variante de alto contraste en reportes. Los detalles visuales específicos, como reglas de contraste, estilos, tokens de diseño o implementación frontend, se documentan en la Technical Story TS18 para no mezclar criterios funcionales con especificaciones UI/UX.</em></p>
+<p><em>Trazabilidad: Hipótesis 5 (Impacto del Alto Contraste) — QD3. Según la decisión "Aceptable" de 8.2.5, se implementa como opción de accesibilidad y no como reemplazo del diseño estándar.</em></p>
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
