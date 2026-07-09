@@ -1151,7 +1151,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
       <td>Monetización y Suscripción</td>
       <td>Agrupa las funcionalidades orientadas a validar la viabilidad económica de StockTrack, estimar el ahorro generado por la reducción de mermas, comparar dicho ahorro frente al costo del plan y gestionar la contratación de una suscripción. Esta épica permite conectar el valor funcional del producto con una decisión comercial informada por parte del dueño de bodega.
       </td>
-      <td>US19, US20, TS15</td>
+      <td>US19, US20</td>
     </tr>
     <tr>
       <td>EP-12</td>
@@ -1672,16 +1672,16 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <th>Title</th>
-        <td colspan="3">Optimización del índice de búsqueda de productos</td>
+        <td colspan="3">Optimizar consultas de búsqueda de productos</td>
     </tr>
     <tr>
         <th colspan="4">Description</th>
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Como </strong> desarrollador <br>
-            <strong> Quiero </strong> optimizar el índice de búsqueda por nombre <br>
-            <strong> Para </strong> que las consultas respondan por debajo del umbral de latencia definido.
+            <strong> Como </strong> desarrollador backend <br>
+            <strong> Quiero </strong> optimizar las consultas de búsqueda de productos por nombre común <br>
+            <strong> Para </strong> reducir el tiempo de respuesta del endpoint de búsqueda y cumplir el umbral máximo de 1.5 segundos definido en la hipótesis de latencia.
         </td>
     </tr>
     <tr>
@@ -1689,18 +1689,32 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Consulta bajo umbral</strong> <br><br>
-            <strong> Dado que </strong> existe un volumen de productos representativo <br>
-            <strong> Cuando </strong> se ejecuta una búsqueda por nombre <br>
-            <strong> Entonces </strong> el servicio devuelve los resultados en menos de 1.5 segundos.
+            <strong>Escenario 1: Búsqueda dentro del umbral técnico</strong><br><br>
+            <strong>Dado</strong> que existen productos registrados en la base de datos,<br>
+            <strong>Cuando</strong> el frontend consulta productos por nombre común,<br>
+            <strong>Entonces</strong> el backend debe devolver los resultados en un tiempo menor a 1.5 segundos bajo condiciones normales de prueba.
             <br><br>
-            <strong> Escenario 2: Coincidencia parcial</strong> <br><br>
-            <strong> Dado que </strong> el término ingresado es parcial o aproximado <br>
-            <strong> Cuando </strong> se procesa la consulta <br>
-            <strong> Entonces </strong> el servicio aplica coincidencia parcial sin degradar el tiempo de respuesta.
+            <strong>Escenario 2: Optimización de consulta</strong><br><br>
+            <strong>Dado</strong> que la búsqueda utiliza campos consultados con frecuencia,<br>
+            <strong>Cuando</strong> se ejecuta la consulta de productos,<br>
+            <strong>Entonces</strong> el sistema debe usar criterios de búsqueda eficientes, paginación o índices según corresponda.
+            <br><br>
+            <strong>Escenario 3: Respuesta sin resultados</strong><br><br>
+            <strong>Dado</strong> que el término ingresado no coincide con productos registrados,<br>
+            <strong>Cuando</strong> se ejecuta la búsqueda,<br>
+            <strong>Entonces</strong> el backend debe retornar una respuesta vacía controlada sin generar error.
+            <br><br>
+            <strong>Escenario 4: Registro de tiempo de respuesta</strong><br><br>
+            <strong>Dado</strong> que se ejecuta una búsqueda de productos durante el experimento,<br>
+            <strong>Cuando</strong> el backend responde la solicitud,<br>
+            <strong>Entonces</strong> el sistema debe permitir registrar el tiempo de respuesta para el evento <code>product_search_performed</code>.
         </td>
     </tr>
 </table>
+
+<p><em>Trazabilidad: US15 — Optimizar la búsqueda de productos por nombre común; Hipótesis 4 — Tolerancia a la Latencia de Búsqueda; QD2 — Umbral máximo de búsqueda tolerado por el usuario.</em></p>
+
+<p><em>Nota de alcance: TS16 se limita a la optimización técnica de la búsqueda por nombre común. No incluye búsqueda aproximada, autocorrección, sugerencias inteligentes, coincidencias difusas, pagos, suscripciones ni cálculo de ROI.</em></p> 
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
