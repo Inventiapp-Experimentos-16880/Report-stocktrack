@@ -425,8 +425,13 @@ Esta sección define las métricas específicas que se utilizarán para medir el
  
 **Métricas:**
  
-- **Reducción de Mermas Reales (Shrinkage Reduction Rate):** Comparación de productos vencidos sin vender, devolver o liquidar durante un periodo experimental de 15 días frente a un periodo de control también de 15 días. Ambos periodos deben evaluar las mismas categorías de productos y usar el mismo criterio de vencimiento. **Criterio de éxito: reducción ≥15%.**
-- **Tasa de Acción sobre Alertas (Alert Action Rate):** Porcentaje de alertas de "7 días para vencer" que derivan en una acción del usuario dentro de las 48 horas siguientes. **Criterio de éxito: ≥60%.**
+- **Reducción de Mermas Reales (Shrinkage Reduction Rate):** Comparación de productos vencidos sin vender, devolver o liquidar durante un periodo experimental de 15 días frente a un periodo de control también de 15 días. Ambos periodos deben evaluar las mismas categorías de productos y usar el mismo criterio de vencimiento. El registro manual solo será usado como línea base referencial; la medición principal se realizará con los registros internos del sistema. **Criterio de éxito: reducción ≥15%.**
+
+- **Tasa de Acción sobre Alertas (Alert Action Rate):** Porcentaje de alertas internas de "7 días para vencer" que derivan en una acción del usuario dentro de las 48 horas siguientes. La acción puede ser vender, liquidar, devolver, marcar como gestionado o actualizar el estado del lote dentro de StockTrack. **Criterio de éxito: ≥60%.**
+
+- **Confiabilidad del Registro Digital (Digital Record Reliability):** Porcentaje de lotes evaluados que cuentan con datos completos dentro del sistema: producto, fecha de ingreso, fecha de vencimiento, estado del lote y acción registrada. **Criterio de éxito: ≥90%.**
+
+> **Nota:** Para evitar depender únicamente de registros manuales, el registro manual se utilizará solo como referencia inicial. La validación principal de esta hipótesis se basará en eventos y datos registrados dentro de StockTrack, como lotes creados, alertas generadas, acciones realizadas y productos marcados como gestionados o vencidos.
 ---
  
 ### Hipótesis 3: Adopción por Localización
