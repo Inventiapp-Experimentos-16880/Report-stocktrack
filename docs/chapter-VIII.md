@@ -161,82 +161,171 @@ Con esta priorización, el empate entre **QD1** y **QB1** queda resuelto mediant
 
 ### 8.1.5. Experiment Cards.
 
-En esta sección se detallan las Tarjetas de Experimento para las preguntas de mayor prioridad. Estas tarjetas actúan como el contrato del experimento antes de su ejecución.
+En esta sección se detallan las Tarjetas de Experimento para las preguntas priorizadas en el Question Backlog. Estas tarjetas funcionan como un contrato experimental antes de ejecutar cualquier validación, ya que definen de manera uniforme la pregunta, motivación, hipótesis, experimento, medidas, condiciones y escala de decisión.
 
-#### Tarjeta de Experimento 01: Viabilidad de Suscripción (QB1)
-
-**Lado Frontal: El Qué y el Por Qué**
-*   **Pregunta:** ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos?
-*   **Why?:** Si el costo de StockTrack supera la percepción de ahorro por reducción de mermas, los usuarios como Carla no adoptarán la solución a largo plazo.
-*   **Hypothesis:** Creemos que los dueños de bodegas aceptarán un costo mensual de $15 USD si el sistema demuestra mediante un reporte inicial que sus pérdidas por vencimiento superan los $50 USD mensuales.
-*   **What:** Un prototipo de alta fidelidad en Figma que simula un "Calculador de Retorno de Inversión (ROI)" donde el usuario ingresa sus mermas estimadas y ve el costo de la App contrastado.
-
-**Lado Posterior: Configuración**
-*   **Medidas:** Porcentaje de usuarios que hacen clic en el botón "Adquirir Plan" tras interactuar con la calculadora de ahorro.
-*   **Condiciones:** Entrevistas guiadas con 10 dueños de bodegas (Segmento 1) utilizando el prototipo.
-*   **Escala:** El experimento se considera exitoso si al menos 7 de cada 10 usuarios consideran que el precio es "Justo" o "Barato" en relación al valor percibido de ahorro.
+Todas las tarjetas siguen la misma estructura para mantener consistencia documental y trazabilidad con las preguntas del backlog.
 
 ---
 
-#### Tarjeta de Experimento 02: Eficacia del Historial de Lotes (QD1)
+### Tarjeta de Experimento 01: Eficacia del Historial de Lotes (QD1)
 
 **Lado Frontal: El Qué y el Por Qué**
-*   **Pregunta:** ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento?
-*   **Why?:** Validar que la funcionalidad técnica realmente soluciona el problema de negocio de Andrés (pérdida de dinero por stock "olvidado").
-*   **Hypothesis:** Creemos que proporcionar una vista de "Lotes Próximos a Vencer" con alertas de 7 días de anticipación permitirá a los usuarios realizar ventas de liquidación, reduciendo las pérdidas físicas en un 20%.
-*   **What:** Un MVP funcional (módulo de lotes) conectado a una base de datos real con 20 productos de prueba para un usuario seleccionado.
-*   **Type:** Experiment-Ready (Ready to build).
+
+* **ID de pregunta relacionada:** QD1
+* **Pregunta:** ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento en un porcentaje medible frente al registro manual?
+* **Why?:** Esta pregunta valida la propuesta de valor central de StockTrack. Si el historial de lotes no ayuda a reducir pérdidas por productos vencidos, el producto pierde su principal argumento funcional frente a métodos manuales como cuadernos o Excel.
+* **Hypothesis:** Creemos que proporcionar una vista de lotes próximos a vencer, junto con alertas preventivas internas dentro de la aplicación, permitirá a los usuarios identificar productos críticos y tomar acciones de venta, devolución o liquidación antes del vencimiento.
+* **What:** Un MVP funcional del módulo de historial de lotes conectado a una base de datos de prueba con productos, fechas de ingreso, fechas de vencimiento, estado del lote y alertas internas.
+* **Type:** Experiment-Ready.
 
 **Lado Posterior: Configuración**
-*   **Medidas:** Cantidad de productos que llegaron a su fecha de vencimiento sin ser vendidos/devueltos comparado con el registro manual del mes anterior.
-*   **Condiciones:** Uso de la funcionalidad por parte de 5 usuarios "Early Adopters" durante un ciclo de inventario (15 días).
-*   **Escala:** Éxito si se registra una reducción de al menos el 15% en mermas reales durante el periodo de prueba.
+
+* **Medidas:**
+  - Cantidad de productos vencidos no vendidos durante el periodo de prueba.
+  - Valor monetario estimado de productos vencidos.
+  - Porcentaje de reducción de merma frente al registro manual previo.
+  - Número de acciones registradas sobre productos próximos a vencer.
+
+* **Condiciones:**
+  - Usuarios piloto: 5 dueños o encargados de bodega.
+  - Duración mínima: 15 días de uso.
+  - Condición base: registro manual previo mediante cuaderno, Excel o control visual.
+  - Condición experimental: uso del módulo de historial de lotes y alertas internas de StockTrack.
+
+* **Escala:**
+  - **Favorable:** reducción de merma igual o mayor a 15% frente al periodo base.
+  - **Aceptable:** reducción entre 5% y 14%, con evidencia de uso del módulo y acciones preventivas.
+  - **Desfavorable:** reducción menor a 5% o ausencia de uso del módulo.
 
 ---
 
-#### Tarjeta de Experimento 03: Tolerancia a Latencia de Búsqueda (QD2)
+### Tarjeta de Experimento 02: Viabilidad de Suscripción (QB1)
 
 **Lado Frontal: El Qué y el Por Qué**
-*   **Pregunta:** ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse?
-*   **Why?:** La fluidez en la atención al cliente depende de la rapidez de la App; una búsqueda lenta obliga al usuario a volver al cuaderno físico.
-*   **Hypothesis:** Creemos que una respuesta de búsqueda superior a 1.5 segundos incrementará la frustración del usuario y aumentará la probabilidad de abandono de la App durante momentos de alta afluencia de clientes.
-*   **What:** Un prototipo funcional que permite ajustar artificialmente el tiempo de respuesta del buscador (0.5s, 1.5s, 3s) para observar reacciones.
+
+* **ID de pregunta relacionada:** QB1
+* **Pregunta:** ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos no detectados?
+* **Why?:** Si el costo de StockTrack supera la percepción de ahorro por reducción de mermas, los usuarios no adoptarán la solución a largo plazo. Esta pregunta valida la viabilidad comercial del modelo de suscripción.
+* **Hypothesis:** Creemos que los dueños de bodegas estarán dispuestos a considerar una suscripción mensual si el sistema demuestra que el ahorro proyectado por reducción de pérdidas puede ser mayor al costo del plan.
+* **What:** Un prototipo de alta fidelidad en Figma que simula una calculadora de retorno de inversión, donde el usuario ingresa sus pérdidas estimadas por productos vencidos y compara el ahorro proyectado con el costo de la suscripción.
+* **Type:** Experiment-Ready.
 
 **Lado Posterior: Configuración**
-*   **Medidas:** Tasa de abandono de la tarea de búsqueda y nivel de frustración reportado (Escala Likert).
-*   **Condiciones:** Pruebas de usabilidad con 8 usuarios simulando una situación de "atención bajo presión".
-*   **Escala:** El experimento identifica el "punto de quiebre". Se define éxito técnico si logramos mantener la latencia por debajo del umbral identificado (objetivo < 1.5s).
+
+* **Medidas:**
+  - Porcentaje de usuarios que califican el precio como “Justo” o “Barato”.
+  - Porcentaje de usuarios que hacen clic en “Adquirir Plan” o manifiestan intención de pago.
+  - Relación ahorro proyectado / costo de suscripción.
+  - Comentarios cualitativos sobre barreras de precio.
+
+* **Condiciones:**
+  - Entrevistas guiadas con 10 dueños de bodegas o pequeños negocios.
+  - Uso de prototipo de calculadora de ahorro.
+  - Presentación del costo mensual junto con el ahorro estimado por reducción de mermas.
+
+* **Escala:**
+  - **Favorable:** al menos 70% de usuarios considera el precio “Justo” o “Barato”.
+  - **Aceptable:** entre 50% y 69% considera el precio aceptable, pero solicita ajustes o más evidencia de ahorro.
+  - **Desfavorable:** menos de 50% considera viable pagar la suscripción.
 
 ---
 
-#### Tarjeta de Experimento 04: Impacto del Alto Contraste (QD3)
+### Tarjeta de Experimento 03: Tolerancia a Latencia de Búsqueda (QD2)
 
 **Lado Frontal: El Qué y el Por Qué**
-*   **Pregunta:** ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes?
-*   **Why?:** Los almacenes de las bodegas suelen tener iluminación deficiente y los usuarios (como Carla) presentan fatiga visual tras jornadas largas.
-*   **Hypothesis:** Creemos que un diseño de alto contraste reducirá el tiempo de identificación de productos críticos en un 25% bajo condiciones de poca luz.
-*   **What:** Test A/B con dos versiones del dashboard de reportes: una estándar y otra con paleta de colores de alto contraste.
+
+* **ID de pregunta relacionada:** QD2
+* **Pregunta:** ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse?
+* **Why?:** La fluidez durante la atención al cliente depende de la rapidez de búsqueda. Si el sistema demora demasiado, el usuario puede abandonar la aplicación y volver al cuaderno, Excel o revisión visual.
+* **Hypothesis:** Creemos que una respuesta de búsqueda superior a 1.5 segundos incrementará la frustración del usuario y aumentará la probabilidad de abandono durante momentos de alta afluencia de clientes.
+* **What:** Un prototipo funcional que permite ajustar artificialmente el tiempo de respuesta del buscador en tres escenarios: 0.5 segundos, 1.5 segundos y 3 segundos.
+* **Type:** Experiment-Ready.
 
 **Lado Posterior: Configuración**
-*   **Medidas:** Tiempo (segundos) requerido para encontrar la fecha de vencimiento de un producto específico en el reporte.
-*   **Condiciones:** Pruebas controladas con 6 usuarios en una habitación con iluminación reducida (< 100 lux).
-*   **Escala:** Éxito si la versión de alto contraste muestra una mejora del 20% en la velocidad de lectura frente a la versión estándar.
+
+* **Medidas:**
+  - Tiempo de respuesta de búsqueda.
+  - Tasa de abandono de tarea.
+  - Nivel de frustración reportado en escala Likert de 1 a 5.
+  - Tiempo total para completar una tarea de búsqueda.
+
+* **Condiciones:**
+  - Pruebas de usabilidad con 8 usuarios.
+  - Simulación de atención bajo presión.
+  - Tres escenarios de latencia controlada: 0.5s, 1.5s y 3s.
+  - Misma tarea de búsqueda para todos los participantes.
+
+* **Escala:**
+  - **Favorable:** búsqueda menor a 1 segundo, frustración ≤ 2/5 y baja tasa de abandono.
+  - **Aceptable:** búsqueda entre 1.0 y 1.5 segundos, frustración controlada y abandono menor al escenario de 3s.
+  - **Desfavorable:** búsqueda mayor a 1.5 segundos o frustración mayor a 3/5.
 
 ---
 
-#### Tarjeta de Experimento 05: Soporte Multilingüe / Localización (QB2)
+### Tarjeta de Experimento 04: Impacto del Alto Contraste (QD3)
 
 **Lado Frontal: El Qué y el Por Qué**
-*   **Pregunta:** ¿Qué tan relevante es el soporte multilingüe para la adopción en mercados con diversidad lingüística?
-*   **Why?:** Queremos validar si el esfuerzo técnico de internacionalización justifica el crecimiento esperado en nuevos segmentos o si el español es suficiente para la fase de tracción.
-*   **Hypothesis:** Creemos que ofrecer la interfaz con terminología localizada (o idiomas originarios según la región) incrementará la confianza del usuario en un 15%, ya que reduce la barrera de "tecnología ajena".
-*   **What:** Una "Landing Page" de registro y una pantalla de inventario traducidas a un segundo idioma (ej. Quechua o inglés técnico para exportadores) para medir el interés mediante registros.
+
+* **ID de pregunta relacionada:** QD3
+* **Pregunta:** ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes en entornos de baja iluminación?
+* **Why?:** Muchos usuarios revisan información de inventario en almacenes con iluminación limitada o durante jornadas largas. Un diseño con bajo contraste puede generar fatiga visual, errores de lectura y mala interpretación de los reportes.
+* **Hypothesis:** Creemos que un diseño de alto contraste reducirá el tiempo de identificación de productos críticos y disminuirá errores de interpretación en condiciones de baja iluminación.
+* **What:** Test A/B con dos versiones del dashboard de reportes: una versión estándar y una versión con paleta de alto contraste.
+* **Type:** Experiment-Ready.
 
 **Lado Posterior: Configuración**
-*   **Medidas:** Tasa de conversión (sign-up) en la versión localizada frente a la versión estándar.
-*   **Condiciones:** Campaña de anuncios segmentada o visitas presenciales a 10 negocios en zonas con bilingüismo predominante.
-*   **Escala:** Éxito si al menos el 20% de los nuevos interesados optan por la versión localizada al momento del registro.
 
+* **Medidas:**
+  - Tiempo requerido para encontrar un producto crítico en el reporte.
+  - Tasa de errores de interpretación.
+  - Preferencia visual del usuario.
+  - Nivel de claridad percibida en escala Likert de 1 a 5.
+
+* **Condiciones:**
+  - Pruebas controladas con 6 usuarios.
+  - Ambiente con iluminación reducida.
+  - Comparación entre versión estándar y versión de alto contraste.
+  - Misma tarea de lectura para ambas versiones.
+
+* **Escala:**
+  - **Favorable:** mejora de al menos 20% en velocidad de interpretación y tasa de error ≤ 5%.
+  - **Aceptable:** mejora entre 10% y 19%, con preferencia mayoritaria por la versión de alto contraste.
+  - **Desfavorable:** mejora menor a 10% o aumento de errores de interpretación.
+
+---
+
+### Tarjeta de Experimento 05: Soporte Multilingüe / Localización (QB2)
+
+**Lado Frontal: El Qué y el Por Qué**
+
+* **ID de pregunta relacionada:** QB2
+* **Pregunta:** ¿Qué tan relevante es el soporte multilingüe o la localización para la adopción en mercados con diversidad lingüística?
+* **Why?:** Antes de invertir esfuerzo técnico en internacionalización, el equipo necesita validar si la localización realmente aumenta la confianza, comprensión o intención de uso en nuevos segmentos.
+* **Hypothesis:** Creemos que ofrecer una interfaz con terminología localizada podría aumentar la confianza del usuario en zonas con diversidad lingüística; sin embargo, este impacto aún debe validarse antes de priorizar su implementación completa.
+* **What:** Una landing page de registro y una pantalla de inventario con versión localizada para medir interés, confianza percibida e intención de uso.
+* **Type:** Experiment-Ready.
+
+**Lado Posterior: Configuración**
+
+* **Medidas:**
+  - Tasa de conversión o registro en la versión localizada.
+  - Porcentaje de usuarios que prefieren la versión localizada.
+  - Incremento de confianza percibida en escala Likert.
+  - Comentarios cualitativos sobre comprensión y cercanía del lenguaje.
+
+* **Condiciones:**
+  - Prueba con 10 usuarios de zonas con bilingüismo o terminología local marcada.
+  - Comparación entre versión estándar y versión localizada.
+  - Recolección de respuestas mediante formulario posterior al uso del prototipo.
+
+* **Escala:**
+  - **Favorable:** al menos 20% de usuarios prefiere la versión localizada y se observa incremento de confianza percibida.
+  - **Aceptable:** existe interés cualitativo, pero la preferencia no supera el 20%.
+  - **Desfavorable:** no hay preferencia por la versión localizada o los usuarios consideran suficiente la versión estándar.
+
+---
+
+> **Nota de estandarización:** Todas las Experiment Cards fueron homologadas con la misma estructura: ID de pregunta relacionada, pregunta, motivación, hipótesis, experimento, tipo, medidas, condiciones y escala. Esto permite mantener trazabilidad entre el Question Backlog, las hipótesis, las métricas y las decisiones posteriores del proceso Experiment-Driven Development.
 ## 8.2. Experiment Design
 
 ### 8.2.1. Hypotheses.
