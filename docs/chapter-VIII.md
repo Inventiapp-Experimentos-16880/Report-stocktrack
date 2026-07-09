@@ -560,6 +560,17 @@ Por ello, cada escala será interpretada considerando tres elementos:
 Si un experimento obtiene resultado favorable con una muestra pequeña, la funcionalidad no se considerará automáticamente validada para producción. Primero deberá pasar por un segundo ciclo de validación con mayor muestra, mayor duración o datos reales de uso.
 
 Para cada hipótesis, definimos una escala de decisión basada en las métricas clave identificadas en la sección 8.2.3. Esta escala determina si los resultados son **ideales** (validan completamente la hipótesis), **aceptables** (validan parcialmente, requieren refinamiento), o **desfavorables** (invalidan la hipótesis, requieren rediseño o descarte de la funcionalidad).
+
+#### Convención para interpretar límites
+
+Para evitar ambigüedades en la interpretación de resultados, todos los rangos de decisión se expresan mediante límites inclusivos o exclusivos:
+
+- El símbolo **<** significa “menor que” y no incluye el valor indicado.
+- El símbolo **≤** significa “menor o igual que” e incluye el valor indicado.
+- El símbolo **>** significa “mayor que” y no incluye el valor indicado.
+- El símbolo **≥** significa “mayor o igual que” e incluye el valor indicado.
+
+Cuando una métrica se ubique exactamente en un límite, se aplicará la categoría que incluya explícitamente dicho valor. Por ejemplo, si una métrica exige **≥ 80%**, un resultado de **80%** se considera dentro de la categoría ideal.
  
 ---
  
@@ -567,8 +578,8 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
-| **Índice de Justicia de Precio** | < 60% califica "Justo/Barato" | 60-79% | **≥ 80%** |
-| **Tasa de Conversión Percibida** | < 50% (menos de 5 de 10) hace clic en "Adquirir Plan" | 50-69% (5-6 de 10) | **≥ 70% (7 de 10)** |
+| **Índice de Justicia de Precio** | < 60% califica "Justo/Barato" | ≥ 60% y < 80% | **≥ 80%** |
+| **Tasa de Conversión Percibida** | < 50% hace clic en "Adquirir Plan" | ≥ 50% y < 70% | **≥ 70%** |
  
 **Decisión:**
  
@@ -581,8 +592,8 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
-| **Reducción de Mermas Reales** | < 15% | 15-19% | **≥ 20%** |
-| **Tasa de Acción sobre Alertas** | < 40% | 40-59% | **≥ 60%** |
+| **Reducción de Mermas Reales** | < 15% | ≥ 15% y < 20% | **≥ 20%** |
+| **Tasa de Acción sobre Alertas** | < 40% | ≥ 40% y < 60% | **≥ 60%** |
  
 **Decisión:**
  
@@ -595,8 +606,8 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
-| **Tasa de Registro Localizado** | < 20% | 20-29% | **≥ 30%** |
-| **Incremento en Confianza Percibida** | < 10% | 10-14% | **≥ 15%** |
+| **Tasa de Registro Localizado** | < 20% | ≥ 20% y < 30% | **≥ 30%** |
+| **Incremento en Confianza Percibida** | < 10% | ≥ 10% y < 15% | **≥ 15%** |
  
 **Decisión:**
  
@@ -609,10 +620,10 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
-| **Tiempo de Respuesta de Búsqueda** | > 1.5 segundos | 1.0 - 1.5 segundos | < 1.0 segundo |
-| **Nivel de Frustración en escenario de 0.5s** | > 2/5 | 2/5 | 1/5 |
-| **Nivel de Frustración en escenario de 1.5s** | > 2/5 | 2/5 | 1/5 |
-| **Nivel de Frustración en escenario de 3s** | ≤ 2/5 sin diferencia frente a 1.5s | 3/5 | > 3/5, confirmando que 3s genera rechazo o incomodidad |
+| **Tiempo de Respuesta de Búsqueda** | > 1.5 segundos | ≥ 1.0 y ≤ 1.5 segundos | < 1.0 segundo |
+| **Nivel de Frustración en escenario de 0.5s** | > 2/5 | = 2/5 | = 1/5 |
+| **Nivel de Frustración en escenario de 1.5s** | > 2/5 | = 2/5 | = 1/5 |
+| **Nivel de Frustración en escenario de 3s** | ≤ 2/5 sin diferencia frente a 1.5s | = 3/5 | > 3/5, confirmando que 3s genera rechazo o incomodidad |
 | **Tasa de Abandono de Tarea** | Alta o similar al escenario de 3s | Menor que en el escenario de 3s | Claramente menor que en el escenario de 3s |
 
  
@@ -633,8 +644,8 @@ Si no existe diferencia clara entre 1.5s y 3s, el equipo deberá revisar si el p
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
-| **Mejora en Tiempo de Identificación** | < 20% | 20-24% | **≥ 25%** |
-| **Tasa de Error de Lectura (alto contraste)** | > 10% | 5-10% | **≤ 5%** |
+| **Mejora en Tiempo de Identificación** | < 20% | ≥ 20% y < 25% | **≥ 25%** |
+| **Tasa de Error de Lectura (alto contraste)** | > 10% | > 5% y ≤ 10% | **≤ 5%** |
  
 **Decisión:**
  
