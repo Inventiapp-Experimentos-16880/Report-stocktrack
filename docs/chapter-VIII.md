@@ -97,32 +97,67 @@ A partir de este análisis, el equipo decidió mantener las alertas preventivas 
 
 ### 8.1.4. Question Backlog.
 
-Esta sección presenta el backlog como una lista priorizada de preguntas de investigación. El sistema de puntuación evalúa cada pregunta del 1 al 5 en cuatro criterios: **Confianza (C)** (qué tan seguros estamos del conocimiento actual), **Riesgo (R)** (qué tan crítico es equivocarnos en este punto), **Impacto (I)** (cuánto valor aporta resolverlo) e **Interés (In)** (relevancia para los stakeholders). En caso de empate en la puntuación total, se prioriza la pregunta con mayor puntaje en **Riesgo**.
+Esta sección presenta el backlog como una lista priorizada de preguntas de investigación. Su finalidad es ordenar las incertidumbres más importantes del proyecto StockTrack antes de convertirlas en experimentos, hipótesis o funcionalidades To-Be. De esta manera, el equipo evita implementar funcionalidades sin validar primero el riesgo, el impacto y la importancia de cada pregunta.
+
+El sistema de puntuación evalúa cada pregunta del 1 al 5 en cuatro criterios:
+
+- **Confianza / Incertidumbre (C):** mide qué tan poca evidencia tiene actualmente el equipo sobre la pregunta. Un puntaje mayor indica mayor necesidad de validación.
+- **Riesgo (R):** mide qué tan crítico sería equivocarse en esa pregunta para el producto o el negocio.
+- **Impacto (I):** mide cuánto valor aportaría resolver esa pregunta para el usuario y para la propuesta de valor.
+- **Interés (In):** mide la relevancia de la pregunta para stakeholders, usuarios o decisiones estratégicas del proyecto.
+
+Para evitar ambigüedades en la priorización, se define la siguiente regla de desempate:
+
+1. Se prioriza la pregunta con mayor **Riesgo (R)**, porque representa el mayor costo de equivocarse.
+2. Si el riesgo es igual, se prioriza la pregunta con mayor **Impacto (I)**, porque aporta mayor valor al producto o al negocio.
+3. Si riesgo e impacto son iguales, se prioriza la pregunta que valide primero la **propuesta de valor central del producto**.
+4. Si el empate continúa, se prioriza la pregunta que tenga mayor dependencia sobre otras funcionalidades del backlog.
+5. Como último criterio, se prioriza la pregunta con mayor **Confianza / Incertidumbre (C)**, porque representa una brecha de conocimiento más urgente.
+
+Bajo esta regla, aunque **QB1** y **QD1** obtienen el mismo puntaje total de 17 y comparten el mismo nivel de riesgo e impacto, se prioriza **QD1** en primer lugar porque valida la propuesta de valor central de StockTrack: reducir pérdidas por vencimiento mediante historial de lotes, visibilidad de productos próximos a vencer y alertas preventivas internas. Luego se prioriza **QB1**, ya que la disposición a pagar por una suscripción depende de que primero exista evidencia clara de valor funcional y económico para el usuario.
 
 #### Broad Backlog (Preguntas de Negocio y Adopción)
 
-Estas preguntas abordan la propuesta de valor y el modelo de negocio de manera general.
+Estas preguntas abordan la propuesta de valor, el modelo de negocio y la adopción del producto de manera general.
 
 | ID | Pregunta de Investigación | El "Por qué" (Motivación) | C | R | I | In | Total |
 |:---|:---|:---|:---:|:---:|:---:|:---:|:---:|
-| QB1 | ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos no detectados? | Si el costo supera la percepción de ahorro por mermas, el modelo de negocio no será sostenible para pymes. | 2 | 5 | 5 | 5 | **17** |
-| QB2 | ¿Qué tan relevante es el soporte multilingüe para la adopción en mercados con diversidad lingüística? | Validar si el esfuerzo técnico de internacionalización justifica el crecimiento esperado en nuevos segmentos. | 3 | 2 | 2 | 3 | **10** |
+| QB1 | ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos no detectados? | Si el costo supera la percepción de ahorro por reducción de mermas, el modelo de negocio no será sostenible para bodegas y pequeños negocios. Esta pregunta permite validar si el usuario percibe retorno económico antes de adoptar una suscripción. | 2 | 5 | 5 | 5 | **17** |
+| QB2 | ¿Qué tan relevante es el soporte multilingüe o la localización para la adopción en mercados con diversidad lingüística? | Validar si el esfuerzo técnico de internacionalización justifica el crecimiento esperado en nuevos segmentos. Esta pregunta se mantiene como exploratoria y de menor prioridad hasta validar primero las funcionalidades centrales del producto. | 3 | 2 | 2 | 3 | **10** |
 
 #### Deep Backlog (Preguntas de Ejecución y UX)
 
-Estas preguntas profundizan en funcionalidades específicas y la interacción técnica del usuario.
+Estas preguntas profundizan en funcionalidades específicas, experiencia de usuario y comportamiento técnico del producto.
 
 | ID | Pregunta de Investigación | El "Por qué" (Motivación) | C | R | I | In | Total |
 |:---|:---|:---|:---:|:---:|:---:|:---:|:---:|
-| QD1 | ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento en un 20% como se supone? | Es el núcleo de la propuesta de valor para bodegas de consumo masivo; fallar aquí invalida la utilidad del módulo. | 4 | 5 | 5 | 3 | **17** |
-| QD2 | ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse? | La latencia en la búsqueda impacta directamente en la productividad diaria del bodeguero. | 3 | 4 | 4 | 4 | **15** |
-| QD3 | ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes en entornos de baja iluminación? | Muchos bodegueros operan en almacenes con luz limitada o fatiga visual tras jornadas largas. | 4 | 2 | 3 | 3 | **12** |
+| QD1 | ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento en un porcentaje medible frente al registro manual? | Es el núcleo de la propuesta de valor de StockTrack para bodegas y pequeños negocios. Si el historial de lotes no ayuda a reducir pérdidas por vencimiento, el producto pierde su principal argumento funcional frente a métodos manuales como cuadernos o Excel. | 4 | 5 | 5 | 3 | **17** |
+| QD2 | ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse? | La latencia en la búsqueda impacta directamente en la productividad diaria del bodeguero durante la atención al cliente. Si la búsqueda es lenta, el usuario puede abandonar la aplicación y volver a métodos manuales. | 3 | 4 | 4 | 4 | **15** |
+| QD3 | ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes en entornos de baja iluminación? | Muchos bodegueros operan en almacenes con luz limitada o fatiga visual tras jornadas largas. Validar esta pregunta permite saber si el rediseño visual mejora la lectura de reportes y reduce errores de interpretación. | 4 | 2 | 3 | 3 | **12** |
 
-**Análisis de Priorización:**
-1. **QB1 y QD1 (Empate - 17 pts):** Ambas representan el mayor riesgo estratégico (5). Se abordarán en paralelo ya que QB1 valida la viabilidad comercial y QD1 la viabilidad técnica de la solución.
-2. **QD2 (15 pts):** Crucial para la retención del usuario a largo plazo.
-3. **QD3 (12 pts):** Mejora incremental de accesibilidad.
-4. **QB2 (10 pts):** Considerada de baja prioridad hasta consolidar el mercado local.
+#### Priorización Consolidada
+
+| Prioridad | ID | Tipo de backlog | Puntaje total | Justificación de prioridad |
+|---:|---|---|---:|---|
+| 1 | QD1 | Deep Backlog | **17** | Se prioriza primero porque valida la propuesta de valor central de StockTrack: reducir pérdidas por vencimiento mediante historial de lotes, visibilidad de productos próximos a vencer y alertas preventivas internas. Si esta pregunta falla, el producto pierde su principal argumento funcional. |
+| 2 | QB1 | Broad Backlog | **17** | Aunque tiene el mismo puntaje que QD1, se ubica después porque la disposición a pagar depende de que el usuario perciba primero un beneficio económico claro. La suscripción solo puede validarse correctamente si existe evidencia de ahorro o reducción de pérdidas. |
+| 3 | QD2 | Deep Backlog | **15** | Es clave para la retención del usuario durante la operación diaria. Una búsqueda lenta puede generar frustración, pérdida de confianza y abandono del sistema durante la atención al cliente. |
+| 4 | QD3 | Deep Backlog | **12** | Representa una mejora importante de accesibilidad y legibilidad, especialmente en almacenes con poca iluminación, pero no bloquea directamente la propuesta de valor principal. |
+| 5 | QB2 | Broad Backlog | **10** | Se mantiene como pregunta de menor prioridad porque la localización o soporte multilingüe debe evaluarse después de validar primero las funcionalidades centrales del producto. |
+
+#### Análisis de Priorización
+
+1. **QD1 - Historial de lotes y reducción de pérdidas:** se atiende primero porque está directamente relacionada con el problema principal del usuario: evitar pérdidas por productos vencidos. Esta pregunta valida si StockTrack realmente genera valor frente al control manual de inventario.
+
+2. **QB1 - Barrera del costo de suscripción:** se atiende después de QD1 porque la viabilidad comercial depende de que el usuario perciba un ahorro o beneficio concreto. Si no se demuestra valor funcional, la pregunta sobre disposición de pago pierde fundamento.
+
+3. **QD2 - Tolerancia a la latencia de búsqueda:** se prioriza como tercer punto porque afecta la experiencia diaria del usuario. Una búsqueda lenta puede impedir que el sistema sea usado durante la atención al cliente.
+
+4. **QD3 - Diseño de alto contraste:** se considera relevante para mejorar la lectura de reportes y reducir errores en ambientes con poca iluminación. Sin embargo, tiene menor riesgo estratégico que las preguntas relacionadas con reducción de mermas, precio y búsqueda.
+
+5. **QB2 - Soporte multilingüe o localización:** se mantiene como pregunta exploratoria de baja prioridad. No se descarta su importancia, pero su validación se realizará después de consolidar el mercado inicial y las funcionalidades principales del producto.
+
+Con esta priorización, el empate entre **QD1** y **QB1** queda resuelto mediante criterios explícitos. La pregunta **QD1** se atiende primero porque valida el valor principal del producto, mientras que **QB1** se evalúa después porque corresponde a la viabilidad comercial del modelo de suscripción.
 
 ### 8.1.5. Experiment Cards.
 
