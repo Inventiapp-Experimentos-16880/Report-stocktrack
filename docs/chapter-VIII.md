@@ -192,7 +192,17 @@ En esta sección se detallan las Tarjetas de Experimento para las preguntas de m
 
 ### 8.2.1. Hypotheses.
 
-En esta sección, transformamos las 5 tarjetas de experimentación mencionadas en el punto 8.1.5 en hipótesis rigurosas y cuantificables. Para cada una, definimos el cuestionamiento central, los supuestos que dieron origen a la prueba, la hipótesis de trabajo y la correspondiente hipótesis nula, la cual servirá para determinar si los resultados obtenidos invalidan nuestra premisa inicial.
+En esta sección se transforman las tarjetas de experimentación definidas en la sección 8.1.5 en hipótesis rigurosas, medibles y falsables. El objetivo es establecer una relación clara entre las preguntas experimentales, las creencias del equipo, las métricas de validación y los criterios que permitirán aceptar, rechazar o replantear cada experimento.
+
+Para cada pregunta experimental se definen dos tipos de hipótesis:
+
+- **Hipótesis alternativa o hipótesis de trabajo:** representa la afirmación que el equipo espera validar mediante el experimento. Esta hipótesis expresa el efecto esperado de una funcionalidad, mejora o decisión de producto sobre el comportamiento del usuario o sobre una métrica del negocio. Debe ser específica, cuantificable y estar conectada con una tarjeta de experimento.
+
+- **Hipótesis nula:** representa el escenario contrario o la ausencia de efecto significativo. Su función es establecer qué resultado indicaría que la funcionalidad propuesta no genera el impacto esperado, que la mejora no es suficiente o que la premisa inicial debe ser rechazada o reformulada.
+
+La hipótesis nula es importante porque permite definir objetivamente qué se considerará un resultado no exitoso. Si los datos obtenidos durante el experimento se acercan más a la hipótesis nula que a la hipótesis de trabajo, el equipo deberá tomar una decisión informada, como rechazar la funcionalidad, rediseñar la experiencia, ajustar el experimento o replantear la suposición inicial.
+
+De esta manera, las hipótesis permiten cerrar el ciclo del Experiment-Driven Development, ya que conectan las preguntas del Question Backlog con experimentos medibles, criterios de éxito y decisiones posteriores basadas en evidencia.
 
 | Question | Belief (Creencia) | Hypothesis (Hipótesis) | Null Hypothesis (Hipótesis Nula) |
 | :--- | :--- | :--- | :--- |
@@ -205,13 +215,6 @@ En esta sección, transformamos las 5 tarjetas de experimentación mencionadas e
 
 ---
 
-**Nota sobre Hipótesis Nulas:**
- 
-Las hipótesis nulas son críticas para diseño experimental riguroso. Nos permiten definir claramente qué constituye un **fracaso del experimento**. Si los resultados se acercan más a la hipótesis nula que a la hipótesis principal, debemos:
- 
-1. **Rechazar la funcionalidad** (no promoverla a producción), o
-2. **Pivotar el diseño** (rediseñar la UX, simplificar el flujo, añadir features faltantes), o
-3. **Cuestionar las asunciones** (quizás el pain point no era tan crítico como se pensaba)
 > **Nota de trazabilidad:** las hipótesis 4 y 5 formalizan las Tarjetas de Experimento 03 (QD2) y 04 (QD3) respectivamente, que ya contaban con una hipótesis de trabajo implícita en su "Lado Frontal" pero no estaban numeradas en la versión anterior de esta sección.
 
 ### 8.2.2. Domain Business Metrics
