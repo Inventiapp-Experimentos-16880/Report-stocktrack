@@ -730,7 +730,7 @@ Para recolectar los datos de las métricas definidas en la sección 8.2.3 y eval
 **Método: Piloto de Campo sobre Producción Real (Field Trial)**
  
 - **Propósito:** medir el impacto real del módulo de lotes sobre las mermas, usando la aplicación ya desplegada en producción en lugar de un entorno aislado.
-- **Ejecución:** los 5 "Early Adopters" usan el módulo de lotes directamente en el frontend desplegado ([front-inventiapp.vercel.app](https://front-inventiapp.vercel.app/auth/login)), conectado al backend real en Railway, con cuentas de prueba dedicadas (ver nota de 8.2.4); durante un ciclo completo de inventario (15 días) se compara el conteo de productos vencidos no vendidos contra su registro manual del mes anterior. Adicionalmente, se registrará si cada alerta de "7 días para vencer" deriva en una acción (venta de liquidación o devolución) dentro de las 48 horas siguientes, usando los eventos `batch_alert_triggered` y `batch_alert_action` (ver 8.2.8), para calcular la Tasa de Acción sobre Alertas.
+- **Ejecución:** los 5 "Early Adopters" usan el módulo de lotes directamente en el frontend desplegado ([front-inventiapp.vercel.app](https://front-inventiapp.vercel.app/auth/login)), conectado al backend real en Railway, con cuentas de prueba dedicadas (ver nota de 8.2.4); durante un ciclo completo de inventario (15 días) se compara el conteo de productos vencidos no vendidos contra un periodo de control también de 15 días usando su método manual habitual. Adicionalmente, se registrará si cada alerta de "7 días para vencer" deriva en una acción (venta de liquidación o devolución) dentro de las 48 horas siguientes, usando los eventos `batch_alert_triggered` y `batch_alert_action` (ver 8.2.8), para calcular la Tasa de Acción sobre Alertas.
 - **Herramientas:** módulo de lotes en producción (Spring Boot/Angular sobre Railway + Vercel), planilla de comparación pre/post.
 ---
  
@@ -745,11 +745,11 @@ Para recolectar los datos de las métricas definidas en la sección 8.2.3 y eval
  
 #### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
  
-**Método: Medición de Latencia Real + Network Throttling (Chrome DevTools)**
+**Método: Medición de Línea Base con Lighthouse/Chrome DevTools + Network Throttling**
  
-- **Propósito:** identificar el umbral de tiempo de respuesta a partir del cual el usuario se frustra o abandona la tarea, partiendo de la latencia real del sistema desplegado.
-- **Ejecución:** primero se mide la latencia base real del endpoint de búsqueda sobre la app desplegada usando la pestaña **Network** de Chrome DevTools (sin throttling). Luego, 8 usuarios realizan búsquedas sobre la misma app real bajo tres escalones de latencia simulados con **Network Throttling** de DevTools (0.5s/1.5s/3s) en un escenario de "atención bajo presión"; se registra tiempo, abandono y frustración reportada.
-- **Herramientas:** Chrome DevTools (pestaña Network + Throttling), app real (Vercel + Railway), encuesta Likert post-tarea.
+- **Propósito:** identificar el umbral de tiempo de respuesta a partir del cual el usuario se frustra o abandona la tarea, partiendo primero de una línea base real del sistema desplegado. Esta medición permite verificar si el flujo de búsqueda actual ya cumple o supera el umbral máximo aceptable de **1.5 segundos** antes de simular otros escenarios de latencia.
+- **Ejecución:** primero se mide la latencia base real del flujo de búsqueda sobre la app desplegada usando **Chrome DevTools**, la pestaña **Network** y una revisión de rendimiento con **Lighthouse**. Esta medición sin throttling servirá como línea base técnica inicial. Luego, 8 usuarios realizan búsquedas sobre la misma app real bajo tres escalones de latencia simulados con **Network Throttling** de DevTools: **0.5s**, **1.5s** y **3s**, en un escenario de "atención bajo presión". Durante la prueba se registra el tiempo de respuesta, la tasa de abandono y el nivel de frustración reportado en escala Likert.
+- **Herramientas:** Chrome DevTools, Lighthouse, Network Throttling, app real desplegada en Vercel + Railway, encuesta Likert post-tarea y planilla de registro de resultados.
 ---
  
 #### Hipótesis 5: Impacto del Alto Contraste
