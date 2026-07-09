@@ -219,99 +219,34 @@ De esta manera, las hipótesis permiten cerrar el ciclo del Experiment-Driven De
 
 ### 8.2.2. Domain Business Metrics
 
-Esta sección define las métricas de negocio a nivel de dominio que se verán impactadas por los experimentos planificados. Estas métricas son de alto nivel y reflejan los objetivos estratégicos del negocio (StockTrack), alineados con los problemas identificados en el As-Is (8.1.1) y las Tarjetas de Experimento (8.1.5).
- 
+
+Esta sección define las métricas de negocio a nivel de dominio que se verán impactadas por los experimentos planificados. Estas métricas son de alto nivel y reflejan los objetivos estratégicos de StockTrack, alineados con los problemas identificados en el As-Is Summary, las preguntas experimentales, las hipótesis y las Experiment Cards.
+
+A diferencia de las métricas operativas específicas de cada experimento, las métricas de dominio permiten evaluar si los aprendizajes obtenidos tienen impacto real sobre el negocio. Por ello, cada métrica incluye su definición, fórmula de cálculo, datos requeridos, técnica de recolección, baseline, objetivo y relación con las hipótesis experimentales.
+
 #### Métricas de Dominio Identificadas
- 
-**1. Tasa de Merma (Merchandise Shrinkage Rate)**
- 
-**Definición:** Porcentaje de inventario perdido por vencimiento sobre el inventario total gestionado.
- 
-**Indicadores clave:**
- 
-- Número de unidades vencidas no vendidas/devueltas por ciclo de inventario
-- Valor monetario de la pérdida mensual por vencimiento
-**Experimentos relacionados:** Hipótesis 2 (Eficacia del Historial de Lotes)
- 
-**Baseline actual (As-Is):** Sin visibilidad de fechas de vencimiento centralizada; el control depende de la memoria visual del dueño ("ojímetro"), generando pérdidas no cuantificadas con precisión.
- 
-**Objetivo (To-Be):** Reducir las mermas reales en al menos 15-20% mediante alertas preventivas de 7 días antes del vencimiento.
- 
----
- 
-**2. Percepción de Valor del Precio (Price Value Perception / CAC Viability)**
- 
-**Definición:** Relación entre el costo de la suscripción y el valor (ahorro por reducción de mermas) que el usuario percibe al adquirirla.
- 
-**Indicadores clave:**
- 
-- Tasa de conversión tras ver la comparativa de ahorro (calculadora de ROI)
-- Porcentaje de usuarios que califican el precio como "Justo" o "Barato"
-**Experimentos relacionados:** Hipótesis 1 (Viabilidad del Modelo de Suscripción)
- 
-**Baseline actual (As-Is):** El usuario no tiene forma de cuantificar cuánto pierde hoy por mermas, por lo que el precio de suscripción se percibe como gasto adicional y no como ahorro.
- 
-**Objetivo (To-Be):** Lograr que ≥70% de los usuarios piloto perciban el precio como "Justo" o "Barato" tras ver la comparativa de ahorro proyectado.
- 
----
- 
-**3. Eficiencia Operativa de Búsqueda (Search Task Efficiency)**
- 
-**Definición:** Capacidad del usuario para encontrar un producto o lote específico dentro del sistema sin fricción perceptible, incluso bajo presión operativa.
- 
-**Indicadores clave:**
- 
-- Tiempo de respuesta del buscador (ms/segundos)
-- Tasa de abandono de la tarea de búsqueda
-**Experimentos relacionados:** Hipótesis 4 (Tolerancia a Latencia de Búsqueda)
- 
-**Baseline actual (As-Is):** Búsqueda manual en cuaderno físico o Excel, sin tiempo estandarizado pero con alta fricción reportada durante la atención al cliente.
- 
-**Objetivo (To-Be):** Tiempo de respuesta <1.5 segundos, con abandono de tarea minimizado bajo presión operativa.
- 
----
- 
-**4. Confianza y Legibilidad de Reportes (Report Trust & Readability)**
- 
-**Definición:** Grado en que el usuario puede leer e interpretar correctamente los reportes de inventario y vencimientos, incluso en condiciones de baja iluminación o fatiga visual.
- 
-**Indicadores clave:**
- 
-- Tiempo de identificación de un dato crítico en el reporte
-- Tasa de error de lectura bajo baja iluminación
-**Experimentos relacionados:** Hipótesis 5 (Impacto del Alto Contraste)
- 
-**Baseline actual (As-Is):** Reportes con bajo contraste, generando errores de interpretación reportados por usuarios con fatiga visual o en almacenes con poca luz.
- 
-**Objetivo (To-Be):** Mejora ≥20% en velocidad de lectura y tasa de error ≤5% con el rediseño de alto contraste.
- 
----
- 
-**5. Alcance y Adopción Multilingüe (Localized Market Reach)**
- 
-**Definición:** Grado en que usuarios de mercados con diversidad lingüística adoptan la plataforma cuando se les ofrece una versión adaptada a su idioma/región.
- 
-**Indicadores clave:**
- 
-- Porcentaje de registros en versión localizada vs. estándar
-- Puntuación de confianza percibida (Likert) en mercados bilingües
-**Experimentos relacionados:** Hipótesis 3 (Adopción por Localización)
- 
-**Baseline actual (As-Is):** 100% de la interfaz en español estándar; no existe dato sobre demanda real de soporte multilingüe, solo la suposición del equipo.
- 
-**Objetivo (To-Be):** ≥20% de los nuevos interesados en zonas bilingües optan por la versión localizada al momento del registro.
- 
----
- 
+
+| Métrica de dominio | Definición | Fórmula de cálculo | Datos requeridos | Técnica de recolección | Baseline actual | Objetivo To-Be | Experimento relacionado |
+|---|---|---|---|---|---|---|---|
+| **Tasa de Merma por Vencimiento**<br>Merchandise Shrinkage Rate | Porcentaje del inventario perdido por productos vencidos que no fueron vendidos ni devueltos a tiempo. | `Tasa de Merma (%) = (Valor monetario de productos vencidos / Valor total del inventario gestionado) × 100`<br><br>También puede calcularse por unidades:<br>`Tasa de Merma por unidades (%) = (Unidades vencidas no recuperadas / Total de unidades gestionadas) × 100` | Valor monetario de productos vencidos, valor total del inventario, unidades vencidas no vendidas, total de unidades gestionadas. | Registro de inventario, historial de lotes, reporte de productos vencidos y validación manual del dueño de bodega. | Sin visibilidad centralizada de fechas de vencimiento. El control depende del cuaderno, Excel o memoria visual del dueño. | Reducir las mermas reales en al menos **15%** mediante alertas preventivas de vencimiento. | **H2:** Eficacia del historial de lotes. |
+| **Reducción de Merma Real**<br>Shrinkage Reduction Rate | Porcentaje de disminución de pérdidas por vencimiento luego de implementar alertas o historial de lotes. | `Reducción de Merma (%) = ((Merma baseline - Merma durante experimento) / Merma baseline) × 100` | Merma registrada antes del experimento y merma registrada durante el experimento. | Comparación entre registro manual previo y datos generados por el MVP durante el piloto. | Pérdidas no cuantificadas con precisión por ausencia de control sistemático. | Alcanzar una reducción mínima de **15%** respecto al periodo base. | **H2:** Eficacia del historial de lotes. |
+| **Percepción de Valor del Precio**<br>Price Value Perception | Nivel en que el usuario considera que el precio de la suscripción es justo en comparación con el ahorro proyectado por reducción de mermas. | `Percepción de precio justo (%) = (Usuarios que califican el precio como "Justo" o "Barato" / Total de usuarios evaluados) × 100` | Respuestas de usuarios sobre percepción del precio, cantidad total de usuarios evaluados. | Entrevista guiada con prototipo, formulario de evaluación y calculadora de ROI. | El usuario percibe la suscripción como gasto adicional porque no conoce cuánto pierde mensualmente por vencimientos. | Lograr que al menos **70%** de usuarios piloto califiquen el precio como “Justo” o “Barato”. | **H1:** Viabilidad del modelo de suscripción. |
+| **Relación Ahorro / Costo de Suscripción**<br>Savings-to-Subscription Ratio | Compara el ahorro mensual proyectado por reducción de mermas frente al costo mensual del plan. | `Relación Ahorro/Costo = Ahorro mensual proyectado / Costo mensual de suscripción`<br><br>Con el caso base del experimento:<br>`Relación Ahorro/Costo = 50 / 15 = 3.33` | Ahorro mensual proyectado, costo mensual del plan, monto estimado de pérdidas actuales por vencimiento. | Calculadora de ROI, entrevista con dueño de bodega y estimación de pérdidas mensuales. | El usuario no cuenta con una herramienta que compare pérdidas actuales frente al precio del software. | Lograr que el ahorro proyectado sea mayor que el costo de suscripción y que el usuario perciba retorno económico claro. | **H1:** Viabilidad del modelo de suscripción. |
+| **Eficiencia Operativa de Búsqueda**<br>Search Task Efficiency | Capacidad del usuario para encontrar productos o lotes dentro del sistema en un tiempo aceptable durante la atención al cliente. | `Tiempo promedio de búsqueda = Suma de tiempos de respuesta / Número total de búsquedas realizadas`<br><br>`Tasa de abandono (%) = (Búsquedas abandonadas / Total de tareas de búsqueda) × 100` | Tiempo de respuesta del buscador, cantidad de búsquedas realizadas, búsquedas completadas y búsquedas abandonadas. | Chrome DevTools, registros del frontend, observación durante prueba de usuario y tracking de eventos. | Búsqueda manual en cuaderno o Excel, sin tiempo estandarizado y con alta fricción durante la atención al cliente. | Mantener el tiempo de búsqueda por debajo de **1.5 segundos** y reducir el abandono de tarea. | **H4:** Tolerancia a la latencia de búsqueda. |
+| **Confianza y Legibilidad de Reportes**<br>Report Trust & Readability | Grado en que el usuario puede leer, interpretar y tomar decisiones correctas usando los reportes del sistema. | `Mejora de tiempo de lectura (%) = ((Tiempo versión estándar - Tiempo versión alto contraste) / Tiempo versión estándar) × 100`<br><br>`Tasa de error de lectura (%) = (Errores de interpretación / Total de intentos de lectura) × 100` | Tiempo de lectura, cantidad de errores de interpretación, número total de intentos, condiciones de iluminación. | Test A/B, observación directa, cronometraje de tareas y prueba bajo baja iluminación. | Reportes con contraste insuficiente, generando riesgo de errores de lectura en ambientes con poca luz. | Reducir el tiempo de interpretación en al menos **20%** y mantener la tasa de error en **≤5%**. | **H5:** Impacto del diseño de alto contraste. |
+| **Alcance y Adopción Multilingüe**<br>Localized Market Reach | Nivel de interés y adopción de usuarios cuando se ofrece una versión localizada o adaptada al idioma/región. | `Tasa de adopción localizada (%) = (Usuarios que eligen versión localizada / Total de usuarios evaluados) × 100`<br><br>`Incremento de confianza (%) = ((Promedio confianza localizada - Promedio confianza estándar) / Promedio confianza estándar) × 100` | Usuarios que seleccionan versión localizada, total de usuarios evaluados, puntaje de confianza en escala Likert. | Landing page, prototipo localizado, formulario de registro y encuesta posterior. | La interfaz se encuentra en español estándar y no existe evidencia validada sobre demanda multilingüe. | Lograr que al menos **20%** de usuarios de zonas bilingües prefieran la versión localizada y aumentar la confianza percibida en **15%**. | **H3:** Adopción por localización. |
+
 #### Alineación con Objetivos de Negocio
- 
-Estas métricas de dominio se alinean con los objetivos estratégicos de StockTrack:
- 
-- **Tasa de Merma → Propuesta de Valor Central:** Reducir mermas es el argumento de venta principal frente a Excel/cuaderno; valida si el producto resuelve el dolor #1 del usuario.
-- **Percepción de Valor del Precio → Viabilidad del Modelo de Negocio:** Sin disposición a pagar, ninguna otra mejora del producto sostiene el negocio a largo plazo.
-- **Eficiencia Operativa de Búsqueda → Retención Diaria:** Una búsqueda lenta empuja al usuario de vuelta al cuaderno físico; es la funcionalidad de uso más frecuente.
-- **Confianza y Legibilidad de Reportes → Reducción de Errores Operativos:** Reportes mal leídos generan las mismas pérdidas que se busca evitar con el módulo de lotes.
-- **Alcance y Adopción Multilingüe → Expansión de Mercado:** Determina si vale la pena invertir en internacionalización antes o después de consolidar el mercado local.
+
+Estas métricas de dominio se alinean con los objetivos estratégicos de StockTrack porque permiten evaluar si las mejoras propuestas generan impacto real sobre el negocio y sobre el usuario final.
+
+- **Tasa de Merma por Vencimiento → Propuesta de Valor Central:** permite comprobar si StockTrack ayuda realmente a reducir pérdidas por productos vencidos.
+- **Reducción de Merma Real → Validación económica del producto:** demuestra si el historial de lotes y las alertas generan ahorro medible.
+- **Percepción de Valor del Precio → Viabilidad del Modelo de Negocio:** valida si el usuario considera razonable pagar por la solución.
+- **Relación Ahorro / Costo de Suscripción → Argumento comercial:** permite comparar el costo del software frente al ahorro potencial generado.
+- **Eficiencia Operativa de Búsqueda → Retención diaria:** evalúa si el sistema es suficientemente rápido para ser usado durante la atención al cliente.
+- **Confianza y Legibilidad de Reportes → Reducción de errores operativos:** mide si los reportes ayudan a tomar decisiones correctas sin confusión visual.
+- **Alcance y Adopción Multilingüe → Expansión de mercado:** permite decidir si conviene invertir en localización antes de escalar a mercados con diversidad lingüística.
 
 ### 8.2.3. Measures.
 
