@@ -408,7 +408,7 @@ Esta sección define las métricas específicas que se utilizarán para medir el
  
 **Métricas:**
  
-- **Reducción de Mermas Reales (Shrinkage Reduction Rate):** Comparación de productos vencidos sin vender/devolver durante el ciclo de prueba (15 días) frente al registro manual del mes anterior. **Criterio de éxito: reducción ≥15%.**
+- **Reducción de Mermas Reales (Shrinkage Reduction Rate):** Comparación de productos vencidos sin vender, devolver o liquidar durante un periodo experimental de 15 días frente a un periodo de control también de 15 días. Ambos periodos deben evaluar las mismas categorías de productos y usar el mismo criterio de vencimiento. **Criterio de éxito: reducción ≥15%.**
 - **Tasa de Acción sobre Alertas (Alert Action Rate):** Porcentaje de alertas de "7 días para vencer" que derivan en una acción del usuario dentro de las 48 horas siguientes. **Criterio de éxito: ≥60%.**
 ---
  
@@ -462,8 +462,9 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 
 | Question | ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento? |
 | :--- | :--- |
-| **Condición Experimental** | Los usuarios tienen acceso al módulo de "Lotes Próximos a Vencer" con alertas proactivas configuradas. |
-| **Condición de Control** | Los usuarios gestionan sus inventarios sin alertas, confiando en registros manuales o memoria visual. |
+| **Condición Experimental** | Durante un periodo de **15 días**, los usuarios gestionan productos con fecha de vencimiento usando el módulo de historial de lotes de StockTrack. El sistema muestra lotes próximos a vencer, estado del lote y alertas preventivas internas dentro de la aplicación. |
+| **Condición de Control** | Durante un periodo también de **15 días**, los usuarios gestionan productos equivalentes mediante el método manual habitual, como cuaderno, Excel o revisión visual, sin historial de lotes digital ni alertas internas. |
+
 
 ---
 
