@@ -4,7 +4,7 @@
 
 ### 8.1.1. As-Is Summary.
 
-El estado actual de la gestión de inventarios para los segmentos objetivos se caracteriza por una dependencia crítica en procesos manuales y registros fragmentados. La información reside en cuadernos físicos, archivos de Excel desactualizados y chats de WhatsApp, lo que genera una visibilidad nula del stock en tiempo real. Esta desorganización provoca errores constantes en el control de fechas de vencimiento y una alta carga de ansiedad operativa. Aunque ya se ha definido un stack tecnológico (Spring Boot/Angular) y una arquitectura de software , el estado actual del negocio sigue siendo reactivo e intuitivo, lo que plantea la necesidad de cuestionar si la digitalización propuesta es lo suficientemente simple y óptima para ser adoptada por usuarios con fatiga laboral y baja alfabetización digital.
+El estado actual de la gestión de inventarios para los segmentos objetivos se caracteriza por una dependencia crítica en procesos manuales y registros fragmentados. La información reside en cuadernos físicos, archivos de Excel desactualizados, lo que genera una visibilidad nula del stock en tiempo real. Esta desorganización provoca errores constantes en el control de fechas de vencimiento y una alta carga de ansiedad operativa. Aunque ya se ha definido un stack tecnológico (Spring Boot/Angular) y una arquitectura de software , el estado actual del negocio sigue siendo reactivo e intuitivo, lo que plantea la necesidad de cuestionar si la digitalización propuesta es lo suficientemente simple y óptima para ser adoptada por usuarios con fatiga laboral y baja alfabetización digital.
 
 Problemas identificados y evidencia de respaldo:
 
@@ -1771,7 +1771,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
 </table>
 
-<p><em>Trazabilidad: US23 — Seleccionar el idioma de la interfaz; Hipótesis 3 — Adopción por Localización; QB2 — Relevancia del soporte multilingüe o localización para mercados con diversidad lingüística.</em></p>
+<p><em>Trazabilidad: US22 — Seleccionar el idioma de la interfaz; Hipótesis 3 — Adopción por Localización; QB2 — Relevancia del soporte multilingüe o localización para mercados con diversidad lingüística.</em></p>
 
 <p><em>Nota de alcance: TS18 se limita a la implementación frontend de textos localizados en la interfaz. No modifica reglas de negocio, cálculos, datos de inventario ni lógica backend. Su propósito es habilitar la validación de la hipótesis de localización dentro del MVP con un alcance controlado.</em></p> 
 
@@ -1821,21 +1821,21 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
 </table>
 
 ### 8.3.2. To-Be Product Backlog
-El backlog prioriza según el scoring del Question Backlog (8.1.4): primero los incrementos de las hipótesis de mayor riesgo (QD1 y QB1, 17 pts), luego rendimiento (QD2, 15), accesibilidad (QD3, 12) y localización (QB2, 10).
+
+El backlog prioriza según el scoring del Question Backlog (8.1.4): primero los incrementos de las hipótesis de mayor riesgo (**QD1** y **QB1**, 17 pts), luego rendimiento (**QD2**, 15 pts), accesibilidad (**QD3**, 12 pts) y localización (**QB2**, 10 pts).
 
 | # Orden | User Story Id | Título | Descripción | Story Points |
 | :------ | :------------ | :----- | :---------- | :----------- |
 | **01** | US17 | Registrar acción de mitigación sobre alertas de vencimiento próximo | Como dueño de bodega, quiero recibir una alerta anticipada de 7 días cuando un lote está próximo a vencer y registrar la acción que tomo, para actuar a tiempo y medir la efectividad de las alertas. | 5 |
 | **02** | US18 | Consultar el historial de movimientos por lote | Como dueño de bodega, quiero consultar el historial de entradas, salidas y acciones registradas sobre cada lote, para conocer la trazabilidad del producto y entender qué ocurrió antes de que un lote sea vendido, devuelto, liquidado, gestionado o vencido. | 3 |
-| **03** | US19 |Estimar el ahorro por reducción de mermas frente al costo de la suscripción | Como dueño de bodega, quiero estimar el ahorro potencial generado por la reducción de mermas, para comparar ese ahorro estimado frente al costo de la suscripción y decidir si el plan representa valor para mi negocio. | 3 |
-| **04** | US20 | Contratar y gestionar el plan de suscripción | Como dueño de bodega, quiero contratar y administrar mi plan de suscripción, para acceder a las funcionalidades premium de la plataforma. | 8 |
-| **05** | US15 | Optimizar la búsqueda de productos por nombre común | Como dueño de bodega, quiero buscar productos por nombre común con un tiempo de respuesta menor a 1.5 segundos, para atender al cliente sin interrumpir la venta ni volver al registro manual. | 5 |
-| **06** | US21 | Visualizar el ahorro real por mermas evitadas | Como dueño de bodega, quiero ver el ahorro generado por las alertas de vencimiento que atendí, para confirmar el valor que aporta la plataforma frente a su costo. | 3 |
+| **03** | US21 | Visualizar el ahorro real por mermas evitadas | Como dueño de bodega, quiero ver el ahorro generado por las alertas de vencimiento que atendí, para confirmar el valor que aporta la plataforma frente a su costo. | 3 |
+| **04** | US19 | Estimar el ahorro por reducción de mermas frente al costo de la suscripción | Como dueño de bodega, quiero estimar el ahorro potencial generado por la reducción de mermas, para comparar ese ahorro estimado frente al costo de la suscripción y decidir si el plan representa valor para mi negocio. | 3 |
+| **05** | US20 | Contratar y gestionar el plan de suscripción | Como dueño de bodega, quiero contratar y administrar mi plan de suscripción, para acceder a las funcionalidades premium de la plataforma. | 8 |
+| **06** | US15 | Optimizar la búsqueda de productos por nombre común | Como dueño de bodega, quiero buscar productos por nombre común con un tiempo de respuesta menor a 1.5 segundos, para atender al cliente sin interrumpir la venta ni volver al registro manual. | 5 |
 | **07** | US16 | Visualizar reportes en modo de alto contraste | Como dueño de bodega, quiero activar un modo de alto contraste en los reportes, para evaluar si la información crítica puede leerse con mayor claridad en condiciones de baja iluminación o fatiga visual. | 3 |
 | **08** | US22 | Seleccionar el idioma de la interfaz | Como dueño de bodega de una zona con diversidad lingüística, quiero usar la plataforma con terminología localizada o en un idioma originario, para adoptar la herramienta con confianza. | 3 |
 
-
-> **Nota sobre US23:** Aunque QB2 y H3 tienen menor prioridad frente a las hipótesis centrales del producto, el equipo decidió mantener US23 dentro del MVP como una implementación mínima de localización. Esta versión no contempla una internacionalización completa, sino una primera adaptación de textos principales de la interfaz para validar si la terminología localizada mejora la confianza y adopción del usuario. Por ello, la historia conserva Story Points, pero se ubica al final del backlog y se limita a un alcance reducido.
+> **Nota sobre US22:** Aunque QB2 y H3 tienen menor prioridad frente a las hipótesis centrales del producto, el equipo decidió mantener US22 dentro del MVP como una implementación mínima de localización. Esta versión no contempla una internacionalización completa, sino una primera adaptación de textos principales de la interfaz para validar si la terminología localizada mejora la confianza y adopción del usuario. Por ello, la historia conserva Story Points, pero se ubica al final del backlog y se limita a un alcance reducido.
 
 #### Technical Stories Priorizadas
 
