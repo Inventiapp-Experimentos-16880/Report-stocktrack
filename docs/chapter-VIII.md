@@ -499,6 +499,18 @@ Si el escenario de **1.5 segundos** genera frustración promedio mayor a **2/5**
 
 ### 8.2.4. Conditions.
 
+
+Antes de ejecutar los experimentos, se define un criterio de asignación para diferenciar claramente la condición experimental y la condición de control. Esta asignación busca reducir sesgos y asegurar que los resultados puedan compararse de forma ordenada.
+
+Para los experimentos con usuarios, se utilizará una asignación simple y balanceada:
+
+- Cuando existan dos grupos, los participantes se dividirán en **grupo experimental** y **grupo de control** de forma alternada según el orden de participación. Por ejemplo, el primer usuario irá al grupo experimental, el segundo al grupo de control, el tercero al grupo experimental y así sucesivamente.
+- Cuando el experimento compare dos versiones de una interfaz, como el diseño estándar frente al diseño de alto contraste, se usará una comparación controlada donde todos los usuarios realizan la misma tarea bajo condiciones equivalentes.
+- En los experimentos de latencia, todos los usuarios serán expuestos a los mismos escenarios de tiempo de respuesta definidos previamente, manteniendo el mismo flujo y tarea de búsqueda.
+- En todos los casos, las condiciones deberán usar tareas similares, duración equivalente, criterios de medición iguales y el mismo tipo de usuario objetivo para que la comparación sea válida.
+
+De esta manera, cada hipótesis mantiene una condición experimental y una condición de control comparable, evitando que los resultados se vean afectados por diferencias en tiempo, perfil de usuario, tarea evaluada o contexto de uso.
+
 | Question | ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos? |
 | :--- | :--- |
 | **Condición Experimental** | El usuario interactúa con una calculadora de ROI que proyecta el ahorro mensual frente al costo del servicio. |
