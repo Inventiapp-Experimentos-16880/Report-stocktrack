@@ -738,9 +738,9 @@ Para recolectar los datos de las métricas definidas en la sección 8.2.3 y eval
  
 **Método: Prueba de Puerta Falsa (Fake Door / Smoke Test)**
  
-- **Propósito:** medir el interés real (no solo declarado) en la versión localizada.
-- **Ejecución:** se publica una landing page y una pantalla de inventario traducidas; se mide cuántos de los visitantes de 10 negocios en zonas bilingües completan el registro en la versión localizada vs. la estándar. Al finalizar el registro, se aplicará una encuesta corta (Google Forms) con la pregunta de confianza percibida en escala Likert 1-5 ("siento que esta aplicación fue hecha para mi negocio"), comparando el promedio entre ambas versiones.
-- **Herramientas:** landing page bilingüe, formulario de registro, herramienta de analítica web (ej. Google Analytics).
+- **Propósito:** medir el interés real, no solo declarado, en una versión localizada de StockTrack antes de invertir esfuerzo técnico en una implementación completa de internacionalización.
+- **Ejecución:** se publica una landing page y una pantalla de inventario con dos variantes: versión estándar y versión localizada. Para controlar variables externas, ambas versiones usarán el mismo diseño visual, el mismo mensaje comercial, el mismo botón de registro, el mismo canal de difusión, el mismo periodo de exposición y el mismo tipo de usuario objetivo. La única diferencia evaluada será el lenguaje o terminología localizada. La prueba tendrá como muestra mínima inicial 10 usuarios o negocios de zonas con diversidad lingüística, entendiendo que se trata de un experimento exploratorio y no de una validación estadística definitiva. Se medirá cuántos usuarios completan el registro en la versión localizada frente a la estándar. Al finalizar, se aplicará una encuesta corta en Google Forms con una pregunta de confianza percibida en escala Likert 1-5: "siento que esta aplicación fue hecha para mi negocio".
+- **Herramientas:** landing page bilingüe o localizada, formulario de registro, Google Forms, herramienta de analítica web y planilla de comparación de resultados.
 ---
  
 #### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
@@ -840,6 +840,37 @@ Previo al despliegue con usuarios, validamos la estabilidad y eficiencia técnic
  
 ---
 
+#### Mecanismo de Re-Auditoría Técnica
+
+Después de implementar mejoras relacionadas con rendimiento, accesibilidad o contraste visual, el equipo ejecutará una segunda auditoría técnica para comparar los resultados antes y después de los cambios. Esta re-auditoría permitirá verificar si las acciones correctivas realmente mejoraron la experiencia del usuario y si las hipótesis técnicas pueden avanzar al backlog To-Be con evidencia suficiente.
+
+La re-auditoría se aplicará principalmente sobre las pantallas relacionadas con las hipótesis **H4** y **H5**:
+
+| Hipótesis relacionada | Pantalla o flujo evaluado | Herramienta de re-auditoría | Objetivo de comparación |
+|---|---|---|---|
+| **H4 - Tolerancia a la Latencia de Búsqueda** | Flujo de búsqueda de productos en Inventario | Chrome DevTools, Network, Lighthouse y registros de tiempo de respuesta | Comparar la latencia base antes y después de optimizar búsqueda, consultas, paginación, índices o caché. |
+| **H5 - Impacto del Alto Contraste** | Pantalla de Reportes | Lighthouse Accessibility, prueba A/B y observación de lectura | Comparar legibilidad, contraste, tiempo de interpretación y errores de lectura entre la versión estándar y la versión mejorada. |
+
+La re-auditoría seguirá estos pasos:
+
+1. Registrar los resultados iniciales obtenidos en la auditoría base.
+2. Implementar las mejoras necesarias en rendimiento, contraste o accesibilidad.
+3. Ejecutar nuevamente Lighthouse y Chrome DevTools sobre las mismas pantallas.
+4. Comparar los resultados antes y después usando las mismas condiciones de prueba.
+5. Documentar capturas, puntajes, métricas y conclusiones en el informe.
+6. Decidir si la mejora queda validada, si requiere un segundo ajuste o si debe mantenerse como deuda técnica.
+
+Para mantener trazabilidad, las capturas de re-auditoría deberán almacenarse con nombres diferenciados:
+
+IMAGENES A AGREGARRRR
+
+- lighthouse-inventario-before.png
+- lighthouse-inventario-after.png
+- lighthouse-reportes-before.png
+- lighthouse-reportes-after.png
+- devtools-search-before.png
+- devtools-search-after.png
+
 ### 8.2.8. Web and Mobile Tracking Plan.
 
 Para recolectar de forma automática los datos cuantitativos definidos en las Métricas (8.2.3) y complementar la auditoría técnica de 8.2.7, se implementará un plan de Event Tracking sobre la aplicación web desplegada, registrando los eventos en una tabla `experiment_events` en el entorno de staging del backend (Spring Boot + Railway).
@@ -856,92 +887,104 @@ Para recolectar de forma automática los datos cuantitativos definidos en las M�
 
 ---
 
-#### Eventos a Rastrear (Tracking Events)
+#### Eventos a Rastrear
 
-Se creará una tabla `experiment_events` en la base de datos de staging para registrar las siguientes acciones:
+Se creará una tabla `experiment_events` en la base de datos de staging para registrar las acciones relacionadas con las hipótesis que sí se ejecutan sobre software real: **H2**, **H3** y **H4**.
 
-**1. Hipótesis 2: Eficacia del Historial de Lotes**
+---
+
+#### 1. Hipótesis 2: Eficacia del Historial de Lotes
 
 **Evento: `batch_alert_triggered`**
 
-- **Disparador:** el sistema genera una alerta de "7 días para vencer" durante la verificación diaria.
+- **Disparador:** el sistema genera una alerta interna de "7 días para vencer" durante la verificación diaria de lotes.
 - **Datos a capturar:**
   - `event_name`: "batch_alert_triggered"
   - `alert_id`: [ID de la alerta generada]
   - `batch_id`: [ID del lote]
   - `user_id`: [ID del dueño de bodega]
-  - `timestamp`: Fecha y hora del evento
+  - `timestamp`: fecha y hora del evento
 
 **Evento: `batch_alert_action`**
 
-- **Disparador:** el usuario registra la acción de mitigación (liquidación o devolución) sobre una alerta. El cruce entre este evento y `batch_alert_triggered` (dentro de la ventana de 48h) calcula la **Alert Action Rate** (8.2.3).
+- **Disparador:** el usuario registra una acción de mitigación sobre una alerta, como liquidación, devolución, venta rápida o marcado del lote como gestionado. El cruce entre este evento y `batch_alert_triggered`, dentro de una ventana de 48 horas, permite calcular la métrica **Alert Action Rate** definida en la sección 8.2.3.
 - **Datos a capturar:**
   - `event_name`: "batch_alert_action"
   - `alert_id`: [ID de la alerta atendida]
   - `batch_id`: [ID del lote]
   - `user_id`: [ID del dueño de bodega]
-  - `action_type`: ["liquidacion" o "devolucion"]
-  - `timestamp`: Fecha y hora del evento
+  - `action_type`: ["liquidacion", "devolucion", "venta_rapida" o "gestionado"]
+  - `action_within_48h`: [true si la acción ocurrió dentro de las 48 horas posteriores a la alerta; false en caso contrario]
+  - `timestamp`: fecha y hora del evento
 
 **Evento: `batch_history_viewed`**
 
-- **Disparador:** el usuario consulta el historial de entradas/salidas de un lote.
+- **Disparador:** el usuario consulta el historial de entradas, salidas o movimientos de un lote.
 - **Datos a capturar:**
   - `event_name`: "batch_history_viewed"
   - `batch_id`: [ID del lote consultado]
   - `user_id`: [ID del dueño de bodega]
-  - `timestamp`: Fecha y hora del evento
+  - `timestamp`: fecha y hora del evento
 
 ---
 
-**2. Hipótesis 3: Adopción por Localización (Fake Door)**
+#### 2. Hipótesis 3: Adopción por Localización
 
 **Evento: `localized_signup_completed`**
 
-- **Disparador:** un visitante completa el registro en la landing page o pantalla de inventario traducida (Fake Door, 8.2.6).
+- **Disparador:** un visitante completa el registro en la landing page o pantalla de inventario usada para la prueba Fake Door.
 - **Datos a capturar:**
   - `event_name`: "localized_signup_completed"
   - `session_id`: [identificador de sesión del visitante]
   - `variant`: ["localizada" o "estandar"]
-  - `timestamp`: Fecha y hora del evento
+  - `timestamp`: fecha y hora del evento
 
 ---
 
-**3. Hipótesis 4: Tolerancia a la Latencia de Búsqueda**
+#### 3. Hipótesis 4: Tolerancia a la Latencia de Búsqueda
 
 **Evento: `product_search_performed`**
 
-- **Disparador:** cada búsqueda de producto por nombre común ejecutada en la pantalla de Inventario, ya sea en condiciones normales o durante las sesiones con Network Throttling.
+- **Disparador:** cada búsqueda de producto por nombre común ejecutada en la pantalla de Inventario, tanto en condiciones normales como durante las sesiones con Network Throttling.
 - **Datos a capturar:**
   - `event_name`: "product_search_performed"
   - `user_id`: [ID del dueño de bodega]
+  - `experiment_session_id`: [ID de la sesión experimental]
+  - `test_scenario`: ["baseline", "throttling_500ms", "throttling_1500ms", "throttling_3000ms"]
   - `response_time_ms`: [tiempo medido entre el ingreso del término y la respuesta]
   - `result_count`: [cantidad de coincidencias devueltas]
-  - `timestamp`: Fecha y hora del evento
+  - `search_term_length`: [cantidad de caracteres del término buscado]
+  - `timestamp`: fecha y hora del evento
 
 **Evento: `search_task_abandoned`**
 
-- **Disparador:** el usuario abandona la búsqueda antes de recibir resultados.
+- **Disparador:** el usuario abandona la búsqueda antes de recibir resultados o decide no continuar con la tarea de búsqueda.
 - **Datos a capturar:**
   - `event_name`: "search_task_abandoned"
   - `user_id`: [ID del dueño de bodega]
+  - `experiment_session_id`: [ID de la sesión experimental]
+  - `test_scenario`: ["baseline", "throttling_500ms", "throttling_1500ms", "throttling_3000ms"]
   - `elapsed_time_ms`: [tiempo transcurrido antes del abandono]
-  - `timestamp`: Fecha y hora del evento
+  - `timestamp`: fecha y hora del evento
 
 ---
 
-#### Captura de Datos para Hipótesis 1 y 5 (sin eventos automatizados)
+#### Captura de Datos para Hipótesis 1 y 5
 
-Como se explicó, H1 y H5 se validan sobre un prototipo Figma y un test de laboratorio, por lo que sus datos **no** pasan por `experiment_events`: se registran manualmente en una planilla (Google Sheets).
+Como se explicó previamente, **H1** y **H5** no se registran mediante `experiment_events`, porque no se ejecutan directamente sobre el sistema desplegado en producción.
+
+H1 se valida mediante entrevista guiada sobre un prototipo Figma, mientras que H5 se valida mediante un test A/B controlado en laboratorio. Por ello, sus datos serán registrados manualmente en una planilla de Google Sheets.
 
 | Hipótesis | Dónde se registra | Campos capturados |
 | :--- | :--- | :--- |
-| H1 | Planilla de entrevista guiada | `usuario_id`, `clic_adquirir_plan` (sí/no), `calificacion_precio`, `perdida_estimada_usd` |
-| H5 | Planilla de laboratorio | `usuario_id`, `version` (estándar/alto contraste), `tiempo_identificacion_seg`, `respuesta_correcta` (sí/no) |
+| H1 — Viabilidad del Modelo de Suscripción | Planilla de entrevista guiada | `usuario_id`, `clic_adquirir_plan`, `calificacion_precio`, `perdida_estimada_usd`, `comentario_precio` |
+| H5 — Impacto del Alto Contraste | Planilla de laboratorio | `usuario_id`, `version`, `tiempo_identificacion_seg`, `respuesta_correcta`, `nivel_claridad_likert` |
 
 ---
 
 #### Estructura de la Tabla `experiment_events`
+
+Para evitar problemas de rendimiento al calcular métricas frecuentes como **Alert Action Rate**, los campos usados en filtros, agrupaciones o uniones no dependerán únicamente del campo `payload` JSON. El `payload` se mantendrá para guardar información adicional del evento, pero los datos críticos también se almacenarán como columnas consultables e indexables.
 
 ```sql
 CREATE TABLE experiment_events (
@@ -949,80 +992,144 @@ CREATE TABLE experiment_events (
     event_name VARCHAR(50) NOT NULL,
     user_id BIGINT,
     session_id VARCHAR(100),
+
+    alert_id BIGINT,
+    batch_id BIGINT,
+    action_type VARCHAR(50),
+    action_within_48h BOOLEAN,
+
+    test_scenario VARCHAR(50),
+    response_time_ms INT,
+    variant VARCHAR(50),
+
     payload JSON,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    INDEX idx_event_name (event_name),
+
+    INDEX idx_event_name_created_at (event_name, created_at),
     INDEX idx_user_id (user_id),
-    INDEX idx_created_at (created_at)
+    INDEX idx_alert_id (alert_id),
+    INDEX idx_batch_id (batch_id),
+    INDEX idx_alert_action (event_name, action_within_48h, created_at),
+    INDEX idx_search_scenario (event_name, test_scenario, created_at),
+    INDEX idx_localized_variant (event_name, variant)
 );
 ```
 
+Con esta estructura, los eventos mantienen flexibilidad mediante `payload`, pero las métricas principales pueden calcularse usando columnas indexadas. Esto evita consultas pesadas sobre campos internos del JSON cuando se calculen métricas como alertas atendidas, escenarios de latencia o registros por variante localizada.
+
+---
+
+#### Consideración Técnica sobre el Uso de JSON
+
+El campo `payload` será utilizado únicamente para almacenar información complementaria o detalles adicionales del evento. Sin embargo, las métricas principales no deben depender exclusivamente de consultas sobre JSON, ya que esto puede generar problemas de rendimiento cuando aumente la cantidad de registros.
+
+Por esta razón, los campos más importantes para análisis se guardan también como columnas normales:
+
+| Métrica | Campos optimizados |
+|---|---|
+| Alert Action Rate | `event_name`, `alert_id`, `batch_id`, `action_within_48h`, `created_at` |
+| Search Response Time | `event_name`, `test_scenario`, `response_time_ms`, `created_at` |
+| Search Task Abandonment | `event_name`, `test_scenario`, `created_at` |
+| Localized Signup Rate | `event_name`, `variant`, `created_at` |
+
+De esta forma, el sistema puede consultar métricas críticas usando índices y no únicamente propiedades internas de `payload`.
+
+---
+
 #### Herramienta de Análisis
 
-Los datos se almacenarán en `experiment_events` y se consultarán mediante SQL para alimentar los reportes de las hipótesis que sí corren sobre software real.
+Los datos se almacenarán en `experiment_events` y se consultarán mediante SQL para alimentar los reportes de las hipótesis que sí corren sobre software real: **H2**, **H3** y **H4**.
 
-**Ejemplo de Queries SQL:**
+---
 
-- **Alert Action Rate (H2) — % de alertas atendidas dentro de 48h:**
+#### Ejemplo de Queries SQL
+
+**Alert Action Rate H2 — porcentaje de alertas atendidas dentro de 48 horas**
 
 ```sql
 SELECT
-    COUNT(DISTINCT t.payload->>'$.alert_id') AS alertas_generadas,
-    COUNT(DISTINCT a.payload->>'$.alert_id') AS alertas_atendidas_48h,
+    COUNT(DISTINCT t.alert_id) AS alertas_generadas,
+    COUNT(DISTINCT a.alert_id) AS alertas_atendidas_48h,
     ROUND(
-        COUNT(DISTINCT a.payload->>'$.alert_id') * 100.0
-        / COUNT(DISTINCT t.payload->>'$.alert_id'), 1
+        COUNT(DISTINCT a.alert_id) * 100.0 / NULLIF(COUNT(DISTINCT t.alert_id), 0),
+        1
     ) AS alert_action_rate_pct
 FROM experiment_events t
 LEFT JOIN experiment_events a
     ON a.event_name = 'batch_alert_action'
-    AND a.payload->>'$.alert_id' = t.payload->>'$.alert_id'
-    AND a.created_at <= t.created_at + INTERVAL 48 HOUR
-WHERE t.event_name = 'batch_alert_triggered';
+    AND a.alert_id = t.alert_id
+    AND a.action_within_48h = TRUE
+WHERE t.event_name = 'batch_alert_triggered'
+  AND t.created_at BETWEEN '2026-01-01' AND '2026-01-31';
 ```
 
-#### Herramienta de Análisis
+Esta consulta usa las columnas `alert_id`, `event_name`, `created_at` y `action_within_48h`, evitando depender directamente de `payload->>'$.alert_id'` para los filtros principales.
 
-Los datos se almacenarán en `experiment_events` y se consultarán mediante SQL para alimentar los reportes de las hipótesis que sí corren sobre software real.
+---
 
-**Ejemplo de Queries SQL:**
-
-- **Search Response Time promedio (H4):**
-
-```sql
-SELECT AVG(CAST(payload->>'$.response_time_ms' AS UNSIGNED)) AS avg_response_time_ms
-FROM experiment_events
-WHERE event_name = 'product_search_performed'
-  AND created_at BETWEEN '2026-01-01' AND '2026-01-31';
-```
-
-#### Herramienta de Análisis
-
-Los datos se almacenarán en `experiment_events` y se consultarán mediante SQL para alimentar los reportes de las hipótesis que sí corren sobre software real.
-
-**Ejemplo de Queries SQL:**
-
-- **Search Response Time promedio (H4):**
-
-```sql
-SELECT AVG(CAST(payload->>'$.response_time_ms' AS UNSIGNED)) AS avg_response_time_ms
-FROM experiment_events
-WHERE event_name = 'product_search_performed'
-  AND created_at BETWEEN '2026-01-01' AND '2026-01-31';
-```
-
-- **Search Response Time promedio (H4):**
+**Search Response Time promedio por escenario H4**
 
 ```sql
 SELECT
-    payload->>'$.variant' AS variante,
+    test_scenario,
+    COUNT(*) AS total_searches,
+    ROUND(AVG(response_time_ms), 2) AS avg_response_time_ms,
+    MIN(response_time_ms) AS min_response_time_ms,
+    MAX(response_time_ms) AS max_response_time_ms
+FROM experiment_events
+WHERE event_name = 'product_search_performed'
+  AND created_at BETWEEN '2026-01-01' AND '2026-01-31'
+GROUP BY test_scenario
+ORDER BY avg_response_time_ms;
+```
+
+Esta consulta diferencia claramente entre búsquedas normales y búsquedas bajo throttling mediante el campo `test_scenario`.
+
+---
+
+**Abandono de tarea por escenario de latencia H4**
+
+```sql
+SELECT
+    test_scenario,
+    COUNT(*) AS total_abandonos
+FROM experiment_events
+WHERE event_name = 'search_task_abandoned'
+  AND created_at BETWEEN '2026-01-01' AND '2026-01-31'
+GROUP BY test_scenario;
+```
+
+Esta consulta permite identificar en qué escenario de latencia los usuarios abandonan con mayor frecuencia la tarea de búsqueda.
+
+---
+
+**Registros completados por variante localizada H3**
+
+```sql
+SELECT
+    variant AS variante,
     COUNT(*) AS registros_completados
 FROM experiment_events
 WHERE event_name = 'localized_signup_completed'
-GROUP BY payload->>'$.variant';
+  AND created_at BETWEEN '2026-01-01' AND '2026-01-31'
+GROUP BY variant;
 ```
 
-Estos datos cuantitativos se complementarán con los datos cualitativos obtenidos de las entrevistas y encuestas para generar el análisis completo de resultados.
+Esta consulta permite comparar cuántos usuarios completaron el registro en la versión localizada frente a la versión estándar.
+
+---
+
+#### Relación con las Métricas e Hipótesis
+
+| Hipótesis | Evento principal | Métrica relacionada | Uso del dato |
+|---|---|---|---|
+| H2 | `batch_alert_triggered` y `batch_alert_action` | Tasa de Acción sobre Alertas | Medir si las alertas internas generan acciones dentro de 48 horas. |
+| H2 | `batch_history_viewed` | Uso del historial de lotes | Identificar si el usuario consulta el historial para tomar decisiones. |
+| H3 | `localized_signup_completed` | Tasa de Registro Localizado | Comparar registros entre versión localizada y versión estándar. |
+| H4 | `product_search_performed` | Tiempo de Respuesta de Búsqueda | Medir latencia promedio por escenario. |
+| H4 | `search_task_abandoned` | Tasa de Abandono de Tarea | Medir abandono según el escenario de latencia. |
+
+Estos datos cuantitativos se complementarán con los datos cualitativos obtenidos de entrevistas, encuestas y observaciones para generar el análisis completo de resultados.
 
 ## 8.3. Experimentation
 La fase de experimentación traduce los aprendizajes en validación (definidos como hipótesis en 8.2) en requerimientos concretos para el siguiente ciclo. A diferencia de las User Stories del estado **As-Is** (sección 3.2), las **To-Be User Stories** representan únicamente los *incrementos* que el equipo decidió construir como resultado del proceso de Experiment-Driven Development. Por ello no reescriben funcionalidad ya existente (ej. el registro de lotes de US14, la búsqueda de US08 o las notificaciones de US05), sino que la extienden con las mejoras que cada experimento busca validar. Cada historia es trazable a una de las cinco hipótesis de 8.2.1 y a su Tarjeta de Experimento (8.1.5).
@@ -1042,14 +1149,15 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     <tr>
       <td>EP-11</td>
       <td>Monetización y Suscripción</td>
-      <td>Como dueño de bodega, quiero evaluar el ahorro por mermas frente al costo del plan y contratar una suscripción, para acceder a las funcionalidades premium con una decisión de valor informada.</td>
-      <td>US20, US21, TS15</td>
+      <td>Agrupa las funcionalidades orientadas a validar la viabilidad económica de StockTrack, estimar el ahorro generado por la reducción de mermas, comparar dicho ahorro frente al costo del plan y gestionar la contratación de una suscripción. Esta épica permite conectar el valor funcional del producto con una decisión comercial informada por parte del dueño de bodega.
+      </td>
+      <td>US19, US20, TS15</td>
     </tr>
     <tr>
       <td>EP-12</td>
       <td>Internacionalización y Localización</td>
-      <td>Como usuario de una zona con diversidad lingüística, quiero usar la plataforma con terminología localizada o en un idioma originario, para reducir la barrera de "tecnología ajena" y adoptarla con confianza. Se alinea con el requisito de i18n del enunciado.</td>
-      <td>US23, TS18</td>
+          <td>Agrupa funcionalidades orientadas a evaluar si la adaptación del lenguaje, la terminología local o el idioma de la interfaz mejora la confianza, comprensión y facilidad de adopción de StockTrack en usuarios de zonas con diversidad lingüística. Esta épica se mantiene como exploratoria y post-MVP, ya que su implementación dependerá de los resultados obtenidos en la hipótesis de adopción por localización.</td>
+      <td>US22, TS17</td>
     </tr>
   </tbody>
 </table>
@@ -1078,7 +1186,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     <tr>
         <td colspan="4">
             <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> que la búsqueda de productos por nombre común responda casi de inmediato <br>
+            <strong> Quiero </strong> buscar productos por nombre común con un tiempo de respuesta menor a 1.5 segundos <br>
             <strong> Para </strong> atender al cliente sin interrumpir la venta ni volver al registro manual.
         </td>
     </tr>
@@ -1089,21 +1197,30 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <td colspan="4">
             <strong> Escenario 1: Respuesta dentro del umbral de tolerancia</strong> <br><br>
             <strong> Dado que </strong> existen productos registrados en el inventario <br>
-            <strong> Cuando </strong> el usuario busca un producto por su nombre común <br>
+            <strong> Cuando </strong> el usuario busca un producto por su nombre común exacto o registrado <br>
             <strong> Entonces </strong> el sistema devuelve los resultados coincidentes en menos de 1.5 segundos.
             <br><br>
-            <strong> Escenario 2: Coincidencia parcial o aproximada</strong> <br><br>
-            <strong> Dado que </strong> el usuario ingresa un nombre incompleto o con un error de tipeo menor <br>
-            <strong> Cuando </strong> se procesa la búsqueda <br>
-            <strong> Entonces </strong> el sistema muestra los productos cuyo nombre coincide de forma parcial o aproximada.
+            <strong> Escenario 2: Visualización de resultados coincidentes</strong> <br><br>
+            <strong> Dado que </strong> existen productos cuyo nombre coincide con el término ingresado <br>
+            <strong> Cuando </strong> el usuario ejecuta la búsqueda <br>
+            <strong> Entonces </strong> el sistema muestra los productos coincidentes con su nombre, stock disponible y estado principal.
             <br><br>
             <strong> Escenario 3: Búsqueda sin resultados</strong> <br><br>
-            <strong> Dado que </strong> el término buscado no corresponde a ningún producto <br>
+            <strong> Dado que </strong> el término buscado no corresponde a ningún producto registrado <br>
             <strong> Cuando </strong> se procesa la búsqueda <br>
-            <strong> Entonces </strong> el sistema informa la ausencia de coincidencias dentro del mismo umbral de tiempo.
-        </td>
-    </tr>
+            <strong> Entonces </strong> el sistema informa la ausencia de coincidencias dentro del mismo umbral de 1.5 segundos.
+            <br><br>
+            <strong> Escenario 4: Registro del evento de búsqueda</strong> <br><br>
+            <strong> Dado que </strong> el usuario realiza una búsqueda de producto por nombre común <br>
+            <strong> Cuando </strong> el sistema devuelve una respuesta <br>
+            <strong> Entonces </strong> se registra el evento <code>product_search_performed</code> con el tiempo de respuesta y el escenario de prueba correspondiente.
+       </td>
+     </tr>
 </table>
+
+<p><em>Trazabilidad: Hipótesis 4 — Tolerancia a la Latencia de Búsqueda; QD2 — Umbral máximo de búsqueda tolerado por el usuario.</em></p>
+
+<p><em>Nota de alcance: Esta historia se limita a optimizar el rendimiento de la búsqueda por nombre común. No incluye búsqueda aproximada, autocorrección, sugerencias inteligentes ni coincidencias difusas. Esas mejoras podrán evaluarse como funcionalidades futuras si los resultados de H4 evidencian que el rendimiento base cumple el umbral esperado.</em></p>
 
 <p><em>Trazabilidad: Hipótesis 4 (Tolerancia a la Latencia de Búsqueda) — QD2.</em></p>
 
@@ -1131,7 +1248,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <td colspan="4">
             <strong> Como </strong> dueño de bodega <br>
             <strong> Quiero </strong> activar un modo de alto contraste en los reportes <br>
-            <strong> Para </strong> leer los datos críticos sin errores en almacenes con poca iluminación o con fatiga visual.
+            <strong> Para </strong>evaluar si la información crítica del inventario puede leerse con mayor claridad en condiciones de baja iluminación o fatiga visual.
         </td>
     </tr>
     <tr>
@@ -1139,16 +1256,23 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Activación del modo de alto contraste</strong> <br><br>
-            <strong> Dado que </strong> el usuario visualiza un reporte de inventario <br>
-            <strong> Cuando </strong> activa el modo de alto contraste <br>
-            <strong> Entonces </strong> el sistema presenta el reporte con la paleta de alto contraste.
-            <br><br>
-            <strong> Escenario 2: Persistencia de la preferencia</strong> <br><br>
-            <strong> Dado que </strong> el usuario activó previamente el modo de alto contraste <br>
-            <strong> Cuando </strong> vuelve a ingresar al sistema <br>
-            <strong> Entonces </strong> el sistema conserva el modo de alto contraste como preferencia del usuario.
-        </td>
+            <strong>Escenario 1: Activación del modo de alto contraste</strong><br>
+            <strong>Dado</strong> que el dueño de bodega se encuentra en la pantalla de reportes,<br>
+            <strong>Cuando</strong> activa la opción de modo de alto contraste,<br>
+            <strong>Entonces</strong> el sistema debe aplicar una versión visual de alto contraste sobre los elementos principales del reporte.<br><br>
+            <strong>Escenario 2: Visualización de información crítica</strong><br>
+            <strong>Dado</strong> que el modo de alto contraste está activado,<br>
+            <strong>Cuando</strong> el usuario visualiza indicadores críticos, fechas de vencimiento, cantidades o alertas visuales,<br>
+            <strong>Entonces</strong> el sistema debe mostrar la misma información funcional que la versión estándar, sin modificar los datos ni los cálculos del reporte.<br><br>
+            <strong>Escenario 3: Desactivación del modo de alto contraste</strong><br>
+            <strong>Dado</strong> que el modo de alto contraste está activado,<br>
+            <strong>Cuando</strong> el usuario desactiva esta opción,<br>
+            <strong>Entonces</strong> el sistema debe regresar a la versión visual estándar de la pantalla de reportes.<br><br>
+            <strong>Escenario 4: Evaluación mediante prueba A/B</strong><br>
+            <strong>Dado</strong> que existen una versión estándar y una versión de alto contraste del reporte,<br>
+            <strong>Cuando</strong> el usuario realiza una tarea de lectura durante la prueba A/B,<br>
+            <strong>Entonces</strong> el sistema o el equipo debe permitir registrar el tiempo de lectura, los errores de interpretación y la claridad percibida para evaluar la hipótesis de alto contraste.
+   </td>
     </tr>
 </table>
 
@@ -1448,7 +1572,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
 
 <p><em>Trazabilidad: Hipótesis 3 (Adopción por Localización) — QB2. Sustenta las métricas Localized Sign-up Rate y Trust Perception Score (8.2.3) y el requisito de i18n del enunciado.</em></p>
 
-> **Nota de alcance:** La funcionalidad de alertas por WhatsApp fue retirada del alcance To-Be del proyecto, debido a que no será implementada en el MVP actual. Por ello, no se mantiene como User Story, Technical Story, Experiment Card ni elemento del Product Backlog. Las alertas preventivas se validarán únicamente dentro de la aplicación, mediante eventos internos, seguimiento de alertas pendientes y registro de acciones de mitigación.
+> **Nota de alcance:** La funcionalidad de alertaEPIC-11 alcance To-Be del proyecto, debido a que no será implementada en el MVP actual. Por ello, no se mantiene como User Story, Technical Story, Experiment Card ni elemento del Product Backlog. Las alertas preventivas se validarán únicamente dentro de la aplicación, mediante eventos internos, seguimiento de alertas pendientes y registro de acciones de mitigación.
 
 ### To-Be Technical Stories
 
@@ -1635,9 +1759,31 @@ El backlog prioriza según el scoring del Question Backlog (8.1.4): primero los 
 | :------ | :------------ | :----- | :---------- | :----------- |
 | **01** | US17 | Registrar acción de mitigación sobre alertas de vencimiento próximo | Como dueño de bodega, quiero recibir una alerta anticipada de 7 días cuando un lote está próximo a vencer y registrar la acción que tomo, para actuar a tiempo y medir la efectividad de las alertas. | 5 |
 | **02** | US18 | Consultar el historial de movimientos por lote | Como dueño de bodega, quiero consultar el historial de entradas y salidas de cada lote, para hacer trazabilidad detallada y entender por qué un producto llegó a vencerse. | 3 |
-| **03** | US20 | Estimar el ahorro por mermas frente al costo de la suscripción | Como dueño de bodega, quiero comparar mis pérdidas estimadas por mermas con el costo del plan, para decidir de forma informada si la suscripción representa un ahorro. | 3 |
-| **04** | US21 | Contratar y gestionar el plan de suscripción | Como dueño de bodega, quiero contratar y administrar mi plan de suscripción, para acceder a las funcionalidades premium de la plataforma. | 8 |
-| **05** | US15 | Optimizar la búsqueda de productos por nombre común | Como dueño de bodega, quiero que la búsqueda por nombre común responda en menos de 1.5 segundos, para atender al cliente sin interrumpir la venta ni volver al registro manual. | 5 |
-| **06** | US22 | Visualizar el ahorro real por mermas evitadas | Como dueño de bodega, quiero ver el ahorro generado por las alertas de vencimiento que atendí, para confirmar el valor que aporta la plataforma frente a su costo. | 3 |
-| **07** | US16 | Visualizar reportes en modo de alto contraste | Como dueño de bodega, quiero activar un modo de alto contraste en los reportes, para leer los datos críticos sin errores en almacenes con poca iluminación o con fatiga visual. | 3 |
-| **08** | US23 | Seleccionar el idioma de la interfaz | Como dueño de bodega de una zona con diversidad lingüística, quiero usar la plataforma con terminología localizada o en un idioma originario, para adoptar la herramienta con confianza. | 5 |
+| **03** | US19 | Estimar el ahorro por mermas frente al costo de la suscripción | Como dueño de bodega, quiero comparar mis pérdidas estimadas por mermas con el costo del plan, para decidir de forma informada si la suscripción representa un ahorro. | 3 |
+| **04** | US20 | Contratar y gestionar el plan de suscripción | Como dueño de bodega, quiero contratar y administrar mi plan de suscripción, para acceder a las funcionalidades premium de la plataforma. | 8 |
+| **05** | US15 | Optimizar la búsqueda de productos por nombre común | Como dueño de bodega, quiero buscar productos por nombre común con un tiempo de respuesta menor a 1.5 segundos, para atender al cliente sin interrumpir la venta ni volver al registro manual. | 5 |
+| **06** | US21 | Visualizar el ahorro real por mermas evitadas | Como dueño de bodega, quiero ver el ahorro generado por las alertas de vencimiento que atendí, para confirmar el valor que aporta la plataforma frente a su costo. | 3 |
+| **07** | US16 | Visualizar reportes en modo de alto contraste | Como dueño de bodega, quiero activar un modo de alto contraste en los reportes, para evaluar si la información crítica puede leerse con mayor claridad en condiciones de baja iluminación o fatiga visual. | 3 |
+| **08** | US22 | Seleccionar el idioma de la interfaz | Como dueño de bodega de una zona con diversidad lingüística, quiero usar la plataforma con terminología localizada o en un idioma originario, para adoptar la herramienta con confianza. | 3 |
+
+
+> **Nota sobre US23:** Aunque QB2 y H3 tienen menor prioridad frente a las hipótesis centrales del producto, el equipo decidió mantener US23 dentro del MVP como una implementación mínima de localización. Esta versión no contempla una internacionalización completa, sino una primera adaptación de textos principales de la interfaz para validar si la terminología localizada mejora la confianza y adopción del usuario. Por ello, la historia conserva Story Points, pero se ubica al final del backlog y se limita a un alcance reducido.
+
+#### Technical Stories Priorizadas
+
+Además de las User Stories funcionales, el backlog incluye historias técnicas necesarias para habilitar las funcionalidades To-Be. Estas historias no representan valor directo visible para el usuario, pero permiten implementar, optimizar o sostener técnicamente las historias funcionales priorizadas.
+
+La historia técnica relacionada con WhatsApp fue retirada del alcance, debido a que el equipo eliminó los canales externos de mensajería del MVP. Por ello, solo se mantienen las Technical Stories asociadas a funcionalidades que sí serán implementadas.
+
+| Orden técnico | Technical Story Id | Historia relacionada | Título | Justificación técnica | Story Points |
+| :---: | :--- | :--- | :--- | :--- | :---: |
+| **01** | TS15 | US15 | Optimizar consultas de búsqueda de productos | Permite cumplir el umbral de búsqueda menor a 1.5 segundos mediante optimización de consultas, índices o paginación. | 5 |
+| **02** | TS16 | US17 / US18 | Registrar eventos de lotes, alertas y acciones | Permite medir la eficacia del historial de lotes mediante eventos como `batch_alert_triggered`, `batch_alert_action` y `batch_history_viewed`. | 5 |
+| **03** | TS17 | US16 | Implementar soporte visual para modo de alto contraste | Permite habilitar la variante de reportes necesaria para la prueba A/B de alto contraste sin alterar los datos funcionales del reporte. | 3 |
+| **04** | TS18 | US22 | Implementar configuración básica de idioma o terminología localizada | Permite guardar y aplicar la preferencia de idioma o terminología localizada como implementación mínima para validar H3 dentro del MVP. | 3 |
+
+**Nota de alcance técnico:**  
+La Technical Story relacionada con WhatsApp fue eliminada porque el equipo decidió no implementar canales externos de mensajería en el MVP. Las alertas preventivas se mantendrán dentro de la aplicación mediante eventos internos, historial de lotes y registro de acciones de mitigación.
+
+**Criterio de priorización técnica:**  
+Las Technical Stories se ordenan según su dependencia con las User Stories funcionales de mayor prioridad. Primero se atienden las tareas técnicas vinculadas con historial de lotes, alertas internas y búsqueda, porque están asociadas a las hipótesis críticas H2 y H4. Luego se priorizan mejoras complementarias como alto contraste e idioma localizado.
