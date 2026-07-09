@@ -644,15 +644,60 @@ Si no existe diferencia clara entre 1.5s y 3s, el equipo deberá revisar si el p
 ---
  
 #### Resumen de Criterios de Decisión Global
- 
-Para determinar si el **conjunto completo de experimentos** justifica avanzar de prototipo/MVP a producto comercial, aplicamos la siguiente regla:
- 
-- **Avance a Desarrollo Completo Aprobado:** Si **al menos 4 de 5 hipótesis** obtienen resultados "Ideales" o "Aceptables" (con refinamiento menor), el conjunto de experimentos se considera exitoso.
-- **Avance Condicional (Requiere Refinamiento):** Si **3 de 5 hipótesis** obtienen "Ideal/Aceptable", pero 2 obtienen "Desfavorable", las funcionalidades que fracasaron deben ser rediseñadas o eliminadas del alcance del MVP inicial.
-- **Rechazo / Pivote del Producto:** Si **3 o más hipótesis** obtienen resultados "Desfavorables", el conjunto de experimentos fracasa. Se requiere investigación adicional (entrevistas, análisis de causas raíz) antes de continuar invirtiendo en desarrollo.
-**Justificación:**
- 
-Esta escala de decisión permite un enfoque pragmático: no todas las funcionalidades deben ser perfectas para validar el valor del producto, pero sí debe haber una mayoría clara de validaciones exitosas. Esto es especialmente relevante para H1 (viabilidad del modelo de negocio) y H2 (eficacia del módulo de lotes), que son las hipótesis de mayor riesgo según el scoring de 8.1.4 (Total Score 17 cada una).
+
+Para determinar si el conjunto completo de experimentos justifica avanzar de prototipo/MVP a producto comercial, no se evaluarán todas las hipótesis con el mismo peso. Esto se debe a que algunas hipótesis validan aspectos críticos del producto, mientras que otras corresponden a mejoras complementarias o exploratorias.
+
+Las hipótesis de mayor peso son **H2** y **H1**, porque validan la propuesta de valor central y la viabilidad económica del producto. En cambio, hipótesis como localización o alto contraste son importantes, pero no bloquean directamente el MVP principal.
+
+##### Ponderación de hipótesis
+
+| Hipótesis | Enfoque evaluado | Peso | Justificación |
+|---|---|---:|---|
+| **H2** | Eficacia del historial de lotes | **30%** | Valida si StockTrack realmente ayuda a reducir pérdidas por vencimiento, que es la propuesta de valor central del producto. |
+| **H1** | Viabilidad del modelo de suscripción | **25%** | Valida si el usuario percibe suficiente valor económico como para pagar por la solución. |
+| **H4** | Tolerancia a la latencia de búsqueda | **20%** | Afecta directamente la experiencia diaria del usuario durante la atención al cliente. |
+| **H5** | Impacto del alto contraste | **15%** | Mejora la legibilidad y reduce errores de interpretación, pero no bloquea directamente la propuesta principal. |
+| **H3** | Adopción por localización | **10%** | Es una hipótesis exploratoria de expansión futura, por lo que tiene menor prioridad dentro del MVP actual. |
+
+##### Valor asignado según resultado
+
+Cada hipótesis recibirá un valor según el resultado obtenido en su escala individual:
+
+| Resultado de la hipótesis | Valor asignado |
+|---|---:|
+| **Ideal** | 1.0 |
+| **Aceptable** | 0.5 |
+| **Desfavorable** | 0.0 |
+
+##### Fórmula de decisión global
+
+El resultado global se calculará aplicando la siguiente fórmula ponderada:
+
+`Resultado Global = (H1 × 0.25) + (H2 × 0.30) + (H3 × 0.10) + (H4 × 0.20) + (H5 × 0.15)`
+
+##### Interpretación del resultado global
+
+| Resultado Global | Decisión |
+|---:|---|
+| **≥ 0.75** | **Avance a Desarrollo Completo Aprobado.** El conjunto de experimentos entrega evidencia suficiente para avanzar con las funcionalidades principales hacia el backlog To-Be. |
+| **0.50 - 0.74** | **Avance Condicional.** Se puede avanzar parcialmente, pero las hipótesis con resultado aceptable o desfavorable deberán ajustarse, rediseñarse o validarse en un segundo ciclo. |
+| **< 0.50** | **Rechazo o Pivote del Producto.** No se recomienda avanzar a implementación completa hasta replantear las hipótesis críticas, rediseñar los experimentos o realizar investigación adicional. |
+
+##### Reglas de bloqueo
+
+Además del resultado ponderado, se definen reglas de bloqueo para evitar que mejoras secundarias compensen fallos en las hipótesis críticas:
+
+- Si **H2** obtiene resultado **Desfavorable**, no se debe priorizar el lanzamiento completo del módulo de historial de lotes, aunque otras hipótesis obtengan resultados ideales.
+- Si **H1** obtiene resultado **Desfavorable**, el modelo de suscripción debe replantearse antes de definir el flujo de pago o la estrategia comercial.
+- Si **H4** obtiene resultado **Desfavorable**, se debe optimizar la búsqueda antes del lanzamiento, porque una mala experiencia de búsqueda puede afectar la adopción diaria del producto.
+- Si **H3** obtiene resultado **Desfavorable**, no afecta el MVP principal, ya que la localización se mantiene como funcionalidad exploratoria de expansión futura.
+- Si **H5** obtiene resultado **Desfavorable**, el rediseño de alto contraste puede mantenerse como mejora futura o accesibilidad opcional, sin bloquear el desarrollo principal.
+
+##### Justificación
+
+Esta escala ponderada permite tomar una decisión más realista que una regla simple de “4 de 5 hipótesis aprobadas”. No todas las hipótesis tienen el mismo impacto sobre el producto: **H2** valida si StockTrack resuelve el problema principal de pérdidas por vencimiento, mientras que **H1** valida si esa solución puede sostenerse comercialmente mediante una suscripción.
+
+Por ello, el avance del producto dependerá principalmente de la validación de las hipótesis críticas. Las hipótesis complementarias, como localización o alto contraste, ayudan a mejorar el producto, pero no deben compensar fallos en la propuesta de valor central.
 
 ### 8.2.6. Methods Selection.
  
