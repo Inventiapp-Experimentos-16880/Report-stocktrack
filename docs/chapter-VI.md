@@ -454,13 +454,65 @@ Incluir gráficos simples, indicadores clave y resúmenes visuales. Por ejemplo,
 
 ## 6.4. Auditoría de Experiencias de Usuario
 
-### 6.4.1. Auditoría realizada
+## 6.4.1. Auditoría realizada
 
-#### 6.4.1.1. Información del grupo auditado
+### 6.4.1.1. Información del grupo auditado
 
-#### 6.4.1.2. Cronograma de auditoría realizada
+| Elemento | Información identificada |
+|---|---|
+| Startup / proyecto auditado | LiquoTrack |
+| Equipo auditado | Equipo de Desarrollo LiquoTrack |
+| Integrantes del equipo auditado | - Coronel Espinoza, Farid Sebastian<br>- Diaz Quispe, Matias Sebastian<br>- Juarez Leon, Nicolas Emilio Walter<br>- Julca Minaya, Sergio Gino |
+| Artefactos revisados | - Plan de Auditoría LiquoTrack<br>- Informe del Equipo LiquoTrack |
+| Contenido funcional observado | Flujos To-Be relacionados con catálogos de productos, exploración de catálogos, carrito de compras y compras. |
+| Criterio de referencia | Final Project Statement, metodología Experiment-Driven Development, plan de auditoría y evidencia documental presentada. |
+| Tipo de auditoría | Académica interna |
 
-#### 6.4.1.3. Contenido de auditoría realizada
+### 6.4.1.2. Cronograma de auditoría realizada
+
+
+| Horario / Fecha | Área / Proceso | Equipo auditor | Responsable | Requisito |
+|---|---|---|---|---|
+| 10:00-10:10 | Reunión de apertura | Auditor líder / Equipo auditado | Auditor líder / Equipo auditado | Explicar objetivo, alcance y criterios de la auditoría. |
+| 10:10-10:25 | As-Is Summary | Giovany Smith Torres Apolinario | Equipo de Desarrollo LiquoTrack | Problemas actuales claramente definidos: rendimiento, UX, funcionalidad y usabilidad. |
+| 10:25-10:40 | Raw Material | Yaku Mateo Guzmán Cabrejos | Equipo de Desarrollo LiquoTrack | Assumptions, knowledge gaps, ideas y claims deben sustentar las preguntas experimentales. |
+| 10:40-10:55 | Experiment-Ready Questions | Antonio Jhair Navarro Chinga | Equipo de Desarrollo LiquoTrack | Preguntas belief-led y exploratorias deben ser medibles y conectadas a problemas reales. |
+| 10:55-11:10 | Question Backlog | Dayro Richard Rios Piñan | Equipo de Desarrollo LiquoTrack | Verificar scoring C/R/I/In, prioridad, justificación de puntajes y orden de preguntas por riesgo e impacto. |
+| 11:10-11:30 | Experiment Cards | Dayro Richard Rios Piñan | Equipo de Desarrollo LiquoTrack | Cada tarjeta debe incluir pregunta, why, hypothesis, what, medidas, condiciones y escala. |
+| 11:30-11:45 | Hypotheses | Antonio Jhair Navarro Chinga | Equipo de Desarrollo LiquoTrack | Cada hipótesis debe tener creencia, hipótesis principal y nula, cuantificable y trazable a una tarjeta. |
+| 11:45-12:00 | Methods Selection | Antonio Jhair Navarro Chinga | Equipo de Desarrollo LiquoTrack | Verificar que el método elegido sea adecuado para cada hipótesis y que las herramientas permitan recolectar datos válidos. |
+| 12:00-12:15 | To-Be User Stories | Giovany Smith Torres Apolinario | Equipo de Desarrollo LiquoTrack | US15-US23 deben tener usuario, prioridad, épica, descripción, criterios de aceptación y trazabilidad. |
+| 12:15-12:30 | To-Be Technical Stories | Giovany Smith Torres Apolinario | Equipo de Desarrollo LiquoTrack | Verificar que TS15-TS19 tengan usuario, prioridad, épica, descripción, criterios de aceptación y trazabilidad. |
+| 12:30-12:45 | To-Be Product Backlog | Yaku Mateo Guzmán Cabrejos | Equipo de Desarrollo LiquoTrack | Verificar que el backlog esté priorizado según Question Backlog, riesgo, impacto, story points y dependencias del producto. |
+| 12:45-13:00 | Reunión de cierre | Auditor líder | Equipo de Desarrollo LiquoTrack | Registrar cumplimiento, incumplimientos y acciones correctivas. |
+
+---
+
+### 6.4.1.3. Contenido de auditoría realizada
+
+### 6.1. Lista de Verificación
+
+| Resultado | Cantidad |
+|---|---:|
+| Cumple | 7 |
+| Cumple parcialmente | 3 |
+| No cumple | 0 |
+| Total de ítems auditados | 10 |
+
+| ID | Sección auditada | Resultado de revisión | Evidencia / comentario de auditoría | Clasificación |
+|---|---|---|---|---|
+| LV01 | As-Is Summary | Cumple | Se identifican problemas actuales relacionados con rendimiento, experiencia de usuario, funcionalidad y usabilidad. También se declaran objetivos de mejora para orientar el estado To-Be. | Fortaleza |
+| LV02 | Raw Material | Cumple | Se presentan assumptions, knowledge gaps, ideas y claims que sirven como insumo para formular preguntas experimentales. | Fortaleza |
+| LV03 | Experiment-Ready Questions | Cumple | Las preguntas belief-led y exploratorias están conectadas con problemas reales del producto y permiten orientar experimentos medibles. | Fortaleza |
+| LV04 | Question Backlog | Cumple | Se observa un backlog de preguntas priorizado mediante criterios C/R/I/In, lo que permite ordenar el riesgo y el impacto de los experimentos. | Fortaleza |
+| LV05 | Experiment Cards | Cumple | Las tarjetas contienen pregunta, motivación, hipótesis, experimento, medidas, condiciones y escala de éxito, por lo que funcionan como contrato experimental. | Fortaleza |
+| LV06 | Hypotheses | Cumple | Las hipótesis principales y nulas están formuladas de manera cuantificable y se relacionan con las preguntas y experiment cards. | Fortaleza |
+| LV07 | Methods Selection | Cumple parcialmente | Se seleccionan métodos adecuados como entrevistas, pruebas de campo, fake door, DevTools y test A/B. Sin embargo, se requiere evidenciar la ejecución real de cada método. | Observación |
+| LV08 | To-Be User Stories | Cumple parcialmente | Se identifican User Stories To-Be asociadas a las funcionalidades nuevas del producto. Para fortalecerlas, deben incluir criterios de aceptación completos y trazabilidad explícita con hipótesis y experimentos. | Observación |
+| LV09 | To-Be Technical Stories | Cumple parcialmente | Se identifican historias técnicas orientadas a soportar las funcionalidades To-Be. Se recomienda precisar endpoints, servicios, base de datos, responsables y evidencias técnicas. | Observación |
+| LV10 | To-Be Product Backlog | Cumple | El backlog To-Be ordena los incrementos derivados de los experimentos y permite visualizar prioridad, alcance y esfuerzo estimado. | Fortaleza |
+
+---
 
 ### 6.4.2. Auditoría recibida
 
