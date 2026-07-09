@@ -1415,9 +1415,9 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <td align="center">Alta</td>
         <td align="center">EP-11</td>
     </tr>
-    <tr>
+     <tr>
         <th>Title</th>
-        <td colspan="3">Estimar el ahorro por mermas frente al costo de la suscripción</td>
+        <td colspan="3">Estimar el ahorro por reducción de mermas frente al costo de la suscripción</td>
     </tr>
     <tr>
         <th colspan="4">Description</th>
@@ -1425,8 +1425,8 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     <tr>
         <td colspan="4">
             <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> comparar mis pérdidas estimadas por mermas con el costo del plan <br>
-            <strong> Para </strong> decidir de forma informada si la suscripción representa un ahorro.
+            <strong> Quiero </strong> estimar el ahorro potencial generado por la reducción de mermas <br>
+            <strong> Para </strong> comparar ese ahorro estimado frente al costo de la suscripción y decidir si el plan representa valor para mi negocio.
         </td>
     </tr>
     <tr>
@@ -1434,20 +1434,32 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Cálculo del ahorro proyectado</strong> <br><br>
-            <strong> Dado que </strong> el usuario ingresa una estimación de sus mermas mensuales <br>
-            <strong> Cuando </strong> el sistema procesa el dato <br>
-            <strong> Entonces </strong> el sistema muestra la pérdida estimada contrastada con el costo mensual del plan.
+            <strong>Escenario 1: Ingreso de pérdida estimada por mermas</strong><br><br>
+            <strong>Dado</strong> que el dueño de bodega desea evaluar el valor económico de StockTrack,<br>
+            <strong>Cuando</strong> ingresa una estimación de sus pérdidas mensuales por productos vencidos,<br>
+            <strong>Entonces</strong> el sistema debe registrar ese valor como referencia inicial para el cálculo.
             <br><br>
-            <strong> Escenario 2: Resultado favorable a la suscripción</strong> <br><br>
-            <strong> Dado que </strong> la merma estimada supera el costo del plan <br>
-            <strong> Cuando </strong> el sistema presenta la comparativa <br>
-            <strong> Entonces </strong> el sistema destaca el ahorro neto proyectado y habilita la contratación del plan.
+            <strong>Escenario 2: Cálculo de ahorro potencial</strong><br><br>
+            <strong>Dado</strong> que el usuario ingresó una pérdida mensual estimada por mermas,<br>
+            <strong>Cuando</strong> el sistema aplica un porcentaje esperado de reducción de mermas,<br>
+            <strong>Entonces</strong> debe mostrar el ahorro potencial estimado sin afirmar que se eliminarán todas las pérdidas.
+            <br><br>
+            <strong>Escenario 3: Comparación con el costo de suscripción</strong><br><br>
+            <strong>Dado</strong> que el sistema calculó un ahorro potencial estimado,<br>
+            <strong>Cuando</strong> el usuario visualiza el resultado,<br>
+            <strong>Entonces</strong> el sistema debe comparar el ahorro estimado frente al costo mensual del plan.
+            <br><br>
+            <strong>Escenario 4: Interpretación del resultado</strong><br><br>
+            <strong>Dado</strong> que el ahorro estimado puede ser mayor, igual o menor que el costo del plan,<br>
+            <strong>Cuando</strong> el sistema muestra la comparación,<br>
+            <strong>Entonces</strong> debe presentar el resultado como una estimación orientativa y no como una garantía de ahorro real.
         </td>
     </tr>
 </table>
 
-<p><em>Trazabilidad: Hipótesis 1 (Viabilidad del Modelo de Suscripción) — QB1. Sustenta la métrica Perceived Conversion Rate (8.2.3).</em></p>
+<p><em>Trazabilidad: Hipótesis 1 — Viabilidad del Modelo de Suscripción; QB1 — Barrera del costo de suscripción frente al valor percibido por reducción de mermas.</em></p>
+
+<p><em>Nota de alcance: US19 no compara directamente la totalidad de pérdidas por mermas contra el costo del plan. La historia compara el ahorro potencial estimado por reducción de mermas frente al costo de la suscripción, evitando afirmar que StockTrack eliminará todas las pérdidas del negocio.</em></p>
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
@@ -1782,7 +1794,7 @@ El backlog prioriza según el scoring del Question Backlog (8.1.4): primero los 
 | :------ | :------------ | :----- | :---------- | :----------- |
 | **01** | US17 | Registrar acción de mitigación sobre alertas de vencimiento próximo | Como dueño de bodega, quiero recibir una alerta anticipada de 7 días cuando un lote está próximo a vencer y registrar la acción que tomo, para actuar a tiempo y medir la efectividad de las alertas. | 5 |
 | **02** | US18 | Consultar el historial de movimientos por lote | Como dueño de bodega, quiero consultar el historial de entradas, salidas y acciones registradas sobre cada lote, para conocer la trazabilidad del producto y entender qué ocurrió antes de que un lote sea vendido, devuelto, liquidado, gestionado o vencido. | 3 |
-| **03** | US19 | Estimar el ahorro por mermas frente al costo de la suscripción | Como dueño de bodega, quiero comparar mis pérdidas estimadas por mermas con el costo del plan, para decidir de forma informada si la suscripción representa un ahorro. | 3 |
+| **03** | US19 |Estimar el ahorro por reducción de mermas frente al costo de la suscripción | Como dueño de bodega, quiero estimar el ahorro potencial generado por la reducción de mermas, para comparar ese ahorro estimado frente al costo de la suscripción y decidir si el plan representa valor para mi negocio. | 3 |
 | **04** | US20 | Contratar y gestionar el plan de suscripción | Como dueño de bodega, quiero contratar y administrar mi plan de suscripción, para acceder a las funcionalidades premium de la plataforma. | 8 |
 | **05** | US15 | Optimizar la búsqueda de productos por nombre común | Como dueño de bodega, quiero buscar productos por nombre común con un tiempo de respuesta menor a 1.5 segundos, para atender al cliente sin interrumpir la venta ni volver al registro manual. | 5 |
 | **06** | US21 | Visualizar el ahorro real por mermas evitadas | Como dueño de bodega, quiero ver el ahorro generado por las alertas de vencimiento que atendí, para confirmar el valor que aporta la plataforma frente a su costo. | 3 |
