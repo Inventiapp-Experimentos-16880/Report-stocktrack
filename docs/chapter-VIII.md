@@ -1857,18 +1857,69 @@ No se incluye ninguna Technical Story relacionada con WhatsApp ni mensajería ex
 ## 8.3.3. Pipeline-supported, Experiment-Driven To-Be Software Platform Lifecycle
 
 ### 8.3.3.1. To-Be Sprint Backlogs
+Cada una de las To-Be User Stories definidas en la sección 8.3.1 (US20–US25) fue descompuesta en work items/tasks concretos y planificada dentro del Sprint de experimentación. La estimación de cada tarea (en Story Points) suma exactamente los puntos asignados a su historia en el To-Be Product Backlog (sección 8.3.2), garantizando la trazabilidad entre la hipótesis, la historia y el trabajo ejecutado. Cada historia fue asignada a un integrante del equipo como responsable, permitiendo un desarrollo paralelo de los seis experimentos planteados.
+
+**Sprint 1 — Experimentación (To-Be)**
+
+| User Story ID | User Story Title | Task ID | Task Title | Description | Estimation (Story Points) | Assigned To | Status (To-do / In-Process / To-Review / Done) |
+| :--- | :--- | :--- | :--- | :--- | :---: | :--- | :--- |
+| US17 | Registrar acción de mitigación sobre alertas de vencimiento próximo | TK01 | Diseñar flujo de atención de alertas | Diseñar la interfaz donde el dueño de bodega pueda visualizar alertas de lotes próximos a vencer y seleccionar una acción de mitigación. | 2 | Yaku Guzman | To-do |
+| US17 | Registrar acción de mitigación sobre alertas de vencimiento próximo | TK02 | Implementar registro de acciones sobre alertas | Implementar la lógica para registrar acciones como liquidación o devolución, asociándolas a la alerta correspondiente y actualizando su estado. | 3 | Yaku Guzman | To-do |
+| US18 | Consultar el historial de movimientos por lote | TK03 | Diseñar vista de historial por lote | Diseñar la pantalla de detalle donde se muestren entradas, salidas y acciones registradas sobre cada lote en orden cronológico. | 1 | Yaku Guzman | To-do |
+| US18 | Consultar el historial de movimientos por lote | TK04 | Implementar consulta de movimientos del lote | Implementar la consulta y visualización de movimientos históricos por lote, incluyendo fecha, cantidad, tipo de movimiento y acción registrada. | 2 | Yaku Guzman | To-do |
+| US21 | Visualizar el ahorro real por mermas evitadas | TK05 | Diseñar reporte de ahorro real | Diseñar la vista donde el usuario pueda visualizar el ahorro generado por productos liquidados o devueltos a tiempo gracias a las alertas atendidas. | 1 | Dayro Rios | To-do |
+| US21 | Visualizar el ahorro real por mermas evitadas | TK06 | Implementar cálculo de ahorro por mermas evitadas | Implementar la lógica para calcular el valor monetario de los productos salvados y mostrar el ahorro acumulado del periodo. | 2 | Dayro Rios | To-do |
+| US19 | Estimar el ahorro por reducción de mermas frente al costo de la suscripción | TK07 | Diseñar calculadora de ahorro estimado | Diseñar una interfaz que permita ingresar pérdidas estimadas por mermas y compararlas con el costo de la suscripción. | 1 | Dayro Rios | To-do |
+| US19 | Estimar el ahorro por reducción de mermas frente al costo de la suscripción | TK08 | Implementar cálculo estimado de ROI | Implementar la lógica para calcular el ahorro potencial y mostrar si la suscripción representa valor económico para el negocio. | 2 | Dayro Rios | To-do |
+| US20 | Contratar y gestionar el plan de suscripción | TK09 | Diseñar flujo de planes y estado de suscripción | Diseñar la pantalla donde el usuario pueda visualizar planes disponibles, beneficios, estado actual de su suscripción y fecha de renovación. | 3 | Antonio Navarro | To-do |
+| US20 | Contratar y gestionar el plan de suscripción | TK10 | Implementar servicios de gestión de suscripción | Implementar la lógica para registrar una suscripción activa, consultar el estado del plan, gestionar renovación y cancelar la renovación. | 5 | Antonio Navarro | To-do |
+| US15 | Optimizar la búsqueda de productos por nombre común | TK11 | Analizar rendimiento actual de búsqueda | Medir el tiempo de respuesta actual de la búsqueda de productos por nombre común para identificar cuellos de botella. | 2 | Antonio Navarro | To-do |
+| US15 | Optimizar la búsqueda de productos por nombre común | TK12 | Optimizar búsqueda y coincidencias parciales | Implementar mejoras para que la búsqueda responda en menos de 1.5 segundos y acepte coincidencias parciales o aproximadas. | 3 | Antonio Navarro | To-do |
+| US16 | Visualizar reportes en modo de alto contraste | TK13 | Diseñar versión de alto contraste para reportes | Diseñar una variante visual de alto contraste para mejorar la lectura de datos críticos en condiciones de baja iluminación o fatiga visual. | 1 | Antonio Navarro | To-do |
+| US16 | Visualizar reportes en modo de alto contraste | TK14 | Implementar activación del modo de alto contraste | Implementar la opción para activar el modo de alto contraste en reportes y conservar la preferencia del usuario. | 2 | Antonio Navarro | To-do |
+| US22 | Seleccionar el idioma de la interfaz | TK15 | Preparar estructura de localización de textos | Organizar los textos principales de la interfaz para permitir su traducción y adaptación a un idioma o terminología localizada. | 1 | Giovany Torres | To-do |
+| US22 | Seleccionar el idioma de la interfaz | TK16 | Implementar selección y persistencia de idioma | Implementar la selección de idioma en la interfaz y guardar la preferencia para futuras sesiones del usuario. | 2 | Giovany Torres | To-do |
+
+**Total del Sprint:** 33 Story Points  
+**User Stories incluidas:** US17, US18, US21, US19, US20, US15, US16 y US22.
+
+**Justificación del Sprint:**  
+Este sprint prioriza los incrementos To-Be definidos en el Product Backlog, iniciando por las funcionalidades de mayor impacto para el negocio: reducción de mermas, trazabilidad de lotes y validación del valor económico de la suscripción. Además, se incluyen mejoras de rendimiento, accesibilidad y localización para fortalecer la experiencia del usuario y validar las hipótesis planteadas en el Capítulo VIII.
 
 ### 8.3.3.2. Implemented To-Be Landing Page Evidence
+
+**Nota:**  
+Para las To-Be User Stories definidas en esta etapa, no se realizaron cambios directamente sobre la Landing Page. Las mejoras propuestas en el backlog To-Be están enfocadas principalmente en funcionalidades internas de la aplicación web, como alertas de vencimiento, historial de lotes, ahorro por mermas, suscripción, búsqueda optimizada, reportes de alto contraste y localización de la interfaz.
+
+Por ello, la Landing Page se mantiene como un artefacto informativo y de presentación del producto, sin modificaciones funcionales asociadas a las User Stories To-Be de este sprint. La evidencia de implementación se concentra en la aplicación web y en los módulos internos relacionados con la gestión de inventario y validación experimental.
 
 ### 8.3.3.3. Implemented To-Be Frontend-Web Application Evidence
 
 ### 8.3.3.4. Implemented To-Be Native-Mobile Application Evidence
 
+**No aplica.** El alcance del producto StockTrack comprende Landing Page, Web Application y RESTful API; no contempla el desarrollo de una aplicación móvil nativa en esta fase del proyecto, por lo que no se presenta evidencia de implementación de las To-Be User Stories en Mobile.
+
+
 ### 8.3.3.5. Implemented To-Be RESTful API and/or Serverless Backend Evidence
 
 ### 8.3.3.6. Team Collaboration Insights
 
+Se presentan los analíticos de contribución de GitHub para los tres repositorios involucrados en la implementación de las To-Be User Stories (US20–US25), evidenciando la participación del equipo durante el sprint de experimentación.
+
+**Repositorio de Reporte**
+
+![Analíticos de colaboración del repositorio de Reporte: 6 integrantes con commits registrados entre abril y junio](../assets/img//chapter-VIII/collaboration-insights-reporte.png)
+
+**Repositorio de Backend**
+
+![Analíticos de colaboración del repositorio de Backend: 4 integrantes con commits concentrados entre mayo y julio](../../assets/capitulo-8/collaboration-insights-backend.png)
+
+**Repositorio de Frontend**
+
+![Analíticos de colaboración del repositorio de Frontend: 3 integrantes con commits concentrados en mayo](../../assets/capitulo-8/collaboration-insights-frontend.png)
+
 ## 8.3.4. To-Be Validation Interviews
+
 
 ### 8.3.4.1. Diseño de Entrevistas
 
