@@ -1895,6 +1895,8 @@ Por ello, la Landing Page se mantiene como un artefacto informativo y de present
 
 ### 8.3.3.3. Implemented To-Be Frontend-Web Application Evidence
 
+### 8.3.3.4. Implemented To-Be Native-Mobile Application Evidence
+
 **No aplica.** El alcance del producto StockTrack comprende Landing Page, Web Application y RESTful API; no contempla el desarrollo de una aplicación móvil nativa en esta fase del proyecto, por lo que no se presenta evidencia de implementación de las To-Be User Stories en Mobile.
 
 
