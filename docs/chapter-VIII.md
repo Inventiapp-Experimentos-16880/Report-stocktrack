@@ -1895,12 +1895,40 @@ Por ello, la Landing Page se mantiene como un artefacto informativo y de present
 
 ### 8.3.3.3. Implemented To-Be Frontend-Web Application Evidence
 
+Implementación de el historial de movimientos por lote, la visualización del ahorro real por mermas evitadas, la estimación de ahorro frente al costo de suscripción, la contratación y gestión del plan de suscripción, la optimización de búsqueda de productos por nombre común, la visualización de reportes en modo de alto contraste y la selección del idioma de la interfaz.
+
+![movimientos](../assets/img/chapter-VIII/to-be1.png)
+
+Implementación de la funcionalidad de alertas de vencimiento próximo y registro de acciones de mitigación sobre los lotes.
+
+![alertas](../assets/img/chapter-VIII/to-be4.png)
+
+Implementación de lenguaje de localización en la interfaz y persistencia de la preferencia del usuario.
+
+![localización](../assets/img/chapter-VIII/to-be2.png)
+
+Implementación del impacto económico de la suscripción frente al ahorro estimado por reducción de mermas.
+
+![localización](../assets/img/chapter-VIII/to-be3.png)
+
 ### 8.3.3.4. Implemented To-Be Native-Mobile Application Evidence
 
 **No aplica.** El alcance del producto StockTrack comprende Landing Page, Web Application y RESTful API; no contempla el desarrollo de una aplicación móvil nativa en esta fase del proyecto, por lo que no se presenta evidencia de implementación de las To-Be User Stories en Mobile.
 
 
 ### 8.3.3.5. Implemented To-Be RESTful API and/or Serverless Backend Evidence
+
+Endpoint de suscripción y pago implementado para habilitar la contratación de planes, activación de suscripciones, consulta de estado del plan y control de vigencia.
+
+![subscriptions](../assets/img/chapter-VIII/backtobe1.png)
+
+Endpint de expiracion de alertas de vencimiento próximo implementado para registrar la acción tomada por el usuario y emitir eventos de telemetría.
+
+![subscriptions](../assets/img/chapter-VIII/backtobe2.png)
+
+Endpoint para localización de la interfaz implementado para permitir la selección de idioma o terminología localizada y persistir la preferencia del usuario.
+
+![subscriptions](../assets/img/chapter-VIII/backtobe3.png)
 
 ### 8.3.3.6. Team Collaboration Insights
 
@@ -1912,11 +1940,11 @@ Se presentan los analíticos de contribución de GitHub para los tres repositori
 
 **Repositorio de Backend**
 
-![Analíticos de colaboración del repositorio de Backend: 4 integrantes con commits concentrados entre mayo y julio](../../assets/capitulo-8/collaboration-insights-backend.png)
+![Analíticos de colaboración del repositorio de Backend: 4 integrantes con commits concentrados entre mayo y julio](/assets/img/chapter-VIII/back-insght.png)
 
 **Repositorio de Frontend**
 
-![Analíticos de colaboración del repositorio de Frontend: 3 integrantes con commits concentrados en mayo](../../assets/capitulo-8/collaboration-insights-frontend.png)
+![Analíticos de colaboración del repositorio de Frontend: 3 integrantes con commits concentrados en mayo](/assets/img/chapter-VIII/front-insight.png)
 
 ## 8.3.4. To-Be Validation Interviews
 
@@ -2365,7 +2393,11 @@ Luego de las entrevistas, las preguntas relacionadas con la reducción de mermas
 
 ### 8.5.1. Shareback Session Artifacts: Learning Workflow
 
-IMAGEN DE LAS NUEVAS PANTALLAS EN FIGMA
+Hemos mejorado nuestro flujo de aprendizaje continuo mediante la implementación de sesiones de retroalimentación y análisis de resultados. Estas sesiones permiten al equipo revisar los hallazgos de las entrevistas, discutir las implicaciones para el desarrollo del producto y ajustar el backlog según las necesidades identificadas.
+
+Como se ha podido documentar, el equipo ha adoptado un enfoque iterativo y basado en evidencia para priorizar funcionalidades, validar hipótesis y asegurar que las mejoras propuestas generen valor real para los usuarios. La documentación de estas sesiones se encuentra disponible en el repositorio del proyecto, incluyendo notas de reuniones, análisis de datos y decisiones tomadas.
+
+Además, se han establecido métricas de seguimiento para evaluar el impacto de las funcionalidades implementadas y su aceptación por parte de los usuarios. Esto permite al equipo tomar decisiones informadas sobre futuras iteraciones y mejoras del producto.
 
 ## 8.6. To-Be Software Platform Pre-launch
 
@@ -2379,4 +2411,3 @@ Además, el video muestra cómo la plataforma ayuda a los usuarios a reducir pé
 
 **Video About the Product - OneDrive:** 
 
-![AboutTheProduct.png](../../assets/capitulo-8/AboutTheProduct.png)
