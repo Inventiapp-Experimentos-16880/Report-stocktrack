@@ -1920,8 +1920,57 @@ Se presentan los analíticos de contribución de GitHub para los tres repositori
 
 ## 8.3.4. To-Be Validation Interviews
 
+Las entrevistas de validación del Capítulo VIII están diseñadas para evaluar las nuevas funcionalidades experimentales implementadas a partir de las hipótesis definidas.
+Las entrevistas estan dirigidas a nuestro 2 segmentos objetivos definidos para el proyecto en desarrollo.
+
+- **Segmento #1:** Dueños de bodegas.
+- **Segmento #2:** Startups y emprendedores en expansión con necesidades logísticas.
+
+---
 
 ### 8.3.4.1. Diseño de Entrevistas
+
+#### Preguntas para Segmento #1: Dueños de bodegas
+
+1. ¿Recibir una alerta cuando un lote esté próximo a vencer y poder registrar una acción como liquidación o devolución le ayudaría a reducir pérdidas en su bodega?
+
+2. ¿Le resultaría útil consultar el historial de entradas, salidas y acciones realizadas sobre cada lote para saber qué ocurrió antes de que un producto se venda, se gestione o llegue a vencerse?
+
+3. ¿Ver un reporte con el ahorro real generado por las alertas atendidas le ayudaría a confiar más en el valor que aporta la plataforma?
+
+4. Antes de pagar una suscripción, ¿le gustaría comparar cuánto pierde actualmente por productos vencidos frente al costo mensual de la plataforma?
+
+5. ¿Estaría dispuesto a contratar y gestionar un plan de suscripción si la plataforma demuestra que puede ayudarlo a reducir mermas y ordenar mejor su inventario?
+
+6. Cuando atiende a un cliente, ¿considera importante que la búsqueda de productos por nombre común responda en menos de 1.5 segundos?
+
+7. ¿Le sería útil activar un modo de alto contraste en los reportes para leer mejor la información crítica en lugares con poca iluminación o después de una jornada larga?
+
+8. ¿Le generaría más confianza usar la plataforma si pudiera seleccionar el idioma de la interfaz o una terminología más cercana a su forma de trabajo?
+
+---
+
+#### Preguntas para Segmento #2: Startups y emprendedores en expansión con necesidades logísticas
+
+1. ¿Considera útil contar con alertas de productos próximos a vencer y registrar la acción tomada para mejorar el control de pérdidas dentro de su negocio?
+
+2. ¿Un historial detallado de movimientos por lote le ayudaría a mejorar la trazabilidad del inventario y tomar mejores decisiones logísticas?
+
+3. ¿Visualizar el ahorro real generado por una mejor gestión de productos próximos a vencer le permitiría medir mejor el impacto económico de la plataforma?
+
+4. ¿Una calculadora de ahorro estimado frente al costo de suscripción le ayudaría a decidir si contratar una herramienta de gestión de inventario es rentable para su negocio?
+
+5. ¿Consideraría contratar un plan de suscripción si la plataforma ofrece funcionalidades que acompañen el crecimiento operativo de su emprendimiento?
+
+6. ¿Qué tan importante sería para su operación contar con una búsqueda rápida de productos por nombre común para reducir tiempos en la gestión diaria?
+
+7. ¿Considera necesario que los reportes tengan una opción de alto contraste para facilitar la lectura de datos importantes en distintas condiciones de trabajo?
+
+8. Si su negocio crece o se expande a otros mercados, ¿sería importante contar con una interfaz adaptable a distintos idiomas o terminologías locales?
+
+---
+
+Después de revisar las funcionalidades propuestas, ¿cuál de estos cambios considera más importante para su negocio y por qué?
 
 ### 8.3.4.2. Registro de Entrevistas
 
