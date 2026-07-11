@@ -4,20 +4,22 @@
 
 ### 8.1.1. As-Is Summary.
 
-El estado actual de la gestión de inventarios para los segmentos objetivos se caracteriza por una dependencia crítica en procesos manuales y registros fragmentados. La información reside en cuadernos físicos, archivos de Excel desactualizados y chats de WhatsApp, lo que genera una visibilidad nula del stock en tiempo real. Esta desorganización provoca errores constantes en el control de fechas de vencimiento y una alta carga de ansiedad operativa. Aunque ya se ha definido un stack tecnológico (Spring Boot/Angular) y una arquitectura de software , el estado actual del negocio sigue siendo reactivo e intuitivo, lo que plantea la necesidad de cuestionar si la digitalización propuesta es lo suficientemente simple y óptima para ser adoptada por usuarios con fatiga laboral y baja alfabetización digital.
+El estado actual de la gestión de inventarios para los segmentos objetivos se caracteriza por una dependencia crítica en procesos manuales y registros fragmentados. La información reside en cuadernos físicos, archivos de Excel desactualizados, lo que genera una visibilidad nula del stock en tiempo real. Esta desorganización provoca errores constantes en el control de fechas de vencimiento y una alta carga de ansiedad operativa. Aunque ya se ha definido un stack tecnológico (Spring Boot/Angular) y una arquitectura de software , el estado actual del negocio sigue siendo reactivo e intuitivo, lo que plantea la necesidad de cuestionar si la digitalización propuesta es lo suficientemente simple y óptima para ser adoptada por usuarios con fatiga laboral y baja alfabetización digital.
 
-Problemas identificados:
+Problemas identificados y evidencia de respaldo:
 
-- Rendimiento: La aplicación presenta demoras en el filtrado de productos por nombre.
-- Experiencia de usuario: Formato con bajo contraste para la generación de reportes.
-- Funcionalidad: Ausencia de módulo para ver el historial de lotes.
-- Usabilidad: Falta de traducción para usuarios de diferentes lenguas.
+| Categoría | Problema identificado | Evidencia de respaldo | Impacto en el usuario / negocio |
+|---|---|---|---|
+| **Rendimiento** | La aplicación presenta demoras o riesgo de demora en el filtrado de productos por nombre común cuando el catálogo crece. | En las entrevistas del Capítulo II se identificó que los usuarios trabajan con registros en Excel, libretas o revisión manual de stock. Además, el Capítulo III ya contempla la búsqueda y filtrado de productos como una funcionalidad clave para acceder rápidamente a la información. Esto evidencia que la velocidad de búsqueda es crítica para reemplazar métodos manuales durante la atención al cliente. | Si la búsqueda demora más de lo esperado, el usuario puede abandonar la aplicación y volver al cuaderno, Excel o revisión visual, reduciendo la adopción del producto. |
+| **Experiencia de usuario** | Los reportes pueden presentar problemas de legibilidad cuando se usan en almacenes con poca iluminación o durante jornadas largas. | En la técnica 5W+1H se identificó que la verificación de productos ocurre en almacenes físicos, con espacio reducido y poca iluminación. Además, el propio diseño experimental considera pruebas A/B de reportes en condiciones de iluminación reducida, lo que respalda la necesidad de validar el contraste visual. | Una mala legibilidad puede generar errores al interpretar reportes de stock, vencimientos o productos críticos, afectando la toma de decisiones del dueño de bodega. |
+| **Funcionalidad** | Existe necesidad de un módulo de historial de lotes para controlar entradas, salidas, fechas de vencimiento y trazabilidad del inventario. | Las entrevistas del Capítulo II muestran que los dueños de bodega presentan problemas críticos con fechas de vencimiento, mezcla de lotes y falta de seguimiento al ingresar nuevos productos. También se identificó que el control actual depende de Excel, libretas o memoria visual. | Sin historial de lotes, el usuario no puede anticipar vencimientos, aplicar seguimiento por lote ni reducir pérdidas por productos caducados. |
+| **Usabilidad / accesibilidad** | Falta evidencia sobre la necesidad real de soporte multilingüe o localización para usuarios de diferentes regiones. | En Raw Material se declaró como knowledge gap que el equipo no sabe qué tan importante es el soporte multilingüe considerando la diversidad lingüística del mercado objetivo. Por ello, este punto se mantiene como problema potencial que debe ser validado mediante experimentos antes de implementarse como funcionalidad definitiva. | Si el idioma o la terminología local son una barrera, la adopción podría reducirse en mercados fuera de la capital o en zonas con usuarios bilingües. Si no es una barrera real, implementar localización podría generar esfuerzo técnico innecesario. |
 
 Objetivos de mejora:
 
 Para abordar estos problemas, se han establecido los siguientes objetivos de mejora:
 
-- Reducir el tiempo de búsqueda de productos a menos de 2 segundos.
+- Reducir el tiempo de búsqueda de productos a menos de 1.5 segundos, considerando este valor como el umbral máximo aceptable para evitar frustración durante la atención al cliente.
 - Mejorar la legibilidad de los reportes con un nuevo diseño de alto contraste.
 - Implementar un módulo de historial de lotes para seguimiento detallado.
 - Añadir soporte multilingüe para ampliar la accesibilidad.
@@ -26,30 +28,42 @@ Para abordar estos problemas, se han establecido los siguientes objetivos de mej
 
 Esta sección consolida las fuentes de inspiración derivadas de la investigación de usuarios, el diseño de interfaces y la arquitectura del sistema:
 
-- **Assumptions (Suposiciones):** Son creencias o expectativas que se tienen sobre el comportamiento de los usuarios, el mercado o la tecnología, que aún no han sido validadas:
-  - Mejora de eficiencia de busqueda: Se asume que los usuarios valoran más la rapidez en la búsqueda de productos por nombre común cuando manejan una gran cantidad de SKUs.
-  - Reportes de alto contraste: Se asume que el rediseño de los reportes con un formato de alto contraste mejorará la legibilidad y reducirá los errores de interpretación.
-  - Módulo de historial de lotes: Se asume que la implementación de un módulo de historial de lotes permitirá a los usuarios realizar un seguimiento detallado de los movimientos de inventario, reduciendo las pérdidas por vencimiento en un 20%.
-  - Soporte multilingüe: Se asume que la adición de soporte multilingüe aumentará la accesibilidad de la aplicación, permitiendo a usuarios de diferentes lenguas utilizarla sin dificultades, lo que se traducirá en un aumento del 15% en la adopción por parte de usuarios no hispanohablantes.
+- **Assumptions (Suposiciones):** Son creencias o expectativas preliminares sobre el comportamiento de los usuarios, el mercado o la tecnología. Estas suposiciones aún no han sido validadas, por lo que no deben interpretarse como resultados comprobados. Su función es servir como punto de partida para formular preguntas experimentales, hipótesis y criterios de validación.
 
-- **Knowledge Gaps (Brechas de Conocimiento):** Son áreas donde se carece de información o comprensión suficiente, lo que requiere investigación adicional para validar o refutar las suposiciones:
-  - No sabemos cuál es el tiempo máximo que un bodeguero está dispuesto a dedicar diariamente al ingreso de datos en la aplicación.
+  - **Mejora de eficiencia de búsqueda:** Se asume que los usuarios valoran más la rapidez en la búsqueda de productos por nombre común cuando manejan una gran cantidad de productos o SKUs. Esta suposición deberá validarse midiendo el tiempo de respuesta, el nivel de frustración y la tasa de abandono durante tareas de búsqueda.
+
+  - **Reportes de alto contraste:** Se asume que el rediseño de los reportes con un formato de alto contraste podría mejorar la legibilidad y reducir errores de interpretación en ambientes con poca iluminación. Esta suposición deberá validarse mediante pruebas comparativas entre una versión estándar y una versión de alto contraste.
+
+  - **Módulo de historial de lotes:** Se asume que la implementación de un módulo de historial de lotes podría ayudar a los usuarios a realizar un seguimiento más ordenado de entradas, salidas, fechas de vencimiento y movimientos de inventario. Sin embargo, el porcentaje real de reducción de pérdidas por vencimiento aún no se conoce y deberá validarse mediante un experimento con usuarios.
+
+  - **Soporte multilingüe o localización:** Se asume que adaptar la interfaz a terminología local o a otros idiomas podría mejorar la confianza y accesibilidad de la aplicación en mercados con diversidad lingüística. No obstante, el impacto real sobre la adopción todavía es desconocido y deberá validarse antes de priorizar su implementación completa.
+
+- **Knowledge Gaps (Brechas de Conocimiento):** Son áreas donde se carece de información suficiente, por lo que requieren investigación adicional para validar, ajustar o rechazar las suposiciones planteadas.
+
+  - No sabemos cuál es el tiempo máximo que un bodeguero está dispuesto a tolerar durante una búsqueda de productos antes de frustrarse o abandonar la tarea.
   - No sabemos qué tan dispuestos están los usuarios a ingresar el SKU de cada producto frente a búsquedas por nombre común.
   - No sabemos en qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos no detectados.
-  - No sabemos qué tan importante es para los usuarios tener acceso a reportes visuales de alto contraste en comparación con reportes tradicionales.
-  - No sabemos qué tan relevante es para los usuarios contar con un módulo de historial de lotes para su gestión diaria de inventarios.
-  - No sabemos qué tan importante es para los usuarios tener soporte multilingüe en la aplicación, considerando la diversidad lingüística en el mercado objetivo.
+  - No sabemos si el diseño de alto contraste mejora significativamente la lectura de reportes frente a un diseño estándar.
+  - No sabemos si el módulo de historial de lotes reduce realmente las pérdidas por vencimiento ni cuál sería el porcentaje de reducción alcanzable.
+  - No sabemos si el soporte multilingüe o la localización incrementan realmente la adopción, la confianza o la percepción de cercanía del producto en usuarios de diferentes regiones.
 
 - **Ideas:** Son propuestas de funcionalidades o mejoras basadas en la investigación y el diseño, que aún no han sido validadas:
   - Implementación de flujos de registro de entrada/salida optimizados para dispositivos móviles (Mobile-first) para permitir el conteo a pie de estantería.
   - Centralización de la gestión de proveedores vinculada directamente a la reposición de lotes para automatizar la cadena de suministro.
 
-- **Claims (Afirmaciones):** Son declaraciones hechas sobre el producto ya sea por stakeholders o usuarios.
-  - La aplicación es fácil de usar y mejora significativamente la gestión de inventarios en comparación con los métodos manuales anteriores.
-  - La función de búsqueda por nombre común es esencial para manejar grandes catálogos de productos, ya que los usuarios no recuerdan los SKUs.
-  - Los reportes de alto contraste son cruciales para mejorar la legibilidad y reducir errores en la interpretación de datos.
-  - El módulo de historial de lotes es una herramienta indispensable para el seguimiento detallado de los movimientos de inventario y la reducción de pérdidas por vencimiento.
-  - El soporte multilingüe es fundamental para ampliar la accesibilidad de la aplicación a usuarios de diferentes lenguas, aumentando su adopción.
+- **Claims (Afirmaciones):** Son declaraciones realizadas por usuarios, stakeholders o por el propio equipo a partir de entrevistas, observaciones, análisis del contexto del negocio o artefactos previos del proyecto. A diferencia de las assumptions, las claims deben indicar una fuente o evidencia de origen para poder ser verificadas posteriormente. En esta etapa, las claims no se consideran verdades definitivas, sino afirmaciones trazables que deben contrastarse con los experimentos definidos.
+
+| ID | Claim / Afirmación | Fuente o evidencia de origen | Fecha o periodo de referencia | Estado de validación | Relación con experimento |
+|---|---|---|---|---|---|
+| CL01 | La aplicación puede mejorar la gestión de inventarios frente a métodos manuales como cuadernos, Excel o revisión visual del stock. | Entrevistas iniciales a usuarios del segmento objetivo y análisis del problema presentado en capítulos previos del proyecto. | Periodo de pilotaje | Pendiente de validación experimental. | Se relaciona con las hipótesis sobre reducción de mermas, historial de lotes y percepción de valor del producto. |
+| CL02 | La búsqueda por nombre común es importante porque los usuarios no siempre recuerdan o utilizan el SKU de los productos durante la atención al cliente. | Hallazgos de investigación de usuarios y observación del flujo actual de búsqueda manual de productos. | Periodo de pilotaje | Pendiente de validación mediante prueba de latencia y tareas de búsqueda. | Se relaciona con QD2 y con la hipótesis de tolerancia a la latencia de búsqueda. |
+| CL03 | Los reportes con mejor contraste podrían facilitar la lectura de información en almacenes o espacios con poca iluminación. | Análisis 5W+1H de la gestión de vencimientos, donde se identifica que la verificación ocurre en espacios físicos reducidos y con iluminación variable. | Periodo de pilotaje | Pendiente de validación mediante prueba A/B de reportes. | Se relaciona con QD3 y con la hipótesis sobre diseño de alto contraste. |
+| CL04 | El historial de lotes puede ayudar a controlar entradas, salidas, fechas de vencimiento y trazabilidad de productos. | Problemas identificados en el As-Is Summary y entrevistas sobre gestión manual de vencimientos. | Periodo de pilotaje | Pendiente de validación mediante piloto funcional del módulo de lotes. | Se relaciona con QD1 y con la hipótesis sobre reducción de pérdidas por vencimiento. |
+| CL05 | La localización o soporte multilingüe podría mejorar la confianza y accesibilidad del producto en usuarios de distintas regiones. | Knowledge gap identificado por el equipo respecto a diversidad lingüística y adopción en mercados fuera de la capital. | Periodo de pilotaje | Pendiente de validación; no debe asumirse como necesidad confirmada. | Se relaciona con QB2 y con la hipótesis sobre adopción por localización. |
+
+
+---------
+> **Nota de trazabilidad:** Las claims anteriores se documentan con fuente, periodo y estado de validación para evitar que sean interpretadas como hechos comprobados. Su propósito es alimentar el diseño experimental y permitir que cada afirmación pueda ser aceptada, rechazada o reformulada según los resultados obtenidos.
 
 ### 8.1.3. Experiment-Ready Questions.
 
@@ -79,236 +93,315 @@ Utilizamos esta técnica para profundizar en el problema central de la **gestió
 | **Why (Por qué)** | ¿Por qué no usan herramientas digitales hoy? | Porque el Excel requiere una computadora y tiempo de oficina que no tienen durante la operación. |
 | **How (Cómo)** | ¿Cómo calculan hoy cuándo reponer? | Basándose en la memoria visual de los estantes ("ojímetro"), lo cual es propenso a errores humanos. |
 
-A partir de este análisis, surge la pregunta lista para experimento: *¿Podemos automatizar la "confianza" del dueño mediante alertas preventivas que lleguen directamente a su WhatsApp?*
+A partir de este análisis, el equipo decidió mantener las alertas preventivas dentro del alcance interno de la aplicación, evitando incorporar canales externos de mensajería en esta etapa. Esta decisión permite reducir complejidad técnica, evitar dependencias externas y concentrar la validación en el comportamiento principal del usuario frente a las alertas generadas por el sistema.
 
 ### 8.1.4. Question Backlog.
 
-Esta sección presenta el backlog como una lista priorizada de preguntas de investigación. El sistema de puntuación evalúa cada pregunta del 1 al 5 en cuatro criterios: **Confianza (C)** (qué tan seguros estamos del conocimiento actual), **Riesgo (R)** (qué tan crítico es equivocarnos en este punto), **Impacto (I)** (cuánto valor aporta resolverlo) e **Interés (In)** (relevancia para los stakeholders). En caso de empate en la puntuación total, se prioriza la pregunta con mayor puntaje en **Riesgo**.
+Esta sección presenta el backlog como una lista priorizada de preguntas de investigación. Su finalidad es ordenar las incertidumbres más importantes del proyecto StockTrack antes de convertirlas en experimentos, hipótesis o funcionalidades To-Be. De esta manera, el equipo evita implementar funcionalidades sin validar primero el riesgo, el impacto y la importancia de cada pregunta.
+
+El sistema de puntuación evalúa cada pregunta del 1 al 5 en cuatro criterios:
+
+- **Confianza / Incertidumbre (C):** mide qué tan poca evidencia tiene actualmente el equipo sobre la pregunta. Un puntaje mayor indica mayor necesidad de validación.
+- **Riesgo (R):** mide qué tan crítico sería equivocarse en esa pregunta para el producto o el negocio.
+- **Impacto (I):** mide cuánto valor aportaría resolver esa pregunta para el usuario y para la propuesta de valor.
+- **Interés (In):** mide la relevancia de la pregunta para stakeholders, usuarios o decisiones estratégicas del proyecto.
+
+Para evitar ambigüedades en la priorización, se define la siguiente regla de desempate:
+
+1. Se prioriza la pregunta con mayor **Riesgo (R)**, porque representa el mayor costo de equivocarse.
+2. Si el riesgo es igual, se prioriza la pregunta con mayor **Impacto (I)**, porque aporta mayor valor al producto o al negocio.
+3. Si riesgo e impacto son iguales, se prioriza la pregunta que valide primero la **propuesta de valor central del producto**.
+4. Si el empate continúa, se prioriza la pregunta que tenga mayor dependencia sobre otras funcionalidades del backlog.
+5. Como último criterio, se prioriza la pregunta con mayor **Confianza / Incertidumbre (C)**, porque representa una brecha de conocimiento más urgente.
+
+Bajo esta regla, aunque **QB1** y **QD1** obtienen el mismo puntaje total de 17 y comparten el mismo nivel de riesgo e impacto, se prioriza **QD1** en primer lugar porque valida la propuesta de valor central de StockTrack: reducir pérdidas por vencimiento mediante historial de lotes, visibilidad de productos próximos a vencer y alertas preventivas internas. Luego se prioriza **QB1**, ya que la disposición a pagar por una suscripción depende de que primero exista evidencia clara de valor funcional y económico para el usuario.
 
 #### Broad Backlog (Preguntas de Negocio y Adopción)
 
-Estas preguntas abordan la propuesta de valor y el modelo de negocio de manera general.
+Estas preguntas abordan la propuesta de valor, el modelo de negocio y la adopción del producto de manera general.
 
 | ID | Pregunta de Investigación | El "Por qué" (Motivación) | C | R | I | In | Total |
 |:---|:---|:---|:---:|:---:|:---:|:---:|:---:|
-| QB1 | ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos no detectados? | Si el costo supera la percepción de ahorro por mermas, el modelo de negocio no será sostenible para pymes. | 2 | 5 | 5 | 5 | **17** |
-| QB2 | ¿Qué tan relevante es el soporte multilingüe para la adopción en mercados con diversidad lingüística? | Validar si el esfuerzo técnico de internacionalización justifica el crecimiento esperado en nuevos segmentos. | 3 | 2 | 2 | 3 | **10** |
+| QB1 | ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos no detectados? | Si el costo supera la percepción de ahorro por reducción de mermas, el modelo de negocio no será sostenible para bodegas y pequeños negocios. Esta pregunta permite validar si el usuario percibe retorno económico antes de adoptar una suscripción. | 2 | 5 | 5 | 5 | **17** |
+| QB2 | ¿Qué tan relevante es el soporte multilingüe o la localización para la adopción en mercados con diversidad lingüística? | Validar si el esfuerzo técnico de internacionalización justifica el crecimiento esperado en nuevos segmentos. Esta pregunta se mantiene como exploratoria y de menor prioridad hasta validar primero las funcionalidades centrales del producto. | 3 | 2 | 2 | 3 | **10** |
 
 #### Deep Backlog (Preguntas de Ejecución y UX)
 
-Estas preguntas profundizan en funcionalidades específicas y la interacción técnica del usuario.
+Estas preguntas profundizan en funcionalidades específicas, experiencia de usuario y comportamiento técnico del producto.
 
 | ID | Pregunta de Investigación | El "Por qué" (Motivación) | C | R | I | In | Total |
 |:---|:---|:---|:---:|:---:|:---:|:---:|:---:|
-| QD1 | ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento en un 20% como se supone? | Es el núcleo de la propuesta de valor para bodegas de consumo masivo; fallar aquí invalida la utilidad del módulo. | 4 | 5 | 5 | 3 | **17** |
-| QD2 | ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse? | La latencia en la búsqueda impacta directamente en la productividad diaria del bodeguero. | 3 | 4 | 4 | 4 | **15** |
-| QD3 | ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes en entornos de baja iluminación? | Muchos bodegueros operan en almacenes con luz limitada o fatiga visual tras jornadas largas. | 4 | 2 | 3 | 3 | **12** |
+| QD1 | ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento en un porcentaje medible frente al registro manual? | Es el núcleo de la propuesta de valor de StockTrack para bodegas y pequeños negocios. Si el historial de lotes no ayuda a reducir pérdidas por vencimiento, el producto pierde su principal argumento funcional frente a métodos manuales como cuadernos o Excel. | 4 | 5 | 5 | 3 | **17** |
+| QD2 | ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse? | La latencia en la búsqueda impacta directamente en la productividad diaria del bodeguero durante la atención al cliente. Si la búsqueda es lenta, el usuario puede abandonar la aplicación y volver a métodos manuales. | 3 | 4 | 4 | 4 | **15** |
+| QD3 | ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes en entornos de baja iluminación? | Muchos bodegueros operan en almacenes con luz limitada o fatiga visual tras jornadas largas. Validar esta pregunta permite saber si el rediseño visual mejora la lectura de reportes y reduce errores de interpretación. | 4 | 2 | 3 | 3 | **12** |
 
-**Análisis de Priorización:**
-1. **QB1 y QD1 (Empate - 17 pts):** Ambas representan el mayor riesgo estratégico (5). Se abordarán en paralelo ya que QB1 valida la viabilidad comercial y QD1 la viabilidad técnica de la solución.
-2. **QD2 (15 pts):** Crucial para la retención del usuario a largo plazo.
-3. **QD3 (12 pts):** Mejora incremental de accesibilidad.
-4. **QB2 (10 pts):** Considerada de baja prioridad hasta consolidar el mercado local.
+#### Priorización Consolidada
+
+| Prioridad | ID | Tipo de backlog | Puntaje total | Justificación de prioridad |
+|---:|---|---|---:|---|
+| 1 | QD1 | Deep Backlog | **17** | Se prioriza primero porque valida la propuesta de valor central de StockTrack: reducir pérdidas por vencimiento mediante historial de lotes, visibilidad de productos próximos a vencer y alertas preventivas internas. Si esta pregunta falla, el producto pierde su principal argumento funcional. |
+| 2 | QB1 | Broad Backlog | **17** | Aunque tiene el mismo puntaje que QD1, se ubica después porque la disposición a pagar depende de que el usuario perciba primero un beneficio económico claro. La suscripción solo puede validarse correctamente si existe evidencia de ahorro o reducción de pérdidas. |
+| 3 | QD2 | Deep Backlog | **15** | Es clave para la retención del usuario durante la operación diaria. Una búsqueda lenta puede generar frustración, pérdida de confianza y abandono del sistema durante la atención al cliente. |
+| 4 | QD3 | Deep Backlog | **12** | Representa una mejora importante de accesibilidad y legibilidad, especialmente en almacenes con poca iluminación, pero no bloquea directamente la propuesta de valor principal. |
+| 5 | QB2 | Broad Backlog | **10** | Se mantiene como pregunta de menor prioridad porque la localización o soporte multilingüe debe evaluarse después de validar primero las funcionalidades centrales del producto. |
+
+#### Análisis de Priorización
+
+1. **QD1 - Historial de lotes y reducción de pérdidas:** se atiende primero porque está directamente relacionada con el problema principal del usuario: evitar pérdidas por productos vencidos. Esta pregunta valida si StockTrack realmente genera valor frente al control manual de inventario.
+
+2. **QB1 - Barrera del costo de suscripción:** se atiende después de QD1 porque la viabilidad comercial depende de que el usuario perciba un ahorro o beneficio concreto. Si no se demuestra valor funcional, la pregunta sobre disposición de pago pierde fundamento.
+
+3. **QD2 - Tolerancia a la latencia de búsqueda:** se prioriza como tercer punto porque afecta la experiencia diaria del usuario. Una búsqueda lenta puede impedir que el sistema sea usado durante la atención al cliente.
+
+4. **QD3 - Diseño de alto contraste:** se considera relevante para mejorar la lectura de reportes y reducir errores en ambientes con poca iluminación. Sin embargo, tiene menor riesgo estratégico que las preguntas relacionadas con reducción de mermas, precio y búsqueda.
+
+5. **QB2 - Soporte multilingüe o localización:** se mantiene como pregunta exploratoria de baja prioridad. No se descarta su importancia, pero su validación se realizará después de consolidar el mercado inicial y las funcionalidades principales del producto.
+
+Con esta priorización, el empate entre **QD1** y **QB1** queda resuelto mediante criterios explícitos. La pregunta **QD1** se atiende primero porque valida el valor principal del producto, mientras que **QB1** se evalúa después porque corresponde a la viabilidad comercial del modelo de suscripción.
 
 ### 8.1.5. Experiment Cards.
 
-En esta sección se detallan las Tarjetas de Experimento para las preguntas de mayor prioridad. Estas tarjetas actúan como el contrato del experimento antes de su ejecución.
+En esta sección se detallan las Tarjetas de Experimento para las preguntas priorizadas en el Question Backlog. Estas tarjetas funcionan como un contrato experimental antes de ejecutar cualquier validación, ya que definen de manera uniforme la pregunta, motivación, hipótesis, experimento, medidas, condiciones y escala de decisión.
 
-#### Tarjeta de Experimento 01: Viabilidad de Suscripción (QB1)
-
-**Lado Frontal: El Qué y el Por Qué**
-*   **Pregunta:** ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos?
-*   **Why?:** Si el costo de StockTrack supera la percepción de ahorro por reducción de mermas, los usuarios como Carla no adoptarán la solución a largo plazo.
-*   **Hypothesis:** Creemos que los dueños de bodegas aceptarán un costo mensual de $15 USD si el sistema demuestra mediante un reporte inicial que sus pérdidas por vencimiento superan los $50 USD mensuales.
-*   **What:** Un prototipo de alta fidelidad en Figma que simula un "Calculador de Retorno de Inversión (ROI)" donde el usuario ingresa sus mermas estimadas y ve el costo de la App contrastado.
-
-**Lado Posterior: Configuración**
-*   **Medidas:** Porcentaje de usuarios que hacen clic en el botón "Adquirir Plan" tras interactuar con la calculadora de ahorro.
-*   **Condiciones:** Entrevistas guiadas con 10 dueños de bodegas (Segmento 1) utilizando el prototipo.
-*   **Escala:** El experimento se considera exitoso si al menos 7 de cada 10 usuarios consideran que el precio es "Justo" o "Barato" en relación al valor percibido de ahorro.
+Todas las tarjetas siguen la misma estructura para mantener consistencia documental y trazabilidad con las preguntas del backlog.
 
 ---
 
-#### Tarjeta de Experimento 02: Eficacia del Historial de Lotes (QD1)
+### Tarjeta de Experimento 01: Eficacia del Historial de Lotes (QD1)
 
 **Lado Frontal: El Qué y el Por Qué**
-*   **Pregunta:** ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento?
-*   **Why?:** Validar que la funcionalidad técnica realmente soluciona el problema de negocio de Andrés (pérdida de dinero por stock "olvidado").
-*   **Hypothesis:** Creemos que proporcionar una vista de "Lotes Próximos a Vencer" con alertas de 7 días de anticipación permitirá a los usuarios realizar ventas de liquidación, reduciendo las pérdidas físicas en un 20%.
-*   **What:** Un MVP funcional (módulo de lotes) conectado a una base de datos real con 20 productos de prueba para un usuario seleccionado.
-*   **Type:** Experiment-Ready (Ready to build).
+
+* **ID de pregunta relacionada:** QD1
+* **Pregunta:** ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento en un porcentaje medible frente al registro manual?
+* **Why?:** Esta pregunta valida la propuesta de valor central de StockTrack. Si el historial de lotes no ayuda a reducir pérdidas por productos vencidos, el producto pierde su principal argumento funcional frente a métodos manuales como cuadernos o Excel.
+* **Hypothesis:** Creemos que proporcionar una vista de lotes próximos a vencer, junto con alertas preventivas internas dentro de la aplicación, permitirá a los usuarios identificar productos críticos y tomar acciones de venta, devolución o liquidación antes del vencimiento.
+* **What:** Un MVP funcional del módulo de historial de lotes conectado a una base de datos de prueba con productos, fechas de ingreso, fechas de vencimiento, estado del lote y alertas internas.
+* **Type:** Experiment-Ready.
 
 **Lado Posterior: Configuración**
-*   **Medidas:** Cantidad de productos que llegaron a su fecha de vencimiento sin ser vendidos/devueltos comparado con el registro manual del mes anterior.
-*   **Condiciones:** Uso de la funcionalidad por parte de 5 usuarios "Early Adopters" durante un ciclo de inventario (15 días).
-*   **Escala:** Éxito si se registra una reducción de al menos el 15% en mermas reales durante el periodo de prueba.
+
+* **Medidas:**
+  - Cantidad de productos vencidos no vendidos durante el periodo de prueba.
+  - Valor monetario estimado de productos vencidos.
+  - Porcentaje de reducción de merma frente al registro manual previo.
+  - Número de acciones registradas sobre productos próximos a vencer.
+
+* **Condiciones:**
+  - Usuarios piloto: 5 dueños o encargados de bodega.
+  - Duración mínima: 15 días de uso.
+  - Condición base: registro manual previo mediante cuaderno, Excel o control visual.
+  - Condición experimental: uso del módulo de historial de lotes y alertas internas de StockTrack.
+
+* **Escala:**
+  - **Favorable:** reducción de merma igual o mayor a 15% frente al periodo base.
+  - **Aceptable:** reducción entre 5% y 14%, con evidencia de uso del módulo y acciones preventivas.
+  - **Desfavorable:** reducción menor a 5% o ausencia de uso del módulo.
 
 ---
 
-#### Tarjeta de Experimento 03: Tolerancia a Latencia de Búsqueda (QD2)
+### Tarjeta de Experimento 02: Viabilidad de Suscripción (QB1)
 
 **Lado Frontal: El Qué y el Por Qué**
-*   **Pregunta:** ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse?
-*   **Why?:** La fluidez en la atención al cliente depende de la rapidez de la App; una búsqueda lenta obliga al usuario a volver al cuaderno físico.
-*   **Hypothesis:** Creemos que una respuesta de búsqueda superior a los 2 segundos provocará que el usuario abandone el uso de la App en momentos de alta afluencia de clientes.
-*   **What:** Un prototipo funcional que permite ajustar artificialmente el tiempo de respuesta del buscador (0.5s, 1.5s, 3s) para observar reacciones.
+
+* **ID de pregunta relacionada:** QB1
+* **Pregunta:** ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos no detectados?
+* **Why?:** Si el costo de StockTrack supera la percepción de ahorro por reducción de mermas, los usuarios no adoptarán la solución a largo plazo. Esta pregunta valida la viabilidad comercial del modelo de suscripción.
+* **Hypothesis:** Creemos que los dueños de bodegas estarán dispuestos a considerar una suscripción mensual si el sistema demuestra que el ahorro proyectado por reducción de pérdidas puede ser mayor al costo del plan.
+* **What:** Un prototipo de alta fidelidad en Figma que simula una calculadora de retorno de inversión, donde el usuario ingresa sus pérdidas estimadas por productos vencidos y compara el ahorro proyectado con el costo de la suscripción.
+* **Type:** Experiment-Ready.
 
 **Lado Posterior: Configuración**
-*   **Medidas:** Tasa de abandono de la tarea de búsqueda y nivel de frustración reportado (Escala Likert).
-*   **Condiciones:** Pruebas de usabilidad con 8 usuarios simulando una situación de "atención bajo presión".
-*   **Escala:** El experimento identifica el "punto de quiebre". Se define éxito técnico si logramos mantener la latencia por debajo del umbral identificado (objetivo < 1.5s).
+
+* **Medidas:**
+  - Porcentaje de usuarios que califican el precio como “Justo” o “Barato”.
+  - Porcentaje de usuarios que hacen clic en “Adquirir Plan” o manifiestan intención de pago.
+  - Relación ahorro proyectado / costo de suscripción.
+  - Comentarios cualitativos sobre barreras de precio.
+
+* **Condiciones:**
+  - Entrevistas guiadas con 10 dueños de bodegas o pequeños negocios.
+  - Uso de prototipo de calculadora de ahorro.
+  - Presentación del costo mensual junto con el ahorro estimado por reducción de mermas.
+
+* **Escala:**
+  - **Favorable:** al menos 70% de usuarios considera el precio “Justo” o “Barato”.
+  - **Aceptable:** entre 50% y 69% considera el precio aceptable, pero solicita ajustes o más evidencia de ahorro.
+  - **Desfavorable:** menos de 50% considera viable pagar la suscripción.
 
 ---
 
-#### Tarjeta de Experimento 04: Impacto del Alto Contraste (QD3)
+### Tarjeta de Experimento 03: Tolerancia a Latencia de Búsqueda (QD2)
 
 **Lado Frontal: El Qué y el Por Qué**
-*   **Pregunta:** ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes?
-*   **Why?:** Los almacenes de las bodegas suelen tener iluminación deficiente y los usuarios (como Carla) presentan fatiga visual tras jornadas largas.
-*   **Hypothesis:** Creemos que un diseño de alto contraste reducirá el tiempo de identificación de productos críticos en un 25% bajo condiciones de poca luz.
-*   **What:** Test A/B con dos versiones del dashboard de reportes: una estándar y otra con paleta de colores de alto contraste.
+
+* **ID de pregunta relacionada:** QD2
+* **Pregunta:** ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse?
+* **Why?:** La fluidez durante la atención al cliente depende de la rapidez de búsqueda. Si el sistema demora demasiado, el usuario puede abandonar la aplicación y volver al cuaderno, Excel o revisión visual.
+* **Hypothesis:** Creemos que una respuesta de búsqueda superior a 1.5 segundos incrementará la frustración del usuario y aumentará la probabilidad de abandono durante momentos de alta afluencia de clientes.
+* **What:** Un prototipo funcional que permite ajustar artificialmente el tiempo de respuesta del buscador en tres escenarios: 0.5 segundos, 1.5 segundos y 3 segundos.
+* **Type:** Experiment-Ready.
 
 **Lado Posterior: Configuración**
-*   **Medidas:** Tiempo (segundos) requerido para encontrar la fecha de vencimiento de un producto específico en el reporte.
-*   **Condiciones:** Pruebas controladas con 6 usuarios en una habitación con iluminación reducida (< 100 lux).
-*   **Escala:** Éxito si la versión de alto contraste muestra una mejora del 20% en la velocidad de lectura frente a la versión estándar.
+
+* **Medidas:**
+  - Tiempo de respuesta de búsqueda.
+  - Tasa de abandono de tarea.
+  - Nivel de frustración reportado en escala Likert de 1 a 5.
+  - Tiempo total para completar una tarea de búsqueda.
+
+* **Condiciones:**
+  - Pruebas de usabilidad con 8 usuarios.
+  - Simulación de atención bajo presión.
+  - Tres escenarios de latencia controlada: 0.5s, 1.5s y 3s.
+  - Misma tarea de búsqueda para todos los participantes.
+
+* **Escala:**
+  - **Favorable:** búsqueda menor a 1 segundo, frustración ≤ 2/5 y baja tasa de abandono.
+  - **Aceptable:** búsqueda entre 1.0 y 1.5 segundos, frustración controlada y abandono menor al escenario de 3s.
+  - **Desfavorable:** búsqueda mayor a 1.5 segundos o frustración mayor a 3/5.
 
 ---
 
-#### Tarjeta de Experimento 05: Soporte Multilingüe / Localización (QB2)
+### Tarjeta de Experimento 04: Impacto del Alto Contraste (QD3)
 
 **Lado Frontal: El Qué y el Por Qué**
-*   **Pregunta:** ¿Qué tan relevante es el soporte multilingüe para la adopción en mercados con diversidad lingüística?
-*   **Why?:** Queremos validar si el esfuerzo técnico de internacionalización justifica el crecimiento esperado en nuevos segmentos o si el español es suficiente para la fase de tracción.
-*   **Hypothesis:** Creemos que ofrecer la interfaz con terminología localizada (o idiomas originarios según la región) incrementará la confianza del usuario en un 15%, ya que reduce la barrera de "tecnología ajena".
-*   **What:** Una "Landing Page" de registro y una pantalla de inventario traducidas a un segundo idioma (ej. Quechua o inglés técnico para exportadores) para medir el interés mediante registros.
+
+* **ID de pregunta relacionada:** QD3
+* **Pregunta:** ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes en entornos de baja iluminación?
+* **Why?:** Muchos usuarios revisan información de inventario en almacenes con iluminación limitada o durante jornadas largas. Un diseño con bajo contraste puede generar fatiga visual, errores de lectura y mala interpretación de los reportes.
+* **Hypothesis:** Creemos que un diseño de alto contraste reducirá el tiempo de identificación de productos críticos y disminuirá errores de interpretación en condiciones de baja iluminación.
+* **What:** Test A/B con dos versiones del dashboard de reportes: una versión estándar y una versión con paleta de alto contraste.
+* **Type:** Experiment-Ready.
 
 **Lado Posterior: Configuración**
-*   **Medidas:** Tasa de conversión (sign-up) en la versión localizada frente a la versión estándar.
-*   **Condiciones:** Campaña de anuncios segmentada o visitas presenciales a 10 negocios en zonas con bilingüismo predominante.
-*   **Escala:** Éxito si al menos el 20% de los nuevos interesados optan por la versión localizada al momento del registro.
+
+* **Medidas:**
+  - Tiempo requerido para encontrar un producto crítico en el reporte.
+  - Tasa de errores de interpretación.
+  - Preferencia visual del usuario.
+  - Nivel de claridad percibida en escala Likert de 1 a 5.
+
+* **Condiciones:**
+  - Pruebas controladas con 6 usuarios.
+  - Ambiente con iluminación reducida.
+  - Comparación entre versión estándar y versión de alto contraste.
+  - Misma tarea de lectura para ambas versiones.
+
+* **Escala:**
+  - **Favorable:** mejora de al menos 20% en velocidad de interpretación y tasa de error ≤ 5%.
+  - **Aceptable:** mejora entre 10% y 19%, con preferencia mayoritaria por la versión de alto contraste.
+  - **Desfavorable:** mejora menor a 10% o aumento de errores de interpretación.
+
+---
+
+### Tarjeta de Experimento 05: Soporte Multilingüe / Localización (QB2)
+
+**Lado Frontal: El Qué y el Por Qué**
+
+* **ID de pregunta relacionada:** QB2
+* **Pregunta:** ¿Qué tan relevante es el soporte multilingüe o la localización para la adopción en mercados con diversidad lingüística?
+* **Why?:** Antes de invertir esfuerzo técnico en internacionalización, el equipo necesita validar si la localización realmente aumenta la confianza, comprensión o intención de uso en nuevos segmentos.
+* **Hypothesis:** Creemos que ofrecer una interfaz con terminología localizada podría aumentar la confianza del usuario en zonas con diversidad lingüística; sin embargo, este impacto aún debe validarse antes de priorizar su implementación completa.
+* **What:** Una landing page de registro y una pantalla de inventario con versión localizada para medir interés, confianza percibida e intención de uso.
+* **Type:** Experiment-Ready.
+
+**Lado Posterior: Configuración**
+
+* **Medidas:**
+  - Tasa de conversión o registro en la versión localizada.
+  - Porcentaje de usuarios que prefieren la versión localizada.
+  - Incremento de confianza percibida en escala Likert.
+  - Comentarios cualitativos sobre comprensión y cercanía del lenguaje.
+
+* **Condiciones:**
+  - Prueba con 10 usuarios de zonas con bilingüismo o terminología local marcada.
+  - Comparación entre versión estándar y versión localizada.
+  - Recolección de respuestas mediante formulario posterior al uso del prototipo.
+
+* **Escala:**
+  - **Favorable:** al menos 20% de usuarios prefiere la versión localizada y se observa incremento de confianza percibida.
+  - **Aceptable:** existe interés cualitativo, pero la preferencia no supera el 20%.
+  - **Desfavorable:** no hay preferencia por la versión localizada o los usuarios consideran suficiente la versión estándar.
+
+---
+
+> **Nota de estandarización:** Todas las Experiment Cards fueron homologadas con la misma estructura: ID de pregunta relacionada, pregunta, motivación, hipótesis, experimento, tipo, medidas, condiciones y escala. Esto permite mantener trazabilidad entre el Question Backlog, las hipótesis, las métricas y las decisiones posteriores del proceso Experiment-Driven Development.
+
+#### Nota metodológica sobre tamaño de muestra y alcance de los experimentos
+
+Los experimentos definidos en esta sección corresponden a una primera etapa de validación exploratoria del producto. Por ello, los tamaños de muestra planteados no buscan generar conclusiones estadísticamente definitivas, sino obtener evidencia inicial suficiente para tomar decisiones de diseño, priorización y aprendizaje dentro del ciclo de Experiment-Driven Development.
+
+Los umbrales definidos en cada Experiment Card, como reducción de merma, aceptación del precio, frustración, tiempo de búsqueda o preferencia por una versión localizada, deben interpretarse como criterios preliminares de decisión y no como resultados concluyentes del mercado total.
+
+| Experimento | Tamaño de muestra inicial | Propósito del experimento | Limitación reconocida | Decisión correctiva |
+|---|---:|---|---|---|
+| Historial de lotes | 5 usuarios piloto | Validar si el módulo ayuda a detectar productos próximos a vencer y generar acciones preventivas. | La muestra permite observar comportamiento inicial, pero no confirma una reducción definitiva de mermas en todo el mercado. | Tratar el resultado como evidencia piloto y repetir el experimento con más usuarios o más ciclos de inventario antes del lanzamiento completo. |
+| Viabilidad de suscripción | 10 usuarios | Evaluar percepción inicial del precio frente al ahorro proyectado. | La intención de pago declarada puede diferir del pago real. | Complementar con prueba de intención de compra, fake door o preventa antes de definir el modelo final. |
+| Latencia de búsqueda | 8 usuarios | Identificar tolerancia inicial frente a diferentes tiempos de respuesta. | La frustración reportada puede variar según experiencia tecnológica, presión de atención y tamaño del catálogo. | Usar el umbral de 1.5 segundos como referencia técnica inicial y validarlo con métricas reales de uso. |
+| Alto contraste en reportes | 6 usuarios | Comparar lectura de reportes en condiciones de baja iluminación. | La muestra permite detectar problemas de legibilidad, pero no generaliza a todos los escenarios de uso. | Realizar una segunda prueba con más usuarios y diferentes condiciones de iluminación. |
+| Localización o soporte multilingüe | 10 usuarios | Medir interés inicial por una versión localizada. | La preferencia puede variar según región, idioma y familiaridad con herramientas digitales. | Mantener la localización como hipótesis exploratoria y no como funcionalidad prioritaria del MVP. |
+
+En consecuencia, los resultados de estos experimentos se utilizarán para decidir si una hipótesis debe continuar, ajustarse, rediseñarse o descartarse. Para considerar una funcionalidad como validada para producción, el equipo deberá ejecutar un segundo ciclo de validación con mayor cantidad de usuarios, mayor duración o datos reales de uso del sistema.
 
 ## 8.2. Experiment Design
 
 ### 8.2.1. Hypotheses.
 
-En esta sección, transformamos las 5 tarjetas de experimentación mencionadas en el punto 8.1.5 en hipótesis rigurosas y cuantificables. Para cada una, definimos el cuestionamiento central, los supuestos que dieron origen a la prueba, la hipótesis de trabajo y la correspondiente hipótesis nula, la cual servirá para determinar si los resultados obtenidos invalidan nuestra premisa inicial.
+En esta sección se transforman las tarjetas de experimentación definidas en la sección 8.1.5 en hipótesis rigurosas, medibles y falsables. El objetivo es establecer una relación clara entre las preguntas experimentales, las creencias del equipo, las métricas de validación y los criterios que permitirán aceptar, rechazar o replantear cada experimento.
+
+Para cada pregunta experimental se definen dos tipos de hipótesis:
+
+- **Hipótesis alternativa o hipótesis de trabajo:** representa la afirmación que el equipo espera validar mediante el experimento. Esta hipótesis expresa el efecto esperado de una funcionalidad, mejora o decisión de producto sobre el comportamiento del usuario o sobre una métrica del negocio. Debe ser específica, cuantificable y estar conectada con una tarjeta de experimento.
+
+- **Hipótesis nula:** representa el escenario contrario o la ausencia de efecto significativo. Su función es establecer qué resultado indicaría que la funcionalidad propuesta no genera el impacto esperado, que la mejora no es suficiente o que la premisa inicial debe ser rechazada o reformulada.
+
+La hipótesis nula es importante porque permite definir objetivamente qué se considerará un resultado no exitoso. Si los datos obtenidos durante el experimento se acercan más a la hipótesis nula que a la hipótesis de trabajo, el equipo deberá tomar una decisión informada, como rechazar la funcionalidad, rediseñar la experiencia, ajustar el experimento o replantear la suposición inicial.
+
+De esta manera, las hipótesis permiten cerrar el ciclo del Experiment-Driven Development, ya que conectan las preguntas del Question Backlog con experimentos medibles, criterios de éxito y decisiones posteriores basadas en evidencia.
 
 | Question | Belief (Creencia) | Hypothesis (Hipótesis) | Null Hypothesis (Hipótesis Nula) |
 | :--- | :--- | :--- | :--- |
 | ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos? | Creemos que los dueños de bodega no perciben el verdadero costo de sus mermas actuales, por lo que el precio de suscripción se siente como un gasto adicional y no como una inversión. Si logramos visibilizar la pérdida real frente al costo del software, el usuario reevaluará su disposición a pagar. | Los dueños de bodegas aceptarán un costo mensual de $15 USD si el sistema demuestra, mediante un reporte inicial, que sus pérdidas por vencimiento superan los $50 USD mensuales. Al menos el 70% de los usuarios (7 de 10) calificarán el precio como "Justo" o "Barato" tras interactuar con la calculadora de ROI, y harán clic en "Adquirir Plan". Mediremos esto con 10 dueños de bodega en una entrevista guiada con prototipo. | El costo de suscripción seguirá percibido como una barrera independientemente de la comparativa de ahorro presentada. Menos del 70% de los usuarios calificará el precio como "Justo" o "Barato", o no harán clic en "Adquirir Plan" pese a ver el ahorro proyectado, indicando que el precio (o el modelo de negocio) no es viable en su forma actual. |
 | ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento? | Creemos que los bodegueros pierden dinero por productos vencidos porque no tienen un sistema de alerta temprana; dependen de la memoria visual ("ojímetro") para detectar productos próximos a vencer, lo cual falla sistemáticamente. Dar visibilidad proactiva de los lotes permitirá actuar a tiempo (liquidación o devolución) antes de que el producto se pierda. | Proporcionar una vista de "Lotes Próximos a Vencer" con alertas de 7 días de anticipación permitirá a los usuarios realizar ventas de liquidación, reduciendo las pérdidas físicas en al menos 15-20% respecto al registro manual del mes anterior. Mediremos esto con 5 usuarios "Early Adopters" durante un ciclo de inventario completo (15 días), usando un MVP funcional conectado a una base de datos real con 20 productos de prueba. | El historial de lotes no reducirá significativamente las mermas reales. La reducción observada será menor al 15%, indicando que las alertas no son suficientes para cambiar el comportamiento del usuario, o que el problema de raíz no es la falta de visibilidad sino la falta de tiempo/incentivo para actuar sobre la alerta. |
 | ¿Qué tan relevante es el soporte multilingüe para la adopción en mercados con diversidad lingüística? | Creemos que parte de la resistencia a adoptar herramientas digitales en mercados con diversidad lingüística viene de que la tecnología se siente "ajena" cuando no refleja la terminología local. Ofrecer una versión localizada reducirá esa barrera de confianza y aumentará el interés real en registrarse. | Ofrecer la interfaz con terminología localizada (o idiomas originarios según la región) incrementará la tasa de registro en al menos un 20% frente a la versión estándar, y aumentará la confianza percibida del usuario en un 15%. Mediremos esto publicando una landing page y una pantalla de inventario traducidas, midiendo conversión en 10 negocios de zonas con bilingüismo predominante. | La localización no producirá una diferencia significativa en la tasa de registro (menos del 20% elige la versión localizada) ni en la confianza percibida, indicando que el idioma no es una barrera crítica de adopción frente a otros factores como precio o funcionalidad. |
-| ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse? | Creemos que la fluidez en la atención al cliente depende directamente de la rapidez de la app; si la búsqueda es lenta, el usuario abandona la herramienta y vuelve al cuaderno físico, especialmente bajo presión de atención al cliente. | Una respuesta de búsqueda superior a 2 segundos provocará abandono de tarea, y manteniendo la latencia por debajo de 1.5 segundos se minimizará la frustración reportada (≤2/5 en escala Likert) y la tasa de abandono. Mediremos esto con 8 usuarios bajo tres escalones de latencia simulada (0.5s/1.5s/3s) en un escenario de "atención bajo presión". | La latencia de búsqueda no tiene un efecto medible sobre el abandono de tarea ni la frustración reportada dentro del rango probado (0.5s-3s); los usuarios toleran tiempos de respuesta más altos de lo esperado, o abandonan independientemente de la velocidad por otras razones (ej. interfaz confusa). |
+| ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse? | Creemos que la fluidez en la atención al cliente depende directamente de la rapidez de la app; si la búsqueda es lenta, el usuario abandona la herramienta y vuelve al cuaderno físico, especialmente bajo presión de atención al cliente. | Una respuesta de búsqueda superior a 1.5 segundos incrementará la frustración y la probabilidad de abandono de tarea durante la atención al cliente. Si la búsqueda se mantiene por debajo de 1.5 segundos, se espera minimizar la frustración reportada (≤2/5 en escala Likert) y reducir la tasa de abandono. Esto se medirá con 8 usuarios bajo tres escalones de latencia simulada (0.5s, 1.5s y 3s) en un escenario de atención bajo presión. | La latencia de búsqueda no tiene un efecto medible sobre el abandono de tarea ni la frustración reportada dentro del rango probado (0.5s-3s); los usuarios toleran tiempos de respuesta más altos de lo esperado, o abandonan independientemente de la velocidad por otras razones (ej. interfaz confusa). |
 | ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes? | Creemos que los almacenes de las bodegas suelen tener iluminación deficiente y los usuarios presentan fatiga visual tras jornadas largas, lo cual genera errores de interpretación en reportes con bajo contraste. Un rediseño visual de alto contraste debería reducir significativamente el tiempo y los errores de lectura bajo estas condiciones. | Un diseño de alto contraste reducirá el tiempo de identificación de productos críticos en al menos un 20-25% bajo condiciones de poca luz (<100 lux), y reducirá la tasa de error de lectura a ≤5%. Mediremos esto con un Test A/B con 6 usuarios comparando la versión estándar vs. la versión de alto contraste del dashboard de reportes. | El diseño de alto contraste no produce una mejora medible en el tiempo de identificación (mejora <20%) ni en la tasa de error de lectura frente a la versión estándar, bajo las mismas condiciones de iluminación reducida. |
 
 
 ---
 
-**Nota sobre Hipótesis Nulas:**
- 
-Las hipótesis nulas son críticas para diseño experimental riguroso. Nos permiten definir claramente qué constituye un **fracaso del experimento**. Si los resultados se acercan más a la hipótesis nula que a la hipótesis principal, debemos:
- 
-1. **Rechazar la funcionalidad** (no promoverla a producción), o
-2. **Pivotar el diseño** (rediseñar la UX, simplificar el flujo, añadir features faltantes), o
-3. **Cuestionar las asunciones** (quizás el pain point no era tan crítico como se pensaba)
 > **Nota de trazabilidad:** las hipótesis 4 y 5 formalizan las Tarjetas de Experimento 03 (QD2) y 04 (QD3) respectivamente, que ya contaban con una hipótesis de trabajo implícita en su "Lado Frontal" pero no estaban numeradas en la versión anterior de esta sección.
 
 ### 8.2.2. Domain Business Metrics
 
-Esta sección define las métricas de negocio a nivel de dominio que se verán impactadas por los experimentos planificados. Estas métricas son de alto nivel y reflejan los objetivos estratégicos del negocio (StockTrack), alineados con los problemas identificados en el As-Is (8.1.1) y las Tarjetas de Experimento (8.1.5).
- 
+
+Esta sección define las métricas de negocio a nivel de dominio que se verán impactadas por los experimentos planificados. Estas métricas son de alto nivel y reflejan los objetivos estratégicos de StockTrack, alineados con los problemas identificados en el As-Is Summary, las preguntas experimentales, las hipótesis y las Experiment Cards.
+
+A diferencia de las métricas operativas específicas de cada experimento, las métricas de dominio permiten evaluar si los aprendizajes obtenidos tienen impacto real sobre el negocio. Por ello, cada métrica incluye su definición, fórmula de cálculo, datos requeridos, técnica de recolección, baseline, objetivo y relación con las hipótesis experimentales.
+
 #### Métricas de Dominio Identificadas
- 
-**1. Tasa de Merma (Merchandise Shrinkage Rate)**
- 
-**Definición:** Porcentaje de inventario perdido por vencimiento sobre el inventario total gestionado.
- 
-**Indicadores clave:**
- 
-- Número de unidades vencidas no vendidas/devueltas por ciclo de inventario
-- Valor monetario de la pérdida mensual por vencimiento
-**Experimentos relacionados:** Hipótesis 2 (Eficacia del Historial de Lotes)
- 
-**Baseline actual (As-Is):** Sin visibilidad de fechas de vencimiento centralizada; el control depende de la memoria visual del dueño ("ojímetro"), generando pérdidas no cuantificadas con precisión.
- 
-**Objetivo (To-Be):** Reducir las mermas reales en al menos 15-20% mediante alertas preventivas de 7 días antes del vencimiento.
- 
----
- 
-**2. Percepción de Valor del Precio (Price Value Perception / CAC Viability)**
- 
-**Definición:** Relación entre el costo de la suscripción y el valor (ahorro por reducción de mermas) que el usuario percibe al adquirirla.
- 
-**Indicadores clave:**
- 
-- Tasa de conversión tras ver la comparativa de ahorro (calculadora de ROI)
-- Porcentaje de usuarios que califican el precio como "Justo" o "Barato"
-**Experimentos relacionados:** Hipótesis 1 (Viabilidad del Modelo de Suscripción)
- 
-**Baseline actual (As-Is):** El usuario no tiene forma de cuantificar cuánto pierde hoy por mermas, por lo que el precio de suscripción se percibe como gasto adicional y no como ahorro.
- 
-**Objetivo (To-Be):** Lograr que ≥70% de los usuarios piloto perciban el precio como "Justo" o "Barato" tras ver la comparativa de ahorro proyectado.
- 
----
- 
-**3. Eficiencia Operativa de Búsqueda (Search Task Efficiency)**
- 
-**Definición:** Capacidad del usuario para encontrar un producto o lote específico dentro del sistema sin fricción perceptible, incluso bajo presión operativa.
- 
-**Indicadores clave:**
- 
-- Tiempo de respuesta del buscador (ms/segundos)
-- Tasa de abandono de la tarea de búsqueda
-**Experimentos relacionados:** Hipótesis 4 (Tolerancia a Latencia de Búsqueda)
- 
-**Baseline actual (As-Is):** Búsqueda manual en cuaderno físico o Excel, sin tiempo estandarizado pero con alta fricción reportada durante la atención al cliente.
- 
-**Objetivo (To-Be):** Tiempo de respuesta <1.5 segundos, con abandono de tarea minimizado bajo presión operativa.
- 
----
- 
-**4. Confianza y Legibilidad de Reportes (Report Trust & Readability)**
- 
-**Definición:** Grado en que el usuario puede leer e interpretar correctamente los reportes de inventario y vencimientos, incluso en condiciones de baja iluminación o fatiga visual.
- 
-**Indicadores clave:**
- 
-- Tiempo de identificación de un dato crítico en el reporte
-- Tasa de error de lectura bajo baja iluminación
-**Experimentos relacionados:** Hipótesis 5 (Impacto del Alto Contraste)
- 
-**Baseline actual (As-Is):** Reportes con bajo contraste, generando errores de interpretación reportados por usuarios con fatiga visual o en almacenes con poca luz.
- 
-**Objetivo (To-Be):** Mejora ≥20% en velocidad de lectura y tasa de error ≤5% con el rediseño de alto contraste.
- 
----
- 
-**5. Alcance y Adopción Multilingüe (Localized Market Reach)**
- 
-**Definición:** Grado en que usuarios de mercados con diversidad lingüística adoptan la plataforma cuando se les ofrece una versión adaptada a su idioma/región.
- 
-**Indicadores clave:**
- 
-- Porcentaje de registros en versión localizada vs. estándar
-- Puntuación de confianza percibida (Likert) en mercados bilingües
-**Experimentos relacionados:** Hipótesis 3 (Adopción por Localización)
- 
-**Baseline actual (As-Is):** 100% de la interfaz en español estándar; no existe dato sobre demanda real de soporte multilingüe, solo la suposición del equipo.
- 
-**Objetivo (To-Be):** ≥20% de los nuevos interesados en zonas bilingües optan por la versión localizada al momento del registro.
- 
----
- 
+
+| Métrica de dominio | Definición | Fórmula de cálculo | Datos requeridos | Técnica de recolección | Baseline actual | Objetivo To-Be | Experimento relacionado |
+|---|---|---|---|---|---|---|---|
+| **Tasa de Merma por Vencimiento**<br>Merchandise Shrinkage Rate | Porcentaje del inventario perdido por productos vencidos que no fueron vendidos ni devueltos a tiempo. | `Tasa de Merma (%) = (Valor monetario de productos vencidos / Valor total del inventario gestionado) × 100`<br><br>También puede calcularse por unidades:<br>`Tasa de Merma por unidades (%) = (Unidades vencidas no recuperadas / Total de unidades gestionadas) × 100` | Valor monetario de productos vencidos, valor total del inventario, unidades vencidas no vendidas, total de unidades gestionadas. | Registro de inventario, historial de lotes, reporte de productos vencidos y validación manual del dueño de bodega. | Sin visibilidad centralizada de fechas de vencimiento. El control depende del cuaderno, Excel o memoria visual del dueño. | Reducir las mermas reales en al menos **15%** mediante alertas preventivas de vencimiento. | **H2:** Eficacia del historial de lotes. |
+| **Reducción de Merma Real**<br>Shrinkage Reduction Rate | Porcentaje de disminución de pérdidas por vencimiento luego de implementar alertas o historial de lotes. | `Reducción de Merma (%) = ((Merma baseline - Merma durante experimento) / Merma baseline) × 100` | Merma registrada antes del experimento y merma registrada durante el experimento. | Comparación entre registro manual previo y datos generados por el MVP durante el piloto. | Pérdidas no cuantificadas con precisión por ausencia de control sistemático. | Alcanzar una reducción mínima de **15%** respecto al periodo base. | **H2:** Eficacia del historial de lotes. |
+| **Percepción de Valor del Precio**<br>Price Value Perception | Nivel en que el usuario considera que el precio de la suscripción es justo en comparación con el ahorro proyectado por reducción de mermas. | `Percepción de precio justo (%) = (Usuarios que califican el precio como "Justo" o "Barato" / Total de usuarios evaluados) × 100` | Respuestas de usuarios sobre percepción del precio, cantidad total de usuarios evaluados. | Entrevista guiada con prototipo, formulario de evaluación y calculadora de ROI. | El usuario percibe la suscripción como gasto adicional porque no conoce cuánto pierde mensualmente por vencimientos. | Lograr que al menos **70%** de usuarios piloto califiquen el precio como “Justo” o “Barato”. | **H1:** Viabilidad del modelo de suscripción. |
+| **Relación Ahorro / Costo de Suscripción**<br>Savings-to-Subscription Ratio | Compara el ahorro mensual proyectado por reducción de mermas frente al costo mensual del plan. | `Relación Ahorro/Costo = Ahorro mensual proyectado / Costo mensual de suscripción`<br><br>Con el caso base del experimento:<br>`Relación Ahorro/Costo = 50 / 15 = 3.33` | Ahorro mensual proyectado, costo mensual del plan, monto estimado de pérdidas actuales por vencimiento. | Calculadora de ROI, entrevista con dueño de bodega y estimación de pérdidas mensuales. | El usuario no cuenta con una herramienta que compare pérdidas actuales frente al precio del software. | Lograr que el ahorro proyectado sea mayor que el costo de suscripción y que el usuario perciba retorno económico claro. | **H1:** Viabilidad del modelo de suscripción. |
+| **Eficiencia Operativa de Búsqueda**<br>Search Task Efficiency | Capacidad del usuario para encontrar productos o lotes dentro del sistema en un tiempo aceptable durante la atención al cliente. | `Tiempo promedio de búsqueda = Suma de tiempos de respuesta / Número total de búsquedas realizadas`<br><br>`Tasa de abandono (%) = (Búsquedas abandonadas / Total de tareas de búsqueda) × 100` | Tiempo de respuesta del buscador, cantidad de búsquedas realizadas, búsquedas completadas y búsquedas abandonadas. | Chrome DevTools, registros del frontend, observación durante prueba de usuario y tracking de eventos. | Búsqueda manual en cuaderno o Excel, sin tiempo estandarizado y con alta fricción durante la atención al cliente. | Mantener el tiempo de búsqueda por debajo de **1.5 segundos** y reducir el abandono de tarea. | **H4:** Tolerancia a la latencia de búsqueda. |
+| **Confianza y Legibilidad de Reportes**<br>Report Trust & Readability | Grado en que el usuario puede leer, interpretar y tomar decisiones correctas usando los reportes del sistema. | `Mejora de tiempo de lectura (%) = ((Tiempo versión estándar - Tiempo versión alto contraste) / Tiempo versión estándar) × 100`<br><br>`Tasa de error de lectura (%) = (Errores de interpretación / Total de intentos de lectura) × 100` | Tiempo de lectura, cantidad de errores de interpretación, número total de intentos, condiciones de iluminación. | Test A/B, observación directa, cronometraje de tareas y prueba bajo baja iluminación. | Reportes con contraste insuficiente, generando riesgo de errores de lectura en ambientes con poca luz. | Reducir el tiempo de interpretación en al menos **20%** y mantener la tasa de error en **≤5%**. | **H5:** Impacto del diseño de alto contraste. |
+| **Alcance y Adopción Multilingüe**<br>Localized Market Reach | Nivel de interés y adopción de usuarios cuando se ofrece una versión localizada o adaptada al idioma/región. | `Tasa de adopción localizada (%) = (Usuarios que eligen versión localizada / Total de usuarios evaluados) × 100`<br><br>`Incremento de confianza (%) = ((Promedio confianza localizada - Promedio confianza estándar) / Promedio confianza estándar) × 100` | Usuarios que seleccionan versión localizada, total de usuarios evaluados, puntaje de confianza en escala Likert. | Landing page, prototipo localizado, formulario de registro y encuesta posterior. | La interfaz se encuentra en español estándar y no existe evidencia validada sobre demanda multilingüe. | Lograr que al menos **20%** de usuarios de zonas bilingües prefieran la versión localizada y aumentar la confianza percibida en **15%**. | **H3:** Adopción por localización. |
+
 #### Alineación con Objetivos de Negocio
- 
-Estas métricas de dominio se alinean con los objetivos estratégicos de StockTrack:
- 
-- **Tasa de Merma → Propuesta de Valor Central:** Reducir mermas es el argumento de venta principal frente a Excel/cuaderno; valida si el producto resuelve el dolor #1 del usuario.
-- **Percepción de Valor del Precio → Viabilidad del Modelo de Negocio:** Sin disposición a pagar, ninguna otra mejora del producto sostiene el negocio a largo plazo.
-- **Eficiencia Operativa de Búsqueda → Retención Diaria:** Una búsqueda lenta empuja al usuario de vuelta al cuaderno físico; es la funcionalidad de uso más frecuente.
-- **Confianza y Legibilidad de Reportes → Reducción de Errores Operativos:** Reportes mal leídos generan las mismas pérdidas que se busca evitar con el módulo de lotes.
-- **Alcance y Adopción Multilingüe → Expansión de Mercado:** Determina si vale la pena invertir en internacionalización antes o después de consolidar el mercado local.
+
+Estas métricas de dominio se alinean con los objetivos estratégicos de StockTrack porque permiten evaluar si las mejoras propuestas generan impacto real sobre el negocio y sobre el usuario final.
+
+- **Tasa de Merma por Vencimiento → Propuesta de Valor Central:** permite comprobar si StockTrack ayuda realmente a reducir pérdidas por productos vencidos.
+- **Reducción de Merma Real → Validación económica del producto:** demuestra si el historial de lotes y las alertas generan ahorro medible.
+- **Percepción de Valor del Precio → Viabilidad del Modelo de Negocio:** valida si el usuario considera razonable pagar por la solución.
+- **Relación Ahorro / Costo de Suscripción → Argumento comercial:** permite comparar el costo del software frente al ahorro potencial generado.
+- **Eficiencia Operativa de Búsqueda → Retención diaria:** evalúa si el sistema es suficientemente rápido para ser usado durante la atención al cliente.
+- **Confianza y Legibilidad de Reportes → Reducción de errores operativos:** mide si los reportes ayudan a tomar decisiones correctas sin confusión visual.
+- **Alcance y Adopción Multilingüe → Expansión de mercado:** permite decidir si conviene invertir en localización antes de escalar a mercados con diversidad lingüística.
 
 ### 8.2.3. Measures.
 
@@ -316,7 +409,7 @@ Esta sección define las métricas específicas que se utilizarán para medir el
  
 ---
  
-#### Hipótesis 1: Viabilidad del Modelo de Suscripción
+### Hipótesis 1: Viabilidad del Modelo de Suscripción
  
 **Question:** ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos?
  
@@ -326,17 +419,22 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 - **Índice de Justicia de Precio (Price Fairness Score):** Porcentaje de usuarios que califican el precio como "Justo" o "Barato" frente al ahorro proyectado. **Criterio de éxito: ≥70%.**
 ---
  
-#### Hipótesis 2: Eficacia del Historial de Lotes
+### Hipótesis 2: Eficacia del Historial de Lotes
  
 **Question:** ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento?
  
 **Métricas:**
  
-- **Reducción de Mermas Reales (Shrinkage Reduction Rate):** Comparación de productos vencidos sin vender/devolver durante el ciclo de prueba (15 días) frente al registro manual del mes anterior. **Criterio de éxito: reducción ≥15%.**
-- **Tasa de Acción sobre Alertas (Alert Action Rate):** Porcentaje de alertas de "7 días para vencer" que derivan en una acción del usuario dentro de las 48 horas siguientes. **Criterio de éxito: ≥60%.**
+- **Reducción de Mermas Reales (Shrinkage Reduction Rate):** Comparación de productos vencidos sin vender, devolver o liquidar durante un periodo experimental de 15 días frente a un periodo de control también de 15 días. Ambos periodos deben evaluar las mismas categorías de productos y usar el mismo criterio de vencimiento. El registro manual solo será usado como línea base referencial; la medición principal se realizará con los registros internos del sistema. **Criterio de éxito: reducción ≥15%.**
+
+- **Tasa de Acción sobre Alertas (Alert Action Rate):** Porcentaje de alertas internas de "7 días para vencer" que derivan en una acción del usuario dentro de las 48 horas siguientes. La acción puede ser vender, liquidar, devolver, marcar como gestionado o actualizar el estado del lote dentro de StockTrack. **Criterio de éxito: ≥60%.**
+
+- **Confiabilidad del Registro Digital (Digital Record Reliability):** Porcentaje de lotes evaluados que cuentan con datos completos dentro del sistema: producto, fecha de ingreso, fecha de vencimiento, estado del lote y acción registrada. **Criterio de éxito: ≥90%.**
+
+> **Nota:** Para evitar depender únicamente de registros manuales, el registro manual se utilizará solo como referencia inicial. La validación principal de esta hipótesis se basará en eventos y datos registrados dentro de StockTrack, como lotes creados, alertas generadas, acciones realizadas y productos marcados como gestionados o vencidos.
 ---
  
-#### Hipótesis 3: Adopción por Localización
+### Hipótesis 3: Adopción por Localización
  
 **Question:** ¿Qué tan relevante es el soporte multilingüe para la adopción en mercados con diversidad lingüística?
  
@@ -346,18 +444,42 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 - **Puntuación de Confianza Percibida (Trust Perception Score):** Escala Likert 1-5 sobre "siento que esta aplicación fue hecha para mi negocio". **Criterio de éxito: incremento ≥15% frente a la versión estándar.**
 ---
  
-#### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
- 
+### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
+
 **Question:** ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse?
+
+**Medidas seleccionadas:**
+
+- **Tiempo de Respuesta de Búsqueda (Search Response Time):** tiempo en segundos desde que el usuario ingresa el término de búsqueda hasta que visualiza los resultados. **Criterio de éxito: < 1.5 segundos.**
+
+- **Tasa de Abandono de Tarea (Task Abandonment Rate):** porcentaje de búsquedas interrumpidas antes de visualizar resultados. **Criterio de éxito: abandono menor en el escenario de 1.5s frente al escenario de 3s.**
+
+- **Nivel de Frustración (Frustration Score):** escala Likert de 1 a 5 reportada por el usuario después de cada escenario de latencia.
+
+| Puntaje | Interpretación |
+|---:|---|
+| 1 | Sin frustración. El usuario percibe la búsqueda como rápida y natural. |
+| 2 | Frustración baja. El usuario nota una espera mínima, pero no afecta su intención de uso. |
+| 3 | Frustración moderada. El usuario percibe demora y podría perder fluidez durante la atención. |
+| 4 | Frustración alta. El usuario considera que la demora afecta su trabajo y podría abandonar la tarea. |
+| 5 | Frustración crítica. El usuario rechaza la experiencia y probablemente volvería a un método manual. |
+
+**Interpretación por escenario de latencia:**
+
+| Escenario de latencia | Resultado esperado | Interpretación del resultado |
+|---|---|---|
+| **0.5 segundos** | Frustración esperada entre **1 y 2** | Se considera el escenario ideal. Si el usuario reporta frustración alta incluso con 0.5s, el problema no estaría en la latencia, sino en la interfaz, claridad de resultados o flujo de búsqueda. |
+| **1.5 segundos** | Frustración esperada máxima de **2/5** | Se considera el umbral máximo aceptable. Si la frustración supera 2/5, el tiempo de respuesta debe optimizarse antes del lanzamiento. |
+| **3 segundos** | Frustración esperada mayor a **3/5** | Se considera un escenario desfavorable. Si el usuario reporta frustración alta o abandona la tarea, se confirma que tiempos superiores a 1.5s afectan la experiencia. |
+
+**Criterio de éxito de la medida:**
+
+El experimento será considerado favorable si, en el escenario de **1.5 segundos**, el nivel de frustración promedio se mantiene en **≤ 2/5** y la tasa de abandono es menor que en el escenario de **3 segundos**.
+
+Si el escenario de **1.5 segundos** genera frustración promedio mayor a **2/5**, el equipo deberá ajustar el umbral técnico objetivo por debajo de 1.5 segundos o rediseñar el flujo de búsqueda para reducir la percepción de espera.
+
  
-**Métricas:**
- 
-- **Tiempo de Respuesta de Búsqueda (Search Response Time):** Tiempo en segundos desde que el usuario ingresa el término hasta que ve resultados. **Criterio de éxito: <1.5 segundos.**
-- **Tasa de Abandono de Tarea (Task Abandonment Rate):** Porcentaje de búsquedas interrumpidas bajo el escenario "atención bajo presión". **Criterio de éxito: abandono significativamente menor en el escalón de 1.5s frente a 3s.**
-- **Nivel de Frustración (Frustration Score):** Escala Likert 1-5 reportada tras cada escalón de latencia probado. **Criterio de éxito: ≤2/5 en el escalón de 1.5s.**
----
- 
-#### Hipótesis 5: Impacto del Alto Contraste
+### Hipótesis 5: Impacto del Alto Contraste
  
 **Question:** ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes?
  
@@ -377,6 +499,18 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 
 ### 8.2.4. Conditions.
 
+
+Antes de ejecutar los experimentos, se define un criterio de asignación para diferenciar claramente la condición experimental y la condición de control. Esta asignación busca reducir sesgos y asegurar que los resultados puedan compararse de forma ordenada.
+
+Para los experimentos con usuarios, se utilizará una asignación simple y balanceada:
+
+- Cuando existan dos grupos, los participantes se dividirán en **grupo experimental** y **grupo de control** de forma alternada según el orden de participación. Por ejemplo, el primer usuario irá al grupo experimental, el segundo al grupo de control, el tercero al grupo experimental y así sucesivamente.
+- Cuando el experimento compare dos versiones de una interfaz, como el diseño estándar frente al diseño de alto contraste, se usará una comparación controlada donde todos los usuarios realizan la misma tarea bajo condiciones equivalentes.
+- En los experimentos de latencia, todos los usuarios serán expuestos a los mismos escenarios de tiempo de respuesta definidos previamente, manteniendo el mismo flujo y tarea de búsqueda.
+- En todos los casos, las condiciones deberán usar tareas similares, duración equivalente, criterios de medición iguales y el mismo tipo de usuario objetivo para que la comparación sea válida.
+
+De esta manera, cada hipótesis mantiene una condición experimental y una condición de control comparable, evitando que los resultados se vean afectados por diferencias en tiempo, perfil de usuario, tarea evaluada o contexto de uso.
+
 | Question | ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos? |
 | :--- | :--- |
 | **Condición Experimental** | El usuario interactúa con una calculadora de ROI que proyecta el ahorro mensual frente al costo del servicio. |
@@ -386,8 +520,9 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 
 | Question | ¿La implementación de un historial de lotes reduce efectivamente las pérdidas por vencimiento? |
 | :--- | :--- |
-| **Condición Experimental** | Los usuarios tienen acceso al módulo de "Lotes Próximos a Vencer" con alertas proactivas configuradas. |
-| **Condición de Control** | Los usuarios gestionan sus inventarios sin alertas, confiando en registros manuales o memoria visual. |
+| **Condición Experimental** | Durante un periodo de **15 días**, los usuarios gestionan productos con fecha de vencimiento usando el módulo de historial de lotes de StockTrack. El sistema muestra lotes próximos a vencer, estado del lote y alertas preventivas internas dentro de la aplicación. |
+| **Condición de Control** | Durante un periodo también de **15 días**, los usuarios gestionan productos equivalentes mediante el método manual habitual, como cuaderno, Excel o revisión visual, sin historial de lotes digital ni alertas internas. |
+
 
 ---
 
@@ -412,16 +547,39 @@ Esta sección define las métricas específicas que se utilizarán para medir el
 
 ### 8.2.5. Scale Calculations and Decisions.
 
+#### Criterio de interpretación de escalas
+
+Las escalas de decisión presentadas en esta sección se utilizan como criterios preliminares para interpretar los resultados de los experimentos piloto. Debido a que los tamaños de muestra son reducidos, los rangos definidos como favorable, aceptable o desfavorable no deben entenderse como evidencia estadística concluyente, sino como una guía para tomar decisiones iniciales de producto.
+
+Por ello, cada escala será interpretada considerando tres elementos:
+
+1. **Resultado cuantitativo:** cumplimiento o no del umbral definido.
+2. **Evidencia cualitativa:** comentarios, observaciones y dificultades reportadas por los usuarios.
+3. **Consistencia del comportamiento observado:** repetición del patrón en más de un usuario o escenario.
+
+Si un experimento obtiene resultado favorable con una muestra pequeña, la funcionalidad no se considerará automáticamente validada para producción. Primero deberá pasar por un segundo ciclo de validación con mayor muestra, mayor duración o datos reales de uso.
+
 Para cada hipótesis, definimos una escala de decisión basada en las métricas clave identificadas en la sección 8.2.3. Esta escala determina si los resultados son **ideales** (validan completamente la hipótesis), **aceptables** (validan parcialmente, requieren refinamiento), o **desfavorables** (invalidan la hipótesis, requieren rediseño o descarte de la funcionalidad).
+
+#### Convención para interpretar límites
+
+Para evitar ambigüedades en la interpretación de resultados, todos los rangos de decisión se expresan mediante límites inclusivos o exclusivos:
+
+- El símbolo **<** significa “menor que” y no incluye el valor indicado.
+- El símbolo **≤** significa “menor o igual que” e incluye el valor indicado.
+- El símbolo **>** significa “mayor que” y no incluye el valor indicado.
+- El símbolo **≥** significa “mayor o igual que” e incluye el valor indicado.
+
+Cuando una métrica se ubique exactamente en un límite, se aplicará la categoría que incluya explícitamente dicho valor. Por ejemplo, si una métrica exige **≥ 80%**, un resultado de **80%** se considera dentro de la categoría ideal.
  
 ---
  
-#### Hipótesis 1: Viabilidad del Modelo de Suscripción
+### Hipótesis 1: Viabilidad del Modelo de Suscripción
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
-| **Índice de Justicia de Precio** | < 60% califica "Justo/Barato" | 60-79% | **≥ 80%** |
-| **Tasa de Conversión Percibida** | < 50% (menos de 5 de 10) hace clic en "Adquirir Plan" | 50-69% (5-6 de 10) | **≥ 70% (7 de 10)** |
+| **Índice de Justicia de Precio** | < 60% califica "Justo/Barato" | ≥ 60% y < 80% | **≥ 80%** |
+| **Tasa de Conversión Percibida** | < 50% hace clic en "Adquirir Plan" | ≥ 50% y < 70% | **≥ 70%** |
  
 **Decisión:**
  
@@ -430,26 +588,26 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
 - **Desfavorable:** Se rechaza el precio actual; se requiere replantear el modelo (ej. plan freemium, precio escalonado por tamaño de bodega) antes de continuar.
 ---
  
-#### Hipótesis 2: Eficacia del Historial de Lotes
+### Hipótesis 2: Eficacia del Historial de Lotes
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
-| **Reducción de Mermas Reales** | < 15% | 15-19% | **≥ 20%** |
-| **Tasa de Acción sobre Alertas** | < 40% | 40-59% | **≥ 60%** |
+| **Reducción de Mermas Reales** | < 15% | ≥ 15% y < 20% | **≥ 20%** |
+| **Tasa de Acción sobre Alertas** | < 40% | ≥ 40% y < 60% | **≥ 60%** |
  
 **Decisión:**
  
 - **Ideal:** El módulo de lotes se valida como núcleo de la propuesta de valor; se aprueba para producción sin cambios mayores.
-- **Aceptable:** El módulo ayuda, pero no es suficiente por sí solo; se recomienda añadir un canal de alerta más agresivo (ej. notificación a WhatsApp) antes de producción.
+- **Aceptable:** El módulo ayuda, pero no es suficiente por sí solo; se recomienda mejorar la visibilidad de las alertas dentro de la aplicación mediante recordatorios internos, priorización visual y seguimiento de alertas pendientes antes de producción.
 - **Desfavorable:** Se rechaza la hipótesis; el problema de raíz no es la visibilidad de fechas sino la falta de tiempo/incentivo para actuar. Requiere rediseño del flujo de alertas o investigación adicional.
 ---
  
-#### Hipótesis 3: Adopción por Localización
+### Hipótesis 3: Adopción por Localización
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
-| **Tasa de Registro Localizado** | < 20% | 20-29% | **≥ 30%** |
-| **Incremento en Confianza Percibida** | < 10% | 10-14% | **≥ 15%** |
+| **Tasa de Registro Localizado** | < 20% | ≥ 20% y < 30% | **≥ 30%** |
+| **Incremento en Confianza Percibida** | < 10% | ≥ 10% y < 15% | **≥ 15%** |
  
 **Decisión:**
  
@@ -458,26 +616,36 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
 - **Desfavorable:** El idioma no es una barrera crítica; se descarta la internacionalización como prioridad y se reasignan recursos a otras funcionalidades (ej. H1, H2).
 ---
  
-#### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
+### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
-| **Tiempo de Respuesta de Búsqueda** | > 1.5 segundos | 1 - 1.5 segundos | **< 1 segundo** |
-| **Nivel de Frustración (escalón 1.5s)** | > 3/5 | 2 - 3/5 | **≤ 2/5** |
+| **Tiempo de Respuesta de Búsqueda** | > 1.5 segundos | ≥ 1.0 y ≤ 1.5 segundos | < 1.0 segundo |
+| **Nivel de Frustración en escenario de 0.5s** | > 2/5 | = 2/5 | = 1/5 |
+| **Nivel de Frustración en escenario de 1.5s** | > 2/5 | = 2/5 | = 1/5 |
+| **Nivel de Frustración en escenario de 3s** | ≤ 2/5 sin diferencia frente a 1.5s | = 3/5 | > 3/5, confirmando que 3s genera rechazo o incomodidad |
+| **Tasa de Abandono de Tarea** | Alta o similar al escenario de 3s | Menor que en el escenario de 3s | Claramente menor que en el escenario de 3s |
+
  
 **Decisión:**
  
-- **Ideal:** El rendimiento actual del buscador es suficiente; no se requiere optimización adicional antes del lanzamiento.
-- **Aceptable:** El rendimiento es tolerable, pero se recomienda optimizar índices de búsqueda en backend antes de escalar a más usuarios.
-- **Desfavorable:** Bloqueante; se requiere rediseño técnico del motor de búsqueda (ej. índices, caché) antes de cualquier lanzamiento, dado que la latencia empuja al usuario de vuelta al cuaderno físico.
+- **Ideal:** la búsqueda responde por debajo de 1 segundo o se mantiene en el umbral de 1.5 segundos con frustración baja. El usuario puede completar la tarea sin abandonar el flujo.
+- **Aceptable:** la búsqueda responde entre 1.0 y 1.5 segundos, con frustración controlada. Se puede mantener el umbral, pero se recomienda optimizar índices, consultas o caché antes de escalar.
+- **Desfavorable:** la búsqueda supera 1.5 segundos o genera frustración mayor a 2/5 en el escenario de 1.5s. Se requiere optimización técnica antes de pasar a producción.
+
+**Regla específica de interpretación:**
+
+El escenario de **3 segundos** funciona como punto de comparación negativo. Si los usuarios reportan frustración alta en 3s y frustración baja en 1.5s, se confirma que el umbral de 1.5 segundos es razonable.  
+Si no existe diferencia clara entre 1.5s y 3s, el equipo deberá revisar si el problema está en la interfaz de búsqueda, en la claridad de los resultados o en la forma en que se ejecutó la prueba.
+
 ---
  
-#### Hipótesis 5: Impacto del Alto Contraste
+### Hipótesis 5: Impacto del Alto Contraste
  
 | Métrica de la Hipótesis | Desfavorable (Fracaso) | Aceptable (Mejora Mínima) | Ideal (Éxito de la Hipótesis) |
 | --- | --- | --- | --- |
-| **Mejora en Tiempo de Identificación** | < 20% | 20-24% | **≥ 25%** |
-| **Tasa de Error de Lectura (alto contraste)** | > 10% | 5-10% | **≤ 5%** |
+| **Mejora en Tiempo de Identificación** | < 20% | ≥ 20% y < 25% | **≥ 25%** |
+| **Tasa de Error de Lectura (alto contraste)** | > 10% | > 5% y ≤ 10% | **≤ 5%** |
  
 **Decisión:**
  
@@ -487,15 +655,60 @@ Para cada hipótesis, definimos una escala de decisión basada en las métricas 
 ---
  
 #### Resumen de Criterios de Decisión Global
- 
-Para determinar si el **conjunto completo de experimentos** justifica avanzar de prototipo/MVP a producto comercial, aplicamos la siguiente regla:
- 
-- **Avance a Desarrollo Completo Aprobado:** Si **al menos 4 de 5 hipótesis** obtienen resultados "Ideales" o "Aceptables" (con refinamiento menor), el conjunto de experimentos se considera exitoso.
-- **Avance Condicional (Requiere Refinamiento):** Si **3 de 5 hipótesis** obtienen "Ideal/Aceptable", pero 2 obtienen "Desfavorable", las funcionalidades que fracasaron deben ser rediseñadas o eliminadas del alcance del MVP inicial.
-- **Rechazo / Pivote del Producto:** Si **3 o más hipótesis** obtienen resultados "Desfavorables", el conjunto de experimentos fracasa. Se requiere investigación adicional (entrevistas, análisis de causas raíz) antes de continuar invirtiendo en desarrollo.
-**Justificación:**
- 
-Esta escala de decisión permite un enfoque pragmático: no todas las funcionalidades deben ser perfectas para validar el valor del producto, pero sí debe haber una mayoría clara de validaciones exitosas. Esto es especialmente relevante para H1 (viabilidad del modelo de negocio) y H2 (eficacia del módulo de lotes), que son las hipótesis de mayor riesgo según el scoring de 8.1.4 (Total Score 17 cada una).
+
+Para determinar si el conjunto completo de experimentos justifica avanzar de prototipo/MVP a producto comercial, no se evaluarán todas las hipótesis con el mismo peso. Esto se debe a que algunas hipótesis validan aspectos críticos del producto, mientras que otras corresponden a mejoras complementarias o exploratorias.
+
+Las hipótesis de mayor peso son **H2** y **H1**, porque validan la propuesta de valor central y la viabilidad económica del producto. En cambio, hipótesis como localización o alto contraste son importantes, pero no bloquean directamente el MVP principal.
+
+##### Ponderación de hipótesis
+
+| Hipótesis | Enfoque evaluado | Peso | Justificación |
+|---|---|---:|---|
+| **H2** | Eficacia del historial de lotes | **30%** | Valida si StockTrack realmente ayuda a reducir pérdidas por vencimiento, que es la propuesta de valor central del producto. |
+| **H1** | Viabilidad del modelo de suscripción | **25%** | Valida si el usuario percibe suficiente valor económico como para pagar por la solución. |
+| **H4** | Tolerancia a la latencia de búsqueda | **20%** | Afecta directamente la experiencia diaria del usuario durante la atención al cliente. |
+| **H5** | Impacto del alto contraste | **15%** | Mejora la legibilidad y reduce errores de interpretación, pero no bloquea directamente la propuesta principal. |
+| **H3** | Adopción por localización | **10%** | Es una hipótesis exploratoria de expansión futura, por lo que tiene menor prioridad dentro del MVP actual. |
+
+##### Valor asignado según resultado
+
+Cada hipótesis recibirá un valor según el resultado obtenido en su escala individual:
+
+| Resultado de la hipótesis | Valor asignado |
+|---|---:|
+| **Ideal** | 1.0 |
+| **Aceptable** | 0.5 |
+| **Desfavorable** | 0.0 |
+
+##### Fórmula de decisión global
+
+El resultado global se calculará aplicando la siguiente fórmula ponderada:
+
+`Resultado Global = (H1 × 0.25) + (H2 × 0.30) + (H3 × 0.10) + (H4 × 0.20) + (H5 × 0.15)`
+
+##### Interpretación del resultado global
+
+| Resultado Global | Decisión |
+|---:|---|
+| **≥ 0.75** | **Avance a Desarrollo Completo Aprobado.** El conjunto de experimentos entrega evidencia suficiente para avanzar con las funcionalidades principales hacia el backlog To-Be. |
+| **0.50 - 0.74** | **Avance Condicional.** Se puede avanzar parcialmente, pero las hipótesis con resultado aceptable o desfavorable deberán ajustarse, rediseñarse o validarse en un segundo ciclo. |
+| **< 0.50** | **Rechazo o Pivote del Producto.** No se recomienda avanzar a implementación completa hasta replantear las hipótesis críticas, rediseñar los experimentos o realizar investigación adicional. |
+
+##### Reglas de bloqueo
+
+Además del resultado ponderado, se definen reglas de bloqueo para evitar que mejoras secundarias compensen fallos en las hipótesis críticas:
+
+- Si **H2** obtiene resultado **Desfavorable**, no se debe priorizar el lanzamiento completo del módulo de historial de lotes, aunque otras hipótesis obtengan resultados ideales.
+- Si **H1** obtiene resultado **Desfavorable**, el modelo de suscripción debe replantearse antes de definir el flujo de pago o la estrategia comercial.
+- Si **H4** obtiene resultado **Desfavorable**, se debe optimizar la búsqueda antes del lanzamiento, porque una mala experiencia de búsqueda puede afectar la adopción diaria del producto.
+- Si **H3** obtiene resultado **Desfavorable**, no afecta el MVP principal, ya que la localización se mantiene como funcionalidad exploratoria de expansión futura.
+- Si **H5** obtiene resultado **Desfavorable**, el rediseño de alto contraste puede mantenerse como mejora futura o accesibilidad opcional, sin bloquear el desarrollo principal.
+
+##### Justificación
+
+Esta escala ponderada permite tomar una decisión más realista que una regla simple de “4 de 5 hipótesis aprobadas”. No todas las hipótesis tienen el mismo impacto sobre el producto: **H2** valida si StockTrack resuelve el problema principal de pérdidas por vencimiento, mientras que **H1** valida si esa solución puede sostenerse comercialmente mediante una suscripción.
+
+Por ello, el avance del producto dependerá principalmente de la validación de las hipótesis críticas. Las hipótesis complementarias, como localización o alto contraste, ayudan a mejorar el producto, pero no deben compensar fallos en la propuesta de valor central.
 
 ### 8.2.6. Methods Selection.
  
@@ -517,7 +730,7 @@ Para recolectar los datos de las métricas definidas en la sección 8.2.3 y eval
 **Método: Piloto de Campo sobre Producción Real (Field Trial)**
  
 - **Propósito:** medir el impacto real del módulo de lotes sobre las mermas, usando la aplicación ya desplegada en producción en lugar de un entorno aislado.
-- **Ejecución:** los 5 "Early Adopters" usan el módulo de lotes directamente en el frontend desplegado ([front-inventiapp.vercel.app](https://front-inventiapp.vercel.app/auth/login)), conectado al backend real en Railway, con cuentas de prueba dedicadas (ver nota de 8.2.4); durante un ciclo completo de inventario (15 días) se compara el conteo de productos vencidos no vendidos contra su registro manual del mes anterior. Adicionalmente, se registrará si cada alerta de "7 días para vencer" deriva en una acción (venta de liquidación o devolución) dentro de las 48 horas siguientes, usando los eventos `batch_alert_triggered` y `batch_alert_action` (ver 8.2.8), para calcular la Tasa de Acción sobre Alertas.
+- **Ejecución:** los 5 "Early Adopters" usan el módulo de lotes directamente en el frontend desplegado ([front-inventiapp.vercel.app](https://front-inventiapp.vercel.app/auth/login)), conectado al backend real en Railway, con cuentas de prueba dedicadas (ver nota de 8.2.4); durante un ciclo completo de inventario (15 días) se compara el conteo de productos vencidos no vendidos contra un periodo de control también de 15 días usando su método manual habitual. Adicionalmente, se registrará si cada alerta de "7 días para vencer" deriva en una acción (venta de liquidación o devolución) dentro de las 48 horas siguientes, usando los eventos `batch_alert_triggered` y `batch_alert_action` (ver 8.2.8), para calcular la Tasa de Acción sobre Alertas.
 - **Herramientas:** módulo de lotes en producción (Spring Boot/Angular sobre Railway + Vercel), planilla de comparación pre/post.
 ---
  
@@ -525,18 +738,18 @@ Para recolectar los datos de las métricas definidas en la sección 8.2.3 y eval
  
 **Método: Prueba de Puerta Falsa (Fake Door / Smoke Test)**
  
-- **Propósito:** medir el interés real (no solo declarado) en la versión localizada.
-- **Ejecución:** se publica una landing page y una pantalla de inventario traducidas; se mide cuántos de los visitantes de 10 negocios en zonas bilingües completan el registro en la versión localizada vs. la estándar. Al finalizar el registro, se aplicará una encuesta corta (Google Forms) con la pregunta de confianza percibida en escala Likert 1-5 ("siento que esta aplicación fue hecha para mi negocio"), comparando el promedio entre ambas versiones.
-- **Herramientas:** landing page bilingüe, formulario de registro, herramienta de analítica web (ej. Google Analytics).
+- **Propósito:** medir el interés real, no solo declarado, en una versión localizada de StockTrack antes de invertir esfuerzo técnico en una implementación completa de internacionalización.
+- **Ejecución:** se publica una landing page y una pantalla de inventario con dos variantes: versión estándar y versión localizada. Para controlar variables externas, ambas versiones usarán el mismo diseño visual, el mismo mensaje comercial, el mismo botón de registro, el mismo canal de difusión, el mismo periodo de exposición y el mismo tipo de usuario objetivo. La única diferencia evaluada será el lenguaje o terminología localizada. La prueba tendrá como muestra mínima inicial 10 usuarios o negocios de zonas con diversidad lingüística, entendiendo que se trata de un experimento exploratorio y no de una validación estadística definitiva. Se medirá cuántos usuarios completan el registro en la versión localizada frente a la estándar. Al finalizar, se aplicará una encuesta corta en Google Forms con una pregunta de confianza percibida en escala Likert 1-5: "siento que esta aplicación fue hecha para mi negocio".
+- **Herramientas:** landing page bilingüe o localizada, formulario de registro, Google Forms, herramienta de analítica web y planilla de comparación de resultados.
 ---
  
 #### Hipótesis 4: Tolerancia a la Latencia de Búsqueda
  
-**Método: Medición de Latencia Real + Network Throttling (Chrome DevTools)**
+**Método: Medición de Línea Base con Lighthouse/Chrome DevTools + Network Throttling**
  
-- **Propósito:** identificar el umbral de tiempo de respuesta a partir del cual el usuario se frustra o abandona la tarea, partiendo de la latencia real del sistema desplegado.
-- **Ejecución:** primero se mide la latencia base real del endpoint de búsqueda sobre la app desplegada usando la pestaña **Network** de Chrome DevTools (sin throttling). Luego, 8 usuarios realizan búsquedas sobre la misma app real bajo tres escalones de latencia simulados con **Network Throttling** de DevTools (0.5s/1.5s/3s) en un escenario de "atención bajo presión"; se registra tiempo, abandono y frustración reportada.
-- **Herramientas:** Chrome DevTools (pestaña Network + Throttling), app real (Vercel + Railway), encuesta Likert post-tarea.
+- **Propósito:** identificar el umbral de tiempo de respuesta a partir del cual el usuario se frustra o abandona la tarea, partiendo primero de una línea base real del sistema desplegado. Esta medición permite verificar si el flujo de búsqueda actual ya cumple o supera el umbral máximo aceptable de **1.5 segundos** antes de simular otros escenarios de latencia.
+- **Ejecución:** primero se mide la latencia base real del flujo de búsqueda sobre la app desplegada usando **Chrome DevTools**, la pestaña **Network** y una revisión de rendimiento con **Lighthouse**. Esta medición sin throttling servirá como línea base técnica inicial. Luego, 8 usuarios realizan búsquedas sobre la misma app real bajo tres escalones de latencia simulados con **Network Throttling** de DevTools: **0.5s**, **1.5s** y **3s**, en un escenario de "atención bajo presión". Durante la prueba se registra el tiempo de respuesta, la tasa de abandono y el nivel de frustración reportado en escala Likert.
+- **Herramientas:** Chrome DevTools, Lighthouse, Network Throttling, app real desplegada en Vercel + Railway, encuesta Likert post-tarea y planilla de registro de resultados.
 ---
  
 #### Hipótesis 5: Impacto del Alto Contraste
@@ -627,6 +840,37 @@ Previo al despliegue con usuarios, validamos la estabilidad y eficiencia técnic
  
 ---
 
+#### Mecanismo de Re-Auditoría Técnica
+
+Después de implementar mejoras relacionadas con rendimiento, accesibilidad o contraste visual, el equipo ejecutará una segunda auditoría técnica para comparar los resultados antes y después de los cambios. Esta re-auditoría permitirá verificar si las acciones correctivas realmente mejoraron la experiencia del usuario y si las hipótesis técnicas pueden avanzar al backlog To-Be con evidencia suficiente.
+
+La re-auditoría se aplicará principalmente sobre las pantallas relacionadas con las hipótesis **H4** y **H5**:
+
+| Hipótesis relacionada | Pantalla o flujo evaluado | Herramienta de re-auditoría | Objetivo de comparación |
+|---|---|---|---|
+| **H4 - Tolerancia a la Latencia de Búsqueda** | Flujo de búsqueda de productos en Inventario | Chrome DevTools, Network, Lighthouse y registros de tiempo de respuesta | Comparar la latencia base antes y después de optimizar búsqueda, consultas, paginación, índices o caché. |
+| **H5 - Impacto del Alto Contraste** | Pantalla de Reportes | Lighthouse Accessibility, prueba A/B y observación de lectura | Comparar legibilidad, contraste, tiempo de interpretación y errores de lectura entre la versión estándar y la versión mejorada. |
+
+La re-auditoría seguirá estos pasos:
+
+1. Registrar los resultados iniciales obtenidos en la auditoría base.
+2. Implementar las mejoras necesarias en rendimiento, contraste o accesibilidad.
+3. Ejecutar nuevamente Lighthouse y Chrome DevTools sobre las mismas pantallas.
+4. Comparar los resultados antes y después usando las mismas condiciones de prueba.
+5. Documentar capturas, puntajes, métricas y conclusiones en el informe.
+6. Decidir si la mejora queda validada, si requiere un segundo ajuste o si debe mantenerse como deuda técnica.
+
+Para mantener trazabilidad, las capturas de re-auditoría deberán almacenarse con nombres diferenciados:
+
+IMAGENES A AGREGARRRR
+
+- lighthouse-inventario-before.png
+- lighthouse-inventario-after.png
+- lighthouse-reportes-before.png
+- lighthouse-reportes-after.png
+- devtools-search-before.png
+- devtools-search-after.png
+
 ### 8.2.8. Web and Mobile Tracking Plan.
 
 Para recolectar de forma automática los datos cuantitativos definidos en las Métricas (8.2.3) y complementar la auditoría técnica de 8.2.7, se implementará un plan de Event Tracking sobre la aplicación web desplegada, registrando los eventos en una tabla `experiment_events` en el entorno de staging del backend (Spring Boot + Railway).
@@ -643,92 +887,104 @@ Para recolectar de forma automática los datos cuantitativos definidos en las M�
 
 ---
 
-#### Eventos a Rastrear (Tracking Events)
+#### Eventos a Rastrear
 
-Se creará una tabla `experiment_events` en la base de datos de staging para registrar las siguientes acciones:
+Se creará una tabla `experiment_events` en la base de datos de staging para registrar las acciones relacionadas con las hipótesis que sí se ejecutan sobre software real: **H2**, **H3** y **H4**.
 
-**1. Hipótesis 2: Eficacia del Historial de Lotes**
+---
+
+#### 1. Hipótesis 2: Eficacia del Historial de Lotes
 
 **Evento: `batch_alert_triggered`**
 
-- **Disparador:** el sistema genera una alerta de "7 días para vencer" durante la verificación diaria.
+- **Disparador:** el sistema genera una alerta interna de "7 días para vencer" durante la verificación diaria de lotes.
 - **Datos a capturar:**
   - `event_name`: "batch_alert_triggered"
   - `alert_id`: [ID de la alerta generada]
   - `batch_id`: [ID del lote]
   - `user_id`: [ID del dueño de bodega]
-  - `timestamp`: Fecha y hora del evento
+  - `timestamp`: fecha y hora del evento
 
 **Evento: `batch_alert_action`**
 
-- **Disparador:** el usuario registra la acción de mitigación (liquidación o devolución) sobre una alerta. El cruce entre este evento y `batch_alert_triggered` (dentro de la ventana de 48h) calcula la **Alert Action Rate** (8.2.3).
+- **Disparador:** el usuario registra una acción de mitigación sobre una alerta, como liquidación, devolución, venta rápida o marcado del lote como gestionado. El cruce entre este evento y `batch_alert_triggered`, dentro de una ventana de 48 horas, permite calcular la métrica **Alert Action Rate** definida en la sección 8.2.3.
 - **Datos a capturar:**
   - `event_name`: "batch_alert_action"
   - `alert_id`: [ID de la alerta atendida]
   - `batch_id`: [ID del lote]
   - `user_id`: [ID del dueño de bodega]
-  - `action_type`: ["liquidacion" o "devolucion"]
-  - `timestamp`: Fecha y hora del evento
+  - `action_type`: ["liquidacion", "devolucion", "venta_rapida" o "gestionado"]
+  - `action_within_48h`: [true si la acción ocurrió dentro de las 48 horas posteriores a la alerta; false en caso contrario]
+  - `timestamp`: fecha y hora del evento
 
 **Evento: `batch_history_viewed`**
 
-- **Disparador:** el usuario consulta el historial de entradas/salidas de un lote.
+- **Disparador:** el usuario consulta el historial de entradas, salidas o movimientos de un lote.
 - **Datos a capturar:**
   - `event_name`: "batch_history_viewed"
   - `batch_id`: [ID del lote consultado]
   - `user_id`: [ID del dueño de bodega]
-  - `timestamp`: Fecha y hora del evento
+  - `timestamp`: fecha y hora del evento
 
 ---
 
-**2. Hipótesis 3: Adopción por Localización (Fake Door)**
+#### 2. Hipótesis 3: Adopción por Localización
 
 **Evento: `localized_signup_completed`**
 
-- **Disparador:** un visitante completa el registro en la landing page o pantalla de inventario traducida (Fake Door, 8.2.6).
+- **Disparador:** un visitante completa el registro en la landing page o pantalla de inventario usada para la prueba Fake Door.
 - **Datos a capturar:**
   - `event_name`: "localized_signup_completed"
   - `session_id`: [identificador de sesión del visitante]
   - `variant`: ["localizada" o "estandar"]
-  - `timestamp`: Fecha y hora del evento
+  - `timestamp`: fecha y hora del evento
 
 ---
 
-**3. Hipótesis 4: Tolerancia a la Latencia de Búsqueda**
+#### 3. Hipótesis 4: Tolerancia a la Latencia de Búsqueda
 
 **Evento: `product_search_performed`**
 
-- **Disparador:** cada búsqueda de producto por nombre común ejecutada en la pantalla de Inventario, ya sea en condiciones normales o durante las sesiones con Network Throttling.
+- **Disparador:** cada búsqueda de producto por nombre común ejecutada en la pantalla de Inventario, tanto en condiciones normales como durante las sesiones con Network Throttling.
 - **Datos a capturar:**
   - `event_name`: "product_search_performed"
   - `user_id`: [ID del dueño de bodega]
+  - `experiment_session_id`: [ID de la sesión experimental]
+  - `test_scenario`: ["baseline", "throttling_500ms", "throttling_1500ms", "throttling_3000ms"]
   - `response_time_ms`: [tiempo medido entre el ingreso del término y la respuesta]
   - `result_count`: [cantidad de coincidencias devueltas]
-  - `timestamp`: Fecha y hora del evento
+  - `search_term_length`: [cantidad de caracteres del término buscado]
+  - `timestamp`: fecha y hora del evento
 
 **Evento: `search_task_abandoned`**
 
-- **Disparador:** el usuario abandona la búsqueda antes de recibir resultados.
+- **Disparador:** el usuario abandona la búsqueda antes de recibir resultados o decide no continuar con la tarea de búsqueda.
 - **Datos a capturar:**
   - `event_name`: "search_task_abandoned"
   - `user_id`: [ID del dueño de bodega]
+  - `experiment_session_id`: [ID de la sesión experimental]
+  - `test_scenario`: ["baseline", "throttling_500ms", "throttling_1500ms", "throttling_3000ms"]
   - `elapsed_time_ms`: [tiempo transcurrido antes del abandono]
-  - `timestamp`: Fecha y hora del evento
+  - `timestamp`: fecha y hora del evento
 
 ---
 
-#### Captura de Datos para Hipótesis 1 y 5 (sin eventos automatizados)
+#### Captura de Datos para Hipótesis 1 y 5
 
-Como se explicó, H1 y H5 se validan sobre un prototipo Figma y un test de laboratorio, por lo que sus datos **no** pasan por `experiment_events`: se registran manualmente en una planilla (Google Sheets).
+Como se explicó previamente, **H1** y **H5** no se registran mediante `experiment_events`, porque no se ejecutan directamente sobre el sistema desplegado en producción.
+
+H1 se valida mediante entrevista guiada sobre un prototipo Figma, mientras que H5 se valida mediante un test A/B controlado en laboratorio. Por ello, sus datos serán registrados manualmente en una planilla de Google Sheets.
 
 | Hipótesis | Dónde se registra | Campos capturados |
 | :--- | :--- | :--- |
-| H1 | Planilla de entrevista guiada | `usuario_id`, `clic_adquirir_plan` (sí/no), `calificacion_precio`, `perdida_estimada_usd` |
-| H5 | Planilla de laboratorio | `usuario_id`, `version` (estándar/alto contraste), `tiempo_identificacion_seg`, `respuesta_correcta` (sí/no) |
+| H1 — Viabilidad del Modelo de Suscripción | Planilla de entrevista guiada | `usuario_id`, `clic_adquirir_plan`, `calificacion_precio`, `perdida_estimada_usd`, `comentario_precio` |
+| H5 — Impacto del Alto Contraste | Planilla de laboratorio | `usuario_id`, `version`, `tiempo_identificacion_seg`, `respuesta_correcta`, `nivel_claridad_likert` |
 
 ---
 
 #### Estructura de la Tabla `experiment_events`
+
+Para evitar problemas de rendimiento al calcular métricas frecuentes como **Alert Action Rate**, los campos usados en filtros, agrupaciones o uniones no dependerán únicamente del campo `payload` JSON. El `payload` se mantendrá para guardar información adicional del evento, pero los datos críticos también se almacenarán como columnas consultables e indexables.
 
 ```sql
 CREATE TABLE experiment_events (
@@ -736,80 +992,144 @@ CREATE TABLE experiment_events (
     event_name VARCHAR(50) NOT NULL,
     user_id BIGINT,
     session_id VARCHAR(100),
+
+    alert_id BIGINT,
+    batch_id BIGINT,
+    action_type VARCHAR(50),
+    action_within_48h BOOLEAN,
+
+    test_scenario VARCHAR(50),
+    response_time_ms INT,
+    variant VARCHAR(50),
+
     payload JSON,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    INDEX idx_event_name (event_name),
+
+    INDEX idx_event_name_created_at (event_name, created_at),
     INDEX idx_user_id (user_id),
-    INDEX idx_created_at (created_at)
+    INDEX idx_alert_id (alert_id),
+    INDEX idx_batch_id (batch_id),
+    INDEX idx_alert_action (event_name, action_within_48h, created_at),
+    INDEX idx_search_scenario (event_name, test_scenario, created_at),
+    INDEX idx_localized_variant (event_name, variant)
 );
 ```
 
+Con esta estructura, los eventos mantienen flexibilidad mediante `payload`, pero las métricas principales pueden calcularse usando columnas indexadas. Esto evita consultas pesadas sobre campos internos del JSON cuando se calculen métricas como alertas atendidas, escenarios de latencia o registros por variante localizada.
+
+---
+
+#### Consideración Técnica sobre el Uso de JSON
+
+El campo `payload` será utilizado únicamente para almacenar información complementaria o detalles adicionales del evento. Sin embargo, las métricas principales no deben depender exclusivamente de consultas sobre JSON, ya que esto puede generar problemas de rendimiento cuando aumente la cantidad de registros.
+
+Por esta razón, los campos más importantes para análisis se guardan también como columnas normales:
+
+| Métrica | Campos optimizados |
+|---|---|
+| Alert Action Rate | `event_name`, `alert_id`, `batch_id`, `action_within_48h`, `created_at` |
+| Search Response Time | `event_name`, `test_scenario`, `response_time_ms`, `created_at` |
+| Search Task Abandonment | `event_name`, `test_scenario`, `created_at` |
+| Localized Signup Rate | `event_name`, `variant`, `created_at` |
+
+De esta forma, el sistema puede consultar métricas críticas usando índices y no únicamente propiedades internas de `payload`.
+
+---
+
 #### Herramienta de Análisis
 
-Los datos se almacenarán en `experiment_events` y se consultarán mediante SQL para alimentar los reportes de las hipótesis que sí corren sobre software real.
+Los datos se almacenarán en `experiment_events` y se consultarán mediante SQL para alimentar los reportes de las hipótesis que sí corren sobre software real: **H2**, **H3** y **H4**.
 
-**Ejemplo de Queries SQL:**
+---
 
-- **Alert Action Rate (H2) — % de alertas atendidas dentro de 48h:**
+#### Ejemplo de Queries SQL
+
+**Alert Action Rate H2 — porcentaje de alertas atendidas dentro de 48 horas**
 
 ```sql
 SELECT
-    COUNT(DISTINCT t.payload->>'$.alert_id') AS alertas_generadas,
-    COUNT(DISTINCT a.payload->>'$.alert_id') AS alertas_atendidas_48h,
+    COUNT(DISTINCT t.alert_id) AS alertas_generadas,
+    COUNT(DISTINCT a.alert_id) AS alertas_atendidas_48h,
     ROUND(
-        COUNT(DISTINCT a.payload->>'$.alert_id') * 100.0
-        / COUNT(DISTINCT t.payload->>'$.alert_id'), 1
+        COUNT(DISTINCT a.alert_id) * 100.0 / NULLIF(COUNT(DISTINCT t.alert_id), 0),
+        1
     ) AS alert_action_rate_pct
 FROM experiment_events t
 LEFT JOIN experiment_events a
     ON a.event_name = 'batch_alert_action'
-    AND a.payload->>'$.alert_id' = t.payload->>'$.alert_id'
-    AND a.created_at <= t.created_at + INTERVAL 48 HOUR
-WHERE t.event_name = 'batch_alert_triggered';
+    AND a.alert_id = t.alert_id
+    AND a.action_within_48h = TRUE
+WHERE t.event_name = 'batch_alert_triggered'
+  AND t.created_at BETWEEN '2026-01-01' AND '2026-01-31';
 ```
 
-#### Herramienta de Análisis
+Esta consulta usa las columnas `alert_id`, `event_name`, `created_at` y `action_within_48h`, evitando depender directamente de `payload->>'$.alert_id'` para los filtros principales.
 
-Los datos se almacenarán en `experiment_events` y se consultarán mediante SQL para alimentar los reportes de las hipótesis que sí corren sobre software real.
+---
 
-**Ejemplo de Queries SQL:**
-
-- **Search Response Time promedio (H4):**
-
-```sql
-SELECT AVG(CAST(payload->>'$.response_time_ms' AS UNSIGNED)) AS avg_response_time_ms
-FROM experiment_events
-WHERE event_name = 'product_search_performed'
-  AND created_at BETWEEN '2026-01-01' AND '2026-01-31';
-```
-
-#### Herramienta de Análisis
-
-Los datos se almacenarán en `experiment_events` y se consultarán mediante SQL para alimentar los reportes de las hipótesis que sí corren sobre software real.
-
-**Ejemplo de Queries SQL:**
-
-- **Search Response Time promedio (H4):**
-
-```sql
-SELECT AVG(CAST(payload->>'$.response_time_ms' AS UNSIGNED)) AS avg_response_time_ms
-FROM experiment_events
-WHERE event_name = 'product_search_performed'
-  AND created_at BETWEEN '2026-01-01' AND '2026-01-31';
-```
-
-- **Search Response Time promedio (H4):**
+**Search Response Time promedio por escenario H4**
 
 ```sql
 SELECT
-    payload->>'$.variant' AS variante,
+    test_scenario,
+    COUNT(*) AS total_searches,
+    ROUND(AVG(response_time_ms), 2) AS avg_response_time_ms,
+    MIN(response_time_ms) AS min_response_time_ms,
+    MAX(response_time_ms) AS max_response_time_ms
+FROM experiment_events
+WHERE event_name = 'product_search_performed'
+  AND created_at BETWEEN '2026-01-01' AND '2026-01-31'
+GROUP BY test_scenario
+ORDER BY avg_response_time_ms;
+```
+
+Esta consulta diferencia claramente entre búsquedas normales y búsquedas bajo throttling mediante el campo `test_scenario`.
+
+---
+
+**Abandono de tarea por escenario de latencia H4**
+
+```sql
+SELECT
+    test_scenario,
+    COUNT(*) AS total_abandonos
+FROM experiment_events
+WHERE event_name = 'search_task_abandoned'
+  AND created_at BETWEEN '2026-01-01' AND '2026-01-31'
+GROUP BY test_scenario;
+```
+
+Esta consulta permite identificar en qué escenario de latencia los usuarios abandonan con mayor frecuencia la tarea de búsqueda.
+
+---
+
+**Registros completados por variante localizada H3**
+
+```sql
+SELECT
+    variant AS variante,
     COUNT(*) AS registros_completados
 FROM experiment_events
 WHERE event_name = 'localized_signup_completed'
-GROUP BY payload->>'$.variant';
+  AND created_at BETWEEN '2026-01-01' AND '2026-01-31'
+GROUP BY variant;
 ```
 
-Estos datos cuantitativos se complementarán con los datos cualitativos obtenidos de las entrevistas y encuestas para generar el análisis completo de resultados.
+Esta consulta permite comparar cuántos usuarios completaron el registro en la versión localizada frente a la versión estándar.
+
+---
+
+#### Relación con las Métricas e Hipótesis
+
+| Hipótesis | Evento principal | Métrica relacionada | Uso del dato |
+|---|---|---|---|
+| H2 | `batch_alert_triggered` y `batch_alert_action` | Tasa de Acción sobre Alertas | Medir si las alertas internas generan acciones dentro de 48 horas. |
+| H2 | `batch_history_viewed` | Uso del historial de lotes | Identificar si el usuario consulta el historial para tomar decisiones. |
+| H3 | `localized_signup_completed` | Tasa de Registro Localizado | Comparar registros entre versión localizada y versión estándar. |
+| H4 | `product_search_performed` | Tiempo de Respuesta de Búsqueda | Medir latencia promedio por escenario. |
+| H4 | `search_task_abandoned` | Tasa de Abandono de Tarea | Medir abandono según el escenario de latencia. |
+
+Estos datos cuantitativos se complementarán con los datos cualitativos obtenidos de entrevistas, encuestas y observaciones para generar el análisis completo de resultados.
 
 ## 8.3. Experimentation
 La fase de experimentación traduce los aprendizajes en validación (definidos como hipótesis en 8.2) en requerimientos concretos para el siguiente ciclo. A diferencia de las User Stories del estado **As-Is** (sección 3.2), las **To-Be User Stories** representan únicamente los *incrementos* que el equipo decidió construir como resultado del proceso de Experiment-Driven Development. Por ello no reescriben funcionalidad ya existente (ej. el registro de lotes de US14, la búsqueda de US08 o las notificaciones de US05), sino que la extienden con las mejoras que cada experimento busca validar. Cada historia es trazable a una de las cinco hipótesis de 8.2.1 y a su Tarjeta de Experimento (8.1.5).
@@ -829,14 +1149,15 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     <tr>
       <td>EP-11</td>
       <td>Monetización y Suscripción</td>
-      <td>Como dueño de bodega, quiero evaluar el ahorro por mermas frente al costo del plan y contratar una suscripción, para acceder a las funcionalidades premium con una decisión de valor informada.</td>
-      <td>US20, US21, TS15</td>
+      <td>Agrupa las funcionalidades orientadas a validar la viabilidad económica de StockTrack, estimar el ahorro generado por la reducción de mermas, comparar dicho ahorro frente al costo del plan y gestionar la contratación de una suscripción. Esta épica permite conectar el valor funcional del producto con una decisión comercial informada por parte del dueño de bodega.
+      </td>
+      <td>US19, US20</td>
     </tr>
     <tr>
       <td>EP-12</td>
       <td>Internacionalización y Localización</td>
-      <td>Como usuario de una zona con diversidad lingüística, quiero usar la plataforma con terminología localizada o en un idioma originario, para reducir la barrera de "tecnología ajena" y adoptarla con confianza. Se alinea con el requisito de i18n del enunciado.</td>
-      <td>US23, TS18</td>
+          <td>Agrupa funcionalidades orientadas a evaluar si la adaptación del lenguaje, la terminología local o el idioma de la interfaz mejora la confianza, comprensión y facilidad de adopción de StockTrack en usuarios de zonas con diversidad lingüística. Esta épica se mantiene como exploratoria y post-MVP, ya que su implementación dependerá de los resultados obtenidos en la hipótesis de adopción por localización.</td>
+      <td>US22, TS17</td>
     </tr>
   </tbody>
 </table>
@@ -865,7 +1186,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     <tr>
         <td colspan="4">
             <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> que la búsqueda de productos por nombre común responda casi de inmediato <br>
+            <strong> Quiero </strong> buscar productos por nombre común con un tiempo de respuesta menor a 1.5 segundos <br>
             <strong> Para </strong> atender al cliente sin interrumpir la venta ni volver al registro manual.
         </td>
     </tr>
@@ -876,21 +1197,30 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <td colspan="4">
             <strong> Escenario 1: Respuesta dentro del umbral de tolerancia</strong> <br><br>
             <strong> Dado que </strong> existen productos registrados en el inventario <br>
-            <strong> Cuando </strong> el usuario busca un producto por su nombre común <br>
+            <strong> Cuando </strong> el usuario busca un producto por su nombre común exacto o registrado <br>
             <strong> Entonces </strong> el sistema devuelve los resultados coincidentes en menos de 1.5 segundos.
             <br><br>
-            <strong> Escenario 2: Coincidencia parcial o aproximada</strong> <br><br>
-            <strong> Dado que </strong> el usuario ingresa un nombre incompleto o con un error de tipeo menor <br>
-            <strong> Cuando </strong> se procesa la búsqueda <br>
-            <strong> Entonces </strong> el sistema muestra los productos cuyo nombre coincide de forma parcial o aproximada.
+            <strong> Escenario 2: Visualización de resultados coincidentes</strong> <br><br>
+            <strong> Dado que </strong> existen productos cuyo nombre coincide con el término ingresado <br>
+            <strong> Cuando </strong> el usuario ejecuta la búsqueda <br>
+            <strong> Entonces </strong> el sistema muestra los productos coincidentes con su nombre, stock disponible y estado principal.
             <br><br>
             <strong> Escenario 3: Búsqueda sin resultados</strong> <br><br>
-            <strong> Dado que </strong> el término buscado no corresponde a ningún producto <br>
+            <strong> Dado que </strong> el término buscado no corresponde a ningún producto registrado <br>
             <strong> Cuando </strong> se procesa la búsqueda <br>
-            <strong> Entonces </strong> el sistema informa la ausencia de coincidencias dentro del mismo umbral de tiempo.
-        </td>
-    </tr>
+            <strong> Entonces </strong> el sistema informa la ausencia de coincidencias dentro del mismo umbral de 1.5 segundos.
+            <br><br>
+            <strong> Escenario 4: Registro del evento de búsqueda</strong> <br><br>
+            <strong> Dado que </strong> el usuario realiza una búsqueda de producto por nombre común <br>
+            <strong> Cuando </strong> el sistema devuelve una respuesta <br>
+            <strong> Entonces </strong> se registra el evento <code>product_search_performed</code> con el tiempo de respuesta y el escenario de prueba correspondiente.
+       </td>
+     </tr>
 </table>
+
+<p><em>Trazabilidad: Hipótesis 4 — Tolerancia a la Latencia de Búsqueda; QD2 — Umbral máximo de búsqueda tolerado por el usuario.</em></p>
+
+<p><em>Nota de alcance: Esta historia se limita a optimizar el rendimiento de la búsqueda por nombre común. No incluye búsqueda aproximada, autocorrección, sugerencias inteligentes ni coincidencias difusas. Esas mejoras podrán evaluarse como funcionalidades futuras si los resultados de H4 evidencian que el rendimiento base cumple el umbral esperado.</em></p>
 
 <p><em>Trazabilidad: Hipótesis 4 (Tolerancia a la Latencia de Búsqueda) — QD2.</em></p>
 
@@ -918,25 +1248,35 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <td colspan="4">
             <strong> Como </strong> dueño de bodega <br>
             <strong> Quiero </strong> activar un modo de alto contraste en los reportes <br>
-            <strong> Para </strong> leer los datos críticos sin errores en almacenes con poca iluminación o con fatiga visual.
+            <strong> Para </strong>evaluar si la información crítica del inventario puede leerse con mayor claridad en condiciones de baja iluminación o fatiga visual.
         </td>
     </tr>
     <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Activación del modo de alto contraste</strong> <br><br>
-            <strong> Dado que </strong> el usuario visualiza un reporte de inventario <br>
-            <strong> Cuando </strong> activa el modo de alto contraste <br>
-            <strong> Entonces </strong> el sistema presenta el reporte con la paleta de alto contraste.
-            <br><br>
-            <strong> Escenario 2: Persistencia de la preferencia</strong> <br><br>
-            <strong> Dado que </strong> el usuario activó previamente el modo de alto contraste <br>
-            <strong> Cuando </strong> vuelve a ingresar al sistema <br>
-            <strong> Entonces </strong> el sistema conserva el modo de alto contraste como preferencia del usuario.
-        </td>
-    </tr>
+    <th colspan="4">Acceptance Criteria</th>
+</tr>
+<tr>
+    <td colspan="4">
+        <strong> Escenario 1: Activación del modo de alto contraste</strong> <br><br>
+        <strong> Dado que </strong> el dueño de bodega se encuentra en la pantalla de reportes <br>
+        <strong> Cuando </strong> activa la opción de modo de alto contraste <br>
+        <strong> Entonces </strong> el sistema debe mostrar la pantalla de reportes en una variante visual diferenciada para evaluación.
+        <br><br>
+        <strong> Escenario 2: Conservación de la información del reporte</strong> <br><br>
+        <strong> Dado que </strong> el modo de alto contraste está activado <br>
+        <strong> Cuando </strong> el usuario visualiza indicadores, fechas de vencimiento, cantidades o alertas del reporte <br>
+        <strong> Entonces </strong> el sistema debe mostrar la misma información funcional que la versión estándar, sin alterar datos ni cálculos.
+        <br><br>
+        <strong> Escenario 3: Desactivación del modo de alto contraste</strong> <br><br>
+        <strong> Dado que </strong> el modo de alto contraste está activado <br>
+        <strong> Cuando </strong> el usuario desactiva esta opción <br>
+        <strong> Entonces </strong> el sistema debe regresar a la versión estándar de la pantalla de reportes.
+        <br><br>
+        <strong> Escenario 4: Registro para evaluación experimental</strong> <br><br>
+        <strong> Dado que </strong> existen una versión estándar y una versión de alto contraste del reporte <br>
+        <strong> Cuando </strong> el usuario realiza una tarea de lectura durante la prueba A/B <br>
+        <strong> Entonces </strong> el equipo debe poder registrar el tiempo de lectura, errores de interpretación y claridad percibida para evaluar la hipótesis.
+    </td>
+</tr>
 </table>
 
 <p><em>Trazabilidad: Hipótesis 5 (Impacto del Alto Contraste) — QD3. Según la decisión "Aceptable" de 8.2.5, se implementa como opción de accesibilidad y no como reemplazo del diseño estándar.</em></p>
@@ -1004,7 +1344,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <td align="center">US18</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
-        <td align="center">EP-02</td>
+        <td align="center">EP-11</td>
     </tr>
     <tr>
         <th>Title</th>
@@ -1016,8 +1356,8 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     <tr>
         <td colspan="4">
             <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> consultar el historial de entradas y salidas de cada lote <br>
-            <strong> Para </strong> hacer trazabilidad detallada y entender por qué un producto llegó a vencerse.
+            <strong> Quiero </strong> consultar el historial de entradas, salidas y acciones registradas sobre cada lote <br>
+            <strong> Para </strong> conocer la trazabilidad del producto y entender qué ocurrió antes de que un lote sea vendido, devuelto, liquidado, gestionado o vencido.
         </td>
     </tr>
     <tr>
@@ -1025,20 +1365,42 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Consulta del historial de un lote</strong> <br><br>
-            <strong> Dado que </strong> un lote registra movimientos de entrada y salida <br>
-            <strong> Cuando </strong> el usuario consulta el detalle de ese lote <br>
-            <strong> Entonces </strong> el sistema muestra los movimientos en orden cronológico con su fecha y cantidad.
+            <strong>Escenario 1: Visualización del historial de un lote</strong><br><br>
+            <strong>Dado</strong> que existe un lote registrado en el inventario,<br>
+            <strong>Cuando</strong> el usuario consulta el historial del lote,<br>
+            <strong>Entonces</strong> el sistema debe mostrar los movimientos asociados al lote en orden cronológico.
             <br><br>
-            <strong> Escenario 2: Lote sin movimientos de salida</strong> <br><br>
-            <strong> Dado que </strong> un lote solo registra su ingreso inicial <br>
-            <strong> Cuando </strong> el usuario consulta su historial <br>
-            <strong> Entonces </strong> el sistema muestra únicamente el movimiento de entrada.
+            <strong>Escenario 2: Registro de entrada de lote</strong><br><br>
+            <strong>Dado</strong> que se registra un nuevo lote en el sistema,<br>
+            <strong>Cuando</strong> el lote queda creado con producto, cantidad, fecha de ingreso y fecha de vencimiento,<br>
+            <strong>Entonces</strong> el sistema debe mostrar una entrada inicial en el historial del lote.
+            <br><br>
+            <strong>Escenario 3: Registro de salida de lote</strong><br><br>
+            <strong>Dado</strong> que existe un lote con stock disponible,<br>
+            <strong>Cuando</strong> el usuario registra una salida por venta, devolución, liquidación o ajuste de inventario,<br>
+            <strong>Entonces</strong> el sistema debe mostrar el movimiento de salida indicando tipo de movimiento, cantidad, fecha y usuario responsable.
+            <br><br>
+            <strong>Escenario 4: Registro de acción sobre alerta</strong><br><br>
+            <strong>Dado</strong> que existe una alerta interna asociada a un lote próximo a vencer,<br>
+            <strong>Cuando</strong> el usuario registra una acción de mitigación sobre esa alerta,<br>
+            <strong>Entonces</strong> el sistema debe mostrar dicha acción dentro del historial del lote.
+            <br><br>
+            <strong>Escenario 5: Lote vencido sin acción previa</strong><br><br>
+            <strong>Dado</strong> que un lote llega a su fecha de vencimiento sin haber sido vendido, devuelto, liquidado o marcado como gestionado,<br>
+            <strong>Cuando</strong> el sistema actualiza el estado del lote,<br>
+            <strong>Entonces</strong> el historial debe mostrar el movimiento de vencimiento correspondiente.
+            <br><br>
+            <strong>Escenario 6: Registro del evento de consulta</strong><br><br>
+            <strong>Dado</strong> que el usuario consulta el historial de un lote,<br>
+            <strong>Cuando</strong> el sistema muestra la trazabilidad del lote,<br>
+            <strong>Entonces</strong> se debe registrar el evento <code>batch_history_viewed</code> para analizar el uso del historial durante el experimento.
         </td>
     </tr>
 </table>
 
-<p><em>Trazabilidad: Hipótesis 2 (Eficacia del Historial de Lotes) — QD1.</em></p>
+<p><em>Trazabilidad: Hipótesis 2 — Eficacia del Historial de Lotes; QD1 — Reducción de pérdidas por vencimiento mediante trazabilidad de lotes y acciones internas.</em></p>
+
+
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
@@ -1050,12 +1412,12 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     <tr>
         <td align="center">US19</td>
         <td align="center">Dueño de bodega</td>
-        <td align="center">Media</td>
-        <td align="center">EP-06</td>
+        <td align="center">Alta</td>
+        <td align="center">EP-11</td>
     </tr>
-    <tr>
+     <tr>
         <th>Title</th>
-        <td colspan="3">Recibir alertas de vencimiento por WhatsApp</td>
+        <td colspan="3">Estimar el ahorro por reducción de mermas frente al costo de la suscripción</td>
     </tr>
     <tr>
         <th colspan="4">Description</th>
@@ -1063,8 +1425,8 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     <tr>
         <td colspan="4">
             <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> recibir las alertas de vencimiento próximo en WhatsApp <br>
-            <strong> Para </strong> enterarme durante la jornada sin depender de revisar la aplicación.
+            <strong> Quiero </strong> estimar el ahorro potencial generado por la reducción de mermas <br>
+            <strong> Para </strong> comparar ese ahorro estimado frente al costo de la suscripción y decidir si el plan representa valor para mi negocio.
         </td>
     </tr>
     <tr>
@@ -1072,20 +1434,32 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Habilitación del canal de WhatsApp</strong> <br><br>
-            <strong> Dado que </strong> el usuario registra y verifica un número de WhatsApp <br>
-            <strong> Cuando </strong> guarda su preferencia de notificación <br>
-            <strong> Entonces </strong> el sistema habilita el envío de alertas por ese canal.
+            <strong>Escenario 1: Ingreso de pérdida estimada por mermas</strong><br><br>
+            <strong>Dado</strong> que el dueño de bodega desea evaluar el valor económico de StockTrack,<br>
+            <strong>Cuando</strong> ingresa una estimación de sus pérdidas mensuales por productos vencidos,<br>
+            <strong>Entonces</strong> el sistema debe registrar ese valor como referencia inicial para el cálculo.
             <br><br>
-            <strong> Escenario 2: Envío de alerta por WhatsApp</strong> <br><br>
-            <strong> Dado que </strong> el usuario tiene el canal de WhatsApp habilitado <br>
-            <strong> Cuando </strong> se genera una alerta de vencimiento próximo <br>
-            <strong> Entonces </strong> el sistema envía un mensaje con el producto afectado y los días restantes.
+            <strong>Escenario 2: Cálculo de ahorro potencial</strong><br><br>
+            <strong>Dado</strong> que el usuario ingresó una pérdida mensual estimada por mermas,<br>
+            <strong>Cuando</strong> el sistema aplica un porcentaje esperado de reducción de mermas,<br>
+            <strong>Entonces</strong> debe mostrar el ahorro potencial estimado sin afirmar que se eliminarán todas las pérdidas.
+            <br><br>
+            <strong>Escenario 3: Comparación con el costo de suscripción</strong><br><br>
+            <strong>Dado</strong> que el sistema calculó un ahorro potencial estimado,<br>
+            <strong>Cuando</strong> el usuario visualiza el resultado,<br>
+            <strong>Entonces</strong> el sistema debe comparar el ahorro estimado frente al costo mensual del plan.
+            <br><br>
+            <strong>Escenario 4: Interpretación del resultado</strong><br><br>
+            <strong>Dado</strong> que el ahorro estimado puede ser mayor, igual o menor que el costo del plan,<br>
+            <strong>Cuando</strong> el sistema muestra la comparación,<br>
+            <strong>Entonces</strong> debe presentar el resultado como una estimación orientativa y no como una garantía de ahorro real.
         </td>
     </tr>
 </table>
 
-<p><em>Trazabilidad: Hipótesis 2 (Eficacia del Historial de Lotes) — QD1. Canal de refuerzo previsto en el escenario "Aceptable" de la decisión de 8.2.5; coherente con EP-06, que ya contempla canales externos de notificación.</em></p>
+<p><em>Trazabilidad: Hipótesis 1 — Viabilidad del Modelo de Suscripción; QB1 — Barrera del costo de suscripción frente al valor percibido por reducción de mermas.</em></p>
+
+<p><em>Nota de alcance: US19 no compara directamente la totalidad de pérdidas por mermas contra el costo del plan. La historia compara el ahorro potencial estimado por reducción de mermas frente al costo de la suscripción, evitando afirmar que StockTrack eliminará todas las pérdidas del negocio.</em></p>
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
@@ -1096,53 +1470,6 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td align="center">US20</td>
-        <td align="center">Dueño de bodega</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-11</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Estimar el ahorro por mermas frente al costo de la suscripción</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> dueño de bodega <br>
-            <strong> Quiero </strong> comparar mis pérdidas estimadas por mermas con el costo del plan <br>
-            <strong> Para </strong> decidir de forma informada si la suscripción representa un ahorro.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Cálculo del ahorro proyectado</strong> <br><br>
-            <strong> Dado que </strong> el usuario ingresa una estimación de sus mermas mensuales <br>
-            <strong> Cuando </strong> el sistema procesa el dato <br>
-            <strong> Entonces </strong> el sistema muestra la pérdida estimada contrastada con el costo mensual del plan.
-            <br><br>
-            <strong> Escenario 2: Resultado favorable a la suscripción</strong> <br><br>
-            <strong> Dado que </strong> la merma estimada supera el costo del plan <br>
-            <strong> Cuando </strong> el sistema presenta la comparativa <br>
-            <strong> Entonces </strong> el sistema destaca el ahorro neto proyectado y habilita la contratación del plan.
-        </td>
-    </tr>
-</table>
-
-<p><em>Trazabilidad: Hipótesis 1 (Viabilidad del Modelo de Suscripción) — QB1. Sustenta la métrica Perceived Conversion Rate (8.2.3).</em></p>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">US21</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Alta</td>
         <td align="center">EP-11</td>
@@ -1194,7 +1521,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US22</td>
+        <td align="center">US21</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Media</td>
         <td align="center">EP-07</td>
@@ -1241,7 +1568,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
         <th>Epic</th>
     </tr>
     <tr>
-        <td align="center">US23</td>
+        <td align="center">US22</td>
         <td align="center">Dueño de bodega</td>
         <td align="center">Baja</td>
         <td align="center">EP-12</td>
@@ -1279,6 +1606,8 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
 </table>
 
 <p><em>Trazabilidad: Hipótesis 3 (Adopción por Localización) — QB2. Sustenta las métricas Localized Sign-up Rate y Trust Perception Score (8.2.3) y el requisito de i18n del enunciado.</em></p>
+
+> **Nota de alcance:** La funcionalidad de alertaEPIC-11 alcance To-Be del proyecto, debido a que no será implementada en el MVP actual. Por ello, no se mantiene como User Story, Technical Story, Experiment Card ni elemento del Product Backlog. Las alertas preventivas se validarán únicamente dentro de la aplicación, mediante eventos internos, seguimiento de alertas pendientes y registro de acciones de mitigación.
 
 ### To-Be Technical Stories
 
@@ -1327,6 +1656,7 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
 </table>
 
+
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
         <th>Story ID</th>
@@ -1337,21 +1667,21 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     <tr>
         <td align="center">TS16</td>
         <td align="center">Desarrollador</td>
-        <td align="center">Media</td>
-        <td align="center">EP-06</td>
+        <td align="center">Alta</td>
+        <td align="center">EP-01</td>
     </tr>
     <tr>
         <th>Title</th>
-        <td colspan="3">Servicio de notificaciones por WhatsApp</td>
+        <td colspan="3">Optimizar consultas de búsqueda de productos</td>
     </tr>
     <tr>
         <th colspan="4">Description</th>
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Como </strong> desarrollador <br>
-            <strong> Quiero </strong> integrar un servicio de envío de mensajes por WhatsApp <br>
-            <strong> Para </strong> entregar las alertas de vencimiento por un canal externo.
+            <strong> Como </strong> desarrollador backend <br>
+            <strong> Quiero </strong> optimizar las consultas de búsqueda de productos por nombre común <br>
+            <strong> Para </strong> reducir el tiempo de respuesta del endpoint de búsqueda y cumplir el umbral máximo de 1.5 segundos definido en la hipótesis de latencia.
         </td>
     </tr>
     <tr>
@@ -1359,13 +1689,32 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Envío de alerta</strong> <br><br>
-            <strong> Dado que </strong> se genera una alerta de vencimiento próximo y el usuario tiene el canal habilitado <br>
-            <strong> Cuando </strong> el sistema procesa la notificación <br>
-            <strong> Entonces </strong> el servicio envía el mensaje al número verificado y registra el resultado del envío.
+            <strong>Escenario 1: Búsqueda dentro del umbral técnico</strong><br><br>
+            <strong>Dado</strong> que existen productos registrados en la base de datos,<br>
+            <strong>Cuando</strong> el frontend consulta productos por nombre común,<br>
+            <strong>Entonces</strong> el backend debe devolver los resultados en un tiempo menor a 1.5 segundos bajo condiciones normales de prueba.
+            <br><br>
+            <strong>Escenario 2: Optimización de consulta</strong><br><br>
+            <strong>Dado</strong> que la búsqueda utiliza campos consultados con frecuencia,<br>
+            <strong>Cuando</strong> se ejecuta la consulta de productos,<br>
+            <strong>Entonces</strong> el sistema debe usar criterios de búsqueda eficientes, paginación o índices según corresponda.
+            <br><br>
+            <strong>Escenario 3: Respuesta sin resultados</strong><br><br>
+            <strong>Dado</strong> que el término ingresado no coincide con productos registrados,<br>
+            <strong>Cuando</strong> se ejecuta la búsqueda,<br>
+            <strong>Entonces</strong> el backend debe retornar una respuesta vacía controlada sin generar error.
+            <br><br>
+            <strong>Escenario 4: Registro de tiempo de respuesta</strong><br><br>
+            <strong>Dado</strong> que se ejecuta una búsqueda de productos durante el experimento,<br>
+            <strong>Cuando</strong> el backend responde la solicitud,<br>
+            <strong>Entonces</strong> el sistema debe permitir registrar el tiempo de respuesta para el evento <code>product_search_performed</code>.
         </td>
     </tr>
 </table>
+
+<p><em>Trazabilidad: US15 — Optimizar la búsqueda de productos por nombre común; Hipótesis 4 — Tolerancia a la Latencia de Búsqueda; QD2 — Umbral máximo de búsqueda tolerado por el usuario.</em></p>
+
+<p><em>Nota de alcance: TS16 se limita a la optimización técnica de la búsqueda por nombre común. No incluye búsqueda aproximada, autocorrección, sugerencias inteligentes, coincidencias difusas, pagos, suscripciones ni cálculo de ROI.</em></p> 
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
@@ -1376,22 +1725,22 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td align="center">TS17</td>
-        <td align="center">Desarrollador</td>
-        <td align="center">Alta</td>
-        <td align="center">EP-01</td>
+        <td align="center">Desarrollador frontend</td>
+        <td align="center">Baja</td>
+        <td align="center">EP-12</td>
     </tr>
     <tr>
         <th>Title</th>
-        <td colspan="3">Optimización del índice de búsqueda de productos</td>
+        <td colspan="3">Implementar soporte de localización en la interfaz</td>
     </tr>
     <tr>
         <th colspan="4">Description</th>
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Como </strong> desarrollador <br>
-            <strong> Quiero </strong> optimizar el índice de búsqueda por nombre <br>
-            <strong> Para </strong> que las consultas respondan por debajo del umbral de latencia definido.
+            <strong> Como </strong> desarrollador frontend <br>
+            <strong> Quiero </strong> implementar soporte de localización para los textos visibles de la interfaz <br>
+            <strong> Para </strong> permitir que el usuario pueda seleccionar una terminología o idioma disponible y evaluar si esto mejora la confianza y adopción de StockTrack.
         </td>
     </tr>
     <tr>
@@ -1399,18 +1748,32 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td colspan="4">
-            <strong> Escenario 1: Consulta bajo umbral</strong> <br><br>
-            <strong> Dado que </strong> existe un volumen de productos representativo <br>
-            <strong> Cuando </strong> se ejecuta una búsqueda por nombre <br>
-            <strong> Entonces </strong> el servicio devuelve los resultados en menos de 1.5 segundos.
+            <strong> Escenario 1: Carga de textos localizados en la interfaz</strong> <br><br>
+            <strong> Dado que </strong> existen textos localizados disponibles en el frontend <br>
+            <strong> Cuando </strong> el usuario selecciona una opción de idioma o terminología localizada <br>
+            <strong> Entonces </strong> la interfaz debe mostrar los textos principales según la opción seleccionada.
             <br><br>
-            <strong> Escenario 2: Coincidencia parcial</strong> <br><br>
-            <strong> Dado que </strong> el término ingresado es parcial o aproximado <br>
-            <strong> Cuando </strong> se procesa la consulta <br>
-            <strong> Entonces </strong> el servicio aplica coincidencia parcial sin degradar el tiempo de respuesta.
+            <strong> Escenario 2: Persistencia de la preferencia seleccionada</strong> <br><br>
+            <strong> Dado que </strong> el usuario seleccionó un idioma o terminología localizada <br>
+            <strong> Cuando </strong> cierra sesión y vuelve a ingresar a la aplicación <br>
+            <strong> Entonces </strong> el frontend debe mantener la preferencia seleccionada previamente.
+            <br><br>
+            <strong> Escenario 3: Alcance limitado a textos visibles</strong> <br><br>
+            <strong> Dado que </strong> la localización corresponde a una mejora de interfaz <br>
+            <strong> Cuando </strong> se aplique el cambio de idioma o terminología <br>
+            <strong> Entonces </strong> solo deben modificarse textos visibles de la interfaz, sin alterar reglas de negocio, cálculos, datos de inventario ni lógica backend.
+            <br><br>
+            <strong> Escenario 4: Registro de variante seleccionada</strong> <br><br>
+            <strong> Dado que </strong> el usuario cambia la opción de idioma o terminología localizada <br>
+            <strong> Cuando </strong> la preferencia queda aplicada en la interfaz <br>
+            <strong> Entonces </strong> el sistema debe permitir registrar la variante seleccionada para evaluar la hipótesis de adopción por localización.
         </td>
     </tr>
 </table>
+
+<p><em>Trazabilidad: US22 — Seleccionar el idioma de la interfaz; Hipótesis 3 — Adopción por Localización; QB2 — Relevancia del soporte multilingüe o localización para mercados con diversidad lingüística.</em></p>
+
+<p><em>Nota de alcance: TS18 se limita a la implementación frontend de textos localizados en la interfaz. No modifica reglas de negocio, cálculos, datos de inventario ni lógica backend. Su propósito es habilitar la validación de la hipótesis de localización dentro del MVP con un alcance controlado.</em></p> 
 
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
     <tr>
@@ -1421,46 +1784,6 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
     </tr>
     <tr>
         <td align="center">TS18</td>
-        <td align="center">Desarrollador</td>
-        <td align="center">Baja</td>
-        <td align="center">EP-12</td>
-    </tr>
-    <tr>
-        <th>Title</th>
-        <td colspan="3">Servicio de internacionalización (i18n)</td>
-    </tr>
-    <tr>
-        <th colspan="4">Description</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Como </strong> desarrollador <br>
-            <strong> Quiero </strong> implementar el soporte de internacionalización (i18n) <br>
-            <strong> Para </strong> servir los textos de la interfaz según el idioma seleccionado.
-        </td>
-    </tr>
-    <tr>
-        <th colspan="4">Acceptance Criteria</th>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <strong> Escenario 1: Entrega de recursos por idioma</strong> <br><br>
-            <strong> Dado que </strong> el usuario selecciona un idioma soportado <br>
-            <strong> Cuando </strong> solicita una vista de la aplicación <br>
-            <strong> Entonces </strong> el sistema entrega los textos en el idioma correspondiente.
-        </td>
-    </tr>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%;">
-    <tr>
-        <th>Story ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Epic</th>
-    </tr>
-    <tr>
-        <td align="center">TS19</td>
         <td align="center">Desarrollador</td>
         <td align="center">Alta</td>
         <td align="center">EP-06</td>
@@ -1498,16 +1821,593 @@ La fase de experimentación traduce los aprendizajes en validación (definidos c
 </table>
 
 ### 8.3.2. To-Be Product Backlog
-El backlog prioriza según el scoring del Question Backlog (8.1.4): primero los incrementos de las hipótesis de mayor riesgo (QD1 y QB1, 17 pts), luego rendimiento (QD2, 15), accesibilidad (QD3, 12) y localización (QB2, 10).
+
+El backlog prioriza según el scoring del Question Backlog (8.1.4): primero los incrementos de las hipótesis de mayor riesgo (**QD1** y **QB1**, 17 pts), luego rendimiento (**QD2**, 15 pts), accesibilidad (**QD3**, 12 pts) y localización (**QB2**, 10 pts).
 
 | # Orden | User Story Id | Título | Descripción | Story Points |
 | :------ | :------------ | :----- | :---------- | :----------- |
 | **01** | US17 | Registrar acción de mitigación sobre alertas de vencimiento próximo | Como dueño de bodega, quiero recibir una alerta anticipada de 7 días cuando un lote está próximo a vencer y registrar la acción que tomo, para actuar a tiempo y medir la efectividad de las alertas. | 5 |
-| **02** | US18 | Consultar el historial de movimientos por lote | Como dueño de bodega, quiero consultar el historial de entradas y salidas de cada lote, para hacer trazabilidad detallada y entender por qué un producto llegó a vencerse. | 3 |
-| **03** | US20 | Estimar el ahorro por mermas frente al costo de la suscripción | Como dueño de bodega, quiero comparar mis pérdidas estimadas por mermas con el costo del plan, para decidir de forma informada si la suscripción representa un ahorro. | 3 |
-| **04** | US21 | Contratar y gestionar el plan de suscripción | Como dueño de bodega, quiero contratar y administrar mi plan de suscripción, para acceder a las funcionalidades premium de la plataforma. | 8 |
-| **05** | US15 | Optimizar la búsqueda de productos por nombre común | Como dueño de bodega, quiero que la búsqueda por nombre común responda en menos de 1.5 segundos, para atender al cliente sin interrumpir la venta ni volver al registro manual. | 5 |
-| **06** | US22 | Visualizar el ahorro real por mermas evitadas | Como dueño de bodega, quiero ver el ahorro generado por las alertas de vencimiento que atendí, para confirmar el valor que aporta la plataforma frente a su costo. | 3 |
-| **07** | US16 | Visualizar reportes en modo de alto contraste | Como dueño de bodega, quiero activar un modo de alto contraste en los reportes, para leer los datos críticos sin errores en almacenes con poca iluminación o con fatiga visual. | 3 |
-| **08** | US19 | Recibir alertas de vencimiento por WhatsApp | Como dueño de bodega, quiero recibir las alertas de vencimiento próximo en WhatsApp, para enterarme durante la jornada sin depender de revisar la aplicación. | 8 |
-| **09** | US23 | Seleccionar el idioma de la interfaz | Como dueño de bodega de una zona con diversidad lingüística, quiero usar la plataforma con terminología localizada o en un idioma originario, para adoptar la herramienta con confianza. | 5 |
+| **02** | US18 | Consultar el historial de movimientos por lote | Como dueño de bodega, quiero consultar el historial de entradas, salidas y acciones registradas sobre cada lote, para conocer la trazabilidad del producto y entender qué ocurrió antes de que un lote sea vendido, devuelto, liquidado, gestionado o vencido. | 3 |
+| **03** | US21 | Visualizar el ahorro real por mermas evitadas | Como dueño de bodega, quiero ver el ahorro generado por las alertas de vencimiento que atendí, para confirmar el valor que aporta la plataforma frente a su costo. | 3 |
+| **04** | US19 | Estimar el ahorro por reducción de mermas frente al costo de la suscripción | Como dueño de bodega, quiero estimar el ahorro potencial generado por la reducción de mermas, para comparar ese ahorro estimado frente al costo de la suscripción y decidir si el plan representa valor para mi negocio. | 3 |
+| **05** | US20 | Contratar y gestionar el plan de suscripción | Como dueño de bodega, quiero contratar y administrar mi plan de suscripción, para acceder a las funcionalidades premium de la plataforma. | 8 |
+| **06** | US15 | Optimizar la búsqueda de productos por nombre común | Como dueño de bodega, quiero buscar productos por nombre común con un tiempo de respuesta menor a 1.5 segundos, para atender al cliente sin interrumpir la venta ni volver al registro manual. | 5 |
+| **07** | US16 | Visualizar reportes en modo de alto contraste | Como dueño de bodega, quiero activar un modo de alto contraste en los reportes, para evaluar si la información crítica puede leerse con mayor claridad en condiciones de baja iluminación o fatiga visual. | 3 |
+| **08** | US22 | Seleccionar el idioma de la interfaz | Como dueño de bodega de una zona con diversidad lingüística, quiero usar la plataforma con terminología localizada o en un idioma originario, para adoptar la herramienta con confianza. | 3 |
+
+> **Nota sobre US22:** Aunque QB2 y H3 tienen menor prioridad frente a las hipótesis centrales del producto, el equipo decidió mantener US22 dentro del MVP como una implementación mínima de localización. Esta versión no contempla una internacionalización completa, sino una primera adaptación de textos principales de la interfaz para validar si la terminología localizada mejora la confianza y adopción del usuario. Por ello, la historia conserva Story Points, pero se ubica al final del backlog y se limita a un alcance reducido.
+
+#### Technical Stories Priorizadas
+
+Además de las User Stories funcionales, el backlog incluye historias técnicas necesarias para habilitar las funcionalidades To-Be del MVP. Estas historias no representan valor directo visible para el usuario, pero permiten implementar servicios, optimizar rendimiento, registrar eventos y sostener técnicamente las funcionalidades priorizadas.
+
+| Orden técnico | Technical Story Id | Historia relacionada | Epic | Título | Justificación técnica | Story Points |
+| :---: | :--- | :--- | :--- | :--- | :--- | :---: |
+| **01** | TS18 | US17  | EP-06 / EP-11 | Endpoints de acción y telemetría de alertas de lote | Permite registrar acciones sobre alertas internas de vencimiento y emitir eventos como `batch_alert_triggered` y `batch_alert_action`, necesarios para calcular el Alert Action Rate de H2. | 5 |
+| **02** | TS16 | US15 | EP-01 | Optimizar consultas de búsqueda de productos | Permite cumplir el umbral de búsqueda menor a 1.5 segundos mediante optimización de consultas, paginación, índices o mejoras en la respuesta del backend. | 5 |
+| **03** | TS15 | US19 / US20 | EP-11 | Endpoints de gestión de suscripción y pago | Habilita la contratación de planes, activación de suscripciones, consulta de estado del plan y control de vigencia, alineado con la validación comercial de H1. | 5 |
+| **04** | TS17 | US22 | EP-12 | Implementar soporte de localización en la interfaz | Permite aplicar textos localizados en la interfaz y registrar la variante seleccionada para validar H3, sin modificar reglas de negocio, cálculos, datos de inventario ni lógica backend. | 3 |
+
+**Criterio de priorización técnica:**  
+Las Technical Stories se ordenan según su relación con las hipótesis de mayor riesgo y con las funcionalidades principales del MVP. Primero se priorizan las tareas técnicas relacionadas con alertas internas e historial de lotes, porque apoyan la propuesta de valor central de StockTrack. Luego se prioriza la optimización de búsqueda, ya que impacta directamente en la experiencia diaria del usuario. Después se ubican los servicios de suscripción y pago, necesarios para validar la viabilidad comercial. Finalmente, se incluye localización como implementación de prioridad baja y alcance controlado.
+
+**Nota de alcance:**  
+No se incluye ninguna Technical Story relacionada con WhatsApp ni mensajería externa, porque esa funcionalidad fue retirada del alcance del MVP. Las alertas preventivas se gestionarán únicamente dentro de StockTrack mediante alertas internas, eventos del sistema y registro de acciones sobre lotes próximos a vencer.
+
+## 8.3.3. Pipeline-supported, Experiment-Driven To-Be Software Platform Lifecycle
+
+### 8.3.3.1. To-Be Sprint Backlogs
+Cada una de las To-Be User Stories definidas en la sección 8.3.1 (US20–US25) fue descompuesta en work items/tasks concretos y planificada dentro del Sprint de experimentación. La estimación de cada tarea (en Story Points) suma exactamente los puntos asignados a su historia en el To-Be Product Backlog (sección 8.3.2), garantizando la trazabilidad entre la hipótesis, la historia y el trabajo ejecutado. Cada historia fue asignada a un integrante del equipo como responsable, permitiendo un desarrollo paralelo de los seis experimentos planteados.
+
+**Sprint 1 — Experimentación (To-Be)**
+
+| User Story ID | User Story Title | Task ID | Task Title | Description | Estimation (Story Points) | Assigned To | Status (To-do / In-Process / To-Review / Done) |
+| :--- | :--- | :--- | :--- | :--- | :---: | :--- | :--- |
+| US17 | Registrar acción de mitigación sobre alertas de vencimiento próximo | TK01 | Diseñar flujo de atención de alertas | Diseñar la interfaz donde el dueño de bodega pueda visualizar alertas de lotes próximos a vencer y seleccionar una acción de mitigación. | 2 | Yaku Guzman | To-do |
+| US17 | Registrar acción de mitigación sobre alertas de vencimiento próximo | TK02 | Implementar registro de acciones sobre alertas | Implementar la lógica para registrar acciones como liquidación o devolución, asociándolas a la alerta correspondiente y actualizando su estado. | 3 | Yaku Guzman | To-do |
+| US18 | Consultar el historial de movimientos por lote | TK03 | Diseñar vista de historial por lote | Diseñar la pantalla de detalle donde se muestren entradas, salidas y acciones registradas sobre cada lote en orden cronológico. | 1 | Yaku Guzman | To-do |
+| US18 | Consultar el historial de movimientos por lote | TK04 | Implementar consulta de movimientos del lote | Implementar la consulta y visualización de movimientos históricos por lote, incluyendo fecha, cantidad, tipo de movimiento y acción registrada. | 2 | Yaku Guzman | To-do |
+| US21 | Visualizar el ahorro real por mermas evitadas | TK05 | Diseñar reporte de ahorro real | Diseñar la vista donde el usuario pueda visualizar el ahorro generado por productos liquidados o devueltos a tiempo gracias a las alertas atendidas. | 1 | Dayro Rios | To-do |
+| US21 | Visualizar el ahorro real por mermas evitadas | TK06 | Implementar cálculo de ahorro por mermas evitadas | Implementar la lógica para calcular el valor monetario de los productos salvados y mostrar el ahorro acumulado del periodo. | 2 | Dayro Rios | To-do |
+| US19 | Estimar el ahorro por reducción de mermas frente al costo de la suscripción | TK07 | Diseñar calculadora de ahorro estimado | Diseñar una interfaz que permita ingresar pérdidas estimadas por mermas y compararlas con el costo de la suscripción. | 1 | Dayro Rios | To-do |
+| US19 | Estimar el ahorro por reducción de mermas frente al costo de la suscripción | TK08 | Implementar cálculo estimado de ROI | Implementar la lógica para calcular el ahorro potencial y mostrar si la suscripción representa valor económico para el negocio. | 2 | Dayro Rios | To-do |
+| US20 | Contratar y gestionar el plan de suscripción | TK09 | Diseñar flujo de planes y estado de suscripción | Diseñar la pantalla donde el usuario pueda visualizar planes disponibles, beneficios, estado actual de su suscripción y fecha de renovación. | 3 | Antonio Navarro | To-do |
+| US20 | Contratar y gestionar el plan de suscripción | TK10 | Implementar servicios de gestión de suscripción | Implementar la lógica para registrar una suscripción activa, consultar el estado del plan, gestionar renovación y cancelar la renovación. | 5 | Antonio Navarro | To-do |
+| US15 | Optimizar la búsqueda de productos por nombre común | TK11 | Analizar rendimiento actual de búsqueda | Medir el tiempo de respuesta actual de la búsqueda de productos por nombre común para identificar cuellos de botella. | 2 | Antonio Navarro | To-do |
+| US15 | Optimizar la búsqueda de productos por nombre común | TK12 | Optimizar búsqueda y coincidencias parciales | Implementar mejoras para que la búsqueda responda en menos de 1.5 segundos y acepte coincidencias parciales o aproximadas. | 3 | Antonio Navarro | To-do |
+| US16 | Visualizar reportes en modo de alto contraste | TK13 | Diseñar versión de alto contraste para reportes | Diseñar una variante visual de alto contraste para mejorar la lectura de datos críticos en condiciones de baja iluminación o fatiga visual. | 1 | Antonio Navarro | To-do |
+| US16 | Visualizar reportes en modo de alto contraste | TK14 | Implementar activación del modo de alto contraste | Implementar la opción para activar el modo de alto contraste en reportes y conservar la preferencia del usuario. | 2 | Antonio Navarro | To-do |
+| US22 | Seleccionar el idioma de la interfaz | TK15 | Preparar estructura de localización de textos | Organizar los textos principales de la interfaz para permitir su traducción y adaptación a un idioma o terminología localizada. | 1 | Giovany Torres | To-do |
+| US22 | Seleccionar el idioma de la interfaz | TK16 | Implementar selección y persistencia de idioma | Implementar la selección de idioma en la interfaz y guardar la preferencia para futuras sesiones del usuario. | 2 | Giovany Torres | To-do |
+
+**Total del Sprint:** 33 Story Points  
+**User Stories incluidas:** US17, US18, US21, US19, US20, US15, US16 y US22.
+
+**Justificación del Sprint:**  
+Este sprint prioriza los incrementos To-Be definidos en el Product Backlog, iniciando por las funcionalidades de mayor impacto para el negocio: reducción de mermas, trazabilidad de lotes y validación del valor económico de la suscripción. Además, se incluyen mejoras de rendimiento, accesibilidad y localización para fortalecer la experiencia del usuario y validar las hipótesis planteadas en el Capítulo VIII.
+
+### 8.3.3.2. Implemented To-Be Landing Page Evidence
+
+**Nota:**  
+Para las To-Be User Stories definidas en esta etapa, no se realizaron cambios directamente sobre la Landing Page. Las mejoras propuestas en el backlog To-Be están enfocadas principalmente en funcionalidades internas de la aplicación web, como alertas de vencimiento, historial de lotes, ahorro por mermas, suscripción, búsqueda optimizada, reportes de alto contraste y localización de la interfaz.
+
+Por ello, la Landing Page se mantiene como un artefacto informativo y de presentación del producto, sin modificaciones funcionales asociadas a las User Stories To-Be de este sprint. La evidencia de implementación se concentra en la aplicación web y en los módulos internos relacionados con la gestión de inventario y validación experimental.
+
+### 8.3.3.3. Implemented To-Be Frontend-Web Application Evidence
+
+Implementación de el historial de movimientos por lote, la visualización del ahorro real por mermas evitadas, la estimación de ahorro frente al costo de suscripción, la contratación y gestión del plan de suscripción, la optimización de búsqueda de productos por nombre común, la visualización de reportes en modo de alto contraste y la selección del idioma de la interfaz.
+
+![movimientos](../assets/img/chapter-VIII/to-be1.png)
+
+Implementación de la funcionalidad de alertas de vencimiento próximo y registro de acciones de mitigación sobre los lotes.
+
+![alertas](../assets/img/chapter-VIII/to-be4.png)
+
+Implementación de lenguaje de localización en la interfaz y persistencia de la preferencia del usuario.
+
+![localización](../assets/img/chapter-VIII/to-be2.png)
+
+Implementación del impacto económico de la suscripción frente al ahorro estimado por reducción de mermas.
+
+![localización](../assets/img/chapter-VIII/to-be3.png)
+
+### 8.3.3.4. Implemented To-Be Native-Mobile Application Evidence
+
+**No aplica.** El alcance del producto StockTrack comprende Landing Page, Web Application y RESTful API; no contempla el desarrollo de una aplicación móvil nativa en esta fase del proyecto, por lo que no se presenta evidencia de implementación de las To-Be User Stories en Mobile.
+
+
+### 8.3.3.5. Implemented To-Be RESTful API and/or Serverless Backend Evidence
+
+Endpoint de suscripción y pago implementado para habilitar la contratación de planes, activación de suscripciones, consulta de estado del plan y control de vigencia.
+
+![subscriptions](../assets/img/chapter-VIII/backtobe1.png)
+
+Endpint de expiracion de alertas de vencimiento próximo implementado para registrar la acción tomada por el usuario y emitir eventos de telemetría.
+
+![subscriptions](../assets/img/chapter-VIII/backtobe2.png)
+
+Endpoint para localización de la interfaz implementado para permitir la selección de idioma o terminología localizada y persistir la preferencia del usuario.
+
+![subscriptions](../assets/img/chapter-VIII/backtobe3.png)
+
+### 8.3.3.6. Team Collaboration Insights
+
+Se presentan los analíticos de contribución de GitHub para los tres repositorios involucrados en la implementación de las To-Be User Stories (US20–US25), evidenciando la participación del equipo durante el sprint de experimentación.
+
+**Repositorio de Reporte**
+
+![Analíticos de colaboración del repositorio de Reporte: 6 integrantes con commits registrados entre abril y junio](../assets/img//chapter-VIII/collaboration-insights-reporte.png)
+
+**Repositorio de Backend**
+
+![Analíticos de colaboración del repositorio de Backend: 4 integrantes con commits concentrados entre mayo y julio](/assets/img/chapter-VIII/back-insght.png)
+
+**Repositorio de Frontend**
+
+![Analíticos de colaboración del repositorio de Frontend: 3 integrantes con commits concentrados en mayo](/assets/img/chapter-VIII/front-insight.png)
+
+## 8.3.4. To-Be Validation Interviews
+
+Las entrevistas de validación del Capítulo VIII están diseñadas para evaluar las nuevas funcionalidades experimentales implementadas a partir de las hipótesis definidas.
+Las entrevistas estan dirigidas a nuestro 2 segmentos objetivos definidos para el proyecto en desarrollo.
+
+- **Segmento #1:** Dueños de bodegas.
+- **Segmento #2:** Startups y emprendedores en expansión con necesidades logísticas.
+
+---
+
+### 8.3.4.1. Diseño de Entrevistas
+
+#### Preguntas para Segmento #1: Dueños de bodegas
+
+1. ¿Recibir una alerta cuando un lote esté próximo a vencer y poder registrar una acción como liquidación o devolución le ayudaría a reducir pérdidas en su bodega?
+
+2. ¿Le resultaría útil consultar el historial de entradas, salidas y acciones realizadas sobre cada lote para saber qué ocurrió antes de que un producto se venda, se gestione o llegue a vencerse?
+
+3. ¿Ver un reporte con el ahorro real generado por las alertas atendidas le ayudaría a confiar más en el valor que aporta la plataforma?
+
+4. Antes de pagar una suscripción, ¿le gustaría comparar cuánto pierde actualmente por productos vencidos frente al costo mensual de la plataforma?
+
+5. ¿Estaría dispuesto a contratar y gestionar un plan de suscripción si la plataforma demuestra que puede ayudarlo a reducir mermas y ordenar mejor su inventario?
+
+6. Cuando atiende a un cliente, ¿considera importante que la búsqueda de productos por nombre común responda en menos de 1.5 segundos?
+
+7. ¿Le sería útil activar un modo de alto contraste en los reportes para leer mejor la información crítica en lugares con poca iluminación o después de una jornada larga?
+
+8. ¿Le generaría más confianza usar la plataforma si pudiera seleccionar el idioma de la interfaz o una terminología más cercana a su forma de trabajo?
+
+---
+
+#### Preguntas para Segmento #2: Startups y emprendedores en expansión con necesidades logísticas
+
+1. ¿Considera útil contar con alertas de productos próximos a vencer y registrar la acción tomada para mejorar el control de pérdidas dentro de su negocio?
+
+2. ¿Un historial detallado de movimientos por lote le ayudaría a mejorar la trazabilidad del inventario y tomar mejores decisiones logísticas?
+
+3. ¿Visualizar el ahorro real generado por una mejor gestión de productos próximos a vencer le permitiría medir mejor el impacto económico de la plataforma?
+
+4. ¿Una calculadora de ahorro estimado frente al costo de suscripción le ayudaría a decidir si contratar una herramienta de gestión de inventario es rentable para su negocio?
+
+5. ¿Consideraría contratar un plan de suscripción si la plataforma ofrece funcionalidades que acompañen el crecimiento operativo de su emprendimiento?
+
+6. ¿Qué tan importante sería para su operación contar con una búsqueda rápida de productos por nombre común para reducir tiempos en la gestión diaria?
+
+7. ¿Considera necesario que los reportes tengan una opción de alto contraste para facilitar la lectura de datos importantes en distintas condiciones de trabajo?
+
+8. Si su negocio crece o se expande a otros mercados, ¿sería importante contar con una interfaz adaptable a distintos idiomas o terminologías locales?
+
+---
+
+Después de revisar las funcionalidades propuestas, ¿cuál de estos cambios considera más importante para su negocio y por qué?
+
+### 8.3.4.2. Registro de Entrevistas
+
+Link de entrevistas:<a href="https://tinyurl.com/66etkfv8">https://tinyurl.com/66etkfv8</a> <br>
+
+### 8.3.4.2. Registro de Entrevistas
+
+A continuación, se presenta el registro de entrevistas de validación To-Be realizadas a los dos segmentos objetivo del proyecto: dueños de bodegas y emprendedores en expansión con necesidades logísticas. Las respuestas fueron organizadas según las funcionalidades propuestas en el backlog To-Be.
+
+---
+
+### Segmento: Dueños de bodegas  
+
+#### ENTREVISTA 1
+
+![Entrevista 1 - Segmento Dueños de Bodegas](../assets/img/chapter-II/lucas-interview.png) <br>
+
+**Inicia:** 0 minutos y 0 segundos  
+
+**Duración:** 2 minutos y 53 segundos  
+
+**Nombre:** Lucarelly Sanchez Heredia  
+
+**Edad:** 21 años  
+
+**Resumen:**  
+Lucarelly administra una bodega junto a su abuelo y actualmente utiliza Excel y una libreta para registrar productos, aunque reconoce que no siempre mantiene la información actualizada. Indicó que uno de sus principales problemas es la mezcla de lotes y fechas de vencimiento, lo que puede generar pérdidas. Valoró positivamente las funcionalidades relacionadas con alertas de vencimiento, historial de lotes y búsqueda rápida de productos, ya que estas mejoras podrían ayudarle a tener mayor control del inventario y reducir errores en la gestión diaria.
+
+### Respuestas del entrevistado
+
+1. **¿Recibir una alerta cuando un lote esté próximo a vencer y poder registrar una acción como liquidación o devolución le ayudaría a reducir pérdidas en su bodega?**  
+   Sí, me ayudaría bastante porque a veces no nos damos cuenta de qué productos están por vencer hasta que ya es tarde. Si el sistema me avisa antes y puedo registrar si lo liquidé o lo devolví, tendría más orden y evitaría perder dinero.
+
+2. **¿Le resultaría útil consultar el historial de entradas, salidas y acciones realizadas sobre cada lote?**  
+   Sí, porque actualmente mezclamos productos nuevos con productos antiguos y eso complica saber qué lote llegó primero. Con un historial podría revisar mejor qué entró, qué salió y qué productos todavía están pendientes de vender.
+
+3. **¿Ver un reporte con el ahorro real generado por las alertas atendidas le ayudaría a confiar más en el valor que aporta la plataforma?**  
+   Sí, porque si veo cuánto estoy ahorrando realmente, podría entender mejor si la aplicación vale la pena. Me ayudaría a comparar si estoy perdiendo menos productos que antes.
+
+4. **Antes de pagar una suscripción, ¿le gustaría comparar cuánto pierde actualmente por productos vencidos frente al costo mensual de la plataforma?**  
+   Sí, porque antes de pagar tendría que saber si me conviene. Si la plataforma me muestra que pierdo más dinero por productos vencidos que lo que cuesta la suscripción, sería más fácil decidir.
+
+5. **¿Estaría dispuesto a contratar y gestionar un plan de suscripción si la plataforma demuestra que puede ayudarlo a reducir mermas y ordenar mejor su inventario?**  
+   Sí, pero tendría que ser un precio accesible. Si realmente me ayuda a ordenar mejor la bodega y reducir productos vencidos, sí lo consideraría.
+
+6. **Cuando atiende a un cliente, ¿considera importante que la búsqueda de productos por nombre común responda en menos de 1.5 segundos?**  
+   Sí, porque cuando un cliente pregunta por un producto, uno necesita responder rápido. Si la búsqueda demora mucho, sería más fácil seguir revisando manualmente.
+
+7. **¿Le sería útil activar un modo de alto contraste en los reportes?**  
+   Sí, porque a veces se revisan los productos rápido o con poca luz. Si el reporte se ve más claro, ayudaría a leer mejor las fechas y cantidades.
+
+8. **¿Le generaría más confianza usar la plataforma si pudiera seleccionar el idioma de la interfaz o una terminología más cercana a su forma de trabajo?**  
+   Sí, porque si los textos son claros y fáciles de entender, sería más sencillo usar la plataforma. No necesariamente necesito otro idioma, pero sí términos simples.
+
+---
+
+#### ENTREVISTA 2
+
+![Entrevista 2 - Segmento Dueños de Bodegas](../assets/img/chapter-II/Interview-Rubi.png) <br>
+
+**Inicia:** 0 minutos y 0 segundos  
+
+**Duración:** 4 minutos y 2 segundos  
+
+**Nombre:** Rubi Vega  
+
+**Edad:** 19 años  
+
+**Resumen:**  
+Rubi indicó que su bodega familiar no cuenta con un sistema formal de gestión de inventario y que el control se realiza principalmente de manera manual. Señaló que uno de los mayores problemas es el seguimiento de fechas de vencimiento, especialmente cuando ingresan nuevos productos. Consideró útiles las alertas preventivas, el historial de lotes y la búsqueda rápida, ya que podrían facilitar el control del stock y permitir una administración más ordenada del negocio.
+
+### Respuestas del entrevistado
+
+1. **¿Recibir una alerta cuando un lote esté próximo a vencer y poder registrar una acción como liquidación o devolución le ayudaría a reducir pérdidas en su bodega?**  
+   Sí, sería muy útil porque actualmente nos damos cuenta de los vencimientos cuando limpiamos los estantes o revisamos manualmente. Una alerta anticipada nos permitiría actuar antes.
+
+2. **¿Le resultaría útil consultar el historial de entradas, salidas y acciones realizadas sobre cada lote?**  
+   Sí, porque cuando llegan productos nuevos se pierde el seguimiento de los antiguos. Tener un historial ayudaría a saber qué productos se vendieron, cuáles siguen guardados y cuáles están por vencer.
+
+3. **¿Ver un reporte con el ahorro real generado por las alertas atendidas le ayudaría a confiar más en el valor que aporta la plataforma?**  
+   Sí, porque ver el ahorro en dinero sería una forma clara de saber si la plataforma está ayudando. No sería solo una alerta, sino una prueba del beneficio.
+
+4. **Antes de pagar una suscripción, ¿le gustaría comparar cuánto pierde actualmente por productos vencidos frente al costo mensual de la plataforma?**  
+   Sí, porque al ser una bodega familiar se cuidan mucho los gastos. Si el sistema demuestra que ayuda a ahorrar más de lo que cuesta, sería más fácil aceptarlo.
+
+5. **¿Estaría dispuesto a contratar y gestionar un plan de suscripción si la plataforma demuestra que puede ayudarlo a reducir mermas y ordenar mejor su inventario?**  
+   Sí, siempre que el plan sea económico y fácil de usar. Si evita pérdidas y ayuda a controlar mejor el negocio, sí podría ser una buena inversión.
+
+6. **Cuando atiende a un cliente, ¿considera importante que la búsqueda de productos por nombre común responda en menos de 1.5 segundos?**  
+   Sí, porque en una bodega todo debe ser rápido. Si el sistema responde lento, uno se puede desesperar o volver a revisar a mano.
+
+7. **¿Le sería útil activar un modo de alto contraste en los reportes?**  
+   Sí, porque facilitaría revisar la información. A veces los reportes con letras pequeñas o colores bajos cansan la vista.
+
+8. **¿Le generaría más confianza usar la plataforma si pudiera seleccionar el idioma de la interfaz o una terminología más cercana a su forma de trabajo?**  
+   Sí, principalmente si usa palabras sencillas. Para mí sería importante que no tenga términos muy técnicos.
+
+---
+### Segmento: Startups y emprendedores en expansión con necesidades logísticas  
+
+#### ENTREVISTA 1
+
+![Entrevista 1 - Startups y emprendedores en expansión con necesidades logísticas](../assets/img/chapter-II/Entrevista-Alexander-Miranda.png) <br>
+
+**Inicia:** 0 minutos y 0 segundos  
+
+**Duración:** 3 minutos y 30 segundos  
+
+**Nombre:** Alexander Miranda Vivanco  
+
+**Edad:** 27 años  
+
+**Resumen:**  
+Alexander tiene un emprendimiento dedicado a la venta de productos para mascotas. Actualmente revisa su almacén de manera presencial y registra su inventario en Excel, apoyándose también en boletas de venta. Indicó que el proceso de revisión de stock le consume tiempo y que le gustaría mejorar el control de entradas, salidas y reposición de productos. Valoró las funcionalidades To-Be relacionadas con trazabilidad, búsqueda rápida, reportes de ahorro y herramientas que permitan profesionalizar su gestión logística.
+
+### Respuestas del entrevistado
+
+1. **¿Considera útil contar con alertas de productos próximos a vencer y registrar la acción tomada para mejorar el control de pérdidas dentro de su negocio?**  
+   Sí, porque en mi caso vendo productos para mascotas y algunos tienen fecha de vencimiento. Si el sistema me avisa antes, podría hacer promociones o priorizar su venta.
+
+2. **¿Un historial detallado de movimientos por lote le ayudaría a mejorar la trazabilidad del inventario y tomar mejores decisiones logísticas?**  
+   Sí, definitivamente. Actualmente reviso el almacén de forma presencial y eso toma tiempo. Un historial me permitiría saber mejor qué productos entraron, salieron o necesitan reposición.
+
+3. **¿Visualizar el ahorro real generado por una mejor gestión de productos próximos a vencer le permitiría medir mejor el impacto económico de la plataforma?**  
+   Sí, porque como emprendedor necesito saber si una herramienta realmente me genera beneficio. Si puedo ver el ahorro, tendría más argumentos para seguir usándola.
+
+4. **¿Una calculadora de ahorro estimado frente al costo de suscripción le ayudaría a decidir si contratar una herramienta de gestión de inventario es rentable para su negocio?**  
+   Sí, porque antes de pagar una plataforma tendría que saber si realmente me conviene. Una calculadora me ayudaría a comparar el costo con el ahorro esperado.
+
+5. **¿Consideraría contratar un plan de suscripción si la plataforma ofrece funcionalidades que acompañen el crecimiento operativo de su emprendimiento?**  
+   Sí, si el plan se adapta al tamaño de mi negocio. Si me ayuda con inventario, reportes y control de productos, podría ser útil para crecer de manera más ordenada.
+
+6. **¿Qué tan importante sería para su operación contar con una búsqueda rápida de productos por nombre común?**  
+   Sería importante porque cuando reviso productos o atiendo pedidos, necesito encontrar rápido la información. Una búsqueda lenta haría que pierda tiempo.
+
+7. **¿Considera necesario que los reportes tengan una opción de alto contraste para facilitar la lectura de datos importantes?**  
+   Sí, no lo veo como lo más urgente, pero sí ayuda. Si el reporte tiene datos importantes, debe ser fácil de leer y entender.
+
+8. **Si su negocio crece o se expande a otros mercados, ¿sería importante contar con una interfaz adaptable a distintos idiomas o terminologías locales?**  
+   Sí, sobre todo si en el futuro se trabaja con más personas o se expande el negocio. Una interfaz adaptable puede ayudar a que más usuarios entiendan la plataforma.
+
+---
+
+#### ENTREVISTA 2
+
+![Entrevista 2 - Startups y emprendedores en expansión con necesidades logísticas](../assets/img/chapter-II/entrevista-alicia-navarro.png) <br>
+
+**Inicia:** 0 minutos y 0 segundos  
+
+**Duración:** 3 minutos y 32 segundos  
+
+**Nombre:** Alicia Navarro Chang  
+
+**Edad:** 20 años  
+
+**Resumen:**  
+Alicia tiene un negocio de venta de queques y gestiona sus insumos mediante Notion y Excel. Reconoce que el proceso sigue siendo manual y propenso a errores, especialmente en conteos, cálculos y control de compras y salidas. Indicó que le gustaría contar con una herramienta más automática, con funcionalidades claras y planes de suscripción adecuados. Consideró relevantes las mejoras To-Be relacionadas con historial de movimientos, búsqueda rápida, reportes de ahorro y cálculo de rentabilidad frente al costo de la plataforma.
+
+### Respuestas del entrevistado
+
+1. **¿Considera útil contar con alertas de productos próximos a vencer y registrar la acción tomada para mejorar el control de pérdidas dentro de su negocio?**  
+   Sí, porque en mi negocio uso insumos que pueden vencerse o malograrse. Si la plataforma me avisa antes, podría usarlos a tiempo o evitar comprar de más.
+
+2. **¿Un historial detallado de movimientos por lote le ayudaría a mejorar la trazabilidad del inventario y tomar mejores decisiones logísticas?**  
+   Sí, me ayudaría bastante. Actualmente uso Notion y Excel, pero igual puedo equivocarme. Un historial automático permitiría saber qué insumos entraron, salieron y cuándo se usaron.
+
+3. **¿Visualizar el ahorro real generado por una mejor gestión de productos próximos a vencer le permitiría medir mejor el impacto económico de la plataforma?**  
+   Sí, porque muchas veces no calculo exactamente cuánto pierdo por insumos que no uso a tiempo. Ver ese ahorro en un reporte sería muy útil para tomar decisiones.
+
+4. **¿Una calculadora de ahorro estimado frente al costo de suscripción le ayudaría a decidir si contratar una herramienta de gestión de inventario es rentable para su negocio?**  
+   Sí, porque he visto plataformas que no tienen planes adecuados. Si puedo comparar el costo con el ahorro que me generaría, podría decidir mejor si contratarla.
+
+5. **¿Consideraría contratar un plan de suscripción si la plataforma ofrece funcionalidades que acompañen el crecimiento operativo de su emprendimiento?**  
+   Sí, pero dependería del precio y de que realmente tenga las herramientas que necesito. Si reduce errores y me ahorra tiempo, sí lo consideraría.
+
+6. **¿Qué tan importante sería para su operación contar con una búsqueda rápida de productos por nombre común?**  
+   Sería importante porque manejo varios insumos y a veces necesito revisar rápido cantidades o fechas. Si busco por nombre y aparece rápido, me ayudaría a trabajar mejor.
+
+7. **¿Considera necesario que los reportes tengan una opción de alto contraste para facilitar la lectura de datos importantes?**  
+   Sí, porque cuando reviso reportes con muchos datos puede ser cansado. Un modo más claro ayudaría a identificar mejor alertas, cantidades y fechas.
+
+8. **Si su negocio crece o se expande a otros mercados, ¿sería importante contar con una interfaz adaptable a distintos idiomas o terminologías locales?**  
+   Sí, aunque para mi etapa actual no sería lo principal. Pero si el negocio crece o más personas usan la herramienta, podría ser útil tener opciones de idioma o términos más personalizados.
+
+## 8.4. Experiment Aftermath & Analysis
+
+### 8.4.1. Analysis and Interpretation of Results
+
+Las entrevistas de validación tuvieron como objetivo evaluar la aceptación y utilidad de las nuevas funcionalidades To-Be propuestas para StockTrack, orientadas a mejorar la gestión de inventario, la trazabilidad de lotes, la reducción de mermas, la visualización del ahorro, la optimización de búsqueda, la accesibilidad de reportes y la localización de la interfaz.
+
+Estas entrevistas fueron realizadas a los dos segmentos objetivo definidos para el proyecto: **dueños de bodegas** y **startups/emprendedores en expansión con necesidades logísticas**. Los participantes compartieron su percepción sobre las funcionalidades planteadas, considerando su experiencia actual con herramientas como Excel, libretas, Notion, WhatsApp y revisiones manuales de inventario.
+
+Los resultados obtenidos permitieron identificar qué funcionalidades generan mayor valor para los usuarios, cuáles requieren ajustes antes de ser implementadas completamente y qué mejoras pueden fortalecer la propuesta de valor del producto.
+
+---
+
+### Preguntas formuladas
+
+1. ¿Recibir alertas de productos o lotes próximos a vencer y registrar una acción de mitigación ayudaría a reducir pérdidas?
+2. ¿Consultar el historial de entradas, salidas y acciones por lote facilitaría la trazabilidad del inventario?
+3. ¿Visualizar el ahorro real generado por las alertas atendidas aumentaría la confianza en la plataforma?
+4. ¿Comparar el ahorro estimado por reducción de mermas frente al costo de suscripción ayudaría en la decisión de pago?
+5. ¿Contrataría un plan de suscripción si la plataforma demuestra que reduce pérdidas y mejora el control del inventario?
+6. ¿La búsqueda rápida de productos por nombre común sería útil para agilizar la operación diaria?
+7. ¿El modo de alto contraste en reportes facilitaría la lectura de información crítica?
+8. ¿Seleccionar el idioma o usar una terminología más cercana al usuario aumentaría la confianza en la plataforma?
+
+Estas preguntas fueron respondidas por cuatro participantes pertenecientes a los segmentos objetivo: dos dueños de bodegas y dos emprendedores en expansión con necesidades logísticas.
+
+---
+
+### Análisis de datos demográficos
+
+#### Distribución de participantes
+
+Las entrevistas fueron realizadas a cuatro usuarios pertenecientes al público objetivo del proyecto.
+
+- **Dueños de bodegas:** 2 participantes (50%).
+- **Startups y emprendedores en expansión:** 2 participantes (50%).
+
+#### Distribución de edades
+
+Las edades de los participantes oscilaron entre los 19 y 27 años.
+
+- **19 - 21 años:** 3 participantes (75%).
+- **22 - 27 años:** 1 participante (25%).
+
+#### Perfil operativo de los entrevistados
+
+Los usuarios entrevistados presentan una gestión de inventario principalmente manual o semidigital. Los dueños de bodegas utilizan herramientas como Excel, libretas y revisión física de estantes, mientras que los emprendedores emplean Excel, Notion, boletas, WhatsApp, Instagram y revisión presencial de almacén.
+
+Esto confirma que los segmentos objetivo aún enfrentan problemas relacionados con:
+
+- Falta de control en tiempo real del inventario.
+- Seguimiento limitado de fechas de vencimiento.
+- Errores humanos en conteos y cálculos.
+- Dificultad para conocer entradas y salidas de productos.
+- Necesidad de herramientas simples, accesibles y de bajo costo.
+
+---
+
+### Análisis por funcionalidad To-Be
+
+#### 1. Alertas de vencimiento y registro de acciones
+
+La funcionalidad de alertas preventivas fue valorada positivamente por los cuatro entrevistados. Los dueños de bodegas indicaron que actualmente suelen detectar productos vencidos al limpiar estantes o revisar manualmente, por lo que una alerta anticipada permitiría tomar acciones antes de perder el producto.
+
+En el caso de los emprendedores, también se consideró útil para productos con fecha de vencimiento o insumos perecibles. Se mencionó que registrar acciones como liquidación, devolución o uso anticipado permitiría tener mayor control sobre las decisiones tomadas.
+
+**Interpretación:**  
+La funcionalidad presenta una aceptación alta, ya que responde directamente a uno de los principales problemas identificados: la pérdida de productos por falta de seguimiento. Esta mejora valida la importancia de la US17 dentro del Product Backlog To-Be.
+
+**Resultado:** Aceptación alta.
+
+---
+
+#### 2. Historial de movimientos por lote
+
+Los entrevistados coincidieron en que contar con un historial de movimientos por lote sería útil para conocer qué productos ingresaron, salieron, fueron gestionados o llegaron a vencerse. En las bodegas, esta necesidad se relaciona con la mezcla de lotes nuevos y antiguos. En los emprendimientos, se relaciona con la necesidad de controlar mejor entradas, salidas y reposición.
+
+**Interpretación:**  
+El historial de lotes es una funcionalidad relevante para mejorar la trazabilidad del inventario. Permite pasar de una gestión basada en memoria, intuición o registros incompletos hacia un control más ordenado y verificable.
+
+**Resultado:** Aceptación alta.
+
+---
+
+#### 3. Visualización del ahorro real por mermas evitadas
+
+Los entrevistados consideraron valioso visualizar cuánto dinero se ahorra al atender alertas de vencimiento. Esta funcionalidad fue percibida como una forma clara de comprobar si la plataforma realmente aporta valor al negocio.
+
+Los dueños de bodegas indicaron que ver el ahorro en términos monetarios ayudaría a justificar el uso de la herramienta. Los emprendedores señalaron que este tipo de reporte permitiría medir el impacto económico de una mejor gestión del inventario.
+
+**Interpretación:**  
+La visualización del ahorro real fortalece la propuesta de valor de LiquoTrack, ya que permite que el usuario no solo reciba alertas, sino que también comprenda el beneficio económico generado por atenderlas.
+
+**Resultado:** Aceptación alta.
+
+---
+
+#### 4. Estimación de ahorro frente al costo de suscripción
+
+Los participantes manifestaron que antes de pagar una suscripción sería importante comparar las pérdidas actuales por mermas con el costo mensual de la plataforma. Esta comparación fue considerada útil para decidir si el servicio representa una inversión o un gasto adicional.
+
+En ambos segmentos se identificó sensibilidad al precio, especialmente porque los negocios son pequeños o están en crecimiento. Sin embargo, los entrevistados indicaron que estarían más dispuestos a pagar si el sistema demuestra un ahorro superior al costo de suscripción.
+
+**Interpretación:**  
+La calculadora de ahorro estimado es importante para reducir la barrera de pago. Esta funcionalidad permite justificar económicamente la suscripción y se alinea con la hipótesis relacionada con la percepción de valor del precio.
+
+**Resultado:** Aceptación alta, condicionada al precio del plan.
+
+---
+
+#### 5. Contratación y gestión del plan de suscripción
+
+La posibilidad de contratar un plan fue aceptada de forma condicionada. Los entrevistados no rechazaron el modelo de suscripción, pero indicaron que el precio debe ser accesible y que la plataforma debe demostrar beneficios concretos.
+
+Los dueños de bodegas priorizan que la herramienta sea simple y económica. Los emprendedores, por su parte, valoran que el plan pueda adaptarse al crecimiento del negocio y ofrezca funcionalidades completas.
+
+**Interpretación:**  
+El modelo de suscripción es viable si está acompañado de una propuesta de valor clara. La plataforma debe demostrar ahorro, orden y reducción de errores para que el usuario considere pagar por el servicio.
+
+**Resultado:** Aceptación media-alta, condicionada al precio y utilidad demostrada.
+
+---
+
+#### 6. Búsqueda rápida de productos por nombre común
+
+La búsqueda rápida fue considerada importante por todos los entrevistados. Los dueños de bodegas indicaron que durante la atención al cliente necesitan encontrar productos rápidamente para no interrumpir la venta. Los emprendedores señalaron que una búsqueda lenta generaría pérdida de tiempo en la operación diaria.
+
+**Interpretación:**  
+La optimización de búsqueda es una funcionalidad clave para la usabilidad del sistema. Si la búsqueda responde en menos de 1.5 segundos, puede mejorar la experiencia del usuario y reducir la dependencia de métodos manuales.
+
+**Resultado:** Aceptación alta.
+
+---
+
+#### 7. Reportes en modo de alto contraste
+
+El modo de alto contraste fue considerado útil, aunque no como la funcionalidad más urgente. Los entrevistados valoraron que los reportes sean claros, especialmente cuando contienen fechas, cantidades o alertas importantes.
+
+Los dueños de bodegas lo relacionaron con la lectura en condiciones de poca iluminación o cansancio visual. Los emprendedores lo consideraron una mejora positiva para interpretar reportes con mayor facilidad.
+
+**Interpretación:**  
+El modo de alto contraste representa una mejora de accesibilidad y legibilidad. Si bien no es la funcionalidad principal del sistema, contribuye a mejorar la experiencia de uso y reducir errores de interpretación.
+
+**Resultado:** Aceptación media-alta.
+
+---
+
+#### 8. Selección de idioma o terminología localizada
+
+La selección de idioma fue percibida como una mejora útil, pero de menor prioridad frente a funcionalidades como alertas, historial, búsqueda y ahorro. Los entrevistados indicaron que más que otro idioma, valoran que la plataforma use términos simples y fáciles de entender.
+
+En el caso de los emprendedores, se mencionó que esta funcionalidad podría ser más relevante en una etapa de crecimiento o expansión hacia otros mercados.
+
+**Interpretación:**  
+La localización de la interfaz es una mejora positiva, pero no representa una necesidad crítica en la etapa actual del producto. Debe mantenerse en el backlog como mejora futura o funcionalidad de expansión.
+
+**Resultado:** Aceptación media.
+
+---
+
+### Resumen de resultados por funcionalidad
+
+| Funcionalidad To-Be | Nivel de aceptación | Interpretación |
+| :--- | :--- | :--- |
+| Alertas de vencimiento y registro de acciones | Alta | Funcionalidad crítica para reducir pérdidas por vencimiento. |
+| Historial de movimientos por lote | Alta | Mejora la trazabilidad y el control del inventario. |
+| Ahorro real por mermas evitadas | Alta | Permite visualizar el valor económico generado por la plataforma. |
+| Estimación de ahorro frente al costo de suscripción | Alta | Ayuda a justificar el pago del servicio. |
+| Gestión del plan de suscripción | Media-alta | Es viable si el precio es accesible y el valor es claro. |
+| Búsqueda rápida por nombre común | Alta | Mejora la atención y reduce el tiempo operativo. |
+| Reportes en modo de alto contraste | Media-alta | Aporta a la accesibilidad y claridad visual. |
+| Selección de idioma o terminología localizada | Media | Es útil, pero no prioritaria en esta etapa. |
+
+---
+
+### Interpretación general de resultados
+
+Los resultados de las entrevistas muestran que las funcionalidades To-Be propuestas responden adecuadamente a los principales problemas identificados en los segmentos objetivo. Los usuarios presentan una necesidad clara de mejorar el control de inventario, reducir pérdidas por vencimiento, ordenar la trazabilidad de productos y contar con herramientas que faciliten la toma de decisiones.
+
+Las funcionalidades mejor valoradas fueron las relacionadas con **alertas de vencimiento**, **historial de lotes**, **búsqueda rápida** y **visualización del ahorro**, debido a que impactan directamente en la operación diaria y en la reducción de pérdidas. Estas mejoras validan la importancia de priorizar las historias US17, US18, US21 y US15 dentro del desarrollo To-Be.
+
+Por otro lado, las funcionalidades relacionadas con **suscripción**, **alto contraste** y **localización** fueron aceptadas, pero con ciertos matices. La suscripción depende del precio y del valor demostrado; el alto contraste se percibe como una mejora de apoyo; y la localización se considera útil para una etapa posterior de crecimiento.
+
+---
+
+### Conclusión del análisis
+
+A partir de las entrevistas realizadas, se concluye que las funcionalidades To-Be planteadas tienen una aceptación positiva en ambos segmentos objetivo. Los participantes reconocen que LiquoTrack puede ayudar a reducir errores, mejorar la trazabilidad, controlar mejor las fechas de vencimiento y visualizar el impacto económico de una gestión más ordenada.
+
+El análisis confirma que el proyecto debe priorizar las funcionalidades que generan valor operativo inmediato: alertas, historial de lotes, ahorro por mermas y búsqueda rápida. Asimismo, se recomienda mantener las mejoras de alto contraste y localización como funcionalidades complementarias, mientras que el modelo de suscripción debe validarse cuidadosamente mediante una propuesta de precio accesible y respaldada por evidencia de ahorro.
+
+### 8.4.2. Re-scored and Re-prioritized Question Backlog
+
+Después de realizar las entrevistas de validación To-Be, se volvió a evaluar el Question Backlog considerando la percepción de los usuarios, la utilidad observada de cada funcionalidad y el impacto que tendría cada mejora en la operación diaria del negocio. Esta repriorización permite enfocar los siguientes esfuerzos del proyecto en las preguntas que representan mayor valor para los segmentos objetivo.
+
+| Prioridad (1, 2, 3, 5, 8) | ID | Pregunta | Justificación |
+| :---: | :--- | :--- | :--- |
+| 1 | QD1 | ¿La implementación de un historial de lotes y alertas de vencimiento reduce efectivamente las pérdidas por productos vencidos? | Fue una de las necesidades más importantes identificadas en ambos segmentos. Los entrevistados indicaron que actualmente tienen problemas para controlar fechas de vencimiento, lotes mezclados y productos próximos a vencer. |
+| 1 | QD2 | ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse? | La búsqueda rápida fue considerada importante para la atención diaria y la gestión del inventario. Los usuarios indicaron que una búsqueda lenta podría hacerlos volver a métodos manuales como Excel, libreta o revisión física. |
+| 2 | QB1 | ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos no detectados? | Los entrevistados mostraron interés en pagar una suscripción, pero solo si la plataforma demuestra ahorro real y tiene un precio accesible. Por ello, la percepción de valor económico sigue siendo una pregunta clave. |
+| 3 | QD3 | ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes en entornos de baja iluminación? | El alto contraste fue valorado como una mejora útil para leer reportes con mayor claridad, aunque no fue considerado tan urgente como alertas, historial o búsqueda rápida. |
+| 5 | QB2 | ¿Qué tan relevante es el soporte multilingüe o la terminología localizada para la adopción de la plataforma? | Los usuarios consideraron positivo contar con una interfaz clara y sencilla, pero no lo percibieron como una necesidad inmediata. Se mantiene como mejora futura para expansión o mayor accesibilidad. |
+| 8 | QN1 | ¿La visualización del ahorro real por mermas evitadas incrementa la confianza del usuario en el valor de la plataforma? | Durante las entrevistas surgió como una pregunta relevante, ya que los usuarios indicaron que ver el ahorro en dinero les ayudaría a confiar más en la herramienta y justificar el pago de una suscripción. |
+
+**Interpretación de la repriorización:**  
+Luego de las entrevistas, las preguntas relacionadas con la reducción de mermas, alertas, historial de lotes y búsqueda rápida se mantienen como las más importantes, porque responden directamente a problemas operativos presentes en los segmentos objetivo. La pregunta sobre suscripción continúa siendo relevante, pero queda condicionada a que la plataforma pueda demostrar ahorro real. Por otro lado, el modo de alto contraste y el soporte multilingüe se mantienen como mejoras útiles, aunque con menor prioridad para el siguiente ciclo de desarrollo.
+
+## 8.5. Continuous Learning
+
+### 8.5.1. Shareback Session Artifacts: Learning Workflow
+
+Hemos mejorado nuestro flujo de aprendizaje continuo mediante la implementación de sesiones de retroalimentación y análisis de resultados. Estas sesiones permiten al equipo revisar los hallazgos de las entrevistas, discutir las implicaciones para el desarrollo del producto y ajustar el backlog según las necesidades identificadas.
+
+Como se ha podido documentar, el equipo ha adoptado un enfoque iterativo y basado en evidencia para priorizar funcionalidades, validar hipótesis y asegurar que las mejoras propuestas generen valor real para los usuarios. La documentación de estas sesiones se encuentra disponible en el repositorio del proyecto, incluyendo notas de reuniones, análisis de datos y decisiones tomadas.
+
+Además, se han establecido métricas de seguimiento para evaluar el impacto de las funcionalidades implementadas y su aceptación por parte de los usuarios. Esto permite al equipo tomar decisiones informadas sobre futuras iteraciones y mejoras del producto.
+
+## 8.6. To-Be Software Platform Pre-launch
+
+### 8.6.1. About-the-Product Intro Video
+
+El siguiente video presenta **StockTrack**, la solución desarrollada por el equipo para mejorar la gestión de inventario en bodegas, startups y emprendimientos con necesidades logísticas. A través de este video se podrán conocer las principales funcionalidades del producto, como el control de lotes, las alertas de vencimiento próximo, el historial de movimientos, la visualización del ahorro por mermas evitadas, la búsqueda rápida de productos y los reportes de inventario.
+
+Además, el video muestra cómo la plataforma ayuda a los usuarios a reducir pérdidas, organizar mejor sus productos y tomar decisiones más informadas sobre su negocio. Todo ello refleja los experimentos validados durante el ciclo de desarrollo To-Be, confirmando el valor que StockTrack genera para sus segmentos objetivo.
+
+**Video About the Product - Youtube:** 
+
+**Video About the Product - OneDrive:** 
+
