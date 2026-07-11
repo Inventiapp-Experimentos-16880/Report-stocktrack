@@ -1895,8 +1895,6 @@ Por ello, la Landing Page se mantiene como un artefacto informativo y de present
 
 ### 8.3.3.3. Implemented To-Be Frontend-Web Application Evidence
 
-### 8.3.3.4. Implemented To-Be Native-Mobile Application Evidence
-
 **No aplica.** El alcance del producto StockTrack comprende Landing Page, Web Application y RESTful API; no contempla el desarrollo de una aplicación móvil nativa en esta fase del proyecto, por lo que no se presenta evidencia de implementación de las To-Be User Stories en Mobile.
 
 
@@ -1974,16 +1972,409 @@ Después de revisar las funcionalidades propuestas, ¿cuál de estos cambios con
 
 ### 8.3.4.2. Registro de Entrevistas
 
+Link de entrevistas:<a href="https://tinyurl.com/66etkfv8">https://tinyurl.com/66etkfv8</a> <br>
+
+### 8.3.4.2. Registro de Entrevistas
+
+A continuación, se presenta el registro de entrevistas de validación To-Be realizadas a los dos segmentos objetivo del proyecto: dueños de bodegas y emprendedores en expansión con necesidades logísticas. Las respuestas fueron organizadas según las funcionalidades propuestas en el backlog To-Be.
+
+---
+
+### Segmento: Dueños de bodegas  
+
+#### ENTREVISTA 1
+
+![Entrevista 1 - Segmento Dueños de Bodegas](../assets/img/chapter-II/lucas-interview.png) <br>
+
+**Inicia:** 0 minutos y 0 segundos  
+
+**Duración:** 2 minutos y 53 segundos  
+
+**Nombre:** Lucarelly Sanchez Heredia  
+
+**Edad:** 21 años  
+
+**Resumen:**  
+Lucarelly administra una bodega junto a su abuelo y actualmente utiliza Excel y una libreta para registrar productos, aunque reconoce que no siempre mantiene la información actualizada. Indicó que uno de sus principales problemas es la mezcla de lotes y fechas de vencimiento, lo que puede generar pérdidas. Valoró positivamente las funcionalidades relacionadas con alertas de vencimiento, historial de lotes y búsqueda rápida de productos, ya que estas mejoras podrían ayudarle a tener mayor control del inventario y reducir errores en la gestión diaria.
+
+### Respuestas del entrevistado
+
+1. **¿Recibir una alerta cuando un lote esté próximo a vencer y poder registrar una acción como liquidación o devolución le ayudaría a reducir pérdidas en su bodega?**  
+   Sí, me ayudaría bastante porque a veces no nos damos cuenta de qué productos están por vencer hasta que ya es tarde. Si el sistema me avisa antes y puedo registrar si lo liquidé o lo devolví, tendría más orden y evitaría perder dinero.
+
+2. **¿Le resultaría útil consultar el historial de entradas, salidas y acciones realizadas sobre cada lote?**  
+   Sí, porque actualmente mezclamos productos nuevos con productos antiguos y eso complica saber qué lote llegó primero. Con un historial podría revisar mejor qué entró, qué salió y qué productos todavía están pendientes de vender.
+
+3. **¿Ver un reporte con el ahorro real generado por las alertas atendidas le ayudaría a confiar más en el valor que aporta la plataforma?**  
+   Sí, porque si veo cuánto estoy ahorrando realmente, podría entender mejor si la aplicación vale la pena. Me ayudaría a comparar si estoy perdiendo menos productos que antes.
+
+4. **Antes de pagar una suscripción, ¿le gustaría comparar cuánto pierde actualmente por productos vencidos frente al costo mensual de la plataforma?**  
+   Sí, porque antes de pagar tendría que saber si me conviene. Si la plataforma me muestra que pierdo más dinero por productos vencidos que lo que cuesta la suscripción, sería más fácil decidir.
+
+5. **¿Estaría dispuesto a contratar y gestionar un plan de suscripción si la plataforma demuestra que puede ayudarlo a reducir mermas y ordenar mejor su inventario?**  
+   Sí, pero tendría que ser un precio accesible. Si realmente me ayuda a ordenar mejor la bodega y reducir productos vencidos, sí lo consideraría.
+
+6. **Cuando atiende a un cliente, ¿considera importante que la búsqueda de productos por nombre común responda en menos de 1.5 segundos?**  
+   Sí, porque cuando un cliente pregunta por un producto, uno necesita responder rápido. Si la búsqueda demora mucho, sería más fácil seguir revisando manualmente.
+
+7. **¿Le sería útil activar un modo de alto contraste en los reportes?**  
+   Sí, porque a veces se revisan los productos rápido o con poca luz. Si el reporte se ve más claro, ayudaría a leer mejor las fechas y cantidades.
+
+8. **¿Le generaría más confianza usar la plataforma si pudiera seleccionar el idioma de la interfaz o una terminología más cercana a su forma de trabajo?**  
+   Sí, porque si los textos son claros y fáciles de entender, sería más sencillo usar la plataforma. No necesariamente necesito otro idioma, pero sí términos simples.
+
+---
+
+#### ENTREVISTA 2
+
+![Entrevista 2 - Segmento Dueños de Bodegas](../assets/img/chapter-II/Interview-Rubi.png) <br>
+
+**Inicia:** 0 minutos y 0 segundos  
+
+**Duración:** 4 minutos y 2 segundos  
+
+**Nombre:** Rubi Vega  
+
+**Edad:** 19 años  
+
+**Resumen:**  
+Rubi indicó que su bodega familiar no cuenta con un sistema formal de gestión de inventario y que el control se realiza principalmente de manera manual. Señaló que uno de los mayores problemas es el seguimiento de fechas de vencimiento, especialmente cuando ingresan nuevos productos. Consideró útiles las alertas preventivas, el historial de lotes y la búsqueda rápida, ya que podrían facilitar el control del stock y permitir una administración más ordenada del negocio.
+
+### Respuestas del entrevistado
+
+1. **¿Recibir una alerta cuando un lote esté próximo a vencer y poder registrar una acción como liquidación o devolución le ayudaría a reducir pérdidas en su bodega?**  
+   Sí, sería muy útil porque actualmente nos damos cuenta de los vencimientos cuando limpiamos los estantes o revisamos manualmente. Una alerta anticipada nos permitiría actuar antes.
+
+2. **¿Le resultaría útil consultar el historial de entradas, salidas y acciones realizadas sobre cada lote?**  
+   Sí, porque cuando llegan productos nuevos se pierde el seguimiento de los antiguos. Tener un historial ayudaría a saber qué productos se vendieron, cuáles siguen guardados y cuáles están por vencer.
+
+3. **¿Ver un reporte con el ahorro real generado por las alertas atendidas le ayudaría a confiar más en el valor que aporta la plataforma?**  
+   Sí, porque ver el ahorro en dinero sería una forma clara de saber si la plataforma está ayudando. No sería solo una alerta, sino una prueba del beneficio.
+
+4. **Antes de pagar una suscripción, ¿le gustaría comparar cuánto pierde actualmente por productos vencidos frente al costo mensual de la plataforma?**  
+   Sí, porque al ser una bodega familiar se cuidan mucho los gastos. Si el sistema demuestra que ayuda a ahorrar más de lo que cuesta, sería más fácil aceptarlo.
+
+5. **¿Estaría dispuesto a contratar y gestionar un plan de suscripción si la plataforma demuestra que puede ayudarlo a reducir mermas y ordenar mejor su inventario?**  
+   Sí, siempre que el plan sea económico y fácil de usar. Si evita pérdidas y ayuda a controlar mejor el negocio, sí podría ser una buena inversión.
+
+6. **Cuando atiende a un cliente, ¿considera importante que la búsqueda de productos por nombre común responda en menos de 1.5 segundos?**  
+   Sí, porque en una bodega todo debe ser rápido. Si el sistema responde lento, uno se puede desesperar o volver a revisar a mano.
+
+7. **¿Le sería útil activar un modo de alto contraste en los reportes?**  
+   Sí, porque facilitaría revisar la información. A veces los reportes con letras pequeñas o colores bajos cansan la vista.
+
+8. **¿Le generaría más confianza usar la plataforma si pudiera seleccionar el idioma de la interfaz o una terminología más cercana a su forma de trabajo?**  
+   Sí, principalmente si usa palabras sencillas. Para mí sería importante que no tenga términos muy técnicos.
+
+---
+### Segmento: Startups y emprendedores en expansión con necesidades logísticas  
+
+#### ENTREVISTA 1
+
+![Entrevista 1 - Startups y emprendedores en expansión con necesidades logísticas](../assets/img/chapter-II/Entrevista-Alexander-Miranda.png) <br>
+
+**Inicia:** 0 minutos y 0 segundos  
+
+**Duración:** 3 minutos y 30 segundos  
+
+**Nombre:** Alexander Miranda Vivanco  
+
+**Edad:** 27 años  
+
+**Resumen:**  
+Alexander tiene un emprendimiento dedicado a la venta de productos para mascotas. Actualmente revisa su almacén de manera presencial y registra su inventario en Excel, apoyándose también en boletas de venta. Indicó que el proceso de revisión de stock le consume tiempo y que le gustaría mejorar el control de entradas, salidas y reposición de productos. Valoró las funcionalidades To-Be relacionadas con trazabilidad, búsqueda rápida, reportes de ahorro y herramientas que permitan profesionalizar su gestión logística.
+
+### Respuestas del entrevistado
+
+1. **¿Considera útil contar con alertas de productos próximos a vencer y registrar la acción tomada para mejorar el control de pérdidas dentro de su negocio?**  
+   Sí, porque en mi caso vendo productos para mascotas y algunos tienen fecha de vencimiento. Si el sistema me avisa antes, podría hacer promociones o priorizar su venta.
+
+2. **¿Un historial detallado de movimientos por lote le ayudaría a mejorar la trazabilidad del inventario y tomar mejores decisiones logísticas?**  
+   Sí, definitivamente. Actualmente reviso el almacén de forma presencial y eso toma tiempo. Un historial me permitiría saber mejor qué productos entraron, salieron o necesitan reposición.
+
+3. **¿Visualizar el ahorro real generado por una mejor gestión de productos próximos a vencer le permitiría medir mejor el impacto económico de la plataforma?**  
+   Sí, porque como emprendedor necesito saber si una herramienta realmente me genera beneficio. Si puedo ver el ahorro, tendría más argumentos para seguir usándola.
+
+4. **¿Una calculadora de ahorro estimado frente al costo de suscripción le ayudaría a decidir si contratar una herramienta de gestión de inventario es rentable para su negocio?**  
+   Sí, porque antes de pagar una plataforma tendría que saber si realmente me conviene. Una calculadora me ayudaría a comparar el costo con el ahorro esperado.
+
+5. **¿Consideraría contratar un plan de suscripción si la plataforma ofrece funcionalidades que acompañen el crecimiento operativo de su emprendimiento?**  
+   Sí, si el plan se adapta al tamaño de mi negocio. Si me ayuda con inventario, reportes y control de productos, podría ser útil para crecer de manera más ordenada.
+
+6. **¿Qué tan importante sería para su operación contar con una búsqueda rápida de productos por nombre común?**  
+   Sería importante porque cuando reviso productos o atiendo pedidos, necesito encontrar rápido la información. Una búsqueda lenta haría que pierda tiempo.
+
+7. **¿Considera necesario que los reportes tengan una opción de alto contraste para facilitar la lectura de datos importantes?**  
+   Sí, no lo veo como lo más urgente, pero sí ayuda. Si el reporte tiene datos importantes, debe ser fácil de leer y entender.
+
+8. **Si su negocio crece o se expande a otros mercados, ¿sería importante contar con una interfaz adaptable a distintos idiomas o terminologías locales?**  
+   Sí, sobre todo si en el futuro se trabaja con más personas o se expande el negocio. Una interfaz adaptable puede ayudar a que más usuarios entiendan la plataforma.
+
+---
+
+#### ENTREVISTA 2
+
+![Entrevista 2 - Startups y emprendedores en expansión con necesidades logísticas](../assets/img/chapter-II/entrevista-alicia-navarro.png) <br>
+
+**Inicia:** 0 minutos y 0 segundos  
+
+**Duración:** 3 minutos y 32 segundos  
+
+**Nombre:** Alicia Navarro Chang  
+
+**Edad:** 20 años  
+
+**Resumen:**  
+Alicia tiene un negocio de venta de queques y gestiona sus insumos mediante Notion y Excel. Reconoce que el proceso sigue siendo manual y propenso a errores, especialmente en conteos, cálculos y control de compras y salidas. Indicó que le gustaría contar con una herramienta más automática, con funcionalidades claras y planes de suscripción adecuados. Consideró relevantes las mejoras To-Be relacionadas con historial de movimientos, búsqueda rápida, reportes de ahorro y cálculo de rentabilidad frente al costo de la plataforma.
+
+### Respuestas del entrevistado
+
+1. **¿Considera útil contar con alertas de productos próximos a vencer y registrar la acción tomada para mejorar el control de pérdidas dentro de su negocio?**  
+   Sí, porque en mi negocio uso insumos que pueden vencerse o malograrse. Si la plataforma me avisa antes, podría usarlos a tiempo o evitar comprar de más.
+
+2. **¿Un historial detallado de movimientos por lote le ayudaría a mejorar la trazabilidad del inventario y tomar mejores decisiones logísticas?**  
+   Sí, me ayudaría bastante. Actualmente uso Notion y Excel, pero igual puedo equivocarme. Un historial automático permitiría saber qué insumos entraron, salieron y cuándo se usaron.
+
+3. **¿Visualizar el ahorro real generado por una mejor gestión de productos próximos a vencer le permitiría medir mejor el impacto económico de la plataforma?**  
+   Sí, porque muchas veces no calculo exactamente cuánto pierdo por insumos que no uso a tiempo. Ver ese ahorro en un reporte sería muy útil para tomar decisiones.
+
+4. **¿Una calculadora de ahorro estimado frente al costo de suscripción le ayudaría a decidir si contratar una herramienta de gestión de inventario es rentable para su negocio?**  
+   Sí, porque he visto plataformas que no tienen planes adecuados. Si puedo comparar el costo con el ahorro que me generaría, podría decidir mejor si contratarla.
+
+5. **¿Consideraría contratar un plan de suscripción si la plataforma ofrece funcionalidades que acompañen el crecimiento operativo de su emprendimiento?**  
+   Sí, pero dependería del precio y de que realmente tenga las herramientas que necesito. Si reduce errores y me ahorra tiempo, sí lo consideraría.
+
+6. **¿Qué tan importante sería para su operación contar con una búsqueda rápida de productos por nombre común?**  
+   Sería importante porque manejo varios insumos y a veces necesito revisar rápido cantidades o fechas. Si busco por nombre y aparece rápido, me ayudaría a trabajar mejor.
+
+7. **¿Considera necesario que los reportes tengan una opción de alto contraste para facilitar la lectura de datos importantes?**  
+   Sí, porque cuando reviso reportes con muchos datos puede ser cansado. Un modo más claro ayudaría a identificar mejor alertas, cantidades y fechas.
+
+8. **Si su negocio crece o se expande a otros mercados, ¿sería importante contar con una interfaz adaptable a distintos idiomas o terminologías locales?**  
+   Sí, aunque para mi etapa actual no sería lo principal. Pero si el negocio crece o más personas usan la herramienta, podría ser útil tener opciones de idioma o términos más personalizados.
+
 ## 8.4. Experiment Aftermath & Analysis
 
 ### 8.4.1. Analysis and Interpretation of Results
 
+Las entrevistas de validación tuvieron como objetivo evaluar la aceptación y utilidad de las nuevas funcionalidades To-Be propuestas para StockTrack, orientadas a mejorar la gestión de inventario, la trazabilidad de lotes, la reducción de mermas, la visualización del ahorro, la optimización de búsqueda, la accesibilidad de reportes y la localización de la interfaz.
+
+Estas entrevistas fueron realizadas a los dos segmentos objetivo definidos para el proyecto: **dueños de bodegas** y **startups/emprendedores en expansión con necesidades logísticas**. Los participantes compartieron su percepción sobre las funcionalidades planteadas, considerando su experiencia actual con herramientas como Excel, libretas, Notion, WhatsApp y revisiones manuales de inventario.
+
+Los resultados obtenidos permitieron identificar qué funcionalidades generan mayor valor para los usuarios, cuáles requieren ajustes antes de ser implementadas completamente y qué mejoras pueden fortalecer la propuesta de valor del producto.
+
+---
+
+### Preguntas formuladas
+
+1. ¿Recibir alertas de productos o lotes próximos a vencer y registrar una acción de mitigación ayudaría a reducir pérdidas?
+2. ¿Consultar el historial de entradas, salidas y acciones por lote facilitaría la trazabilidad del inventario?
+3. ¿Visualizar el ahorro real generado por las alertas atendidas aumentaría la confianza en la plataforma?
+4. ¿Comparar el ahorro estimado por reducción de mermas frente al costo de suscripción ayudaría en la decisión de pago?
+5. ¿Contrataría un plan de suscripción si la plataforma demuestra que reduce pérdidas y mejora el control del inventario?
+6. ¿La búsqueda rápida de productos por nombre común sería útil para agilizar la operación diaria?
+7. ¿El modo de alto contraste en reportes facilitaría la lectura de información crítica?
+8. ¿Seleccionar el idioma o usar una terminología más cercana al usuario aumentaría la confianza en la plataforma?
+
+Estas preguntas fueron respondidas por cuatro participantes pertenecientes a los segmentos objetivo: dos dueños de bodegas y dos emprendedores en expansión con necesidades logísticas.
+
+---
+
+### Análisis de datos demográficos
+
+#### Distribución de participantes
+
+Las entrevistas fueron realizadas a cuatro usuarios pertenecientes al público objetivo del proyecto.
+
+- **Dueños de bodegas:** 2 participantes (50%).
+- **Startups y emprendedores en expansión:** 2 participantes (50%).
+
+#### Distribución de edades
+
+Las edades de los participantes oscilaron entre los 19 y 27 años.
+
+- **19 - 21 años:** 3 participantes (75%).
+- **22 - 27 años:** 1 participante (25%).
+
+#### Perfil operativo de los entrevistados
+
+Los usuarios entrevistados presentan una gestión de inventario principalmente manual o semidigital. Los dueños de bodegas utilizan herramientas como Excel, libretas y revisión física de estantes, mientras que los emprendedores emplean Excel, Notion, boletas, WhatsApp, Instagram y revisión presencial de almacén.
+
+Esto confirma que los segmentos objetivo aún enfrentan problemas relacionados con:
+
+- Falta de control en tiempo real del inventario.
+- Seguimiento limitado de fechas de vencimiento.
+- Errores humanos en conteos y cálculos.
+- Dificultad para conocer entradas y salidas de productos.
+- Necesidad de herramientas simples, accesibles y de bajo costo.
+
+---
+
+### Análisis por funcionalidad To-Be
+
+#### 1. Alertas de vencimiento y registro de acciones
+
+La funcionalidad de alertas preventivas fue valorada positivamente por los cuatro entrevistados. Los dueños de bodegas indicaron que actualmente suelen detectar productos vencidos al limpiar estantes o revisar manualmente, por lo que una alerta anticipada permitiría tomar acciones antes de perder el producto.
+
+En el caso de los emprendedores, también se consideró útil para productos con fecha de vencimiento o insumos perecibles. Se mencionó que registrar acciones como liquidación, devolución o uso anticipado permitiría tener mayor control sobre las decisiones tomadas.
+
+**Interpretación:**  
+La funcionalidad presenta una aceptación alta, ya que responde directamente a uno de los principales problemas identificados: la pérdida de productos por falta de seguimiento. Esta mejora valida la importancia de la US17 dentro del Product Backlog To-Be.
+
+**Resultado:** Aceptación alta.
+
+---
+
+#### 2. Historial de movimientos por lote
+
+Los entrevistados coincidieron en que contar con un historial de movimientos por lote sería útil para conocer qué productos ingresaron, salieron, fueron gestionados o llegaron a vencerse. En las bodegas, esta necesidad se relaciona con la mezcla de lotes nuevos y antiguos. En los emprendimientos, se relaciona con la necesidad de controlar mejor entradas, salidas y reposición.
+
+**Interpretación:**  
+El historial de lotes es una funcionalidad relevante para mejorar la trazabilidad del inventario. Permite pasar de una gestión basada en memoria, intuición o registros incompletos hacia un control más ordenado y verificable.
+
+**Resultado:** Aceptación alta.
+
+---
+
+#### 3. Visualización del ahorro real por mermas evitadas
+
+Los entrevistados consideraron valioso visualizar cuánto dinero se ahorra al atender alertas de vencimiento. Esta funcionalidad fue percibida como una forma clara de comprobar si la plataforma realmente aporta valor al negocio.
+
+Los dueños de bodegas indicaron que ver el ahorro en términos monetarios ayudaría a justificar el uso de la herramienta. Los emprendedores señalaron que este tipo de reporte permitiría medir el impacto económico de una mejor gestión del inventario.
+
+**Interpretación:**  
+La visualización del ahorro real fortalece la propuesta de valor de LiquoTrack, ya que permite que el usuario no solo reciba alertas, sino que también comprenda el beneficio económico generado por atenderlas.
+
+**Resultado:** Aceptación alta.
+
+---
+
+#### 4. Estimación de ahorro frente al costo de suscripción
+
+Los participantes manifestaron que antes de pagar una suscripción sería importante comparar las pérdidas actuales por mermas con el costo mensual de la plataforma. Esta comparación fue considerada útil para decidir si el servicio representa una inversión o un gasto adicional.
+
+En ambos segmentos se identificó sensibilidad al precio, especialmente porque los negocios son pequeños o están en crecimiento. Sin embargo, los entrevistados indicaron que estarían más dispuestos a pagar si el sistema demuestra un ahorro superior al costo de suscripción.
+
+**Interpretación:**  
+La calculadora de ahorro estimado es importante para reducir la barrera de pago. Esta funcionalidad permite justificar económicamente la suscripción y se alinea con la hipótesis relacionada con la percepción de valor del precio.
+
+**Resultado:** Aceptación alta, condicionada al precio del plan.
+
+---
+
+#### 5. Contratación y gestión del plan de suscripción
+
+La posibilidad de contratar un plan fue aceptada de forma condicionada. Los entrevistados no rechazaron el modelo de suscripción, pero indicaron que el precio debe ser accesible y que la plataforma debe demostrar beneficios concretos.
+
+Los dueños de bodegas priorizan que la herramienta sea simple y económica. Los emprendedores, por su parte, valoran que el plan pueda adaptarse al crecimiento del negocio y ofrezca funcionalidades completas.
+
+**Interpretación:**  
+El modelo de suscripción es viable si está acompañado de una propuesta de valor clara. La plataforma debe demostrar ahorro, orden y reducción de errores para que el usuario considere pagar por el servicio.
+
+**Resultado:** Aceptación media-alta, condicionada al precio y utilidad demostrada.
+
+---
+
+#### 6. Búsqueda rápida de productos por nombre común
+
+La búsqueda rápida fue considerada importante por todos los entrevistados. Los dueños de bodegas indicaron que durante la atención al cliente necesitan encontrar productos rápidamente para no interrumpir la venta. Los emprendedores señalaron que una búsqueda lenta generaría pérdida de tiempo en la operación diaria.
+
+**Interpretación:**  
+La optimización de búsqueda es una funcionalidad clave para la usabilidad del sistema. Si la búsqueda responde en menos de 1.5 segundos, puede mejorar la experiencia del usuario y reducir la dependencia de métodos manuales.
+
+**Resultado:** Aceptación alta.
+
+---
+
+#### 7. Reportes en modo de alto contraste
+
+El modo de alto contraste fue considerado útil, aunque no como la funcionalidad más urgente. Los entrevistados valoraron que los reportes sean claros, especialmente cuando contienen fechas, cantidades o alertas importantes.
+
+Los dueños de bodegas lo relacionaron con la lectura en condiciones de poca iluminación o cansancio visual. Los emprendedores lo consideraron una mejora positiva para interpretar reportes con mayor facilidad.
+
+**Interpretación:**  
+El modo de alto contraste representa una mejora de accesibilidad y legibilidad. Si bien no es la funcionalidad principal del sistema, contribuye a mejorar la experiencia de uso y reducir errores de interpretación.
+
+**Resultado:** Aceptación media-alta.
+
+---
+
+#### 8. Selección de idioma o terminología localizada
+
+La selección de idioma fue percibida como una mejora útil, pero de menor prioridad frente a funcionalidades como alertas, historial, búsqueda y ahorro. Los entrevistados indicaron que más que otro idioma, valoran que la plataforma use términos simples y fáciles de entender.
+
+En el caso de los emprendedores, se mencionó que esta funcionalidad podría ser más relevante en una etapa de crecimiento o expansión hacia otros mercados.
+
+**Interpretación:**  
+La localización de la interfaz es una mejora positiva, pero no representa una necesidad crítica en la etapa actual del producto. Debe mantenerse en el backlog como mejora futura o funcionalidad de expansión.
+
+**Resultado:** Aceptación media.
+
+---
+
+### Resumen de resultados por funcionalidad
+
+| Funcionalidad To-Be | Nivel de aceptación | Interpretación |
+| :--- | :--- | :--- |
+| Alertas de vencimiento y registro de acciones | Alta | Funcionalidad crítica para reducir pérdidas por vencimiento. |
+| Historial de movimientos por lote | Alta | Mejora la trazabilidad y el control del inventario. |
+| Ahorro real por mermas evitadas | Alta | Permite visualizar el valor económico generado por la plataforma. |
+| Estimación de ahorro frente al costo de suscripción | Alta | Ayuda a justificar el pago del servicio. |
+| Gestión del plan de suscripción | Media-alta | Es viable si el precio es accesible y el valor es claro. |
+| Búsqueda rápida por nombre común | Alta | Mejora la atención y reduce el tiempo operativo. |
+| Reportes en modo de alto contraste | Media-alta | Aporta a la accesibilidad y claridad visual. |
+| Selección de idioma o terminología localizada | Media | Es útil, pero no prioritaria en esta etapa. |
+
+---
+
+### Interpretación general de resultados
+
+Los resultados de las entrevistas muestran que las funcionalidades To-Be propuestas responden adecuadamente a los principales problemas identificados en los segmentos objetivo. Los usuarios presentan una necesidad clara de mejorar el control de inventario, reducir pérdidas por vencimiento, ordenar la trazabilidad de productos y contar con herramientas que faciliten la toma de decisiones.
+
+Las funcionalidades mejor valoradas fueron las relacionadas con **alertas de vencimiento**, **historial de lotes**, **búsqueda rápida** y **visualización del ahorro**, debido a que impactan directamente en la operación diaria y en la reducción de pérdidas. Estas mejoras validan la importancia de priorizar las historias US17, US18, US21 y US15 dentro del desarrollo To-Be.
+
+Por otro lado, las funcionalidades relacionadas con **suscripción**, **alto contraste** y **localización** fueron aceptadas, pero con ciertos matices. La suscripción depende del precio y del valor demostrado; el alto contraste se percibe como una mejora de apoyo; y la localización se considera útil para una etapa posterior de crecimiento.
+
+---
+
+### Conclusión del análisis
+
+A partir de las entrevistas realizadas, se concluye que las funcionalidades To-Be planteadas tienen una aceptación positiva en ambos segmentos objetivo. Los participantes reconocen que LiquoTrack puede ayudar a reducir errores, mejorar la trazabilidad, controlar mejor las fechas de vencimiento y visualizar el impacto económico de una gestión más ordenada.
+
+El análisis confirma que el proyecto debe priorizar las funcionalidades que generan valor operativo inmediato: alertas, historial de lotes, ahorro por mermas y búsqueda rápida. Asimismo, se recomienda mantener las mejoras de alto contraste y localización como funcionalidades complementarias, mientras que el modelo de suscripción debe validarse cuidadosamente mediante una propuesta de precio accesible y respaldada por evidencia de ahorro.
+
 ### 8.4.2. Re-scored and Re-prioritized Question Backlog
+
+Después de realizar las entrevistas de validación To-Be, se volvió a evaluar el Question Backlog considerando la percepción de los usuarios, la utilidad observada de cada funcionalidad y el impacto que tendría cada mejora en la operación diaria del negocio. Esta repriorización permite enfocar los siguientes esfuerzos del proyecto en las preguntas que representan mayor valor para los segmentos objetivo.
+
+| Prioridad (1, 2, 3, 5, 8) | ID | Pregunta | Justificación |
+| :---: | :--- | :--- | :--- |
+| 1 | QD1 | ¿La implementación de un historial de lotes y alertas de vencimiento reduce efectivamente las pérdidas por productos vencidos? | Fue una de las necesidades más importantes identificadas en ambos segmentos. Los entrevistados indicaron que actualmente tienen problemas para controlar fechas de vencimiento, lotes mezclados y productos próximos a vencer. |
+| 1 | QD2 | ¿Cuál es el umbral de tiempo máximo de búsqueda por nombre común que el usuario tolera antes de frustrarse? | La búsqueda rápida fue considerada importante para la atención diaria y la gestión del inventario. Los usuarios indicaron que una búsqueda lenta podría hacerlos volver a métodos manuales como Excel, libreta o revisión física. |
+| 2 | QB1 | ¿En qué medida el costo de la suscripción es una barrera frente a las pérdidas actuales por productos vencidos no detectados? | Los entrevistados mostraron interés en pagar una suscripción, pero solo si la plataforma demuestra ahorro real y tiene un precio accesible. Por ello, la percepción de valor económico sigue siendo una pregunta clave. |
+| 3 | QD3 | ¿Mejora significativamente el diseño de alto contraste la velocidad de interpretación de reportes en entornos de baja iluminación? | El alto contraste fue valorado como una mejora útil para leer reportes con mayor claridad, aunque no fue considerado tan urgente como alertas, historial o búsqueda rápida. |
+| 5 | QB2 | ¿Qué tan relevante es el soporte multilingüe o la terminología localizada para la adopción de la plataforma? | Los usuarios consideraron positivo contar con una interfaz clara y sencilla, pero no lo percibieron como una necesidad inmediata. Se mantiene como mejora futura para expansión o mayor accesibilidad. |
+| 8 | QN1 | ¿La visualización del ahorro real por mermas evitadas incrementa la confianza del usuario en el valor de la plataforma? | Durante las entrevistas surgió como una pregunta relevante, ya que los usuarios indicaron que ver el ahorro en dinero les ayudaría a confiar más en la herramienta y justificar el pago de una suscripción. |
+
+**Interpretación de la repriorización:**  
+Luego de las entrevistas, las preguntas relacionadas con la reducción de mermas, alertas, historial de lotes y búsqueda rápida se mantienen como las más importantes, porque responden directamente a problemas operativos presentes en los segmentos objetivo. La pregunta sobre suscripción continúa siendo relevante, pero queda condicionada a que la plataforma pueda demostrar ahorro real. Por otro lado, el modo de alto contraste y el soporte multilingüe se mantienen como mejoras útiles, aunque con menor prioridad para el siguiente ciclo de desarrollo.
 
 ## 8.5. Continuous Learning
 
 ### 8.5.1. Shareback Session Artifacts: Learning Workflow
 
+IMAGEN DE LAS NUEVAS PANTALLAS EN FIGMA
+
 ## 8.6. To-Be Software Platform Pre-launch
 
 ### 8.6.1. About-the-Product Intro Video
+
+El siguiente video presenta **StockTrack**, la solución desarrollada por el equipo para mejorar la gestión de inventario en bodegas, startups y emprendimientos con necesidades logísticas. A través de este video se podrán conocer las principales funcionalidades del producto, como el control de lotes, las alertas de vencimiento próximo, el historial de movimientos, la visualización del ahorro por mermas evitadas, la búsqueda rápida de productos y los reportes de inventario.
+
+Además, el video muestra cómo la plataforma ayuda a los usuarios a reducir pérdidas, organizar mejor sus productos y tomar decisiones más informadas sobre su negocio. Todo ello refleja los experimentos validados durante el ciclo de desarrollo To-Be, confirmando el valor que StockTrack genera para sus segmentos objetivo.
+
+**Video About the Product - Youtube:** 
+
+**Video About the Product - OneDrive:** 
+
+![AboutTheProduct.png](../../assets/capitulo-8/AboutTheProduct.png)
